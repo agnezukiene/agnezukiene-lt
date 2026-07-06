@@ -6,6 +6,7 @@ const siteRoot = path.join(root, "public");
 const htmlFiles = fs.readdirSync(siteRoot).filter((file) => file.endsWith(".html"));
 const requiredFiles = [
   "public/assets/css/styles.css",
+  "public/assets/js/config.js",
   "public/assets/js/site.js",
   "public/sitemap.xml",
   "public/robots.txt",
@@ -40,6 +41,7 @@ for (const file of htmlFiles) {
   if (!/<link rel="canonical" href="https:\/\/agnezukiene\.lt\//.test(html)) errors.push(`${file}: missing canonical`);
   if (!/<meta property="og:title" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:title`);
   if (!/<meta property="og:description" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:description`);
+  if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);
   if (/lorem ipsum|TODO|href=""|href="#"/i.test(html)) errors.push(`${file}: contains placeholder text or empty link`);
   if (/psichoterapeutė/i.test(html)) errors.push(`${file}: contains restricted qualification wording`);
@@ -81,6 +83,11 @@ if (!wrangler.includes('"run_worker_first"') || !wrangler.includes('"/api/*"')) 
 const worker = read("src/index.js");
 for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch"]) {
   if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
+}
+
+const siteJs = read("public/assets/js/site.js");
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render"]) {
+  if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 
 if (errors.length > 0) {

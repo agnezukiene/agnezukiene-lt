@@ -493,6 +493,10 @@ textarea {
   font-size: 0.94rem;
 }
 
+.turnstile-slot {
+  min-height: 1px;
+}
+
 .form-status {
   min-height: 28px;
   font-weight: 700;

@@ -1,4 +1,32 @@
 (function () {
+  const config = window.AGNE_SITE_CONFIG || {};
+
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  const initAnalytics = () => {
+    if (!config.ga4MeasurementId || window.gtag) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", config.ga4MeasurementId, {
+      anonymize_ip: true,
+      send_page_view: true
+    });
+
+    loadScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(config.ga4MeasurementId)}`)
+      .catch(() => {});
+  };
+
   const navToggle = document.querySelector(".nav-toggle");
   const navLinks = document.querySelector("#main-menu");
 
@@ -52,8 +80,13 @@
   const setCookieChoice = (choice) => {
     localStorage.setItem("agne_cookie_choice", choice);
     if (cookieBanner) cookieBanner.hidden = true;
+    if (choice === "accepted") initAnalytics();
     window.dispatchEvent(new CustomEvent("analytics-consent", { detail: choice }));
   };
+
+  if (cookieChoice === "accepted") {
+    initAnalytics();
+  }
 
   if (acceptCookies) {
     acceptCookies.addEventListener("click", () => setCookieChoice("accepted"));
@@ -65,9 +98,31 @@
 
   const form = document.querySelector("#contact-form");
   const status = document.querySelector(".form-status");
+  const turnstileContainer = document.querySelector("[data-turnstile]");
+  const turnstileToken = document.querySelector("#turnstile-token");
   let formStarted = false;
 
   if (form && status) {
+    if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
+      window.onloadTurnstileCallback = function () {
+        window.turnstile.render(turnstileContainer, {
+          sitekey: config.turnstileSiteKey,
+          callback: (token) => {
+            turnstileToken.value = token;
+          },
+          "expired-callback": () => {
+            turnstileToken.value = "";
+          }
+        });
+      };
+
+      loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback")
+        .catch(() => {
+          status.classList.add("is-error");
+          status.textContent = "Nepavyko įkelti formos apsaugos. Pabandykite vėliau arba parašykite el. paštu.";
+        });
+    }
+
     form.addEventListener("input", () => {
       if (!formStarted) {
         formStarted = true;

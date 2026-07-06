@@ -54,6 +54,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | --- | --- | --- |
 | `assets/css/styles.css` | Visa svetainės vizualinė sistema | `[x]` sukurta MVP versija |
 | `assets/js/site.js` | Mobile meniu, slapukų pasirinkimas, forma, eventai | `[x]` sukurta MVP versija |
+| `public/assets/js/config.js` | Vieši GA4 Measurement ID ir Turnstile site key nustatymai | `[x]` sukurta, reikšmės dar tuščios |
 | `src/index.js` | Cloudflare Worker entrypoint: statiniai failai ir `/api/contact` endpointas | `[x]` sukurta backend formai |
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
@@ -160,7 +161,7 @@ Vizualinė kryptis:
 - `[~]` Kontaktų formos frontend sukurta `kontaktai.html`.
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
-- `[~]` Integruoti Cloudflare Turnstile: backend paruoštas, reikia site key ir secret.
+- `[~]` Integruoti Cloudflare Turnstile: frontend ir backend paruošti, reikia site key ir secret.
 - `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
@@ -180,7 +181,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[ ]` Sukurti `docs/seo-inventory.md`.
 - `[x]` Sukurti `scripts/generate-seo-inventory.js`.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
-- `[ ]` Įdiegti GA4 tik su sutikimo režimu.
+- `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
 - `[x]` Sukurti `data/analytics-events.json`.
 - `[ ]` Patikrinti GA4 Realtime / DebugView.
 - `[ ]` Search Console patvirtinti kaip domain property per Cloudflare DNS TXT.

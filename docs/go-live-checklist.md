@@ -60,7 +60,7 @@ Atnaujinta: 2026-07-06
 ## Analitika ir paieška
 
 - `[ ]` Sukurti GA4 property.
-- `[ ]` Įdiegti GA4 su sutikimo režimu.
+- `[~]` Įdiegti GA4 su sutikimo režimu: kodas paruoštas, reikia Measurement ID.
 - `[ ]` Patikrinti GA4 Realtime.
 - `[ ]` Search Console patvirtinti per Cloudflare DNS TXT.
 - `[ ]` Pateikti `sitemap.xml`.
