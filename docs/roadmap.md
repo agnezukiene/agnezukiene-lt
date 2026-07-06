@@ -65,6 +65,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
+| `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -174,6 +175,7 @@ Vizualinė kryptis:
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
+- `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[ ]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
