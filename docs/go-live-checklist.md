@@ -12,13 +12,13 @@ Atnaujinta: 2026-07-06
 - `[x]` Sukurti `sitemap.xml` ir `robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
-- `[ ]` Peržiūrėti `git status --short`.
-- `[ ]` Padaryti pirmą commit.
-- `[ ]` Push į GitHub `main`.
+- `[x]` Peržiūrėti `git status --short`.
+- `[x]` Padaryti pirmą commit.
+- `[x]` Push į GitHub `main`.
 
 ## Prieš Cloudflare Pages prijungimą
 
-- `[ ]` GitHub repo turi matytis visi MVP failai.
+- `[x]` GitHub repo turi matytis visi MVP failai.
 - `[ ]` Cloudflare turi rodyti domeną `agnezukiene.lt`.
 - `[ ]` Cloudflare Pages prijungtas prie GitHub repo.
 - `[ ]` Production branch: `main`.

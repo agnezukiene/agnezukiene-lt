@@ -70,12 +70,13 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Pabaigti `assets/js/site.js`.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
-- `[ ]` Sukurti `docs/go-live-checklist.md`.
+- `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
 - `[x]` Sukurti GitHub repo `agnezukiene-lt`.
 - `[x]` Prijungti lokalų repo prie GitHub remote.
-- `[ ]` Padaryti pirmą commit tik po lokalių patikrų.
+- `[x]` Padaryti pirmą commit tik po lokalių patikrų.
+- `[x]` Push į GitHub `main`.
 
 Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPress. Tai sumažina riziką ir pagreitina pirmą paleidimą.
 
@@ -240,7 +241,7 @@ Kitas darbas turi vykti tokia tvarka:
 4. `[x]` Sukurti `scripts/check-site-integrity.js`.
 5. `[x]` Paleisti lokalią patikrą ir sutvarkyti rastas klaidas.
 6. `[ ]` Sukurti `docs/go-live-checklist.md`.
-7. `[ ]` Padaryti pirmą commit ir push į GitHub.
+7. `[x]` Padaryti pirmą commit ir push į GitHub.
 8. `[ ]` Tada ruošti Cloudflare Pages prijungimą.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.
