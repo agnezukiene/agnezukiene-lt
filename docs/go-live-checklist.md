@@ -57,7 +57,7 @@ Atnaujinta: 2026-07-06
 - `[x]` `/api/contact` laikiname Cloudflare URL pasiekia Worker backendą.
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
-- `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
+- `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
 - `[ ]` Patikrinti sėkmingą formos siuntimą gyvai.

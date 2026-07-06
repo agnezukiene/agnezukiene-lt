@@ -16,7 +16,7 @@ Pridėti kaip paprastus variables, ne secrets:
 
 | Name | Value | Tipas | Statusas |
 | --- | --- | --- | --- |
-| `CONTACT_TO_EMAIL` | `zukiene.agne@gmail.com` | Variable | laukia |
+| `CONTACT_TO_EMAIL` | `zukiene.agne@gmail.com` | `wrangler.jsonc` variable | padaryta |
 | `ALLOWED_ORIGIN` | `https://agnezukiene.lt` | Variable | laukia po domeno DNS |
 | `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` | Variable | laukia po Resend domeno patvirtinimo |
 
@@ -71,13 +71,12 @@ node scripts/check-live-site.js https://agnezukienepage.petrauskaiteagne.workers
 
 ## 5. Dabartinė laukimo seka
 
-1. `CONTACT_TO_EMAIL`
-2. `ALLOWED_ORIGIN`
-3. Resend domeno / siuntėjo paruošimas
-4. `CONTACT_FROM_EMAIL`
-5. `RESEND_API_KEY`
-6. Turnstile widget
-7. `TURNSTILE_SECRET_KEY`
-8. `turnstileSiteKey` į `public/assets/js/config.js`
-9. GA4 property
-10. `ga4MeasurementId` į `public/assets/js/config.js`
+1. `ALLOWED_ORIGIN`
+2. Resend domeno / siuntėjo paruošimas
+3. `CONTACT_FROM_EMAIL`
+4. `RESEND_API_KEY`
+5. Turnstile widget
+6. `TURNSTILE_SECRET_KEY`
+7. `turnstileSiteKey` į `public/assets/js/config.js`
+8. GA4 property
+9. `ga4MeasurementId` į `public/assets/js/config.js`

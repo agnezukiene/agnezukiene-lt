@@ -173,7 +173,7 @@ Vizualinė kryptis:
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
 - `[~]` Integruoti Cloudflare Turnstile: frontend ir backend paruošti, reikia site key ir secret.
 - `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
-- `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
+- `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc` neslaptą variable.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.

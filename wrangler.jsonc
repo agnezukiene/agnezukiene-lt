@@ -6,6 +6,9 @@
   "observability": {
     "enabled": true
   },
+  "vars": {
+    "CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"
+  },
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",

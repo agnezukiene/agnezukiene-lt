@@ -82,6 +82,7 @@ if (!wrangler.includes('"main": "src/index.js"')) errors.push("wrangler.jsonc: m
 if (!wrangler.includes('"directory": "./public"')) errors.push("wrangler.jsonc: assets directory must be ./public");
 if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: missing ASSETS binding");
 if (!wrangler.includes('"run_worker_first": true')) errors.push("wrangler.jsonc: Worker must run before assets");
+if (!wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"')) errors.push("wrangler.jsonc: missing CONTACT_TO_EMAIL variable");
 
 const worker = read("src/index.js");
 for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website"]) {
