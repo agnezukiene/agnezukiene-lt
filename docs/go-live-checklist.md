@@ -9,7 +9,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Sukurti MVP puslapiai.
 - `[x]` Sukurtas `assets/css/styles.css`.
 - `[x]` Sukurtas `assets/js/site.js`.
-- `[x]` Sukurti `sitemap.xml` ir `robots.txt`.
+- `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Peržiūrėti `git status --short`.
@@ -24,6 +24,7 @@ Atnaujinta: 2026-07-06
 - `[ ]` Production branch: `main`.
 - `[ ]` Build command: tuščias.
 - `[ ]` Build output directory: `/`.
+- `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
 - `[ ]` Custom domain: `agnezukiene.lt`.
 - `[ ]` `www.agnezukiene.lt` nukreiptas į pagrindinį domeną.
 

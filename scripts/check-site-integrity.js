@@ -2,18 +2,23 @@ const fs = require("fs");
 const path = require("path");
 
 const root = process.cwd();
-const htmlFiles = fs.readdirSync(root).filter((file) => file.endsWith(".html"));
+const siteRoot = path.join(root, "public");
+const htmlFiles = fs.readdirSync(siteRoot).filter((file) => file.endsWith(".html"));
 const requiredFiles = [
-  "assets/css/styles.css",
-  "assets/js/site.js",
-  "sitemap.xml",
-  "robots.txt",
+  "public/assets/css/styles.css",
+  "public/assets/js/site.js",
+  "public/sitemap.xml",
+  "public/robots.txt",
   "data/analytics-events.json"
 ];
 const errors = [];
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
+}
+
+function readSite(file) {
+  return fs.readFileSync(path.join(siteRoot, file), "utf8");
 }
 
 for (const file of requiredFiles) {
@@ -23,7 +28,7 @@ for (const file of requiredFiles) {
 }
 
 for (const file of htmlFiles) {
-  const html = read(file);
+  const html = readSite(file);
   const h1Count = (html.match(/<h1[\s>]/g) || []).length;
 
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);
@@ -37,7 +42,7 @@ for (const file of htmlFiles) {
   if (/garantuotas rezultatas|išgydysiu|greitas sprendimas/i.test(html)) errors.push(`${file}: contains overpromising wording`);
 }
 
-const sitemap = read("sitemap.xml");
+const sitemap = read("public/sitemap.xml");
 for (const file of htmlFiles.filter((file) => file !== "404.html")) {
   const expected = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
   if (!sitemap.includes(`<loc>${expected}</loc>`)) {

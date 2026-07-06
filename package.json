@@ -5,7 +5,8 @@
   "description": "Agnės Žukienės psichologės svetainės MVP.",
   "scripts": {
     "check": "node scripts/check-site-integrity.js",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173 --directory public",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {}
 }

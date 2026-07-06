@@ -45,6 +45,8 @@ Failai, kurie šiuo metu yra projekte:
 | `slapuku-politika.html` | Slapukų politikos juodraštis | `[~]` reikia sujungti su realia analitika |
 | `404.html` | Klaidos puslapis | `[~]` sukurtas, reikia patikrinti po deploy |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus hero vizualas be žmonių | `[x]` naudojamas laikinai iki Agnės portreto |
+| `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
+| `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
 
 Failai / katalogai, kuriuos dar reikia sukurti:
 
@@ -68,8 +70,8 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[~]` Sukurti pradinę failų struktūrą.
 - `[x]` Pabaigti `assets/css/styles.css`.
 - `[x]` Pabaigti `assets/js/site.js`.
-- `[x]` Sukurti `sitemap.xml`.
-- `[x]` Sukurti `robots.txt`.
+- `[x]` Sukurti `public/sitemap.xml`.
+- `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
@@ -90,6 +92,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[ ]` Pakartotinai patikrinti, ar `.lt` registre domenas tapo aktyvus.
 - `[ ]` Pakartotinai patikrinti, ar vieši NS jau yra `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
 - `[ ]` Cloudflare Pages prijungti prie GitHub repo.
+- `[x]` Pataisyti Cloudflare deploy struktūrą: vieši failai perkelti į `public/`, `wrangler.jsonc` assets directory nustatytas į `./public`.
 - `[ ]` Production branch nustatyti į `main`.
 - `[ ]` Pridėti custom domain `agnezukiene.lt`.
 - `[ ]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt`.
