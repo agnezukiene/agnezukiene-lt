@@ -93,11 +93,13 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[ ]` Pakartotinai patikrinti, ar vieši NS jau yra `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
 - `[ ]` Cloudflare Pages prijungti prie GitHub repo.
 - `[x]` Pataisyti Cloudflare deploy struktūrą: vieši failai perkelti į `public/`, `wrangler.jsonc` assets directory nustatytas į `./public`.
+- `[x]` Pirmas Cloudflare deploy sėkmingas: `https://agnezukienepage.petrauskaiteagne.workers.dev`.
+- `[x]` `wrangler.jsonc` projekto vardas suderintas su Cloudflare vardu `agnezukienepage`.
 - `[ ]` Production branch nustatyti į `main`.
 - `[ ]` Pridėti custom domain `agnezukiene.lt`.
 - `[ ]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt`.
 - `[ ]` Patikrinti HTTPS.
-- `[ ]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
+- `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
 
 ## 4. Puslapiai ir turinys
 

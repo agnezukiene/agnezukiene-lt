@@ -25,6 +25,7 @@ Atnaujinta: 2026-07-06
 - `[ ]` Build command: tuščias.
 - `[ ]` Build output directory: `/`.
 - `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
+- `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[ ]` Custom domain: `agnezukiene.lt`.
 - `[ ]` `www.agnezukiene.lt` nukreiptas į pagrindinį domeną.
 
