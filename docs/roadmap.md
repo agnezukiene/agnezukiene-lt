@@ -54,7 +54,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | --- | --- | --- |
 | `assets/css/styles.css` | Visa svetainės vizualinė sistema | `[x]` sukurta MVP versija |
 | `assets/js/site.js` | Mobile meniu, slapukų pasirinkimas, forma, eventai | `[x]` sukurta MVP versija |
-| `functions/api/contact.js` | Cloudflare Pages Function kontaktų formai | `[ ]` būtina MVP formai |
+| `src/index.js` | Cloudflare Worker entrypoint: statiniai failai ir `/api/contact` endpointas | `[x]` sukurta backend formai |
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
 | `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[ ]` būtina prieš go-live |
@@ -62,7 +62,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[ ]` rekomenduojama MVP |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
-| `wrangler.toml` arba Cloudflare Pages konfigūracija | Cloudflare funkcijų ir deploy nustatymai | `[ ]` reikės prieš formos backend |
+| `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 
 ## 2. Techninė bazė
 
@@ -91,12 +91,13 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[!]` 2026-07-06 `whois agnezukiene.lt` būsena: `pendingCreate`.
 - `[ ]` Pakartotinai patikrinti, ar `.lt` registre domenas tapo aktyvus.
 - `[ ]` Pakartotinai patikrinti, ar vieši NS jau yra `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
-- `[ ]` Cloudflare Pages prijungti prie GitHub repo.
+- `[x]` Cloudflare Pages/Workers projektas prijungtas prie GitHub repo.
 - `[x]` Pataisyti Cloudflare deploy struktūrą: vieši failai perkelti į `public/`, `wrangler.jsonc` assets directory nustatytas į `./public`.
 - `[x]` Pirmas Cloudflare deploy sėkmingas: `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[x]` `wrangler.jsonc` projekto vardas suderintas su Cloudflare vardu `agnezukienepage`.
 - `[ ]` Production branch nustatyti į `main`.
-- `[ ]` Pridėti custom domain `agnezukiene.lt`.
+- `[x]` Pridėti custom domain `agnezukiene.lt`.
+- `[!]` 2026-07-06 `agnezukiene.lt` viešai dar rodo Interneto vizijos IP `79.98.25.1`; laukiama NS persijungimo.
 - `[ ]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt`.
 - `[ ]` Patikrinti HTTPS.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
@@ -156,14 +157,14 @@ Vizualinė kryptis:
 
 - `[~]` Kontaktų formos frontend sukurta `kontaktai.html`.
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
-- `[ ]` Sukurti `functions/api/contact.js` Cloudflare Pages Function.
-- `[ ]` Integruoti Cloudflare Turnstile.
-- `[ ]` Integruoti Resend laiškų siuntimą.
+- `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
+- `[~]` Integruoti Cloudflare Turnstile: backend paruoštas, reikia site key ir secret.
+- `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas, reikia API rakto ir siuntėjo adreso.
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
-- `[ ]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
-- `[ ]` Patikrinti, kad forma turi aiškias klaidas žmogui.
+- `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
+- `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[ ]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.

@@ -26,7 +26,8 @@ Atnaujinta: 2026-07-06
 - `[ ]` Build output directory: `/`.
 - `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
 - `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.
-- `[ ]` Custom domain: `agnezukiene.lt`.
+- `[x]` Custom domain: `agnezukiene.lt`.
+- `[!]` Laukiama, kol viešas DNS pradės rodyti Cloudflare vietoj Interneto vizijos.
 - `[ ]` `www.agnezukiene.lt` nukreiptas į pagrindinį domeną.
 
 ## Prieš viešą paleidimą
@@ -46,9 +47,9 @@ Atnaujinta: 2026-07-06
 
 ## Kontaktų forma
 
-- `[ ]` Sukurti Cloudflare Pages Function `/api/contact`.
-- `[ ]` Prijungti Turnstile.
-- `[ ]` Prijungti Resend arba kitą laiškų siuntimo servisą.
+- `[x]` Sukurti Cloudflare Worker endpointą `/api/contact`.
+- `[~]` Prijungti Turnstile: kodas paruoštas, reikia Cloudflare site key ir secret.
+- `[~]` Prijungti Resend arba kitą laiškų siuntimo servisą: kodas paruoštas, reikia API rakto.
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.

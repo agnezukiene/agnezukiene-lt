@@ -9,7 +9,9 @@ const requiredFiles = [
   "public/assets/js/site.js",
   "public/sitemap.xml",
   "public/robots.txt",
-  "data/analytics-events.json"
+  "data/analytics-events.json",
+  "src/index.js",
+  "wrangler.jsonc"
 ];
 const errors = [];
 
@@ -53,6 +55,16 @@ for (const file of htmlFiles.filter((file) => file !== "404.html")) {
 const gitignore = read(".gitignore");
 for (const pattern of [".env", "*.local", "*-oauth-token.json", ".dev.vars"]) {
   if (!gitignore.includes(pattern)) errors.push(`.gitignore: missing ${pattern}`);
+}
+
+const wrangler = read("wrangler.jsonc");
+if (!wrangler.includes('"main": "src/index.js"')) errors.push("wrangler.jsonc: missing worker main entry");
+if (!wrangler.includes('"directory": "./public"')) errors.push("wrangler.jsonc: assets directory must be ./public");
+if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: missing ASSETS binding");
+
+const worker = read("src/index.js");
+for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch"]) {
+  if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
 }
 
 if (errors.length > 0) {
