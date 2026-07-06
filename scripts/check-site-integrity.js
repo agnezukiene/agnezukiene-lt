@@ -14,6 +14,7 @@ const requiredFiles = [
   "data/analytics-events.json",
   "data/site-content-registry.json",
   "docs/seo-inventory.md",
+  "scripts/check-live-site.js",
   "src/index.js",
   "wrangler.jsonc"
 ];

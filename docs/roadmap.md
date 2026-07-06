@@ -58,11 +58,12 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `src/index.js` | Cloudflare Worker entrypoint: statiniai failai ir `/api/contact` endpointas | `[x]` sukurta backend formai |
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
-| `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[ ]` būtina prieš go-live |
+| `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[x]` sukurta |
 | `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` generuojama skriptu |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` generuojama skriptu |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
+| `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -76,6 +77,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
+- `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
 - `[x]` Sukurti GitHub repo `agnezukiene-lt`.
 - `[x]` Prijungti lokalų repo prie GitHub remote.
@@ -107,6 +109,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt` Worker lygiu; pilnai patikrinti po DNS persijungimo.
 - `[ ]` Patikrinti HTTPS.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
+- `[x]` Sukurti live smoke testą laikinam Cloudflare URL.
 
 ## 4. Puslapiai ir turinys
 
@@ -232,6 +235,7 @@ Po Cloudflare deploy:
 - `[ ]` Atidaryti `https://agnezukiene.lt`.
 - `[ ]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
 - `[ ]` Patikrinti visus pagrindinius puslapius gyvai.
+- `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
 - `[ ]` Patikrinti formos siuntimą gyvai.
 - `[ ]` Patikrinti GA4 Realtime.
 - `[ ]` Patikrinti Search Console sitemap pateikimą.
@@ -254,7 +258,7 @@ Kitas darbas turi vykti tokia tvarka:
 3. `[x]` Sukurti `sitemap.xml` ir `robots.txt`.
 4. `[x]` Sukurti `scripts/check-site-integrity.js`.
 5. `[x]` Paleisti lokalią patikrą ir sutvarkyti rastas klaidas.
-6. `[ ]` Sukurti `docs/go-live-checklist.md`.
+6. `[x]` Sukurti `docs/go-live-checklist.md`.
 7. `[x]` Padaryti pirmą commit ir push į GitHub.
 8. `[ ]` Tada ruošti Cloudflare Pages prijungimą.
 

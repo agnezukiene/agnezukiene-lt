@@ -11,6 +11,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Sukurtas `assets/js/site.js`.
 - `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
+- `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Peržiūrėti `git status --short`.
 - `[x]` Padaryti pirmą commit.
@@ -26,6 +27,7 @@ Atnaujinta: 2026-07-06
 - `[ ]` Build output directory: `/`.
 - `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
 - `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.
+- `[x]` Laikinas Cloudflare URL patikrintas automatiniu smoke testu.
 - `[x]` Custom domain: `agnezukiene.lt`.
 - `[!]` Laukiama, kol viešas DNS pradės rodyti Cloudflare vietoj Interneto vizijos.
 - `[x]` `www.agnezukiene.lt` nukreipimas į pagrindinį domeną paruoštas Worker lygiu.
@@ -35,7 +37,7 @@ Atnaujinta: 2026-07-06
 - `[ ]` Patikrinti pradžios puslapį desktop vaizde.
 - `[ ]` Patikrinti pradžios puslapį mobile vaizde.
 - `[ ]` Patikrinti mobile meniu.
-- `[ ]` Patikrinti visus vidinius puslapius.
+- `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
 - `[ ]` Patikrinti `404.html`.
 - `[ ]` Patikrinti `sitemap.xml`.
 - `[ ]` Patikrinti `robots.txt`.
