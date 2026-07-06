@@ -64,6 +64,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` generuojama skriptu |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
+| `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -78,6 +79,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-live-site.js`.
+- `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
 - `[x]` Sukurti GitHub repo `agnezukiene-lt`.
 - `[x]` Prijungti lokalų repo prie GitHub remote.

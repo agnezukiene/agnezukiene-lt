@@ -8,6 +8,7 @@
     "check:live": "node scripts/check-live-site.js",
     "content:registry": "node scripts/generate-content-registry.js",
     "seo:inventory": "node scripts/generate-seo-inventory.js",
+    "pre-go-live": "node scripts/pre-go-live.js",
     "serve": "python3 -m http.server 4173 --directory public",
     "deploy": "wrangler deploy"
   },

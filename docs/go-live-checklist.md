@@ -12,6 +12,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
+- `[x]` Sukurtas `scripts/pre-go-live.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Peržiūrėti `git status --short`.
 - `[x]` Padaryti pirmą commit.
