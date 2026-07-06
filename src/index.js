@@ -66,6 +66,10 @@ async function handleContact(request, env) {
   }
 
   const data = normalizeContact(body);
+  if (data.website) {
+    return json({ message: "Užklausa išsiųsta." }, 200);
+  }
+
   const validationError = validateContact(data);
   if (validationError) {
     return json({ message: validationError }, 400);
@@ -104,6 +108,7 @@ function normalizeContact(body) {
     format: clean(body.format, 20),
     topic: clean(body.topic, 30),
     message: clean(body.message, 1200),
+    website: clean(body.website, 120),
     privacy: body.privacy === "on" || body.privacy === true,
     turnstileToken: clean(body.turnstileToken, 2048)
   };

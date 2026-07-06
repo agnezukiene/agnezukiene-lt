@@ -84,8 +84,13 @@ if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: miss
 if (!wrangler.includes('"run_worker_first": true')) errors.push("wrangler.jsonc: Worker must run before assets");
 
 const worker = read("src/index.js");
-for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy"]) {
+for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website"]) {
   if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
+}
+
+const contactHtml = readSite("kontaktai.html");
+if (!contactHtml.includes('name="website"') || !contactHtml.includes("honeypot")) {
+  errors.push("kontaktai.html: missing honeypot field");
 }
 
 const siteJs = read("public/assets/js/site.js");

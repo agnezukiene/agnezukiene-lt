@@ -447,6 +447,14 @@ textarea {
   gap: 0.35rem;
 }
 
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-row label,
 .checkbox {
   font-weight: 700;

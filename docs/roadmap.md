@@ -179,6 +179,7 @@ Vizualinė kryptis:
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
+- `[x]` Pridėti nematomą honeypot lauką paprastų botų filtravimui iki Turnstile.
 - `[ ]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
