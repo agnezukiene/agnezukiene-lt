@@ -96,6 +96,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Pirmas Cloudflare deploy sėkmingas: `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[x]` `wrangler.jsonc` projekto vardas suderintas su Cloudflare vardu `agnezukienepage`.
 - `[x]` `/api/*` keliai nustatyti per `run_worker_first`, kad kontaktų endpointas eitų per Worker scriptą.
+- `[x]` `https://agnezukienepage.petrauskaiteagne.workers.dev/api/contact` patikrintas: endpointas veikia ir grąžina laukiamą 503, kol nesudėti el. pašto kintamieji.
 - `[ ]` Production branch nustatyti į `main`.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
 - `[!]` 2026-07-06 `agnezukiene.lt` viešai dar rodo Interneto vizijos IP `79.98.25.1`; laukiama NS persijungimo.
@@ -160,7 +161,7 @@ Vizualinė kryptis:
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
 - `[~]` Integruoti Cloudflare Turnstile: backend paruoštas, reikia site key ir secret.
-- `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas, reikia API rakto ir siuntėjo adreso.
+- `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.

@@ -50,6 +50,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Sukurti Cloudflare Worker endpointą `/api/contact`.
 - `[~]` Prijungti Turnstile: kodas paruoštas, reikia Cloudflare site key ir secret.
 - `[~]` Prijungti Resend arba kitą laiškų siuntimo servisą: kodas paruoštas, reikia API rakto.
+- `[x]` `/api/contact` laikiname Cloudflare URL pasiekia Worker backendą.
 - `[ ]` Cloudflare nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com`.
 - `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
