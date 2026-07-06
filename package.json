@@ -1,0 +1,11 @@
+{
+  "name": "agnezukiene-lt",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agnės Žukienės psichologės svetainės MVP.",
+  "scripts": {
+    "check": "node scripts/check-site-integrity.js",
+    "serve": "python3 -m http.server 4173"
+  },
+  "devDependencies": {}
+}

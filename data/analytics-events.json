@@ -1,0 +1,15 @@
+{
+  "allowedEvents": [
+    "contact_intent_click",
+    "form_start",
+    "form_error",
+    "generate_lead",
+    "mailto_click",
+    "service_interest_select",
+    "consultation_format_select"
+  ],
+  "privacyRules": [
+    "Do not send names, emails, phone numbers, free-text messages, or sensitive personal details to analytics.",
+    "Use only technical parameters such as form_id and source_page."
+  ]
+}

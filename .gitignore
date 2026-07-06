@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+*.local
+*-oauth-client.json
+*-oauth-token.json
+*-service-account.json
+data/growth-review/*.csv
+.codex/
+node_modules/
+.wrangler/
+.dev.vars
