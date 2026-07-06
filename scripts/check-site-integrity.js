@@ -10,6 +10,8 @@ const requiredFiles = [
   "public/sitemap.xml",
   "public/robots.txt",
   "data/analytics-events.json",
+  "data/site-content-registry.json",
+  "docs/seo-inventory.md",
   "src/index.js",
   "wrangler.jsonc"
 ];
@@ -49,6 +51,19 @@ for (const file of htmlFiles.filter((file) => file !== "404.html")) {
   const expected = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
   if (!sitemap.includes(`<loc>${expected}</loc>`)) {
     errors.push(`sitemap.xml: missing ${expected}`);
+  }
+}
+
+const registry = JSON.parse(read("data/site-content-registry.json"));
+if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length) {
+  errors.push("data/site-content-registry.json: page count does not match HTML files");
+}
+
+const seoInventory = read("docs/seo-inventory.md");
+for (const file of htmlFiles) {
+  const route = file === "index.html" ? "/" : `/${file}`;
+  if (!seoInventory.includes(`| ${route} |`)) {
+    errors.push(`docs/seo-inventory.md: missing ${route}`);
   }
 }
 

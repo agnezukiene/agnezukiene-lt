@@ -58,9 +58,9 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
 | `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[ ]` būtina prieš go-live |
-| `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[ ]` rekomenduojama MVP |
+| `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` generuojama skriptu |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
-| `data/site-content-registry.json` | Puslapių ir turinio registras | `[ ]` rekomenduojama MVP |
+| `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` generuojama skriptu |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 
@@ -178,6 +178,8 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
 - `[ ]` Sukurti `docs/seo-inventory.md`.
+- `[x]` Sukurti `scripts/generate-seo-inventory.js`.
+- `[x]` Sukurti `scripts/generate-content-registry.js`.
 - `[ ]` Įdiegti GA4 tik su sutikimo režimu.
 - `[x]` Sukurti `data/analytics-events.json`.
 - `[ ]` Patikrinti GA4 Realtime / DebugView.

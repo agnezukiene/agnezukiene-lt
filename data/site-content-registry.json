@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-07-06T18:19:19.604Z",
+  "domain": "https://agnezukiene.lt",
+  "pages": [
+    {
+      "file": "public/index.html",
+      "route": "/",
+      "title": "Agnė Žukienė - psichologė vaikams, paaugliams ir suaugusiesiems",
+      "description": "Psichologė Agnė Žukienė konsultuoja vaikus, paauglius, suaugusiuosius ir tėvus. Temos: emocijos, savivertė, nerimas, santykiai, ribos ir karjera.",
+      "h1": "Psichologinė pagalba, kai norisi geriau suprasti save ir tai, kas vyksta viduje.",
+      "canonical": "https://agnezukiene.lt/",
+      "inSitemap": true,
+      "ogTitle": "Agnė Žukienė - psichologė",
+      "ogDescription": "Psichologinė pagalba vaikams, paaugliams, suaugusiesiems ir tėvams saugioje, pagarbaus dialogo erdvėje.",
+      "ctas": [
+        "Susisiekti dėl konsultacijos",
+        "Peržiūrėti paslaugas",
+        "Užduoti klausimą"
+      ],
+      "images": [
+        "/assets/images/rami-psichologes-svetaines-tekstura.png"
+      ],
+      "schemas": [
+        "ProfessionalService"
+      ]
+    },
+    {
+      "file": "public/404.html",
+      "route": "/404.html",
+      "title": "Puslapis nerastas | Agnė Žukienė",
+      "description": "Puslapis nerastas. Grįžkite į Agnės Žukienės svetainės pradžią arba kontaktų puslapį.",
+      "h1": "Šio puslapio nepavyko rasti.",
+      "canonical": "https://agnezukiene.lt/404.html",
+      "inSitemap": false,
+      "ogTitle": "Puslapis nerastas",
+      "ogDescription": "Šis puslapis nerastas. Galite grįžti į pradžią arba susisiekti.",
+      "ctas": [
+        "Grįžti į pradžią",
+        "Susisiekti"
+      ],
+      "images": [],
+      "schemas": []
+    },
+    {
+      "file": "public/apie.html",
+      "route": "/apie.html",
+      "title": "Apie Agnę Žukienę - psichologė",
+      "description": "Agnė Žukienė - psichologė, konsultavimo psichologijos magistrantė, dirbanti su vaikais, paaugliais, suaugusiaisiais ir tėvais.",
+      "h1": "Psichologijoje man svarbiausia žmogų ne vertinti, o suprasti.",
+      "canonical": "https://agnezukiene.lt/apie.html",
+      "inSitemap": true,
+      "ogTitle": "Apie Agnę Žukienę",
+      "ogDescription": "Psichologė ir konsultavimo psichologijos magistrantė. Darbo principai: pagarbus santykis, aiškumas ir saugi erdvė.",
+      "ctas": [],
+      "images": [],
+      "schemas": [
+        "Person"
+      ]
+    },
+    {
+      "file": "public/duk.html",
+      "route": "/duk.html",
+      "title": "Dažni klausimai apie konsultacijas | Agnė Žukienė",
+      "description": "Atsakymai į dažnus klausimus apie psichologines konsultacijas, vaikų konsultavimą, tėvų dalyvavimą ir konfidencialumą.",
+      "h1": "Dažni klausimai prieš pirmą konsultaciją.",
+      "canonical": "https://agnezukiene.lt/duk.html",
+      "inSitemap": true,
+      "ogTitle": "DUK | Agnė Žukienė",
+      "ogDescription": "Dažni klausimai prieš pirmą psichologinę konsultaciją.",
+      "ctas": [],
+      "images": [],
+      "schemas": [
+        "FAQPage",
+        "Question",
+        "Answer",
+        "Question",
+        "Answer"
+      ]
+    },
+    {
+      "file": "public/konsultacijos.html",
+      "route": "/konsultacijos.html",
+      "title": "Kaip vyksta konsultacijos | Agnė Žukienė",
+      "description": "Kaip vyksta pirmas kontaktas, psichologinės konsultacijos, konfidencialumas ir konsultavimo ribos Agnės Žukienės svetainėje.",
+      "h1": "Aiškumas prieš pirmą pokalbį padeda jaustis ramiau.",
+      "canonical": "https://agnezukiene.lt/konsultacijos.html",
+      "inSitemap": true,
+      "ogTitle": "Kaip vyksta konsultacijos",
+      "ogDescription": "Aiškiai apie pirmą kontaktą, konsultacijų eigą, konfidencialumą ir ribas.",
+      "ctas": [],
+      "images": [],
+      "schemas": []
+    },
+    {
+      "file": "public/kontaktai.html",
+      "route": "/kontaktai.html",
+      "title": "Kontaktai | Agnė Žukienė psichologė",
+      "description": "Susisiekite su psichologe Agne Žukiene dėl konsultacijos ar klausimo. Kontaktinė forma ir el. paštas.",
+      "h1": "Galite parašyti trumpai - atsakysiu, kai galėsiu.",
+      "canonical": "https://agnezukiene.lt/kontaktai.html",
+      "inSitemap": true,
+      "ogTitle": "Kontaktai | Agnė Žukienė",
+      "ogDescription": "Parašykite trumpą užklausą dėl konsultacijos. Forma nėra skubios pagalbos kanalas.",
+      "ctas": [],
+      "images": [],
+      "schemas": []
+    },
+    {
+      "file": "public/paslaugos.html",
+      "route": "/paslaugos.html",
+      "title": "Psichologinės konsultacijos ir psichoedukacija | Agnė Žukienė",
+      "description": "Psichologinės konsultacijos suaugusiesiems, paaugliams, vaikams ir tėvams. Psichoedukaciniai užsiėmimai ir karjeros savęs pažinimo temos.",
+      "h1": "Psichologinės konsultacijos vaikams, paaugliams, suaugusiesiems ir tėvams.",
+      "canonical": "https://agnezukiene.lt/paslaugos.html",
+      "inSitemap": true,
+      "ogTitle": "Paslaugos | Agnė Žukienė",
+      "ogDescription": "Psichologinės konsultacijos ir psichoedukaciniai užsiėmimai vaikams, paaugliams, suaugusiesiems ir tėvams.",
+      "ctas": [
+        "Susisiekti"
+      ],
+      "images": [],
+      "schemas": [
+        "Service",
+        "Person"
+      ]
+    },
+    {
+      "file": "public/privatumo-politika.html",
+      "route": "/privatumo-politika.html",
+      "title": "Privatumo politika | Agnė Žukienė",
+      "description": "Agnės Žukienės svetainės privatumo politika: kokie duomenys renkami, kodėl jie naudojami ir kaip saugomi.",
+      "h1": "Privatumo politika",
+      "canonical": "https://agnezukiene.lt/privatumo-politika.html",
+      "inSitemap": true,
+      "ogTitle": "Privatumo politika",
+      "ogDescription": "Kaip tvarkomi kontaktų formoje pateikti duomenys.",
+      "ctas": [],
+      "images": [],
+      "schemas": []
+    },
+    {
+      "file": "public/slapuku-politika.html",
+      "route": "/slapuku-politika.html",
+      "title": "Slapukų politika | Agnė Žukienė",
+      "description": "Informacija apie būtinus ir analitikos slapukus Agnės Žukienės svetainėje.",
+      "h1": "Slapukų politika",
+      "canonical": "https://agnezukiene.lt/slapuku-politika.html",
+      "inSitemap": true,
+      "ogTitle": "Slapukų politika",
+      "ogDescription": "Kaip svetainėje naudojami slapukai ir analitika.",
+      "ctas": [],
+      "images": [],
+      "schemas": []
+    }
+  ]
+}
