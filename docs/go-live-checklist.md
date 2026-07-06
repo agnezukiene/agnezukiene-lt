@@ -39,6 +39,7 @@ Atnaujinta: 2026-07-06
 - `[ ]` Patikrinti `404.html`.
 - `[ ]` Patikrinti `sitemap.xml`.
 - `[ ]` Patikrinti `robots.txt`.
+- `[ ]` Patikrinti saugumo antraštes gyvame puslapyje.
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.

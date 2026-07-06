@@ -64,6 +64,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` generuojama skriptu |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
+| `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
 ## 2. Techninė bazė
 

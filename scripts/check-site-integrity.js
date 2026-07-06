@@ -8,6 +8,7 @@ const requiredFiles = [
   "public/assets/css/styles.css",
   "public/assets/js/config.js",
   "public/assets/js/site.js",
+  "public/_headers",
   "public/sitemap.xml",
   "public/robots.txt",
   "data/analytics-events.json",
@@ -88,6 +89,11 @@ for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMA
 const siteJs = read("public/assets/js/site.js");
 for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
+}
+
+const staticHeaders = read("public/_headers");
+for (const requiredSnippet of ["X-Content-Type-Options", "Referrer-Policy", "Permissions-Policy", "X-Frame-Options"]) {
+  if (!staticHeaders.includes(requiredSnippet)) errors.push(`public/_headers: missing ${requiredSnippet}`);
 }
 
 if (errors.length > 0) {
