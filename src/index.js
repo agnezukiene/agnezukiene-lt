@@ -2,6 +2,13 @@ const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8"
 };
 
+const SECURITY_HEADERS = {
+  "x-content-type-options": "nosniff",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "x-frame-options": "DENY"
+};
+
 const TOPIC_LABELS = {
   adult: "Suaugusiojo konsultacija",
   teen: "Paauglio konsultacija",
@@ -28,11 +35,16 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.hostname === "www.agnezukiene.lt") {
+      url.hostname = "agnezukiene.lt";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (url.pathname === "/api/contact") {
       return handleContact(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    return withSecurityHeaders(await env.ASSETS.fetch(request));
   }
 };
 
@@ -168,8 +180,16 @@ async function sendEmail(data, env) {
 }
 
 function json(payload, status) {
-  return new Response(JSON.stringify(payload), {
+  return withSecurityHeaders(new Response(JSON.stringify(payload), {
     status,
     headers: JSON_HEADERS
-  });
+  }));
+}
+
+function withSecurityHeaders(response) {
+  const secured = new Response(response.body, response);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    secured.headers.set(name, value);
+  }
+  return secured;
 }

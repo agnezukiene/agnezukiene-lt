@@ -98,10 +98,11 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` `wrangler.jsonc` projekto vardas suderintas su Cloudflare vardu `agnezukienepage`.
 - `[x]` `/api/*` keliai nustatyti per `run_worker_first`, kad kontaktų endpointas eitų per Worker scriptą.
 - `[x]` `https://agnezukienepage.petrauskaiteagne.workers.dev/api/contact` patikrintas: endpointas veikia ir grąžina laukiamą 503, kol nesudėti el. pašto kintamieji.
+- `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[ ]` Production branch nustatyti į `main`.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
 - `[!]` 2026-07-06 `agnezukiene.lt` viešai dar rodo Interneto vizijos IP `79.98.25.1`; laukiama NS persijungimo.
-- `[ ]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt`.
+- `[x]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt` Worker lygiu; pilnai patikrinti po DNS persijungimo.
 - `[ ]` Patikrinti HTTPS.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
 

@@ -81,7 +81,7 @@ if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: miss
 if (!wrangler.includes('"run_worker_first"') || !wrangler.includes('"/api/*"')) errors.push("wrangler.jsonc: /api/* must run the Worker first");
 
 const worker = read("src/index.js");
-for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch"]) {
+for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy"]) {
   if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
 }
 

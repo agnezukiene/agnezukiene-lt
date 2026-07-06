@@ -28,7 +28,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[x]` Custom domain: `agnezukiene.lt`.
 - `[!]` Laukiama, kol viešas DNS pradės rodyti Cloudflare vietoj Interneto vizijos.
-- `[ ]` `www.agnezukiene.lt` nukreiptas į pagrindinį domeną.
+- `[x]` `www.agnezukiene.lt` nukreipimas į pagrindinį domeną paruoštas Worker lygiu.
 
 ## Prieš viešą paleidimą
 
