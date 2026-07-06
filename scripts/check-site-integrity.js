@@ -78,7 +78,7 @@ const wrangler = read("wrangler.jsonc");
 if (!wrangler.includes('"main": "src/index.js"')) errors.push("wrangler.jsonc: missing worker main entry");
 if (!wrangler.includes('"directory": "./public"')) errors.push("wrangler.jsonc: assets directory must be ./public");
 if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: missing ASSETS binding");
-if (!wrangler.includes('"run_worker_first"') || !wrangler.includes('"/api/*"')) errors.push("wrangler.jsonc: /api/* must run the Worker first");
+if (!wrangler.includes('"run_worker_first": true')) errors.push("wrangler.jsonc: Worker must run before assets");
 
 const worker = read("src/index.js");
 for (const requiredSnippet of ["/api/contact", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy"]) {

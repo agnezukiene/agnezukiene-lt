@@ -96,7 +96,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Pataisyti Cloudflare deploy struktūrą: vieši failai perkelti į `public/`, `wrangler.jsonc` assets directory nustatytas į `./public`.
 - `[x]` Pirmas Cloudflare deploy sėkmingas: `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[x]` `wrangler.jsonc` projekto vardas suderintas su Cloudflare vardu `agnezukienepage`.
-- `[x]` `/api/*` keliai nustatyti per `run_worker_first`, kad kontaktų endpointas eitų per Worker scriptą.
+- `[x]` `run_worker_first` įjungtas, kad Worker aptarnautų API, pridėtų saugumo antraštes ir galėtų atlikti `www` nukreipimą.
 - `[x]` `https://agnezukienepage.petrauskaiteagne.workers.dev/api/contact` patikrintas: endpointas veikia ir grąžina laukiamą 503, kol nesudėti el. pašto kintamieji.
 - `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[ ]` Production branch nustatyti į `main`.
