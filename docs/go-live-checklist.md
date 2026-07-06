@@ -35,9 +35,9 @@ Atnaujinta: 2026-07-06
 
 ## Prieš viešą paleidimą
 
-- `[ ]` Patikrinti pradžios puslapį desktop vaizde.
-- `[ ]` Patikrinti pradžios puslapį mobile vaizde.
-- `[ ]` Patikrinti mobile meniu.
+- `[x]` Patikrinti pradžios puslapį desktop vaizde.
+- `[x]` Patikrinti pradžios puslapį mobile vaizde.
+- `[x]` Patikrinti mobile meniu.
 - `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
 - `[ ]` Patikrinti `404.html`.
 - `[ ]` Patikrinti `sitemap.xml`.

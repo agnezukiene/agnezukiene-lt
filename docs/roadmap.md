@@ -106,6 +106,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` `https://agnezukienepage.petrauskaiteagne.workers.dev/api/contact` patikrintas: endpointas veikia ir grąžina laukiamą 503, kol nesudėti el. pašto kintamieji.
 - `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[x]` Statinio puslapio saugumo antraštės patikrintos gyvai laikiname Cloudflare URL.
+- `[x]` Desktop 1440px ir mobile 390px vizualinė patikra atlikta per Chrome: horizontalios slinkties nėra, pagrindiniai mygtukai telpa, mobile meniu persijungia.
 - `[ ]` Production branch nustatyti į `main`.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
 - `[!]` 2026-07-06 `agnezukiene.lt` viešai dar rodo Interneto vizijos IP `79.98.25.1`; laukiama NS persijungimo.
@@ -151,9 +152,9 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą:
 
 - `[~]` Laikinas hero vizualas sukurtas: `assets/images/rami-psichologes-svetaines-tekstura.png`.
 - `[x]` Sukurti MVP CSS sistemą: spalvos, tipografija, layout, kortelės, formos, mobile meniu.
-- `[ ]` Patikrinti, kad tekstas netelpa už mygtukų, kortelių ar formos ribų.
-- `[ ]` Patikrinti mobile vaizdą.
-- `[ ]` Patikrinti desktop vaizdą.
+- `[x]` Patikrinti, kad tekstas netelpa už mygtukų, kortelių ar formos ribų.
+- `[x]` Patikrinti mobile vaizdą.
+- `[x]` Patikrinti desktop vaizdą.
 - `[ ]` Vėliau įkelti Agnės patvirtintą portretą.
 - `[ ]` Portretui paruošti atskirą query / promptą tik po to, kai Agnė pateiks nuotrauką.
 
