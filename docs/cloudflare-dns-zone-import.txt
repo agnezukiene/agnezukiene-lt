@@ -1,0 +1,20 @@
+;;
+;; Domain:     agnezukiene.lt.
+;; Purpose:    DNS reference for agnezukiene.lt MVP
+;; Notes:      Do not import this whole file into Cloudflare after Worker custom domains are configured.
+;;             Root and www are served by Cloudflare Worker custom domains, not manual AAAA records.
+;;
+
+;; NS Records
+agnezukiene.lt.	86400	IN	NS	felicity.ns.cloudflare.com.
+agnezukiene.lt.	86400	IN	NS	liberty.ns.cloudflare.com.
+
+;; Website records
+;; Current production setup:
+;; - agnezukiene.lt is connected to Worker agnezukienepage as a custom domain.
+;; - www.agnezukiene.lt is connected to Worker agnezukienepage as a custom domain.
+;; Do not add manual AAAA/CNAME records for root or www unless Worker custom domains are removed first.
+
+;; Email protection while no mailbox/MX is active
+agnezukiene.lt.	3600	IN	TXT	"v=spf1 -all"
+_dmarc.agnezukiene.lt.	3600	IN	TXT	"v=DMARC1; p=reject; adkim=s; aspf=s"

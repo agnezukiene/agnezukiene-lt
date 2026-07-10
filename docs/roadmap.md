@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-06
+Atnaujinta: 2026-07-10
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -21,7 +21,7 @@ Techniniai sprendimai, kuriuos jau patvirtinome:
 - Cloudflare vardų serveriai:
   - `felicity.ns.cloudflare.com`
   - `liberty.ns.cloudflare.com`
-- Vardų serveriai Interneto vizijoje: vartotoja nurodė, kad pakeisti, bet 2026-07-06 viešas `whois` dar rodo `ns1.serveriai.lt` - `ns4.serveriai.lt`
+- Vardų serveriai Interneto vizijoje: 2026-07-10 viešas `.lt` registras ir `whois` rodo `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
 - GitHub repo kryptis: naujas repo `agnezukiene-lt`
 - MVP technologija: statinis HTML/CSS/JS
 - MVP kontaktinis el. paštas: `zukiene.agne@gmail.com`
@@ -94,10 +94,10 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Domenas nupirktas: `agnezukiene.lt`.
 - `[x]` Domeno registratorius patvirtintas: Interneto vizija.
 - `[x]` Cloudflare vardų serveriai gauti.
-- `[!]` Vardų serveriai pakeisti Interneto vizijoje, bet viešas registras dar nerodo Cloudflare.
-- `[!]` 2026-07-06 `whois agnezukiene.lt` būsena: `pendingCreate`.
-- `[ ]` Pakartotinai patikrinti, ar `.lt` registre domenas tapo aktyvus.
-- `[ ]` Pakartotinai patikrinti, ar vieši NS jau yra `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
+- `[x]` Vardų serveriai pakeisti Interneto vizijoje ir viešas `.lt` registras rodo Cloudflare.
+- `[x]` 2026-07-10 `whois agnezukiene.lt` būsena: `registered`.
+- `[x]` Pakartotinai patikrinta, kad `.lt` registre domenas aktyvus.
+- `[x]` Pakartotinai patikrinta, kad vieši NS yra `felicity.ns.cloudflare.com` ir `liberty.ns.cloudflare.com`.
 - `[x]` Cloudflare Pages/Workers projektas prijungtas prie GitHub repo.
 - `[x]` Pataisyti Cloudflare deploy struktūrą: vieši failai perkelti į `public/`, `wrangler.jsonc` assets directory nustatytas į `./public`.
 - `[x]` Pirmas Cloudflare deploy sėkmingas: `https://agnezukienepage.petrauskaiteagne.workers.dev`.
@@ -107,11 +107,15 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[x]` Statinio puslapio saugumo antraštės patikrintos gyvai laikiname Cloudflare URL.
 - `[x]` Desktop 1440px ir mobile 390px vizualinė patikra atlikta per Chrome: horizontalios slinkties nėra, pagrindiniai mygtukai telpa, mobile meniu persijungia.
-- `[ ]` Production branch nustatyti į `main`.
+- `[~]` Production branch patikrinti Cloudflare UI, jei reikės koreguoti build nustatymus.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
-- `[!]` 2026-07-06 `agnezukiene.lt` viešai dar rodo Interneto vizijos IP `79.98.25.1`; laukiama NS persijungimo.
-- `[x]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt` Worker lygiu; pilnai patikrinti po DNS persijungimo.
-- `[ ]` Patikrinti HTTPS.
+- `[x]` Pridėti Worker custom domain `www.agnezukiene.lt`.
+- `[x]` 2026-07-10 `agnezukiene.lt` viešai rodo Cloudflare IP ir grąžina `HTTP/2 200`.
+- `[x]` Sutvarkyti `www.agnezukiene.lt` nukreipimą į `agnezukiene.lt` Worker lygiu; `https://www.agnezukiene.lt` grąžina `301` į `https://agnezukiene.lt/`.
+- `[x]` Patikrinti HTTPS.
+- `[x]` Cloudflare DNS sutvarkyta: root ir `www` aptarnaujami per Worker custom domains; rankinis `www AAAA 100::` įrašas pašalintas, kad nekonfliktuotų su Worker domain.
+- `[x]` Cloudflare Edge Certificates: `Always Use HTTPS` įjungtas, `Minimum TLS Version` pakeistas į `TLS 1.2`, `TLS 1.3` ir `Automatic HTTPS Rewrites` patikrinti kaip įjungti.
+- `[~]` HSTS kol kas nejungtas; įjungti tik po kelių dienų stabilaus HTTPS veikimo.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
 - `[x]` Sukurti live smoke testą laikinam Cloudflare URL.
 
