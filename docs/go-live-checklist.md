@@ -21,16 +21,16 @@ Atnaujinta: 2026-07-10
 ## Prieš Cloudflare Pages prijungimą
 
 - `[x]` GitHub repo turi matytis visi MVP failai.
-- `[ ]` Cloudflare turi rodyti domeną `agnezukiene.lt`.
-- `[ ]` Cloudflare Pages prijungtas prie GitHub repo.
-- `[ ]` Production branch: `main`.
-- `[ ]` Build command: tuščias.
-- `[ ]` Build output directory: `/`.
+- `[x]` Cloudflare rodo domeną `agnezukiene.lt`.
+- `[x]` Cloudflare Workers prijungtas prie GitHub repo.
+- `[x]` Production branch: `main`.
+- `[x]` Deploy command: `npx wrangler deploy`.
+- `[x]` Assets output directory: `./public`.
 - `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
 - `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.
 - `[x]` Laikinas Cloudflare URL patikrintas automatiniu smoke testu.
 - `[x]` Custom domain: `agnezukiene.lt`.
-- `[!]` Laukiama, kol viešas DNS pradės rodyti Cloudflare vietoj Interneto vizijos.
+- `[x]` Viešas DNS rodo Cloudflare, o root domenas grąžina `HTTP/2 200`.
 - `[x]` `www.agnezukiene.lt` nukreipimas į pagrindinį domeną paruoštas Worker lygiu.
 
 ## Prieš viešą paleidimą
@@ -39,9 +39,9 @@ Atnaujinta: 2026-07-10
 - `[x]` Patikrinti pradžios puslapį mobile vaizde.
 - `[x]` Patikrinti mobile meniu.
 - `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
-- `[ ]` Patikrinti `404.html`.
-- `[ ]` Patikrinti `sitemap.xml`.
-- `[ ]` Patikrinti `robots.txt`.
+- `[x]` Patikrinti `404.html`.
+- `[x]` Patikrinti `sitemap.xml`.
+- `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.

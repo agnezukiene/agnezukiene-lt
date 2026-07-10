@@ -40,7 +40,7 @@ Failai, kurie šiuo metu yra projekte:
 | `paslaugos.html` | Paslaugų puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` trūksta kainos, trukmės, formato patvirtinimo |
 | `duk.html` | Dažni klausimai | `[~]` sukurtas pradinis DUK |
-| `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma ir validacija sukurta, backend dar neįgyvendintas |
+| `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma, Turnstile ir backend sukurti; Resend siuntimas dar laukia |
 | `privatumo-politika.html` | Privatumo politikos juodraštis | `[~]` reikia peržiūrėti prieš viešą paleidimą |
 | `slapuku-politika.html` | Slapukų politikos juodraštis | `[~]` reikia sujungti su realia analitika |
 | `404.html` | Klaidos puslapis | `[~]` sukurtas, reikia patikrinti po deploy |
@@ -59,9 +59,9 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
 | `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[x]` sukurta |
-| `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` generuojama skriptu |
+| `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` sugeneruota 2026-07-10 |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
-| `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` generuojama skriptu |
+| `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
@@ -107,7 +107,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[x]` Statinio puslapio saugumo antraštės patikrintos gyvai laikiname Cloudflare URL.
 - `[x]` Desktop 1440px ir mobile 390px vizualinė patikra atlikta per Chrome: horizontalios slinkties nėra, pagrindiniai mygtukai telpa, mobile meniu persijungia.
-- `[~]` Production branch patikrinti Cloudflare UI, jei reikės koreguoti build nustatymus.
+- `[x]` Production branch ir deploy eiga patikrinta per veikiančius deploy'us iš `main`.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
 - `[x]` Pridėti Worker custom domain `www.agnezukiene.lt`.
 - `[x]` 2026-07-10 `agnezukiene.lt` viešai rodo Cloudflare IP ir grąžina `HTTP/2 200`.
@@ -191,10 +191,10 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 ## 7. SEO, GA4 ir Search Console
 
 - `[~]` Puslapiuose pradėti title, description, canonical ir OG metadata.
-- `[ ]` Patikrinti visų puslapių H1, title, description, canonical ir OG.
+- `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
-- `[ ]` Sukurti `docs/seo-inventory.md`.
+- `[x]` Sukurti `docs/seo-inventory.md`.
 - `[x]` Sukurti `scripts/generate-seo-inventory.js`.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
 - `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
@@ -226,25 +226,25 @@ Draudžiama į GA4 siųsti:
 Prieš pirmą commit:
 
 - `[x]` `scripts/check-site-integrity.js` paleistas per Codex Node runtime: patikra praėjo 9 HTML failams.
-- `[ ]` Patikrinti `git status --short`.
-- `[ ]` Patikrinti, kad nėra secret failų.
-- `[ ]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
-- `[ ]` Patikrinti, kad visi puslapiai turi SEO metadata.
+- `[x]` Patikrinti `git status --short`.
+- `[x]` Patikrinti, kad nėra secret failų.
+- `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
+- `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 
 Prieš Cloudflare deploy:
 
-- `[ ]` Visi puslapiai atsidaro lokaliai.
-- `[ ]` Mobile meniu veikia.
-- `[ ]` Kontaktų forma validuoja laukus.
-- `[ ]` 404 puslapis veikia.
-- `[ ]` `sitemap.xml` ir `robots.txt` yra vietoje.
+- `[x]` Visi puslapiai atsidaro lokaliai per techninę patikrą.
+- `[x]` Mobile meniu veikia.
+- `[x]` Kontaktų forma validuoja laukus.
+- `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
+- `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
 - `[ ]` Privatumo ir slapukų puslapiai peržiūrėti.
 
 Po Cloudflare deploy:
 
-- `[ ]` Atidaryti `https://agnezukiene.lt`.
-- `[ ]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
-- `[ ]` Patikrinti visus pagrindinius puslapius gyvai.
+- `[x]` Atidaryti `https://agnezukiene.lt`.
+- `[x]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
+- `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
 - `[ ]` Patikrinti formos siuntimą gyvai.
 - `[ ]` Patikrinti GA4 Realtime.
@@ -270,6 +270,8 @@ Kitas darbas turi vykti tokia tvarka:
 5. `[x]` Paleisti lokalią patikrą ir sutvarkyti rastas klaidas.
 6. `[x]` Sukurti `docs/go-live-checklist.md`.
 7. `[x]` Padaryti pirmą commit ir push į GitHub.
-8. `[ ]` Tada ruošti Cloudflare Pages prijungimą.
+8. `[x]` Tada ruošti Cloudflare Pages/Workers prijungimą.
+
+Dabartinis sprinto fokusas po Cloudflare/Turnstile: Resend el. pašto siuntimas, GA4, Search Console ir galutinė privatumo / slapukų tekstų peržiūra.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.
