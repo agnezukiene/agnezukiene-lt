@@ -12,10 +12,12 @@ Atnaujinta: 2026-07-10
 - `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
 - `[x]` Sukurtas `scripts/check-analytics-privacy.js`.
+- `[x]` Sukurtas `scripts/check-contact-api.js`.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Sukurtas `scripts/pre-go-live.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Analitikos privatumo patikra įtraukta į pre-go-live.
+- `[x]` Kontaktų API patikra įtraukta į pre-go-live.
 - `[x]` Peržiūrėti `git status --short`.
 - `[x]` Padaryti pirmą commit.
 - `[x]` Push į GitHub `main`.
@@ -58,6 +60,7 @@ Atnaujinta: 2026-07-10
 - `[~]` Prijungti Resend arba kitą laiškų siuntimo servisą: kodas paruoštas, reikia API rakto.
 - `[x]` `/api/contact` laikiname Cloudflare URL pasiekia Worker backendą.
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
+- `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.

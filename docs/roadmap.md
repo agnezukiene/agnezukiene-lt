@@ -64,6 +64,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
+| `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
@@ -82,6 +83,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
+- `[x]` Sukurti `scripts/check-contact-api.js`.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
@@ -178,6 +180,7 @@ Vizualinė kryptis:
 - `[~]` Kontaktų formos frontend sukurta `kontaktai.html`.
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
+- `[x]` Sukurti kontaktų API automatinę patikrą su validacijos, Turnstile ir Resend mock sėkmės keliais.
 - `[x]` Integruoti Cloudflare Turnstile: widget sukurtas, frontend site key įrašytas, backend secret įdėtas į Cloudflare.
 - `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc` neslaptą variable.
@@ -236,6 +239,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
+- `[x]` Patikrinti kontaktų API validaciją, setup-pending būseną ir mock Resend sėkmės kelią.
 
 Prieš Cloudflare deploy:
 

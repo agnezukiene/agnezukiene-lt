@@ -1,0 +1,145 @@
+const assert = require("assert");
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+
+const root = process.cwd();
+const workerSource = fs.readFileSync(path.join(root, "src", "index.js"), "utf8");
+const runnableSource = workerSource
+  .replace("export default", "const worker =")
+  .concat("\nglobalThis.__worker = worker;\n");
+
+function createWorker(fetchMock = fetch) {
+  const context = {
+    console,
+    URL,
+    Request,
+    Response,
+    FormData,
+    fetch: fetchMock,
+    globalThis: {}
+  };
+
+  context.globalThis = context;
+  vm.createContext(context);
+  vm.runInContext(runnableSource, context, { filename: "src/index.js" });
+  return context.__worker;
+}
+
+function jsonRequest(body, init = {}) {
+  return new Request("https://agnezukiene.lt/api/contact", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      ...init.headers
+    },
+    body: JSON.stringify(body)
+  });
+}
+
+async function readJson(response) {
+  return response.json();
+}
+
+function validPayload(overrides = {}) {
+  return {
+    name: "Testas",
+    email: "test@example.com",
+    phone: "",
+    replyBy: "email",
+    format: "unknown",
+    topic: "other",
+    message: "Trumpa testine zinute.",
+    privacy: true,
+    turnstileToken: "token",
+    ...overrides
+  };
+}
+
+async function main() {
+  const worker = createWorker();
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact"), {});
+    assert.strictEqual(response.status, 405, "GET /api/contact should be rejected");
+    assert(response.headers.get("x-content-type-options"), "API responses should include security headers");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload(), {
+      headers: { origin: "https://example.com" }
+    }), { ALLOWED_ORIGIN: "https://agnezukiene.lt" });
+    assert.strictEqual(response.status, 403, "Unexpected origin should be rejected");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{"
+    }), {});
+    assert.strictEqual(response.status, 400, "Invalid JSON should be rejected");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ website: "bot.example" })), {});
+    assert.strictEqual(response.status, 200, "Honeypot submissions should get a neutral success response");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ email: "", phone: "" })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Missing contact method should be rejected");
+    assert(body.message.includes("el. paštą arba telefoną"), "Missing contact response should explain the error");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ turnstileToken: "" })), {
+      TURNSTILE_SECRET_KEY: "secret"
+    });
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Missing Turnstile token should be rejected when Turnstile secret is set");
+    assert(body.message.includes("patvirtinti"), "Turnstile response should explain the verification failure");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload()), {});
+    assert.strictEqual(response.status, 503, "Valid request should stay setup-pending until Resend variables are present");
+  }
+
+  {
+    const calls = [];
+    const workerWithFetch = createWorker(async (url, init = {}) => {
+      calls.push({ url: String(url), init });
+      if (String(url).includes("siteverify")) {
+        return Response.json({ success: true });
+      }
+      if (String(url).includes("api.resend.com")) {
+        return Response.json({ id: "email_test" });
+      }
+      return new Response("not found", { status: 404 });
+    });
+
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "resend_test",
+      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>"
+    });
+    assert.strictEqual(response.status, 200, "Valid request should succeed when Turnstile and Resend are configured");
+
+    const resendCall = calls.find((call) => call.url.includes("api.resend.com"));
+    assert(resendCall, "Resend API should be called for configured valid requests");
+    const resendPayload = JSON.parse(resendCall.init.body);
+    assert.deepStrictEqual(resendPayload.to, ["zukiene.agne@gmail.com"], "Resend recipient should be the configured inbox");
+    assert.strictEqual(resendPayload.reply_to, "test@example.com", "Resend reply_to should use the submitted email");
+    assert(!("html" in resendPayload), "Resend payload should use plain text for the MVP");
+  }
+
+  console.log("Contact API check passed.");
+}
+
+main().catch((error) => {
+  console.error(error.message);
+  process.exit(1);
+});
