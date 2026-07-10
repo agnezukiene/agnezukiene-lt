@@ -65,6 +65,7 @@ Atnaujinta: 2026-07-10
 
 ## Analitika ir paieška
 
+- `[x]` Sukurtas GA4 ir Search Console runbook `docs/analytics-search-console-runbook.md`.
 - `[ ]` Sukurti GA4 property.
 - `[~]` Įdiegti GA4 su sutikimo režimu: kodas paruoštas, reikia Measurement ID.
 - `[ ]` Patikrinti GA4 Realtime.

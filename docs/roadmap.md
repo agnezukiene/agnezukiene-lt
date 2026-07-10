@@ -66,6 +66,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
+| `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -199,6 +200,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
 - `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
 - `[x]` Sukurti `data/analytics-events.json`.
+- `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
 - `[ ]` Patikrinti GA4 Realtime / DebugView.
 - `[ ]` Search Console patvirtinti kaip domain property per Cloudflare DNS TXT.
 - `[ ]` Pateikti `sitemap.xml` į Search Console.
