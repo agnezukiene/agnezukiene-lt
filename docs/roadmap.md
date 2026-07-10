@@ -41,8 +41,8 @@ Failai, kurie šiuo metu yra projekte:
 | `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` trūksta kainos, trukmės, formato patvirtinimo |
 | `duk.html` | Dažni klausimai | `[~]` sukurtas pradinis DUK |
 | `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma, Turnstile ir backend sukurti; Resend siuntimas dar laukia |
-| `privatumo-politika.html` | Privatumo politikos juodraštis | `[~]` reikia peržiūrėti prieš viešą paleidimą |
-| `slapuku-politika.html` | Slapukų politikos juodraštis | `[~]` reikia sujungti su realia analitika |
+| `privatumo-politika.html` | Privatumo politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir analitiką; reikia Agnės galutinio patvirtinimo |
+| `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
 | `404.html` | Klaidos puslapis | `[~]` sukurtas, reikia patikrinti po deploy |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus hero vizualas be žmonių | `[x]` naudojamas laikinai iki Agnės portreto |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
@@ -137,8 +137,8 @@ Darbai:
 - `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė patvirtins trukmę, kainą, formatą ir atsakymo laiką.
 - `[~]` `duk.html`: peržiūrėti DUK dėl tono ir tikslumo.
 - `[~]` `kontaktai.html`: forma turi būti trumpa, duomenų minimizavimo principu.
-- `[~]` `privatumo-politika.html`: peržiūrėti prieš viešą paleidimą.
-- `[~]` `slapuku-politika.html`: atnaujinti pagal realų GA4 / slapukų naudojimą.
+- `[~]` `privatumo-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo.
+- `[~]` `slapuku-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo ir GA4 Measurement ID.
 - `[~]` `404.html`: patikrinti po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
@@ -238,7 +238,7 @@ Prieš Cloudflare deploy:
 - `[x]` Kontaktų forma validuoja laukus.
 - `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
-- `[ ]` Privatumo ir slapukų puslapiai peržiūrėti.
+- `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
 
 Po Cloudflare deploy:
 

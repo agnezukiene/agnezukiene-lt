@@ -71,6 +71,7 @@
   const cookieBanner = document.querySelector("[data-cookie-banner]");
   const acceptCookies = document.querySelector("[data-cookie-accept]");
   const declineCookies = document.querySelector("[data-cookie-decline]");
+  const resetCookies = document.querySelector("[data-cookie-reset]");
   const cookieChoice = localStorage.getItem("agne_cookie_choice");
 
   if (cookieBanner && !cookieChoice) {
@@ -94,6 +95,14 @@
 
   if (declineCookies) {
     declineCookies.addEventListener("click", () => setCookieChoice("declined"));
+  }
+
+  if (resetCookies) {
+    resetCookies.addEventListener("click", () => {
+      localStorage.removeItem("agne_cookie_choice");
+      if (cookieBanner) cookieBanner.hidden = false;
+      window.dispatchEvent(new CustomEvent("analytics-consent", { detail: "reset" }));
+    });
   }
 
   const form = document.querySelector("#contact-form");

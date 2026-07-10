@@ -46,8 +46,8 @@ Atnaujinta: 2026-07-10
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
-- `[ ]` Patvirtinti privatumo politikos tekstą.
-- `[ ]` Patvirtinti slapukų politikos tekstą.
+- `[~]` Privatumo politikos tekstas techniškai atnaujintas; reikia Agnės galutinio patvirtinimo.
+- `[~]` Slapukų politikos tekstas techniškai atnaujintas; reikia Agnės galutinio patvirtinimo.
 
 ## Kontaktų forma
 
