@@ -52,14 +52,14 @@ Atnaujinta: 2026-07-10
 ## Kontaktų forma
 
 - `[x]` Sukurti Cloudflare Worker endpointą `/api/contact`.
-- `[~]` Prijungti Turnstile: kodas paruoštas, reikia Cloudflare site key ir secret.
+- `[x]` Prijungti Turnstile: widget sukurtas, site key kode, secret Cloudflare Worker nustatymuose.
 - `[~]` Prijungti Resend arba kitą laiškų siuntimo servisą: kodas paruoštas, reikia API rakto.
 - `[x]` `/api/contact` laikiname Cloudflare URL pasiekia Worker backendą.
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
-- `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
+- `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
 - `[ ]` Patikrinti sėkmingą formos siuntimą gyvai.
 - `[ ]` Patikrinti formos klaidas gyvai.
 

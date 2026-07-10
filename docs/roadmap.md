@@ -54,7 +54,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | --- | --- | --- |
 | `assets/css/styles.css` | Visa svetainės vizualinė sistema | `[x]` sukurta MVP versija |
 | `assets/js/site.js` | Mobile meniu, slapukų pasirinkimas, forma, eventai | `[x]` sukurta MVP versija |
-| `public/assets/js/config.js` | Vieši GA4 Measurement ID ir Turnstile site key nustatymai | `[x]` sukurta, reikšmės dar tuščios |
+| `public/assets/js/config.js` | Vieši GA4 Measurement ID ir Turnstile site key nustatymai | `[~]` Turnstile site key įrašytas, GA4 dar tuščias |
 | `src/index.js` | Cloudflare Worker entrypoint: statiniai failai ir `/api/contact` endpointas | `[x]` sukurta backend formai |
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
@@ -175,11 +175,11 @@ Vizualinė kryptis:
 - `[~]` Kontaktų formos frontend sukurta `kontaktai.html`.
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
-- `[~]` Integruoti Cloudflare Turnstile: frontend ir backend paruošti, reikia site key ir secret.
+- `[x]` Integruoti Cloudflare Turnstile: widget sukurtas, frontend site key įrašytas, backend secret įdėtas į Cloudflare.
 - `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc` neslaptą variable.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc` neslaptą variable.
-- `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
+- `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.

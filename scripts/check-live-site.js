@@ -51,12 +51,19 @@ async function main() {
   });
 
   assert(
-    [200, 503].includes(contactResponse.status),
-    `/api/contact: expected 200 or setup-pending 503, got ${contactResponse.status}`
+    [200, 400, 503].includes(contactResponse.status),
+    `/api/contact: expected 200, turnstile 400, or setup-pending 503, got ${contactResponse.status}`
   );
 
   const contactText = await contactResponse.text();
   assert(contactText.includes("message"), "/api/contact: expected JSON message");
+
+  if (contactResponse.status === 400) {
+    assert(
+      contactText.includes("Nepavyko patvirtinti"),
+      "/api/contact: expected Turnstile verification message for 400 response"
+    );
+  }
 
   console.log(`Live site check passed for ${baseUrl}`);
 }

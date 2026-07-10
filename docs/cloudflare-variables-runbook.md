@@ -29,7 +29,7 @@ Pridėti kaip secrets:
 | Name | Iš kur gaunama | Statusas |
 | --- | --- | --- |
 | `RESEND_API_KEY` | Resend paskyroje sukurtas API key | laukia |
-| `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile widget secret key | laukia |
+| `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile widget secret key | padaryta Cloudflare dashboard |
 
 Secrets niekada nerašomi į repo, `.env`, dokumentus ar pokalbį.
 
@@ -40,7 +40,7 @@ Vieši raktai laikomi `public/assets/js/config.js`.
 | Laukas | Iš kur gaunama | Statusas |
 | --- | --- | --- |
 | `ga4MeasurementId` | GA4 Web Stream Measurement ID, pvz. `G-XXXXXXXXXX` | laukia |
-| `turnstileSiteKey` | Cloudflare Turnstile widget site key | laukia |
+| `turnstileSiteKey` | Cloudflare Turnstile widget site key | padaryta `public/assets/js/config.js` |
 
 Šie raktai nėra secrets, bet turi būti tikslūs.
 
@@ -64,11 +64,8 @@ node scripts/check-live-site.js https://agnezukienepage.petrauskaiteagne.workers
 1. Resend domeno / siuntėjo paruošimas.
 2. `CONTACT_FROM_EMAIL`.
 3. `RESEND_API_KEY`.
-4. Turnstile widget.
-5. `TURNSTILE_SECRET_KEY`.
-6. `turnstileSiteKey` į `public/assets/js/config.js`.
-7. GA4 property.
-8. `ga4MeasurementId` į `public/assets/js/config.js`.
+4. GA4 property.
+5. `ga4MeasurementId` į `public/assets/js/config.js`.
 
 ## 6. Resend rekomenduojamas nustatymas
 
