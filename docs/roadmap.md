@@ -63,6 +63,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
+| `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
@@ -80,6 +81,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
+- `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
@@ -200,6 +202,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
 - `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
 - `[x]` Sukurti `data/analytics-events.json`.
+- `[x]` Sukurti automatinę GA4 eventų allowlist ir privatumo patikrą `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
 - `[ ]` Patikrinti GA4 Realtime / DebugView.
 - `[ ]` Search Console patvirtinti kaip domain property per Cloudflare DNS TXT.
@@ -232,6 +235,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra secret failų.
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
+- `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
 
 Prieš Cloudflare deploy:
 

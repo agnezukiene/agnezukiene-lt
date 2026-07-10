@@ -11,9 +11,11 @@ Atnaujinta: 2026-07-10
 - `[x]` Sukurtas `assets/js/site.js`.
 - `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
+- `[x]` Sukurtas `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Sukurtas `scripts/pre-go-live.js`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
+- `[x]` Analitikos privatumo patikra įtraukta į pre-go-live.
 - `[x]` Peržiūrėti `git status --short`.
 - `[x]` Padaryti pirmą commit.
 - `[x]` Push į GitHub `main`.
@@ -66,6 +68,7 @@ Atnaujinta: 2026-07-10
 ## Analitika ir paieška
 
 - `[x]` Sukurtas GA4 ir Search Console runbook `docs/analytics-search-console-runbook.md`.
+- `[x]` GA4 eventų allowlist ir jautrių parametrų patikra automatizuota.
 - `[ ]` Sukurti GA4 property.
 - `[~]` Įdiegti GA4 su sutikimo režimu: kodas paruoštas, reikia Measurement ID.
 - `[ ]` Patikrinti GA4 Realtime.

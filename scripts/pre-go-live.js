@@ -5,6 +5,7 @@ const steps = [
   ["Generate SEO inventory", [node, "scripts/generate-seo-inventory.js"]],
   ["Generate content registry", [node, "scripts/generate-content-registry.js"]],
   ["Run site integrity check", [node, "scripts/check-site-integrity.js"]],
+  ["Run analytics privacy check", [node, "scripts/check-analytics-privacy.js"]],
   ["Check git whitespace", ["git", "diff", "--check"]]
 ];
 
