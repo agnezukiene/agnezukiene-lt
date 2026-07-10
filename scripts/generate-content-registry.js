@@ -50,7 +50,7 @@ const pages = htmlFiles.map((file) => {
 });
 
 const registry = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: new Date().toISOString().slice(0, 10),
   domain: "https://agnezukiene.lt",
   pages
 };
