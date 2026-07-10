@@ -1,6 +1,6 @@
 # Cloudflare variables and secrets runbook
 
-Atnaujinta: 2026-07-06
+Atnaujinta: 2026-07-10
 
 Šis dokumentas skirtas `agnezukienepage` Worker nustatymams Cloudflare paskyroje.
 
@@ -17,20 +17,10 @@ Pridėti kaip paprastus variables, ne secrets:
 | Name | Value | Tipas | Statusas |
 | --- | --- | --- | --- |
 | `CONTACT_TO_EMAIL` | `zukiene.agne@gmail.com` | `wrangler.jsonc` variable | padaryta |
-| `ALLOWED_ORIGIN` | `https://agnezukiene.lt` | Variable | laukia po domeno DNS |
-| `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` | Variable | laukia po Resend domeno patvirtinimo |
+| `ALLOWED_ORIGIN` | `https://agnezukiene.lt` | `wrangler.jsonc` variable | padaryta |
+| `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` arba Resend patvirtintas siuntėjas | Variable | laukia po Resend domeno patvirtinimo |
 
-Kol `agnezukiene.lt` DNS dar nepersijungęs, testavimui galima laikinai naudoti:
-
-```text
-ALLOWED_ORIGIN=https://agnezukienepage.petrauskaiteagne.workers.dev
-```
-
-Prieš viešą paleidimą pakeisti į:
-
-```text
-ALLOWED_ORIGIN=https://agnezukiene.lt
-```
+`ALLOWED_ORIGIN` jau nustatytas production domenui. Jei kada nors reikės testuoti tik laikiną `workers.dev` domeną, šią reikšmę reikia keisti laikinai ir po testo grąžinti į `https://agnezukiene.lt`.
 
 ## 2. Secrets
 
@@ -71,12 +61,26 @@ node scripts/check-live-site.js https://agnezukienepage.petrauskaiteagne.workers
 
 ## 5. Dabartinė laukimo seka
 
-1. `ALLOWED_ORIGIN`
-2. Resend domeno / siuntėjo paruošimas
-3. `CONTACT_FROM_EMAIL`
-4. `RESEND_API_KEY`
-5. Turnstile widget
-6. `TURNSTILE_SECRET_KEY`
-7. `turnstileSiteKey` į `public/assets/js/config.js`
-8. GA4 property
-9. `ga4MeasurementId` į `public/assets/js/config.js`
+1. Resend domeno / siuntėjo paruošimas.
+2. `CONTACT_FROM_EMAIL`.
+3. `RESEND_API_KEY`.
+4. Turnstile widget.
+5. `TURNSTILE_SECRET_KEY`.
+6. `turnstileSiteKey` į `public/assets/js/config.js`.
+7. GA4 property.
+8. `ga4MeasurementId` į `public/assets/js/config.js`.
+
+## 6. Resend rekomenduojamas nustatymas
+
+Rekomenduojamas MVP variantas: Resend pridėti domeną `agnezukiene.lt` ir naudoti siuntėją:
+
+```text
+Agnė Žukienė <noreply@agnezukiene.lt>
+```
+
+Jei Resend paprašys DNS įrašų, į Cloudflare reikia pridėti tik tuos DNS įrašus, kuriuos sugeneruos Resend. Jų nereikia išgalvoti rankiniu būdu. Po Resend domeno patvirtinimo Cloudflare Worker reikia turėti:
+
+```text
+CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>
+RESEND_API_KEY=<secret>
+```

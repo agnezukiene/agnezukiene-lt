@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės go-live checklist
 
-Atnaujinta: 2026-07-06
+Atnaujinta: 2026-07-10
 
 ## Prieš pirmą commit
 
@@ -58,7 +58,7 @@ Atnaujinta: 2026-07-06
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
-- `[ ]` Cloudflare nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt`.
+- `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
 - `[ ]` Cloudflare secrets: `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`.
 - `[ ]` Patikrinti sėkmingą formos siuntimą gyvai.
 - `[ ]` Patikrinti formos klaidas gyvai.
