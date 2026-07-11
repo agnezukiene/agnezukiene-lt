@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės go-live checklist
 
-Atnaujinta: 2026-07-10
+Atnaujinta: 2026-07-11
 
 ## Prieš pirmą commit
 
@@ -35,7 +35,7 @@ Atnaujinta: 2026-07-10
 - `[x]` Laikinas Cloudflare URL patikrintas automatiniu smoke testu.
 - `[x]` Custom domain: `agnezukiene.lt`.
 - `[x]` Viešas DNS rodo Cloudflare, o root domenas grąžina `HTTP/2 200`.
-- `[x]` `www.agnezukiene.lt` nukreipimas į pagrindinį domeną paruoštas Worker lygiu.
+- `[x]` `www.agnezukiene.lt` nukreipimas į pagrindinį domeną paruoštas Worker lygiu ir patikrintas production smoke testu.
 
 ## Prieš viešą paleidimą
 
@@ -47,6 +47,7 @@ Atnaujinta: 2026-07-10
 - `[x]` Patikrinti `sitemap.xml`.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
+- `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.

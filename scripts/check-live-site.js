@@ -22,6 +22,8 @@ const requiredHeaders = [
 ];
 
 async function main() {
+  const parsedBaseUrl = new URL(baseUrl);
+
   for (const page of pages) {
     const response = await fetch(new URL(page, baseUrl));
     assert.strictEqual(response.status, 200, `${page}: expected 200, got ${response.status}`);
@@ -35,6 +37,33 @@ async function main() {
       assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
       assert(!/lorem ipsum|TODO/i.test(text), `${page}: contains placeholder text`);
     }
+  }
+
+  const notFoundResponse = await fetch(new URL("/neegzistuojantis-puslapis", baseUrl), {
+    redirect: "manual"
+  });
+  assert.strictEqual(
+    notFoundResponse.status,
+    404,
+    `/neegzistuojantis-puslapis: expected 404, got ${notFoundResponse.status}`
+  );
+
+  if (parsedBaseUrl.hostname === "agnezukiene.lt") {
+    const httpResponse = await fetch("http://agnezukiene.lt", { redirect: "manual" });
+    assert.strictEqual(httpResponse.status, 301, `http://agnezukiene.lt: expected 301, got ${httpResponse.status}`);
+    assert.strictEqual(
+      httpResponse.headers.get("location"),
+      "https://agnezukiene.lt/",
+      "http://agnezukiene.lt: expected redirect to https://agnezukiene.lt/"
+    );
+
+    const wwwResponse = await fetch("https://www.agnezukiene.lt", { redirect: "manual" });
+    assert.strictEqual(wwwResponse.status, 301, `https://www.agnezukiene.lt: expected 301, got ${wwwResponse.status}`);
+    assert.strictEqual(
+      wwwResponse.headers.get("location"),
+      "https://agnezukiene.lt/",
+      "https://www.agnezukiene.lt: expected redirect to https://agnezukiene.lt/"
+    );
   }
 
   const contactResponse = await fetch(new URL("/api/contact", baseUrl), {

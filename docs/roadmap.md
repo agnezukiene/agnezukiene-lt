@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-10
+Atnaujinta: 2026-07-11
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -43,7 +43,7 @@ Failai, kurie šiuo metu yra projekte:
 | `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma, Turnstile ir backend sukurti; Resend siuntimas dar laukia |
 | `privatumo-politika.html` | Privatumo politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir analitiką; reikia Agnės galutinio patvirtinimo |
 | `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
-| `404.html` | Klaidos puslapis | `[~]` sukurtas, reikia patikrinti po deploy |
+| `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus hero vizualas be žmonių | `[x]` naudojamas laikinai iki Agnės portreto |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
@@ -65,7 +65,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
-| `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas | `[x]` sukurta |
+| `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
@@ -120,9 +120,9 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Patikrinti HTTPS.
 - `[x]` Cloudflare DNS sutvarkyta: root ir `www` aptarnaujami per Worker custom domains; rankinis `www AAAA 100::` įrašas pašalintas, kad nekonfliktuotų su Worker domain.
 - `[x]` Cloudflare Edge Certificates: `Always Use HTTPS` įjungtas, `Minimum TLS Version` pakeistas į `TLS 1.2`, `TLS 1.3` ir `Automatic HTTPS Rewrites` patikrinti kaip įjungti.
-- `[~]` HSTS kol kas nejungtas; įjungti tik po kelių dienų stabilaus HTTPS veikimo.
+- `[~]` HSTS kol kas nejungtas; HTTPS stabilumas patikrintas 2026-07-10 ir 2026-07-11, HSTS svarstyti tik po kelių dienų stabilaus veikimo.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
-- `[x]` Sukurti live smoke testą laikinam Cloudflare URL.
+- `[x]` Sukurti live smoke testą laikinam Cloudflare URL ir production domenui.
 
 ## 4. Puslapiai ir turinys
 
@@ -144,7 +144,7 @@ Darbai:
 - `[~]` `kontaktai.html`: forma turi būti trumpa, duomenų minimizavimo principu.
 - `[~]` `privatumo-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo.
 - `[~]` `slapuku-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo ir GA4 Measurement ID.
-- `[~]` `404.html`: patikrinti po deploy.
+- `[x]` `404.html`: patikrintas po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
 Reikia Agnės patvirtinimo prieš viešą paleidimą:
@@ -256,6 +256,7 @@ Po Cloudflare deploy:
 - `[x]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
+- `[x]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS ir 404.
 - `[ ]` Patikrinti formos siuntimą gyvai.
 - `[ ]` Patikrinti GA4 Realtime.
 - `[ ]` Patikrinti Search Console sitemap pateikimą.
