@@ -13,6 +13,7 @@ const requiredFiles = [
   "public/robots.txt",
   "data/analytics-events.json",
   "data/site-content-registry.json",
+  "docs/content-approval.md",
   "docs/launch-readiness.md",
   "docs/seo-inventory.md",
   "scripts/generate-launch-readiness.js",

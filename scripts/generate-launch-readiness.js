@@ -73,7 +73,7 @@ const launchBlockers = [
   {
     label: "Agnės turinio patvirtinimai",
     done: !hasContentApprovalBlockers,
-    detail: "trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė"
+    detail: "pildoma docs/content-approval.md: trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė"
   }
 ];
 

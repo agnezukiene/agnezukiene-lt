@@ -59,6 +59,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
 | `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[x]` sukurta |
+| `docs/content-approval.md` | Agnės turinio sprendimų ir viešinimo patvirtinimų sąrašas | `[x]` sukurta |
 | `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` sugeneruota 2026-07-10 |
 | `docs/launch-readiness.md` | Automatinė MVP paleidimo vartų ir blokatorių santrauka | `[x]` generuojama skriptu |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
@@ -83,6 +84,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/sitemap.xml`.
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
+- `[x]` Sukurti `docs/content-approval.md`.
 - `[x]` Sukurti `docs/launch-readiness.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
@@ -151,7 +153,7 @@ Darbai:
 - `[x]` `404.html`: patikrintas po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
-Reikia Agnės patvirtinimo prieš viešą paleidimą:
+Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildoma `docs/content-approval.md`:
 
 - `[!]` Konsultacijos trukmė.
 - `[!]` Kaina.

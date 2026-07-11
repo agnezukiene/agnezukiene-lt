@@ -26,7 +26,7 @@ Atnaujinta: 2026-07-11
 | laukia | GA4 Realtime / DebugView | galima tik po GA4 Measurement ID |
 | laukia | Search Console domain property | reikia Google TXT įrašo Cloudflare DNS |
 | laukia | Search Console sitemap pateikimas | galima tik po Search Console patvirtinimo |
-| laukia | Agnės turinio patvirtinimai | trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė |
+| laukia | Agnės turinio patvirtinimai | pildoma docs/content-approval.md: trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė |
 
 ## Kiti veiksmai
 
