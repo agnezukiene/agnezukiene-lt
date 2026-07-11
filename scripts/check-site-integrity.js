@@ -98,7 +98,7 @@ if (!contactHtml.includes('name="website"') || !contactHtml.includes("honeypot")
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

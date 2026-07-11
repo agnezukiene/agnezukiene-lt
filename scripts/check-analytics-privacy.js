@@ -50,10 +50,13 @@ for (const match of js.matchAll(/\bgtag\("event",\s*"([^"]+)"/g)) {
   addEvent(match[1], "public/assets/js/site.js gtag()");
 }
 
-for (const term of riskyTerms) {
-  const riskyParamPattern = new RegExp(`\\b${term}\\s*:`, "i");
-  if (riskyParamPattern.test(js)) {
-    errors.push(`public/assets/js/site.js: analytics payload appears to include risky field "${term}"`);
+for (const match of js.matchAll(/\btrack\("[^"]+",\s*\{([\s\S]*?)\}\s*\)/g)) {
+  const payload = match[1];
+  for (const term of riskyTerms) {
+    const riskyParamPattern = new RegExp(`\\b${term}\\s*:`, "i");
+    if (riskyParamPattern.test(payload)) {
+      errors.push(`public/assets/js/site.js: analytics payload appears to include risky field "${term}"`);
+    }
   }
 }
 

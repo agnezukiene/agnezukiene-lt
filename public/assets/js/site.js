@@ -110,11 +110,12 @@
   const turnstileContainer = document.querySelector("[data-turnstile]");
   const turnstileToken = document.querySelector("#turnstile-token");
   let formStarted = false;
+  let turnstileWidgetId = null;
 
   if (form && status) {
     if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
       window.onloadTurnstileCallback = function () {
-        window.turnstile.render(turnstileContainer, {
+        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
           sitekey: config.turnstileSiteKey,
           callback: (token) => {
             turnstileToken.value = token;
@@ -131,6 +132,22 @@
           status.textContent = "Nepavyko įkelti formos apsaugos. Pabandykite vėliau arba parašykite el. paštu.";
         });
     }
+
+    const resetTurnstile = () => {
+      if (turnstileToken) turnstileToken.value = "";
+      if (window.turnstile && turnstileWidgetId !== null) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
+    };
+
+    const readResponseMessage = async (response) => {
+      try {
+        const body = await response.json();
+        return body && typeof body.message === "string" ? body.message : "";
+      } catch (error) {
+        return "";
+      }
+    };
 
     form.addEventListener("input", () => {
       if (!formStarted) {
@@ -176,16 +193,19 @@
         });
 
         if (!response.ok) {
-          throw new Error("Request failed");
+          const message = await readResponseMessage(response);
+          throw new Error(message || "Šiuo metu formos išsiųsti nepavyko.");
         }
 
         form.reset();
+        resetTurnstile();
         status.classList.add("is-success");
         status.textContent = "Užklausa išsiųsta. Ačiū, kad parašėte.";
         track("generate_lead", { form_id: "contact", source_page: window.location.pathname });
       } catch (error) {
+        resetTurnstile();
         status.classList.add("is-error");
-        status.textContent = "Šiuo metu formos išsiųsti nepavyko. Parašykite tiesiogiai el. paštu: zukiene.agne@gmail.com.";
+        status.textContent = `${error.message} Jei reikia, parašykite tiesiogiai el. paštu: zukiene.agne@gmail.com.`;
         track("form_error", { form_id: "contact", error_type: "submit_failed" });
       } finally {
         if (submit) submit.disabled = false;
