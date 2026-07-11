@@ -19,12 +19,16 @@ function checked(done, label, detail = "") {
 
 const config = read("public/assets/js/config.js");
 const wrangler = read("wrangler.jsonc");
+const worker = read("src/index.js");
 const roadmap = read("docs/roadmap.md");
 
 const ga4Configured = /ga4MeasurementId:\s*"G-[A-Z0-9]+"/.test(config);
 const turnstileConfigured = /turnstileSiteKey:\s*"0x[0-9A-Za-z_-]+"/.test(config);
 const contactOriginConfigured = wrangler.includes('"ALLOWED_ORIGIN": "https://agnezukiene.lt"');
 const contactRecipientConfigured = wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"');
+const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmap.includes("[x] CONTACT_FROM_EMAIL");
+const workerRequiresEmailConfig = worker.includes("env.RESEND_API_KEY") && worker.includes("env.CONTACT_FROM_EMAIL");
+const workerCanSendViaResend = worker.includes("https://api.resend.com/emails") && worker.includes("reply_to");
 const hasContentApprovalBlockers = roadmap.includes("`[!]` Konsultacijos trukmė");
 
 const technicalGates = [
@@ -34,7 +38,11 @@ const technicalGates = [
   checked(has("scripts/check-live-site.js", "https://www.agnezukiene.lt"), "Production live check tikrina www nukreipimą"),
   checked(has("scripts/check-live-site.js", "http://agnezukiene.lt"), "Production live check tikrina HTTP į HTTPS"),
   checked(has("scripts/check-live-site.js", "/neegzistuojantis-puslapis"), "Production live check tikrina 404"),
+  checked(has("scripts/check-live-site.js", "/api/contact") && has("scripts/check-live-site.js", "invalid JSON"), "Production live check tikrina kontaktų API klaidų kelius"),
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
+  checked(workerRequiresEmailConfig, "Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos"),
+  checked(workerCanSendViaResend, "Worker turi Resend laiško siuntimo implementaciją"),
+  checked(has("scripts/check-contact-api.js", "resend_test"), "Kontaktų API mock testas padengia Resend sėkmės kelią"),
   checked(contactOriginConfigured, "ALLOWED_ORIGIN nustatytas production domenui"),
   checked(contactRecipientConfigured, "CONTACT_TO_EMAIL nustatytas")
 ];
@@ -42,8 +50,18 @@ const technicalGates = [
 const launchBlockers = [
   {
     label: "Resend domenas / siuntėjas",
-    done: roadmap.includes("[x] Integruoti Resend laiškų siuntimą"),
-    detail: "reikia Resend DNS įrašų, RESEND_API_KEY ir CONTACT_FROM_EMAIL"
+    done: roadmap.includes("[x] Resend domenas / siuntėjas"),
+    detail: "reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo"
+  },
+  {
+    label: "CONTACT_FROM_EMAIL",
+    done: contactSenderConfigured,
+    detail: "reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt>"
+  },
+  {
+    label: "RESEND_API_KEY secret",
+    done: roadmap.includes("[x] RESEND_API_KEY"),
+    detail: "reikia Cloudflare Worker secret iš Resend API Keys"
   },
   {
     label: "Gyvas kontaktų formos siuntimas",

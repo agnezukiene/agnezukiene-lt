@@ -68,7 +68,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API klaidos, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
-| `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta |
+| `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta; 2026-07-11 sustiprinta pagal realią Worker, Resend ir live check konfigūraciją |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
@@ -90,6 +90,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-contact-api.js`.
 - `[x]` Sukurti `scripts/generate-launch-readiness.js`.
+- `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.

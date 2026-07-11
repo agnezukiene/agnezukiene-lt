@@ -12,7 +12,11 @@ Atnaujinta: 2026-07-11
 - `[x]` Production live check tikrina www nukreipimą
 - `[x]` Production live check tikrina HTTP į HTTPS
 - `[x]` Production live check tikrina 404
+- `[x]` Production live check tikrina kontaktų API klaidų kelius
 - `[x]` Turnstile site key yra frontend konfigūracijoje
+- `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
+- `[x]` Worker turi Resend laiško siuntimo implementaciją
+- `[x]` Kontaktų API mock testas padengia Resend sėkmės kelią
 - `[x]` ALLOWED_ORIGIN nustatytas production domenui
 - `[x]` CONTACT_TO_EMAIL nustatytas
 
@@ -20,7 +24,9 @@ Atnaujinta: 2026-07-11
 
 | Statusas | Darbas | Pastaba |
 | --- | --- | --- |
-| laukia | Resend domenas / siuntėjas | reikia Resend DNS įrašų, RESEND_API_KEY ir CONTACT_FROM_EMAIL |
+| laukia | Resend domenas / siuntėjas | reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo |
+| laukia | CONTACT_FROM_EMAIL | reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt> |
+| laukia | RESEND_API_KEY secret | reikia Cloudflare Worker secret iš Resend API Keys |
 | laukia | Gyvas kontaktų formos siuntimas | galima tik po Resend secret ir siuntėjo įjungimo |
 | laukia | GA4 Measurement ID | reikia G-... reikšmės į public/assets/js/config.js |
 | laukia | GA4 Realtime / DebugView | galima tik po GA4 Measurement ID |
@@ -30,11 +36,11 @@ Atnaujinta: 2026-07-11
 
 ## Kiti veiksmai
 
-1. Resend domenas / siuntėjas: reikia Resend DNS įrašų, RESEND_API_KEY ir CONTACT_FROM_EMAIL
-2. Gyvas kontaktų formos siuntimas: galima tik po Resend secret ir siuntėjo įjungimo
-3. GA4 Measurement ID: reikia G-... reikšmės į public/assets/js/config.js
-4. GA4 Realtime / DebugView: galima tik po GA4 Measurement ID
-5. Search Console domain property: reikia Google TXT įrašo Cloudflare DNS
+1. Resend domenas / siuntėjas: reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo
+2. CONTACT_FROM_EMAIL: reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt>
+3. RESEND_API_KEY secret: reikia Cloudflare Worker secret iš Resend API Keys
+4. Gyvas kontaktų formos siuntimas: galima tik po Resend secret ir siuntėjo įjungimo
+5. GA4 Measurement ID: reikia G-... reikšmės į public/assets/js/config.js
 
 ## Patikros komanda
 
