@@ -4,6 +4,7 @@ const path = require("path");
 const root = process.cwd();
 const publicDir = path.join(root, "public");
 const siteJs = path.join(publicDir, "assets", "js", "site.js");
+const configJs = path.join(publicDir, "assets", "js", "config.js");
 const eventsFile = path.join(root, "data", "analytics-events.json");
 
 const { allowedEvents } = JSON.parse(fs.readFileSync(eventsFile, "utf8"));
@@ -41,6 +42,40 @@ for (const file of fs.readdirSync(publicDir).filter((name) => name.endsWith(".ht
 }
 
 const js = fs.readFileSync(siteJs, "utf8");
+const config = fs.readFileSync(configJs, "utf8");
+
+const ga4Match = config.match(/ga4MeasurementId:\s*"([^"]*)"/);
+if (!ga4Match) {
+  errors.push("public/assets/js/config.js: missing ga4MeasurementId");
+} else if (ga4Match[1] && !/^G-[A-Z0-9]+$/.test(ga4Match[1])) {
+  errors.push("public/assets/js/config.js: ga4MeasurementId must be empty or use the G-XXXXXXXXXX format");
+}
+
+const turnstileMatch = config.match(/turnstileSiteKey:\s*"([^"]*)"/);
+if (!turnstileMatch) {
+  errors.push("public/assets/js/config.js: missing turnstileSiteKey");
+} else if (!/^0x[0-9A-Za-z_-]+$/.test(turnstileMatch[1])) {
+  errors.push("public/assets/js/config.js: turnstileSiteKey should look like a public Cloudflare Turnstile site key");
+}
+
+for (const secretPattern of [/secret/i, /RESEND_API_KEY/i, /TURNSTILE_SECRET_KEY/i, /sk_[A-Za-z0-9_-]+/]) {
+  if (secretPattern.test(config)) {
+    errors.push("public/assets/js/config.js: public config appears to include a secret-like value");
+    break;
+  }
+}
+
+if (!/const initAnalytics = \(\) => \{[\s\S]*gtag\/js\?id=/.test(js)) {
+  errors.push("public/assets/js/site.js: GA4 script loader should stay inside initAnalytics()");
+}
+
+if (!/if \(choice === "accepted"\) initAnalytics\(\);/.test(js)) {
+  errors.push("public/assets/js/site.js: analytics must initialize only after accepted cookie choice");
+}
+
+if (!/if \(cookieChoice === "accepted"\) \{\s*initAnalytics\(\);\s*\}/.test(js)) {
+  errors.push("public/assets/js/site.js: returning visitors should only initialize analytics after prior accepted choice");
+}
 
 for (const match of js.matchAll(/\btrack\("([^"]+)"/g)) {
   addEvent(match[1], "public/assets/js/site.js track()");

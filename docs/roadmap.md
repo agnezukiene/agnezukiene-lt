@@ -214,7 +214,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
 - `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
 - `[x]` Sukurti `data/analytics-events.json`.
-- `[x]` Sukurti automatinę GA4 eventų allowlist ir privatumo patikrą `scripts/check-analytics-privacy.js`.
+- `[x]` Sukurti automatinę GA4 eventų allowlist, viešo config formato, consent įkėlimo ir privatumo patikrą `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
 - `[ ]` Patikrinti GA4 Realtime / DebugView.
 - `[ ]` Search Console patvirtinti kaip domain property per Cloudflare DNS TXT.
@@ -248,6 +248,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
+- `[x]` Patikrinti, kad GA4 Measurement ID formatas, Turnstile public key ir GA4 įkėlimas tik po sutikimo yra automatiškai saugomi.
 - `[x]` Patikrinti kontaktų API validaciją, setup-pending būseną ir mock Resend sėkmės kelią.
 
 Prieš Cloudflare deploy:
