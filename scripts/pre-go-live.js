@@ -4,6 +4,7 @@ const node = process.execPath;
 const steps = [
   ["Generate SEO inventory", [node, "scripts/generate-seo-inventory.js"]],
   ["Generate content registry", [node, "scripts/generate-content-registry.js"]],
+  ["Generate launch readiness", [node, "scripts/generate-launch-readiness.js"]],
   ["Run site integrity check", [node, "scripts/check-site-integrity.js"]],
   ["Run analytics privacy check", [node, "scripts/check-analytics-privacy.js"]],
   ["Run contact API check", [node, "scripts/check-contact-api.js"]],

@@ -15,6 +15,7 @@ Atnaujinta: 2026-07-11
 - `[x]` Sukurtas `scripts/check-contact-api.js`.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Sukurtas `scripts/pre-go-live.js`.
+- `[x]` Sukurtas `docs/launch-readiness.md`.
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Analitikos privatumo patikra įtraukta į pre-go-live.
 - `[x]` Kontaktų API patikra įtraukta į pre-go-live.

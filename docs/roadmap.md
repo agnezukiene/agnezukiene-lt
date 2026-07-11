@@ -60,12 +60,14 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
 | `docs/go-live-checklist.md` | Paleidimo kontrolinis sąrašas | `[x]` sukurta |
 | `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` sugeneruota 2026-07-10 |
+| `docs/launch-readiness.md` | Automatinė MVP paleidimo vartų ir blokatorių santrauka | `[x]` generuojama skriptu |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
+| `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
@@ -81,9 +83,11 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/sitemap.xml`.
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
+- `[x]` Sukurti `docs/launch-readiness.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-contact-api.js`.
+- `[x]` Sukurti `scripts/generate-launch-readiness.js`.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
