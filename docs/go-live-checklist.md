@@ -65,7 +65,7 @@ Atnaujinta: 2026-07-11
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
 - `[x]` Kontaktų forma rodo backend klaidas ir atnaujina Turnstile po siuntimo bandymo.
-- `[x]` Production smoke testas tikrina kontaktų API GET, origin, JSON ir validacijos klaidas.
+- `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.

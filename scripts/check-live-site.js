@@ -103,6 +103,46 @@ async function main() {
     "/api/contact origin: expected origin rejection message"
   );
 
+  const contactContentTypeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    body: JSON.stringify({
+      name: "Testas",
+      email: "test@example.com",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other",
+      privacy: true
+    })
+  });
+  assert.strictEqual(
+    contactContentTypeResponse.status,
+    415,
+    `/api/contact content-type: expected 415, got ${contactContentTypeResponse.status}`
+  );
+  assert(
+    (await readJsonMessage(contactContentTypeResponse)).includes("JSON"),
+    "/api/contact content-type: expected JSON requirement message"
+  );
+
+  const contactSizeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      name: "Testas",
+      email: "test@example.com",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other",
+      message: "a".repeat(11000),
+      privacy: true
+    })
+  });
+  assert.strictEqual(contactSizeResponse.status, 413, `/api/contact size: expected 413, got ${contactSizeResponse.status}`);
+  assert(
+    (await readJsonMessage(contactSizeResponse)).includes("per didelis"),
+    "/api/contact size: expected size rejection message"
+  );
+
   const contactJsonResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
     headers: { "content-type": "application/json" },
