@@ -207,6 +207,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 
 - `[~]` Puslapiuose pradėti title, description, canonical ir OG metadata.
 - `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
+- `[x]` Sustiprinti SEO patikrą: exact canonical / OG URL, OG paveikslėlio failas, sitemap dublikatai, robots sitemap ir JSON-LD validumas tikrinami automatiškai.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
 - `[x]` Sukurti `docs/seo-inventory.md`.
@@ -247,6 +248,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra secret failų.
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
+- `[x]` Patikrinti, kad canonical, OG URL, OG image, sitemap, robots.txt ir JSON-LD yra techniškai korektiški.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
 - `[x]` Patikrinti, kad GA4 Measurement ID formatas, Turnstile public key ir GA4 įkėlimas tik po sutikimo yra automatiškai saugomi.
 - `[x]` Patikrinti kontaktų API validaciją, setup-pending būseną ir mock Resend sėkmės kelią.

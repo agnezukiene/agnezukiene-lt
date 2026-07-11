@@ -23,6 +23,7 @@ const requiredFiles = [
   "wrangler.jsonc"
 ];
 const errors = [];
+const canonicalUrls = new Set();
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
@@ -41,26 +42,64 @@ for (const file of requiredFiles) {
 for (const file of htmlFiles) {
   const html = readSite(file);
   const h1Count = (html.match(/<h1[\s>]/g) || []).length;
+  const expectedUrl = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
+  const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"/);
+  const ogUrlMatch = html.match(/<meta property="og:url" content="([^"]+)"/);
+  const ogImageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
 
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);
   if (!/<meta name="description" content="[^"]{30,}"/.test(html)) errors.push(`${file}: missing meta description`);
   if (!/<link rel="canonical" href="https:\/\/agnezukiene\.lt\//.test(html)) errors.push(`${file}: missing canonical`);
+  if (canonicalMatch && canonicalMatch[1] !== expectedUrl) errors.push(`${file}: canonical should be ${expectedUrl}`);
+  if (canonicalMatch && canonicalUrls.has(canonicalMatch[1])) errors.push(`${file}: duplicate canonical ${canonicalMatch[1]}`);
+  if (canonicalMatch) canonicalUrls.add(canonicalMatch[1]);
   if (!/<meta property="og:title" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:title`);
   if (!/<meta property="og:description" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:description`);
+  if (!ogUrlMatch) errors.push(`${file}: missing og:url`);
+  if (ogUrlMatch && ogUrlMatch[1] !== expectedUrl) errors.push(`${file}: og:url should be ${expectedUrl}`);
+  if (!ogImageMatch) {
+    errors.push(`${file}: missing og:image`);
+  } else if (!ogImageMatch[1].startsWith("https://agnezukiene.lt/")) {
+    errors.push(`${file}: og:image should use the production domain`);
+  } else {
+    const imagePath = ogImageMatch[1].replace("https://agnezukiene.lt/", "");
+    if (!fs.existsSync(path.join(siteRoot, imagePath))) errors.push(`${file}: og:image file does not exist: ${imagePath}`);
+  }
   if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);
   if (/lorem ipsum|TODO|href=""|href="#"/i.test(html)) errors.push(`${file}: contains placeholder text or empty link`);
   if (/psichoterapeutė/i.test(html)) errors.push(`${file}: contains restricted qualification wording`);
   if (/garantuotas rezultatas|išgydysiu|greitas sprendimas/i.test(html)) errors.push(`${file}: contains overpromising wording`);
+
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      JSON.parse(match[1]);
+    } catch (error) {
+      errors.push(`${file}: invalid JSON-LD`);
+    }
+  }
 }
 
 const sitemap = read("public/sitemap.xml");
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const sitemapUrlSet = new Set(sitemapUrls);
+if (sitemapUrls.length !== sitemapUrlSet.size) errors.push("sitemap.xml: contains duplicate URLs");
+if (sitemapUrls.includes("https://agnezukiene.lt/404.html")) errors.push("sitemap.xml: should not include 404.html");
 for (const file of htmlFiles.filter((file) => file !== "404.html")) {
   const expected = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
-  if (!sitemap.includes(`<loc>${expected}</loc>`)) {
+  if (!sitemapUrlSet.has(expected)) {
     errors.push(`sitemap.xml: missing ${expected}`);
   }
 }
+for (const url of sitemapUrls) {
+  const route = url.replace("https://agnezukiene.lt/", "");
+  const file = route === "" ? "index.html" : route;
+  if (!htmlFiles.includes(file)) errors.push(`sitemap.xml: URL has no matching HTML file: ${url}`);
+}
+
+const robots = read("public/robots.txt");
+if (!/User-agent:\s*\*/.test(robots)) errors.push("robots.txt: missing User-agent: *");
+if (!robots.includes("Sitemap: https://agnezukiene.lt/sitemap.xml")) errors.push("robots.txt: missing production sitemap URL");
 
 const registry = JSON.parse(read("data/site-content-registry.json"));
 if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length) {
