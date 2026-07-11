@@ -13,6 +13,7 @@ Atnaujinta: 2026-07-11
 - `[x]` Production live check tikrina HTTP į HTTPS
 - `[x]` Production live check tikrina 404
 - `[x]` Production live check tikrina kontaktų API klaidų kelius
+- `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją
@@ -32,7 +33,8 @@ Atnaujinta: 2026-07-11
 | laukia | GA4 Realtime / DebugView | galima tik po GA4 Measurement ID |
 | laukia | Search Console domain property | reikia Google TXT įrašo Cloudflare DNS |
 | laukia | Search Console sitemap pateikimas | galima tik po Search Console patvirtinimo |
-| laukia | Agnės turinio patvirtinimai | pildoma docs/content-approval.md: trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė |
+| laukia | Agnės turinio patvirtinimai | laukia 9 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė, Privatumo politikos tekstas, Slapukų politikos tekstas |
+| laukia | Kitas Agnės turinio klausimas | [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti |
 
 ## Kiti veiksmai
 

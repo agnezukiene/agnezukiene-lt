@@ -21,6 +21,7 @@ const config = read("public/assets/js/config.js");
 const wrangler = read("wrangler.jsonc");
 const worker = read("src/index.js");
 const roadmap = read("docs/roadmap.md");
+const contentApproval = read("docs/content-approval.md");
 
 const ga4Configured = /ga4MeasurementId:\s*"G-[A-Z0-9]+"/.test(config);
 const turnstileConfigured = /turnstileSiteKey:\s*"0x[0-9A-Za-z_-]+"/.test(config);
@@ -29,7 +30,12 @@ const contactRecipientConfigured = wrangler.includes('"CONTACT_TO_EMAIL": "zukie
 const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmap.includes("[x] CONTACT_FROM_EMAIL");
 const workerRequiresEmailConfig = worker.includes("env.RESEND_API_KEY") && worker.includes("env.CONTACT_FROM_EMAIL");
 const workerCanSendViaResend = worker.includes("https://api.resend.com/emails") && worker.includes("reply_to");
-const hasContentApprovalBlockers = roadmap.includes("`[!]` Konsultacijos trukmė");
+const pendingContentDecisions = [...contentApproval.matchAll(/^\| laukia \| ([^|]+) \|/gm)]
+  .map((match) => match[1].trim());
+const nextContentQuestion = contentApproval.match(/## Kitas klausimas Agnei[\s\S]*?```text\n([\s\S]*?)```/);
+const contentQuestionDetail = nextContentQuestion
+  ? nextContentQuestion[1].split("\n").map((line) => line.trim()).filter(Boolean).join(" ")
+  : "žr. docs/content-approval.md";
 
 const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-site-integrity.js"), "Site integrity check yra pre-go-live dalis"),
@@ -39,6 +45,7 @@ const technicalGates = [
   checked(has("scripts/check-live-site.js", "http://agnezukiene.lt"), "Production live check tikrina HTTP į HTTPS"),
   checked(has("scripts/check-live-site.js", "/neegzistuojantis-puslapis"), "Production live check tikrina 404"),
   checked(has("scripts/check-live-site.js", "/api/contact") && has("scripts/check-live-site.js", "invalid JSON"), "Production live check tikrina kontaktų API klaidų kelius"),
+  checked(has("scripts/check-site-integrity.js", "contains internal pre-launch wording"), "Public HTML patikra saugo nuo vidinių paleidimo frazių"),
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
   checked(workerRequiresEmailConfig, "Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos"),
   checked(workerCanSendViaResend, "Worker turi Resend laiško siuntimo implementaciją"),
@@ -90,8 +97,15 @@ const launchBlockers = [
   },
   {
     label: "Agnės turinio patvirtinimai",
-    done: !hasContentApprovalBlockers,
-    detail: "pildoma docs/content-approval.md: trukmė, kaina, formatas, adresas / miestas, darbo laikas, kvalifikacijos formuluotė"
+    done: pendingContentDecisions.length === 0,
+    detail: pendingContentDecisions.length
+      ? `laukia ${pendingContentDecisions.length} sprendimų: ${pendingContentDecisions.join(", ")}`
+      : "visi docs/content-approval.md sprendimai pažymėti kaip užbaigti"
+  },
+  {
+    label: "Kitas Agnės turinio klausimas",
+    done: pendingContentDecisions.length === 0,
+    detail: contentQuestionDetail
   }
 ];
 
