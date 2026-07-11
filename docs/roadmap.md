@@ -67,7 +67,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
-| `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
+| `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API klaidos, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
 | `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
@@ -196,6 +196,7 @@ Vizualinė kryptis:
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
+- `[x]` Production smoke testas tikrina kontaktų API GET, origin, JSON ir validacijos klaidas.
 - `[x]` Pridėti nematomą honeypot lauką paprastų botų filtravimui iki Turnstile.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 

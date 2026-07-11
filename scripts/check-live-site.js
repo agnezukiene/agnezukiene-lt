@@ -21,6 +21,12 @@ const requiredHeaders = [
   "x-frame-options"
 ];
 
+async function readJsonMessage(response) {
+  const body = await response.json();
+  assert.strictEqual(typeof body.message, "string", "API response should include JSON message");
+  return body.message;
+}
+
 async function main() {
   const parsedBaseUrl = new URL(baseUrl);
 
@@ -65,6 +71,65 @@ async function main() {
       "https://www.agnezukiene.lt: expected redirect to https://agnezukiene.lt/"
     );
   }
+
+  const contactGetResponse = await fetch(new URL("/api/contact", baseUrl));
+  assert.strictEqual(contactGetResponse.status, 405, `/api/contact GET: expected 405, got ${contactGetResponse.status}`);
+  for (const header of requiredHeaders) {
+    assert(contactGetResponse.headers.get(header), `/api/contact GET: missing ${header}`);
+  }
+  assert(
+    (await readJsonMessage(contactGetResponse)).includes("POST"),
+    "/api/contact GET: expected POST-only message"
+  );
+
+  const contactOriginResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      origin: "https://example.com"
+    },
+    body: JSON.stringify({
+      name: "Testas",
+      email: "test@example.com",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other",
+      privacy: true
+    })
+  });
+  assert.strictEqual(contactOriginResponse.status, 403, `/api/contact origin: expected 403, got ${contactOriginResponse.status}`);
+  assert(
+    (await readJsonMessage(contactOriginResponse)).includes("negalima"),
+    "/api/contact origin: expected origin rejection message"
+  );
+
+  const contactJsonResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: "{"
+  });
+  assert.strictEqual(contactJsonResponse.status, 400, `/api/contact invalid JSON: expected 400, got ${contactJsonResponse.status}`);
+  assert(
+    (await readJsonMessage(contactJsonResponse)).includes("Nepavyko perskaityti"),
+    "/api/contact invalid JSON: expected parse error message"
+  );
+
+  const contactValidationResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      name: "Testas",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other",
+      privacy: true
+    })
+  });
+  assert.strictEqual(contactValidationResponse.status, 400, `/api/contact validation: expected 400, got ${contactValidationResponse.status}`);
+  assert(
+    (await readJsonMessage(contactValidationResponse)).includes("el. paštą arba telefoną"),
+    "/api/contact validation: expected missing contact message"
+  );
 
   const contactResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
