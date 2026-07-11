@@ -75,6 +75,30 @@ async function main() {
   {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
       method: "POST",
+      body: JSON.stringify(validPayload())
+    }), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 415, "Non-JSON contact requests should be rejected");
+    assert(body.message.includes("JSON"), "Unsupported content type response should explain JSON requirement");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "content-length": "10001"
+      },
+      body: JSON.stringify(validPayload())
+    }), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 413, "Oversized contact requests should be rejected");
+    assert(body.message.includes("per didelis"), "Oversized response should explain the size problem");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
       headers: { "content-type": "application/json" },
       body: "{"
     }), {});

@@ -202,6 +202,7 @@ Vizualinė kryptis:
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, JSON ir validacijos klaidas.
+- `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas prieš parsindamas formos duomenis.
 - `[x]` Pridėti nematomą honeypot lauką paprastų botų filtravimui iki Turnstile.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 

@@ -2,6 +2,8 @@ const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8"
 };
 
+const MAX_CONTACT_BODY_BYTES = 10000;
+
 const SECURITY_HEADERS = {
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
@@ -58,9 +60,23 @@ async function handleContact(request, env) {
     return json({ message: "Užklausa negalima iš šio adreso." }, 403);
   }
 
+  const contentType = request.headers.get("content-type") || "";
+  if (!contentType.toLowerCase().includes("application/json")) {
+    return json({ message: "Kontaktų forma priima tik JSON duomenis." }, 415);
+  }
+
+  const contentLength = Number(request.headers.get("content-length") || 0);
+  if (contentLength > MAX_CONTACT_BODY_BYTES) {
+    return json({ message: "Formos duomenų kiekis per didelis." }, 413);
+  }
+
   let body;
   try {
-    body = await request.json();
+    const text = await request.text();
+    if (text.length > MAX_CONTACT_BODY_BYTES) {
+      return json({ message: "Formos duomenų kiekis per didelis." }, 413);
+    }
+    body = JSON.parse(text);
   } catch (error) {
     return json({ message: "Nepavyko perskaityti formos duomenų." }, 400);
   }
