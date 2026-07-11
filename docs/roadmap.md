@@ -177,6 +177,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patikrinti, kad tekstas netelpa už mygtukų, kortelių ar formos ribų.
 - `[x]` Patikrinti mobile vaizdą.
 - `[x]` Patikrinti desktop vaizdą.
+- `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
 - `[ ]` Vėliau įkelti Agnės patvirtintą portretą.
 - `[ ]` Portretui paruošti atskirą query / promptą tik po to, kai Agnė pateiks nuotrauką.
 
@@ -255,6 +256,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra secret failų.
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad public HTML neturi vidinių „dar reikia patvirtinti“, „prieš viešą paleidimą“ ar „prieš publikavimą“ frazių.
+- `[x]` Patikrinti, kad public HTML turi bazinius prieinamumo landmark, nav ir formų label ryšius.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad canonical, OG URL, OG image, sitemap, robots.txt ir JSON-LD yra techniškai korektiški.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.

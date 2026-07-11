@@ -25,6 +25,7 @@ const requiredFiles = [
 ];
 const errors = [];
 const canonicalUrls = new Set();
+const technicalPages = new Set(["404.html", "privatumo-politika.html", "slapuku-politika.html"]);
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
@@ -48,6 +49,22 @@ for (const file of htmlFiles) {
   const ogUrlMatch = html.match(/<meta property="og:url" content="([^"]+)"/);
   const ogImageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
 
+  if (!/<main[\s>]/.test(html)) errors.push(`${file}: missing main landmark`);
+  if (!technicalPages.has(file) && !/<a class="skip-link" href="#turinys">/.test(html)) {
+    errors.push(`${file}: missing skip link to main content`);
+  }
+  if (!technicalPages.has(file) && !/<main[^>]*id="turinys"/.test(html)) {
+    errors.push(`${file}: main content should have id="turinys" for the skip link`);
+  }
+  if (file !== "404.html" && !/<nav[^>]+aria-label="Pagrindinė navigacija"/.test(html)) {
+    errors.push(`${file}: missing labelled primary navigation`);
+  }
+  if (file !== "404.html" && !/<button class="nav-toggle"[^>]+aria-expanded="false"[^>]+aria-controls="main-menu"/.test(html)) {
+    errors.push(`${file}: missing accessible mobile nav toggle`);
+  }
+  if (file !== "404.html" && !/<div class="nav-links" id="main-menu"/.test(html)) {
+    errors.push(`${file}: missing main-menu navigation target`);
+  }
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);
   if (!/<meta name="description" content="[^"]{30,}"/.test(html)) errors.push(`${file}: missing meta description`);
   if (!/<link rel="canonical" href="https:\/\/agnezukiene\.lt\//.test(html)) errors.push(`${file}: missing canonical`);
@@ -74,6 +91,26 @@ for (const file of htmlFiles) {
   }
   if (/psichoterapeutė/i.test(html)) errors.push(`${file}: contains restricted qualification wording`);
   if (/garantuotas rezultatas|išgydysiu|greitas sprendimas/i.test(html)) errors.push(`${file}: contains overpromising wording`);
+
+  for (const match of html.matchAll(/<button\b([^>]*)>/g)) {
+    if (!/\btype="(button|submit|reset)"/.test(match[1])) {
+      errors.push(`${file}: button missing explicit type`);
+    }
+  }
+
+  for (const match of html.matchAll(/<(input|select|textarea)\b([^>]*)>/g)) {
+    const [, element, attributes] = match;
+    if (/\btype="hidden"/.test(attributes)) continue;
+    if (/\btype="checkbox"/.test(attributes)) continue;
+    const idMatch = attributes.match(/\bid="([^"]+)"/);
+    if (!idMatch) {
+      errors.push(`${file}: ${element} is missing id for its label`);
+      continue;
+    }
+    if (!html.includes(`<label for="${idMatch[1]}"`) && !attributes.includes('type="checkbox"')) {
+      errors.push(`${file}: ${element}#${idMatch[1]} is missing a matching label`);
+    }
+  }
 
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try {
