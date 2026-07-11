@@ -47,6 +47,7 @@ Failai, kurie šiuo metu yra projekte:
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus hero vizualas be žmonių | `[x]` naudojamas laikinai iki Agnės portreto |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
+| `README.md` | Repo įėjimo taškas su lokaliomis, patikros, deploy ir blokatorių komandomis | `[x]` sukurta |
 
 Failai / katalogai, kuriuos dar reikia sukurti:
 
@@ -84,6 +85,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/sitemap.xml`.
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
+- `[x]` Sukurti `README.md` su pagrindinėmis lokaliomis, pre-go-live, deploy ir likusių blokatorių nuorodomis.
 - `[x]` Sukurti `docs/content-approval.md`.
 - `[x]` Sukurti `docs/launch-readiness.md`.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
