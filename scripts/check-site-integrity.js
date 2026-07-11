@@ -15,6 +15,7 @@ const requiredFiles = [
   "data/site-content-registry.json",
   "docs/content-approval.md",
   "docs/launch-readiness.md",
+  "docs/manual-setup-queue.md",
   "docs/seo-inventory.md",
   "scripts/generate-launch-readiness.js",
   "scripts/pre-go-live.js",

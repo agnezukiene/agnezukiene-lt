@@ -63,6 +63,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `docs/content-approval.md` | Agnės turinio sprendimų ir viešinimo patvirtinimų sąrašas | `[x]` sukurta |
 | `docs/seo-inventory.md` | Puslapių title, description, H1 ir canonical inventorius | `[x]` sugeneruota 2026-07-10 |
 | `docs/launch-readiness.md` | Automatinė MVP paleidimo vartų ir blokatorių santrauka | `[x]` generuojama skriptu |
+| `docs/manual-setup-queue.md` | Viena eilė rankiniams Resend, Cloudflare, GA4, Search Console ir turinio veiksmams | `[x]` sukurta |
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
@@ -88,6 +89,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `README.md` su pagrindinėmis lokaliomis, pre-go-live, deploy ir likusių blokatorių nuorodomis.
 - `[x]` Sukurti `docs/content-approval.md`.
 - `[x]` Sukurti `docs/launch-readiness.md`.
+- `[x]` Sukurti `docs/manual-setup-queue.md`, kad likę paskyrų veiksmai būtų vienoje eilėje.
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-contact-api.js`.

@@ -10,6 +10,7 @@ Statinė Agnės Žukienės psichologės svetainė, deployinama per Cloudflare Wo
 - Cloudflare Worker projektas: `agnezukienepage`
 - Pagrindinis planas: `docs/roadmap.md`
 - Paleidimo santrauka: `docs/launch-readiness.md`
+- Rankinių paskyrų veiksmų eilė: `docs/manual-setup-queue.md`
 
 ## Lokalus darbas
 
@@ -56,6 +57,7 @@ Svarbu: `wrangler.jsonc` turi kelti tik `./public`, o Worker entrypoint yra `src
 Repo nelaikome secrets. Vieši frontend raktai yra `public/assets/js/config.js`.
 
 Cloudflare Worker variables/secrets aprašyti `docs/cloudflare-variables-runbook.md`.
+Likę rankiniai Resend, GA4, Search Console ir turinio veiksmai sudėti į `docs/manual-setup-queue.md`.
 
 Reikalingi iki pilno kontaktų formos veikimo:
 
@@ -71,4 +73,3 @@ Automatinė santrauka yra `docs/launch-readiness.md`. Šiuo metu pagrindiniai li
 - GA4 Measurement ID ir Realtime patikra
 - Search Console domain property ir sitemap pateikimas
 - Agnės turinio patvirtinimai iš `docs/content-approval.md`
-
