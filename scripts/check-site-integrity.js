@@ -68,6 +68,9 @@ for (const file of htmlFiles) {
   if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);
   if (/lorem ipsum|TODO|href=""|href="#"/i.test(html)) errors.push(`${file}: contains placeholder text or empty link`);
+  if (/dar reikia patvirtinti|prieš viešą paleidimą|prieš publikavimą/i.test(html)) {
+    errors.push(`${file}: contains internal pre-launch wording`);
+  }
   if (/psichoterapeutė/i.test(html)) errors.push(`${file}: contains restricted qualification wording`);
   if (/garantuotas rezultatas|išgydysiu|greitas sprendimas/i.test(html)) errors.push(`${file}: contains overpromising wording`);
 

@@ -2,7 +2,7 @@
 
 Atnaujinta: 2026-07-11
 
-Šis failas skirtas sprendimams, kurių reikia prieš pilną viešą MVP paleidimą. Kol sprendimas nepatvirtintas, svetainėje naudojame atsargią formuluotę arba aiškiai nenurodome detalės.
+Šis failas skirtas sprendimams, kurių reikia prieš pilną viešą MVP paleidimą. Kol sprendimas nepatvirtintas, svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
 
 ## Sprendimų lentelė
 
@@ -10,7 +10,7 @@ Atnaujinta: 2026-07-11
 | --- | --- | --- | --- |
 | laukia | Konsultacijos trukmė | Trukmės nerodome, kol nepatvirtinta. | `konsultacijos.html`, `kontaktai.html`, DUK |
 | laukia | Kaina | Kainos nerodome, kol nepatvirtinta. | `konsultacijos.html`, `kontaktai.html`, galimai `paslaugos.html` |
-| laukia | Konsultacijų formatas | Forma leidžia pasirinkti gyvai, nuotoliu arba dar nežinau; viešame tekste paliekame atsargią formuluotę. | `index.html`, `konsultacijos.html`, `kontaktai.html`, DUK |
+| laukia | Konsultacijų formatas | Forma leidžia pasirinkti gyvai, nuotoliu arba dar nežinau; viešame tekste nurodoma, kad formatas aptariamas individualiai. | `index.html`, `konsultacijos.html`, `kontaktai.html`, DUK |
 | laukia | Miestas / adresas | Viešinamas tik bendras regionas, tikslaus adreso nerodome. | `index.html`, `kontaktai.html`, SEO schema |
 | laukia | Atsakymo į užklausas terminas | Naudojama formuluotė „atsakysiu, kai galėsiu“. | `kontaktai.html`, `konsultacijos.html` |
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
@@ -34,6 +34,7 @@ Rekomenduojama pildyti taip:
 - Nerašome garantijų, greito rezultato ar pažado išgydyti.
 - Nerodome klientų istorijų, diagnozių ar identifikuojamų atvejų.
 - Nerenkame perteklinių jautrių duomenų kontaktų formoje.
+- Viešuose puslapiuose nerodome vidinių projekto frazių, pvz. „dar reikia patvirtinti“, „prieš viešą paleidimą“ ar „prieš publikavimą“.
 
 ## Kitas klausimas Agnei
 

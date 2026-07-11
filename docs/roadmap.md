@@ -149,6 +149,7 @@ Darbai:
 - `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė patvirtins trukmę, kainą, formatą ir atsakymo laiką.
 - `[~]` `duk.html`: peržiūrėti DUK dėl tono ir tikslumo.
 - `[~]` `kontaktai.html`: forma turi būti trumpa, duomenų minimizavimo principu.
+- `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
 - `[~]` `privatumo-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo.
 - `[~]` `slapuku-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo ir GA4 Measurement ID.
 - `[x]` `404.html`: patikrintas po deploy.
@@ -247,6 +248,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti `git status --short`.
 - `[x]` Patikrinti, kad nėra secret failų.
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
+- `[x]` Patikrinti, kad public HTML neturi vidinių „dar reikia patvirtinti“, „prieš viešą paleidimą“ ar „prieš publikavimą“ frazių.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad canonical, OG URL, OG image, sitemap, robots.txt ir JSON-LD yra techniškai korektiški.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
