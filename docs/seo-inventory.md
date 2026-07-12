@@ -1,6 +1,6 @@
 # SEO inventory
 
-Atnaujinta: 2026-07-11
+Atnaujinta: 2026-07-12
 
 | URL | Title | Description | H1 | Canonical | OG title |
 | --- | --- | --- | --- | --- | --- |

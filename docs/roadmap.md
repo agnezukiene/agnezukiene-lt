@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-11
+Atnaujinta: 2026-07-12
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -178,6 +178,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patikrinti mobile vaizdą.
 - `[x]` Patikrinti desktop vaizdą.
 - `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
+- `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
 - `[ ]` Vėliau įkelti Agnės patvirtintą portretą.
 - `[ ]` Portretui paruošti atskirą query / promptą tik po to, kai Agnė pateiks nuotrauką.
 

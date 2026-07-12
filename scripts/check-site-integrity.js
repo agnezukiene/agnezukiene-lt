@@ -25,7 +25,7 @@ const requiredFiles = [
 ];
 const errors = [];
 const canonicalUrls = new Set();
-const technicalPages = new Set(["404.html", "privatumo-politika.html", "slapuku-politika.html"]);
+const technicalPages = new Set(["404.html"]);
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");

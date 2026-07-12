@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-11
+Atnaujinta: 2026-07-12
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
