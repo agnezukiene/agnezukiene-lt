@@ -16,11 +16,21 @@ Cloudflare vieta:
 Workers & Pages -> agnezukienepage -> Deployments -> Redeploy latest main build
 ```
 
-Po redeploy paleisti:
+Redeploy turi būti iš `main` šakos commit `358c1ab` arba naujesnio. Jei Cloudflare rodo senesnį commitą, pirmiausia reikia pasirinkti naujausią production deployment arba paleisti naują deploy iš GitHub `main`.
+
+Po redeploy Codex patikra:
 
 ```bash
 npm run pre-go-live -- https://agnezukiene.lt
 ```
+
+Minimalus sėkmės požymis:
+
+```text
+https://agnezukiene.lt/neegzistuojantis-puslapis
+```
+
+turi grąžinti `HTTP 404`, o puslapio turinyje turi būti lietuviškas tekstas `Puslapis nerastas`. Jei statusas `404`, bet atsakymo dydis `0` baitų, production Worker dar nėra persidiegęs su naujausiu kodu.
 
 ## 1. Resend domenas ir siuntėjas
 
