@@ -96,6 +96,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `scripts/generate-launch-readiness.js`.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
+- `[x]` 2026-07-12 papildyti `scripts/generate-launch-readiness.js`, kad santrauka rodytų manual setup queue, bazinio prieinamumo ir saugumo headerių reikšmių vartus.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.

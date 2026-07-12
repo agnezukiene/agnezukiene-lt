@@ -9,11 +9,14 @@ Atnaujinta: 2026-07-12
 - `[x]` Site integrity check yra pre-go-live dalis
 - `[x]` GA4 privatumo patikra yra pre-go-live dalis
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
+- `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas
 - `[x]` Production live check tikrina www nukreipimą
 - `[x]` Production live check tikrina HTTP į HTTPS
 - `[x]` Production live check tikrina 404
 - `[x]` Production live check tikrina kontaktų API klaidų kelius
 - `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių
+- `[x]` Public HTML patikra tikrina bazinį prieinamumą
+- `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją
