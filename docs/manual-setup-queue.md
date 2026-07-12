@@ -1,8 +1,26 @@
 # Manual setup queue
 
-Atnaujinta: 2026-07-11
+Atnaujinta: 2026-07-12
 
 Šis failas yra trumpa rankinių paskyrų veiksmų eilė. Jis papildo `docs/launch-readiness.md`, `docs/cloudflare-variables-runbook.md` ir `docs/analytics-search-console-runbook.md`.
+
+## 0. Cloudflare redeploy po paskutinio GitHub commit
+
+Tikslas: užtikrinti, kad production Worker naudoja naujausią `main` commitą.
+
+Jei `npm run pre-go-live -- https://agnezukiene.lt` krenta ties nežinomo URL 404 turiniu, Cloudflare Workers build reikia redeployinti iš naujausio GitHub `main`.
+
+Cloudflare vieta:
+
+```text
+Workers & Pages -> agnezukienepage -> Deployments -> Redeploy latest main build
+```
+
+Po redeploy paleisti:
+
+```bash
+npm run pre-go-live -- https://agnezukiene.lt
+```
 
 ## 1. Resend domenas ir siuntėjas
 
@@ -136,4 +154,3 @@ Po kiekvieno sprendimo reikia atnaujinti viešus puslapius, `docs/content-approv
 ```bash
 npm run pre-go-live -- https://agnezukiene.lt
 ```
-

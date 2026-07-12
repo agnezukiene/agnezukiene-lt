@@ -273,7 +273,8 @@ Prieš Cloudflare deploy:
 - `[x]` Mobile meniu veikia.
 - `[x]` Kontaktų forma validuoja laukus.
 - `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
-- `[x]` 2026-07-12 Worker fallback nežinomiems GET keliams grąžina lietuvišką `404.html` turinį su 404 statusu.
+- `[x]` 2026-07-12 Worker fallback kodas ir lokali VM patikra dengia lietuvišką `404.html` turinį su 404 statusu.
+- `[!]` Production nežinomo URL lietuviškas 404 turinys laukia Cloudflare redeploy į `9002f14` arba naujesnį commitą.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
 - `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
 
@@ -283,7 +284,7 @@ Po Cloudflare deploy:
 - `[x]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
-- `[x]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS ir 404.
+- `[~]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį ir lietuvišką 404 turinį: šiuo metu laukia Cloudflare redeploy po `9002f14`.
 - `[ ]` Patikrinti formos siuntimą gyvai.
 - `[ ]` Patikrinti GA4 Realtime.
 - `[ ]` Patikrinti Search Console sitemap pateikimą.

@@ -60,6 +60,31 @@ async function main() {
   const worker = createWorker();
 
   {
+    const assetCalls = [];
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/neegzistuojantis-puslapis"), {
+      ASSETS: {
+        fetch: async (request) => {
+          const url = new URL(request.url);
+          assetCalls.push(url.pathname);
+          if (url.pathname === "/404.html") {
+            return new Response("<!doctype html><html lang=\"lt\"><body><h1>Puslapis nerastas</h1></body></html>", {
+              status: 200,
+              headers: { "content-type": "text/html; charset=utf-8" }
+            });
+          }
+          return new Response("", { status: 404 });
+        }
+      }
+    });
+    const text = await response.text();
+    assert.strictEqual(response.status, 404, "Unknown static GET paths should return a 404 status");
+    assert.deepStrictEqual(assetCalls, ["/neegzistuojantis-puslapis", "/404.html"], "Worker should fetch the custom 404 page after an asset miss");
+    assert(text.includes("<html lang=\"lt\">"), "Custom 404 fallback should return Lithuanian HTML");
+    assert(text.includes("Puslapis nerastas"), "Custom 404 fallback should return the 404 content");
+    assert(response.headers.get("x-content-type-options"), "Custom 404 fallback should include security headers");
+  }
+
+  {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact"), {});
     assert.strictEqual(response.status, 405, "GET /api/contact should be rejected");
     assert(response.headers.get("x-content-type-options"), "API responses should include security headers");
