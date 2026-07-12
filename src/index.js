@@ -46,7 +46,19 @@ export default {
       return handleContact(request, env);
     }
 
-    return withSecurityHeaders(await env.ASSETS.fetch(request));
+    const assetResponse = await env.ASSETS.fetch(request);
+    if (request.method === "GET" && assetResponse.status === 404) {
+      const notFoundUrl = new URL("/404.html", request.url);
+      const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request));
+      if (notFoundResponse.ok) {
+        return withSecurityHeaders(new Response(notFoundResponse.body, {
+          status: 404,
+          headers: notFoundResponse.headers
+        }));
+      }
+    }
+
+    return withSecurityHeaders(assetResponse);
   }
 };
 

@@ -46,6 +46,7 @@ Atnaujinta: 2026-07-11
 - `[x]` Patikrinti mobile meniu.
 - `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
 - `[x]` Patikrinti `404.html`.
+- `[x]` Patikrinti, kad nežinomas URL grąžina lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` Patikrinti `sitemap.xml`.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.

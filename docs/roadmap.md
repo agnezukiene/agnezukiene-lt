@@ -273,6 +273,7 @@ Prieš Cloudflare deploy:
 - `[x]` Mobile meniu veikia.
 - `[x]` Kontaktų forma validuoja laukus.
 - `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
+- `[x]` 2026-07-12 Worker fallback nežinomiems GET keliams grąžina lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
 - `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
 

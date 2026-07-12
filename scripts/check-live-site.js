@@ -1,7 +1,7 @@
 const assert = require("assert");
 
 const baseUrl = process.argv[2] || "https://agnezukienepage.petrauskaiteagne.workers.dev";
-const pages = [
+const htmlPages = [
   "/",
   "/apie.html",
   "/paslaugos.html",
@@ -9,9 +9,7 @@ const pages = [
   "/duk.html",
   "/kontaktai.html",
   "/privatumo-politika.html",
-  "/slapuku-politika.html",
-  "/robots.txt",
-  "/sitemap.xml"
+  "/slapuku-politika.html"
 ];
 
 const requiredHeaders = {
@@ -36,17 +34,31 @@ function assertSecurityHeaders(response, source) {
 async function main() {
   const parsedBaseUrl = new URL(baseUrl);
 
-  for (const page of pages) {
+  for (const page of htmlPages) {
     const response = await fetch(new URL(page, baseUrl));
     assert.strictEqual(response.status, 200, `${page}: expected 200, got ${response.status}`);
+    assertSecurityHeaders(response, page);
 
-    if (page === "/" || page.endsWith(".html")) {
-      assertSecurityHeaders(response, page);
+    const text = await response.text();
+    assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
+    assert(!/lorem ipsum|TODO/i.test(text), `${page}: contains placeholder text`);
+  }
 
-      const text = await response.text();
-      assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
-      assert(!/lorem ipsum|TODO/i.test(text), `${page}: contains placeholder text`);
-    }
+  const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
+  assert.strictEqual(robotsResponse.status, 200, `/robots.txt: expected 200, got ${robotsResponse.status}`);
+  const robotsText = await robotsResponse.text();
+  assert(robotsText.includes("User-agent: *"), "/robots.txt: missing User-agent");
+  assert(robotsText.includes("Allow: /"), "/robots.txt: missing Allow");
+  assert(robotsText.includes("Sitemap: https://agnezukiene.lt/sitemap.xml"), "/robots.txt: missing production sitemap");
+
+  const sitemapResponse = await fetch(new URL("/sitemap.xml", baseUrl));
+  assert.strictEqual(sitemapResponse.status, 200, `/sitemap.xml: expected 200, got ${sitemapResponse.status}`);
+  const sitemapText = await sitemapResponse.text();
+  assert(sitemapText.includes("<urlset"), "/sitemap.xml: missing urlset");
+  assert(!sitemapText.includes("https://agnezukiene.lt/404.html"), "/sitemap.xml: should not include 404");
+  for (const page of htmlPages) {
+    const expectedUrl = page === "/" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt${page}`;
+    assert(sitemapText.includes(`<loc>${expectedUrl}</loc>`), `/sitemap.xml: missing ${expectedUrl}`);
   }
 
   const notFoundResponse = await fetch(new URL("/neegzistuojantis-puslapis", baseUrl), {
@@ -57,6 +69,10 @@ async function main() {
     404,
     `/neegzistuojantis-puslapis: expected 404, got ${notFoundResponse.status}`
   );
+  assertSecurityHeaders(notFoundResponse, "/neegzistuojantis-puslapis");
+  const notFoundText = await notFoundResponse.text();
+  assert(notFoundText.includes("<html lang=\"lt\">"), "/neegzistuojantis-puslapis: missing Lithuanian html lang");
+  assert(notFoundText.includes("Puslapis nerastas"), "/neegzistuojantis-puslapis: missing Lithuanian 404 content");
 
   if (parsedBaseUrl.hostname === "agnezukiene.lt") {
     const httpResponse = await fetch("http://agnezukiene.lt", { redirect: "manual" });
