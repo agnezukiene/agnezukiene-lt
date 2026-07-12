@@ -183,8 +183,26 @@ for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstil
 }
 
 const staticHeaders = read("public/_headers");
-for (const requiredSnippet of ["X-Content-Type-Options", "Referrer-Policy", "Permissions-Policy", "X-Frame-Options"]) {
-  if (!staticHeaders.includes(requiredSnippet)) errors.push(`public/_headers: missing ${requiredSnippet}`);
+const requiredStaticHeaders = {
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "X-Frame-Options": "DENY"
+};
+for (const [name, value] of Object.entries(requiredStaticHeaders)) {
+  if (!staticHeaders.includes(`${name}: ${value}`)) errors.push(`public/_headers: missing ${name}: ${value}`);
+}
+
+const workerSecurityHeaders = read("src/index.js");
+for (const [name, value] of Object.entries({
+  "x-content-type-options": "nosniff",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "x-frame-options": "DENY"
+})) {
+  if (!workerSecurityHeaders.includes(`"${name}": "${value}"`)) {
+    errors.push(`src/index.js: missing security header ${name}: ${value}`);
+  }
 }
 
 if (errors.length > 0) {

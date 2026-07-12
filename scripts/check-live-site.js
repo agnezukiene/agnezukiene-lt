@@ -14,17 +14,23 @@ const pages = [
   "/sitemap.xml"
 ];
 
-const requiredHeaders = [
-  "x-content-type-options",
-  "referrer-policy",
-  "permissions-policy",
-  "x-frame-options"
-];
+const requiredHeaders = {
+  "x-content-type-options": "nosniff",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+  "x-frame-options": "DENY"
+};
 
 async function readJsonMessage(response) {
   const body = await response.json();
   assert.strictEqual(typeof body.message, "string", "API response should include JSON message");
   return body.message;
+}
+
+function assertSecurityHeaders(response, source) {
+  for (const [header, expected] of Object.entries(requiredHeaders)) {
+    assert.strictEqual(response.headers.get(header), expected, `${source}: expected ${header}: ${expected}`);
+  }
 }
 
 async function main() {
@@ -35,9 +41,7 @@ async function main() {
     assert.strictEqual(response.status, 200, `${page}: expected 200, got ${response.status}`);
 
     if (page === "/" || page.endsWith(".html")) {
-      for (const header of requiredHeaders) {
-        assert(response.headers.get(header), `${page}: missing ${header}`);
-      }
+      assertSecurityHeaders(response, page);
 
       const text = await response.text();
       assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
@@ -74,9 +78,7 @@ async function main() {
 
   const contactGetResponse = await fetch(new URL("/api/contact", baseUrl));
   assert.strictEqual(contactGetResponse.status, 405, `/api/contact GET: expected 405, got ${contactGetResponse.status}`);
-  for (const header of requiredHeaders) {
-    assert(contactGetResponse.headers.get(header), `/api/contact GET: missing ${header}`);
-  }
+  assertSecurityHeaders(contactGetResponse, "/api/contact GET");
   assert(
     (await readJsonMessage(contactGetResponse)).includes("POST"),
     "/api/contact GET: expected POST-only message"

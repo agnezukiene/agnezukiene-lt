@@ -123,6 +123,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` `https://agnezukienepage.petrauskaiteagne.workers.dev/api/contact` patikrintas: endpointas veikia ir grąžina laukiamą 503, kol nesudėti el. pašto kintamieji.
 - `[x]` Worker prideda bazines saugumo antraštes ir nukreipia `www.agnezukiene.lt` į `agnezukiene.lt`.
 - `[x]` Statinio puslapio saugumo antraštės patikrintos gyvai laikiname Cloudflare URL.
+- `[x]` 2026-07-12 automatinės patikros tikrina konkrečias saugumo antraščių reikšmes statiniams puslapiams ir `/api/contact`.
 - `[x]` Desktop 1440px ir mobile 390px vizualinė patikra atlikta per Chrome: horizontalios slinkties nėra, pagrindiniai mygtukai telpa, mobile meniu persijungia.
 - `[x]` Production branch ir deploy eiga patikrinta per veikiančius deploy'us iš `main`.
 - `[x]` Pridėti custom domain `agnezukiene.lt`.
@@ -258,6 +259,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad nėra `TODO`, `lorem ipsum`, tuščių nuorodų ar placeholder tekstų.
 - `[x]` Patikrinti, kad public HTML neturi vidinių „dar reikia patvirtinti“, „prieš viešą paleidimą“ ar „prieš publikavimą“ frazių.
 - `[x]` Patikrinti, kad public HTML turi bazinius prieinamumo landmark, nav ir formų label ryšius.
+- `[x]` Patikrinti, kad statinių puslapių ir Worker saugumo antraštės turi tikėtinas reikšmes.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad canonical, OG URL, OG image, sitemap, robots.txt ir JSON-LD yra techniškai korektiški.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
