@@ -68,7 +68,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `data/analytics-events.json` | Leidžiamų GA4 eventų katalogas | `[x]` sukurta |
 | `data/site-content-registry.json` | Puslapių ir turinio registras | `[x]` sugeneruota 2026-07-10 |
 | `scripts/check-site-integrity.js` | Techninė lokali patikra | `[x]` sukurta ir paleista |
-| `scripts/check-color-contrast.js` | WCAG spalvų kontrasto patikra | `[~]` sukurta ir įtraukta į pre-go-live; laukia production dizaino patikros |
+| `scripts/check-color-contrast.js` | WCAG spalvų kontrasto patikra | `[x]` tikrina 9 paletės poras, įtraukta į pre-go-live ir 2026-07-13 patikrinta production |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API klaidos, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
@@ -182,7 +182,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patikrinti mobile vaizdą.
 - `[x]` Patikrinti desktop vaizdą.
 - `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
-- `[~]` Automatizuoti WCAG spalvų kontrasto patikrą: tikrinamos 9 pagrindinės teksto, mygtukų ir focus spalvų poros; laukia production deploy patikros.
+- `[x]` Automatizuoti WCAG spalvų kontrasto patikrą: 9 pagrindinės teksto, mygtukų ir focus spalvų poros atitinka nustatytas ribas ir patikrintos production 2026-07-13.
 - `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
 - `[x]` Agnė pateikė savo nuotraukas ir patvirtino galutinį hero variantą.
 - `[x]` Portretui paruoštas atskiras promptas, atlikta tik spalvinė korekcija iš gelsvos į svetainei tinkamą pieno, perlo ir švelnios pilkos kryptį.
