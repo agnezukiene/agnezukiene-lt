@@ -4,7 +4,9 @@ Atnaujinta: 2026-07-13
 
 Šis failas yra trumpa rankinių paskyrų veiksmų eilė. Jis papildo `docs/launch-readiness.md`, `docs/cloudflare-variables-runbook.md` ir `docs/analytics-search-console-runbook.md`.
 
-## 0. Cloudflare redeploy po paskutinio GitHub commit
+## 0. Cloudflare redeploy po paskutinio GitHub commit - padaryta
+
+Statusas 2026-07-13: naujausias dizaino ir Worker `404` pataisos deploy baigtas, o pilna production patikra praėjo. Toliau pateikta eiga palikta kaip techninė atmintinė būsimiems deploy.
 
 Tikslas: užtikrinti, kad production Worker naudoja naujausią `main` commitą.
 
