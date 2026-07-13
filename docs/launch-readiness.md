@@ -7,6 +7,7 @@ Atnaujinta: 2026-07-13
 ## Techniniai vartai
 
 - `[x]` Site integrity check yra pre-go-live dalis
+- `[x]` WCAG spalvų kontrasto patikra yra pre-go-live dalis
 - `[x]` GA4 privatumo patikra yra pre-go-live dalis
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas

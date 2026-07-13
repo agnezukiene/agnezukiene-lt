@@ -5,6 +5,7 @@
   "description": "Agnės Žukienės psichologės svetainės MVP.",
   "scripts": {
     "check": "node scripts/check-site-integrity.js",
+    "check:contrast": "node scripts/check-color-contrast.js",
     "check:analytics": "node scripts/check-analytics-privacy.js",
     "check:contact": "node scripts/check-contact-api.js",
     "check:live": "node scripts/check-live-site.js",

@@ -44,6 +44,7 @@ const contentQuestionDetail = nextContentQuestion
 
 const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-site-integrity.js"), "Site integrity check yra pre-go-live dalis"),
+  checked(has("scripts/pre-go-live.js", "scripts/check-color-contrast.js"), "WCAG spalvų kontrasto patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-analytics-privacy.js"), "GA4 privatumo patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-contact-api.js"), "Kontaktų API patikra yra pre-go-live dalis"),
   checked(has("scripts/check-site-integrity.js", "docs/manual-setup-queue.md"), "Rankinių setup veiksmų eilė yra privalomas repo failas"),

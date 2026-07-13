@@ -11,6 +11,7 @@ Atnaujinta: 2026-07-12
 - `[x]` Sukurtas `assets/js/site.js`.
 - `[x]` Sukurti `public/sitemap.xml` ir `public/robots.txt`.
 - `[x]` Sukurtas `scripts/check-site-integrity.js`.
+- `[~]` Sukurtas ir į pre-go-live įtrauktas `scripts/check-color-contrast.js`; laukia production dizaino patikros.
 - `[x]` Sukurtas `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurtas `scripts/check-contact-api.js`.
 - `[x]` Sukurtas `scripts/check-live-site.js`.

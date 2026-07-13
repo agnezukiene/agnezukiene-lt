@@ -19,6 +19,7 @@ const requiredFiles = [
   "docs/seo-inventory.md",
   "scripts/generate-launch-readiness.js",
   "scripts/pre-go-live.js",
+  "scripts/check-color-contrast.js",
   "scripts/check-live-site.js",
   "src/index.js",
   "wrangler.jsonc"
