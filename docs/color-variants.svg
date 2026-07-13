@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1800" viewBox="0 0 1600 1800" role="img" aria-labelledby="title desc">
+  <title id="title">Agnės Žukienės svetainės spalvų variantai</title>
+  <desc id="desc">Penki vizualiai skirtingi psichologės svetainės spalvų variantai su mini svetainės maketais ir spalvų swatchais.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#1d1b18" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .label { font: 700 28px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .small { font: 500 16px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .body { font: 400 20px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .h1 { font: 750 38px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .button { font: 700 17px ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1800" fill="#f5f3ee"/>
+  <text x="80" y="78" class="label" fill="#25231f">5 spalvų kryptys Agnės Žukienės svetainei</text>
+  <text x="80" y="112" class="body" fill="#6c675f">Kiekvienas blokas rodo hero zoną, mygtuką, kortelę ir realius spalvų santykius.</text>
+
+  <!-- 1 -->
+  <g transform="translate(80,160)" filter="url(#shadow)">
+    <rect width="1440" height="285" rx="12" fill="#eef5f2"/>
+    <rect x="36" y="34" width="430" height="217" rx="8" fill="#fbfdfb"/>
+    <rect x="0" y="0" width="1440" height="285" rx="12" fill="none" stroke="#d2e2dc"/>
+    <text x="36" y="-22" class="label" fill="#183f39">1. Šiaurietiška ramybė</text>
+    <text x="500" y="52" class="small" fill="#43665e">agnezukiene.lt</text>
+    <text x="500" y="104" class="h1" fill="#183f39">Rami erdvė pokalbiui</text>
+    <text x="500" y="143" class="body" fill="#52615d">Šviesi, švari, gaivi kryptis. Tinka, jei norisi mažiau žemės tonų ir daugiau oro.</text>
+    <rect x="500" y="174" width="190" height="48" rx="8" fill="#2f7f73"/>
+    <text x="526" y="205" class="button" fill="#ffffff">Registruotis</text>
+    <rect x="718" y="174" width="245" height="48" rx="8" fill="#dcebe7"/>
+    <text x="744" y="205" class="button" fill="#183f39">Apie konsultacijas</text>
+    <rect x="1010" y="42" width="350" height="190" rx="8" fill="#ffffff" stroke="#d2e2dc"/>
+    <text x="1036" y="82" class="small" fill="#2f7f73">Akcentas</text>
+    <text x="1036" y="122" class="body" fill="#183f39">Profesionalu, lengva, subtiliai modernu.</text>
+    <circle cx="94" cy="96" r="42" fill="#2f7f73"/>
+    <circle cx="154" cy="96" r="42" fill="#b9d8d0"/>
+    <circle cx="214" cy="96" r="42" fill="#f7fbf9"/>
+    <circle cx="274" cy="96" r="42" fill="#f0b69f"/>
+    <circle cx="334" cy="96" r="42" fill="#183f39"/>
+    <text x="72" y="178" class="small" fill="#52615d">#2F7F73  #B9D8D0  #F7FBF9  #F0B69F  #183F39</text>
+  </g>
+
+  <!-- 2 -->
+  <g transform="translate(80,485)" filter="url(#shadow)">
+    <rect width="1440" height="285" rx="12" fill="#f8f1ec"/>
+    <rect x="36" y="34" width="430" height="217" rx="8" fill="#fffaf7"/>
+    <rect x="0" y="0" width="1440" height="285" rx="12" fill="none" stroke="#e8d5cb"/>
+    <text x="36" y="-22" class="label" fill="#40261f">2. Terakota ir rašalas</text>
+    <text x="500" y="52" class="small" fill="#845344">agnezukiene.lt</text>
+    <text x="500" y="104" class="h1" fill="#40261f">Šiluma be saldumo</text>
+    <text x="500" y="143" class="body" fill="#6f5a52">Jaukesnė, labiau asmeniška kryptis. Gerai veikia su portretu ir tekstais.</text>
+    <rect x="500" y="174" width="190" height="48" rx="8" fill="#b65f49"/>
+    <text x="526" y="205" class="button" fill="#ffffff">Registruotis</text>
+    <rect x="718" y="174" width="245" height="48" rx="8" fill="#ead2c6"/>
+    <text x="744" y="205" class="button" fill="#40261f">Apie konsultacijas</text>
+    <rect x="1010" y="42" width="350" height="190" rx="8" fill="#fffaf7" stroke="#e8d5cb"/>
+    <text x="1036" y="82" class="small" fill="#b65f49">Akcentas</text>
+    <text x="1036" y="122" class="body" fill="#40261f">Žmogiška, stipru, šilta ir atvira.</text>
+    <circle cx="94" cy="96" r="42" fill="#b65f49"/>
+    <circle cx="154" cy="96" r="42" fill="#ead2c6"/>
+    <circle cx="214" cy="96" r="42" fill="#fffaf7"/>
+    <circle cx="274" cy="96" r="42" fill="#2b3a42"/>
+    <circle cx="334" cy="96" r="42" fill="#40261f"/>
+    <text x="72" y="178" class="small" fill="#6f5a52">#B65F49  #EAD2C6  #FFFAF7  #2B3A42  #40261F</text>
+  </g>
+
+  <!-- 3 -->
+  <g transform="translate(80,810)" filter="url(#shadow)">
+    <rect width="1440" height="285" rx="12" fill="#f2f6f7"/>
+    <rect x="36" y="34" width="430" height="217" rx="8" fill="#ffffff"/>
+    <rect x="0" y="0" width="1440" height="285" rx="12" fill="none" stroke="#cfdee2"/>
+    <text x="36" y="-22" class="label" fill="#173f4a">3. Jūros stiklas</text>
+    <text x="500" y="52" class="small" fill="#52727b">agnezukiene.lt</text>
+    <text x="500" y="104" class="h1" fill="#173f4a">Aiškumas ir švelnumas</text>
+    <text x="500" y="143" class="body" fill="#52676d">Gaivesnė, modernesnė kryptis. Mažiau „kabinetiška“, daugiau švaraus pasitikėjimo.</text>
+    <rect x="500" y="174" width="190" height="48" rx="8" fill="#287c8e"/>
+    <text x="526" y="205" class="button" fill="#ffffff">Registruotis</text>
+    <rect x="718" y="174" width="245" height="48" rx="8" fill="#d8edf0"/>
+    <text x="744" y="205" class="button" fill="#173f4a">Apie konsultacijas</text>
+    <rect x="1010" y="42" width="350" height="190" rx="8" fill="#ffffff" stroke="#cfdee2"/>
+    <text x="1036" y="82" class="small" fill="#287c8e">Akcentas</text>
+    <text x="1036" y="122" class="body" fill="#173f4a">Švaru, patikima, neperkrauta.</text>
+    <circle cx="94" cy="96" r="42" fill="#287c8e"/>
+    <circle cx="154" cy="96" r="42" fill="#a9d6dc"/>
+    <circle cx="214" cy="96" r="42" fill="#f7fbfc"/>
+    <circle cx="274" cy="96" r="42" fill="#d8b56d"/>
+    <circle cx="334" cy="96" r="42" fill="#173f4a"/>
+    <text x="72" y="178" class="small" fill="#52676d">#287C8E  #A9D6DC  #F7FBFC  #D8B56D  #173F4A</text>
+  </g>
+
+  <!-- 4 -->
+  <g transform="translate(80,1135)" filter="url(#shadow)">
+    <rect width="1440" height="285" rx="12" fill="#f5f2f6"/>
+    <rect x="36" y="34" width="430" height="217" rx="8" fill="#fffdfd"/>
+    <rect x="0" y="0" width="1440" height="285" rx="12" fill="none" stroke="#ded4e1"/>
+    <text x="36" y="-22" class="label" fill="#3c3046">4. Slyvų migla</text>
+    <text x="500" y="52" class="small" fill="#756778">agnezukiene.lt</text>
+    <text x="500" y="104" class="h1" fill="#3c3046">Subtilus jautrumas</text>
+    <text x="500" y="143" class="body" fill="#675d68">Švelnesnė, intymesnė kryptis. Tinka, jei norisi elegancijos ir mažiau žalių tonų.</text>
+    <rect x="500" y="174" width="190" height="48" rx="8" fill="#7a5b7d"/>
+    <text x="526" y="205" class="button" fill="#ffffff">Registruotis</text>
+    <rect x="718" y="174" width="245" height="48" rx="8" fill="#eadfec"/>
+    <text x="744" y="205" class="button" fill="#3c3046">Apie konsultacijas</text>
+    <rect x="1010" y="42" width="350" height="190" rx="8" fill="#fffdfd" stroke="#ded4e1"/>
+    <text x="1036" y="82" class="small" fill="#7a5b7d">Akcentas</text>
+    <text x="1036" y="122" class="body" fill="#3c3046">Minkšta, brandu, asmeniška.</text>
+    <circle cx="94" cy="96" r="42" fill="#7a5b7d"/>
+    <circle cx="154" cy="96" r="42" fill="#eadfec"/>
+    <circle cx="214" cy="96" r="42" fill="#fffdfd"/>
+    <circle cx="274" cy="96" r="42" fill="#8c8b62"/>
+    <circle cx="334" cy="96" r="42" fill="#3c3046"/>
+    <text x="72" y="178" class="small" fill="#675d68">#7A5B7D  #EADFEC  #FFFDFD  #8C8B62  #3C3046</text>
+  </g>
+
+  <!-- 5 -->
+  <g transform="translate(80,1460)" filter="url(#shadow)">
+    <rect width="1440" height="285" rx="12" fill="#f3f0e9"/>
+    <rect x="36" y="34" width="430" height="217" rx="8" fill="#fbfaf5"/>
+    <rect x="0" y="0" width="1440" height="285" rx="12" fill="none" stroke="#ddd4c4"/>
+    <text x="36" y="-22" class="label" fill="#2f2d27">5. Grafitas ir medus</text>
+    <text x="500" y="52" class="small" fill="#6b6559">agnezukiene.lt</text>
+    <text x="500" y="104" class="h1" fill="#2f2d27">Ramu, aišku, solidu</text>
+    <text x="500" y="143" class="body" fill="#655f55">Labiausiai brandi ir neutrali kryptis. Mažiau „romantikos“, daugiau pasitikėjimo.</text>
+    <rect x="500" y="174" width="190" height="48" rx="8" fill="#9a6a2f"/>
+    <text x="526" y="205" class="button" fill="#ffffff">Registruotis</text>
+    <rect x="718" y="174" width="245" height="48" rx="8" fill="#eadfc9"/>
+    <text x="744" y="205" class="button" fill="#2f2d27">Apie konsultacijas</text>
+    <rect x="1010" y="42" width="350" height="190" rx="8" fill="#fbfaf5" stroke="#ddd4c4"/>
+    <text x="1036" y="82" class="small" fill="#9a6a2f">Akcentas</text>
+    <text x="1036" y="122" class="body" fill="#2f2d27">Santūru, švaru, profesionalu.</text>
+    <circle cx="94" cy="96" r="42" fill="#9a6a2f"/>
+    <circle cx="154" cy="96" r="42" fill="#eadfc9"/>
+    <circle cx="214" cy="96" r="42" fill="#fbfaf5"/>
+    <circle cx="274" cy="96" r="42" fill="#6f7f86"/>
+    <circle cx="334" cy="96" r="42" fill="#2f2d27"/>
+    <text x="72" y="178" class="small" fill="#655f55">#9A6A2F  #EADFC9  #FBFAF5  #6F7F86  #2F2D27</text>
+  </g>
+</svg>

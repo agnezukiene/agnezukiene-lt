@@ -186,11 +186,12 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 
 Vizualinė kryptis:
 
-- Ramu, švaru, šilta, bet ne saldu.
+- Ramu, švaru, šviesu ir šalčiau.
 - Be medicininio šaltumo.
 - Be atsitiktinių žmonių nuotraukų.
 - Be dramatizuotų psichikos sveikatos vaizdų.
-- Neutralūs žemės, pieno baltumo, grafito, alyvuogių ir molio tonai.
+- Pasirinkta `Sidabro pienas` kryptis: pieno balta, labai šviesi šalta pilka, sidabro/perlo paviršiai ir melsvai pilki akcentai.
+- Vengti žalių, rudų, molio, smėlio ir juodai grafitinių dominuojančių tonų.
 
 ## 6. Kontaktų forma ir privatumas
 
