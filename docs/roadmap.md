@@ -34,7 +34,7 @@ Failai, kurie šiuo metu yra projekte:
 | `agne_zukiene_psichologes_svetaine_brief.md` | Turinio, tono, paslaugų ir etikos briefas | `[x]` naudojamas kaip turinio šaltinis |
 | `agne-zukiene-psichologe-codex-handoff.md` | Techninis, Cloudflare, GA4, SEO ir darbo eigos handoff | `[x]` naudojamas kaip techninis šaltinis |
 | `package.json` | Lokalių komandų ir projekto metaduomenų pradžia | `[x]` sukurtas; lokaliai `npm` nėra, patikra paleidžiama per Codex Node runtime |
-| `.gitignore` | Failai, kurių necommitiname | `[~]` pradinis variantas sukurtas |
+| `.gitignore` | Failai, kurių necommitiname | `[x]` saugo secret, OAuth, build, `Agnes foto/` ir `tmp/` failus nuo netyčinio commit |
 | `index.html` | Pradinis puslapis | `[~]` turinys sukurtas, patvirtintas portretas įkeltas lokaliai, bazinė techninė patikra praėjo; laukia galutinių tekstų sprendimų |
 | `apie.html` | Apie Agnę puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `paslaugos.html` | Paslaugų puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |

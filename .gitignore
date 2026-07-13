@@ -10,3 +10,5 @@ data/growth-review/*.csv
 node_modules/
 .wrangler/
 .dev.vars
+Agnes foto/
+tmp/
