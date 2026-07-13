@@ -8,6 +8,7 @@
   },
   "vars": {
     "CONTACT_TO_EMAIL": "zukiene.agne@gmail.com",
+    "CONTACT_FROM_EMAIL": "Agnė Žukienė <noreply@agnezukiene.lt>",
     "ALLOWED_ORIGIN": "https://agnezukiene.lt"
   },
   "assets": {
