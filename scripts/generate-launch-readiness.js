@@ -17,6 +17,10 @@ function checked(done, label, detail = "") {
   return `- \`${mark}\` ${label}${detail ? `: ${detail}` : ""}`;
 }
 
+function roadmapHasDone(text) {
+  return roadmap.includes(`\`[x]\` ${text}`) || roadmap.includes(`[x] ${text}`);
+}
+
 const config = read("public/assets/js/config.js");
 const wrangler = read("wrangler.jsonc");
 const worker = read("src/index.js");
@@ -24,10 +28,11 @@ const roadmap = read("docs/roadmap.md");
 const contentApproval = read("docs/content-approval.md");
 
 const ga4Configured = /ga4MeasurementId:\s*"G-[A-Z0-9]+"/.test(config);
+const ga4MeasurementId = config.match(/ga4MeasurementId:\s*"(G-[A-Z0-9]+)"/)?.[1] || "";
 const turnstileConfigured = /turnstileSiteKey:\s*"0x[0-9A-Za-z_-]+"/.test(config);
 const contactOriginConfigured = wrangler.includes('"ALLOWED_ORIGIN": "https://agnezukiene.lt"');
 const contactRecipientConfigured = wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"');
-const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmap.includes("[x] CONTACT_FROM_EMAIL");
+const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmapHasDone("CONTACT_FROM_EMAIL");
 const workerRequiresEmailConfig = worker.includes("env.RESEND_API_KEY") && worker.includes("env.CONTACT_FROM_EMAIL");
 const workerCanSendViaResend = worker.includes("https://api.resend.com/emails") && worker.includes("reply_to");
 const pendingContentDecisions = [...contentApproval.matchAll(/^\| laukia \| ([^|]+) \|/gm)]
@@ -60,43 +65,53 @@ const technicalGates = [
 const launchBlockers = [
   {
     label: "Resend domenas / siuntėjas",
-    done: roadmap.includes("[x] Resend domenas / siuntėjas"),
+    done: roadmapHasDone("Resend domenas / siuntėjas"),
     detail: "reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo"
   },
   {
     label: "CONTACT_FROM_EMAIL",
     done: contactSenderConfigured,
-    detail: "reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt>"
+    detail: contactSenderConfigured
+      ? "siuntėjo adresas nustatytas Cloudflare Worker konfigūracijoje"
+      : "reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt>"
   },
   {
     label: "RESEND_API_KEY secret",
-    done: roadmap.includes("[x] RESEND_API_KEY"),
+    done: roadmapHasDone("RESEND_API_KEY"),
     detail: "reikia Cloudflare Worker secret iš Resend API Keys"
   },
   {
     label: "Gyvas kontaktų formos siuntimas",
-    done: roadmap.includes("[x] Patikrinti formos siuntimą gyvai"),
+    done: roadmapHasDone("Patikrinti formos siuntimą gyvai"),
     detail: "galima tik po Resend secret ir siuntėjo įjungimo"
   },
   {
     label: "GA4 Measurement ID",
     done: ga4Configured,
-    detail: "reikia G-... reikšmės į public/assets/js/config.js"
+    detail: ga4Configured
+      ? `${ga4MeasurementId} įrašytas į public/assets/js/config.js`
+      : "reikia G-... reikšmės į public/assets/js/config.js"
   },
   {
     label: "GA4 Realtime / DebugView",
-    done: roadmap.includes("[x] Patikrinti GA4 Realtime"),
-    detail: "galima tik po GA4 Measurement ID"
+    done: roadmapHasDone("Patikrinti GA4 Realtime"),
+    detail: roadmapHasDone("Patikrinti GA4 Realtime")
+      ? "patikrinta ir pažymėta roadmap"
+      : "galima tik po GA4 Measurement ID"
   },
   {
     label: "Search Console domain property",
-    done: roadmap.includes("[x] Search Console patvirtinti"),
-    detail: "reikia Google TXT įrašo Cloudflare DNS"
+    done: roadmapHasDone("Search Console patvirtinti"),
+    detail: roadmapHasDone("Search Console patvirtinti")
+      ? "patvirtinta per Cloudflare DNS TXT"
+      : "reikia Google TXT įrašo Cloudflare DNS"
   },
   {
     label: "Search Console sitemap pateikimas",
-    done: roadmap.includes("[x] Patikrinti Search Console sitemap pateikimą"),
-    detail: "galima tik po Search Console patvirtinimo"
+    done: roadmapHasDone("Patikrinti Search Console sitemap pateikimą"),
+    detail: roadmapHasDone("Patikrinti Search Console sitemap pateikimą")
+      ? "sitemap pateiktas ir pažymėtas roadmap"
+      : "galima tik po Search Console patvirtinimo"
   },
   {
     label: "Agnės turinio patvirtinimai",

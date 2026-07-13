@@ -16,7 +16,7 @@ Atnaujinta: 2026-07-11
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
 | laukia | Galutinė kvalifikacijos formuluotė | Naudojama „psichologė, konsultavimo psichologijos magistrantė“. | Visi puslapiai, SEO metadata, schema |
 | laukia | Privatumo politikos tekstas | Techninis tekstas paruoštas, reikia Agnės galutinio patvirtinimo. | `privatumo-politika.html` |
-| laukia | Slapukų politikos tekstas | Techninis tekstas paruoštas, reikia Agnės galutinio patvirtinimo ir GA4 ID. | `slapuku-politika.html` |
+| laukia | Slapukų politikos tekstas | Techninis tekstas ir GA4 sutikimo logika paruošti, reikia Agnės galutinio teksto patvirtinimo. | `slapuku-politika.html` |
 
 ## Vienas klausimas vienu metu
 

@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-12
+Atnaujinta: 2026-07-13
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -35,16 +35,17 @@ Failai, kurie šiuo metu yra projekte:
 | `agne-zukiene-psichologe-codex-handoff.md` | Techninis, Cloudflare, GA4, SEO ir darbo eigos handoff | `[x]` naudojamas kaip techninis šaltinis |
 | `package.json` | Lokalių komandų ir projekto metaduomenų pradžia | `[x]` sukurtas; lokaliai `npm` nėra, patikra paleidžiama per Codex Node runtime |
 | `.gitignore` | Failai, kurių necommitiname | `[~]` pradinis variantas sukurtas |
-| `index.html` | Pradinis puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
+| `index.html` | Pradinis puslapis | `[~]` turinys sukurtas, patvirtintas portretas įkeltas lokaliai, bazinė techninė patikra praėjo; laukia galutinių tekstų sprendimų |
 | `apie.html` | Apie Agnę puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `paslaugos.html` | Paslaugų puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` trūksta kainos, trukmės, formato patvirtinimo |
 | `duk.html` | Dažni klausimai | `[~]` sukurtas pradinis DUK |
 | `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma, Turnstile ir backend sukurti; Resend siuntimas dar laukia |
 | `privatumo-politika.html` | Privatumo politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir analitiką; reikia Agnės galutinio patvirtinimo |
-| `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
+| `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir veikiančią GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
-| `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus hero vizualas be žmonių | `[x]` naudojamas laikinai iki Agnės portreto |
+| `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
+| `assets/images/agne-zukiene-psichologe-sidabro-pienas.png` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas svetainei, įkeltas lokaliai ir patikrintas desktop bei mobile maketuose; laukia commit ir production deploy |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
 | `README.md` | Repo įėjimo taškas su lokaliomis, patikros, deploy ir blokatorių komandomis | `[x]` sukurta |
@@ -55,7 +56,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | --- | --- | --- |
 | `assets/css/styles.css` | Visa svetainės vizualinė sistema | `[x]` sukurta MVP versija |
 | `assets/js/site.js` | Mobile meniu, slapukų pasirinkimas, forma, eventai | `[x]` sukurta MVP versija |
-| `public/assets/js/config.js` | Vieši GA4 Measurement ID ir Turnstile site key nustatymai | `[~]` Turnstile site key įrašytas, GA4 dar tuščias |
+| `public/assets/js/config.js` | Vieši GA4 Measurement ID ir Turnstile site key nustatymai | `[x]` Turnstile site key ir GA4 Measurement ID `G-3N3MGJHS0V` įrašyti; GA4 ID matomas ir production faile |
 | `src/index.js` | Cloudflare Worker entrypoint: statiniai failai ir `/api/contact` endpointas | `[x]` sukurta backend formai |
 | `sitemap.xml` | Search Console ir SEO | `[x]` sukurta |
 | `robots.txt` | Paieškos robotų instrukcijos | `[x]` sukurta |
@@ -158,7 +159,7 @@ Darbai:
 - `[~]` `kontaktai.html`: forma turi būti trumpa, duomenų minimizavimo principu.
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
 - `[~]` `privatumo-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo.
-- `[~]` `slapuku-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo ir GA4 Measurement ID.
+- `[~]` `slapuku-politika.html`: techninis tekstas ir GA4 sutikimo logika atnaujinti, reikia Agnės galutinio teksto patvirtinimo.
 - `[x]` `404.html`: patikrintas po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
@@ -174,23 +175,25 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 
 ## 5. Dizainas ir vizualai
 
-- `[~]` Laikinas hero vizualas sukurtas: `assets/images/rami-psichologes-svetaines-tekstura.png`.
+- `[x]` Laikinas hero vizualas sukurtas ir paliktas kaip atsarginis: `assets/images/rami-psichologes-svetaines-tekstura.png`.
 - `[x]` Sukurti MVP CSS sistemą: spalvos, tipografija, layout, kortelės, formos, mobile meniu.
 - `[x]` Patikrinti, kad tekstas netelpa už mygtukų, kortelių ar formos ribų.
 - `[x]` Patikrinti mobile vaizdą.
 - `[x]` Patikrinti desktop vaizdą.
 - `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
 - `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
-- `[ ]` Vėliau įkelti Agnės patvirtintą portretą.
-- `[ ]` Portretui paruošti atskirą query / promptą tik po to, kai Agnė pateiks nuotrauką.
+- `[x]` Agnė pateikė savo nuotraukas ir patvirtino galutinį hero variantą.
+- `[x]` Portretui paruoštas atskiras promptas, atlikta tik spalvinė korekcija iš gelsvos į svetainei tinkamą pieno, perlo ir švelnios pilkos kryptį.
+- `[x]` Patvirtintas portretas įkeltas į `public/assets/images/agne-zukiene-psichologe-sidabro-pienas.png` ir prijungtas `public/index.html` bei `og:image`.
+- `[x]` Hero proporcija pritaikyta portretui ir patikrinta 1280px desktop bei 390px mobile vaizduose; horizontalios slinkties nėra.
 
 Vizualinė kryptis:
 
-- Ramu, švaru, šviesu ir šalčiau.
+- Ramu, švaru ir šviesu, su pieno bei perlo baltumo pagrindu.
 - Be medicininio šaltumo.
 - Be atsitiktinių žmonių nuotraukų.
 - Be dramatizuotų psichikos sveikatos vaizdų.
-- Pasirinkta `Sidabro pienas` kryptis: pieno balta, labai šviesi šalta pilka, sidabro/perlo paviršiai ir melsvai pilki akcentai.
+- Pasirinkta `Sidabro pienas` kryptis: pieno balta, perlo paviršiai, labai šviesi neutrali pilka ir melsvai pilki mygtukų akcentai; fonai subtiliai suderinti su patvirtinta nuotrauka.
 - Vengti žalių, rudų, molio, smėlio ir juodai grafitinių dominuojančių tonų.
 
 ## 6. Kontaktų forma ir privatumas
@@ -203,6 +206,7 @@ Vizualinė kryptis:
 - `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc` neslaptą variable.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc` neslaptą variable.
+- `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc` neslaptą variable.
 - `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
@@ -225,13 +229,14 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `docs/seo-inventory.md`.
 - `[x]` Sukurti `scripts/generate-seo-inventory.js`.
 - `[x]` Sukurti `scripts/generate-content-registry.js`.
-- `[~]` Įdiegti GA4 tik su sutikimo režimu: frontend paruoštas, reikia GA4 Measurement ID.
+- `[x]` Sukurtas GA4 property ir Web stream svetainei `agnezukiene.lt`.
+- `[x]` Įdiegtas GA4 tik su sutikimo režimu; `G-3N3MGJHS0V` įrašytas `public/assets/js/config.js` ir matomas production faile.
 - `[x]` Sukurti `data/analytics-events.json`.
 - `[x]` Sukurti automatinę GA4 eventų allowlist, viešo config formato, consent įkėlimo ir privatumo patikrą `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
-- `[ ]` Patikrinti GA4 Realtime / DebugView.
-- `[ ]` Search Console patvirtinti kaip domain property per Cloudflare DNS TXT.
-- `[ ]` Pateikti `sitemap.xml` į Search Console.
+- `[x]` GA4 Realtime / DebugView patikrintas Google nustatymų darbo metu kitame Codex pokalbyje, kaip patvirtino Agnė 2026-07-13.
+- `[x]` Search Console patvirtinti kaip `agnezukiene.lt` domain property; 2026-07-13 viešame DNS patikrintas `google-site-verification` TXT įrašas.
+- `[x]` `https://agnezukiene.lt/sitemap.xml` pateiktas Search Console, kaip patvirtino Agnė; viešas sitemap ir `robots.txt` grąžina HTTP 200.
 
 Leidžiami GA4 eventai MVP:
 
@@ -275,7 +280,7 @@ Prieš Cloudflare deploy:
 - `[x]` Kontaktų forma validuoja laukus.
 - `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
 - `[x]` 2026-07-12 Worker fallback kodas ir lokali VM patikra dengia lietuvišką `404.html` turinį su 404 statusu.
-- `[!]` Production nežinomo URL lietuviškas 404 turinys laukia Cloudflare redeploy į `9002f14` arba naujesnį commitą.
+- `[!]` Production nežinomo URL lietuviškas 404 turinys vis dar laukia Cloudflare redeploy iš naujausio `main`: 2026-07-13 live patikra rado, kad 404 atsakyme trūksta lietuviško HTML turinio.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
 - `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
 
@@ -285,17 +290,17 @@ Po Cloudflare deploy:
 - `[x]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
-- `[~]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį ir lietuvišką 404 turinį: šiuo metu laukia Cloudflare redeploy po `9002f14`.
+- `[~]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį ir lietuvišką 404 turinį: 2026-07-13 vienintelis rastas neatitikimas yra production 404 lietuviško HTML turinys.
 - `[ ]` Patikrinti formos siuntimą gyvai.
-- `[ ]` Patikrinti GA4 Realtime.
-- `[ ]` Patikrinti Search Console sitemap pateikimą.
+- `[x]` Patikrinti GA4 Realtime / DebugView.
+- `[x]` Patikrinti Search Console sitemap pateikimą ir domain property būseną.
 
 ## 9. Vėlesnis augimas po MVP
 
 - `[ ]` Po 2-4 savaičių peržiūrėti GA4 ir Search Console duomenis.
 - `[ ]` Pagal realias paieškas sudaryti pirmų tinklaraščio / edukacinių tekstų sąrašą.
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
-- `[ ]` Pridėti Agnės portretą ir portfolio vizualinį sluoksnį.
+- `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.
 - `[ ]` Vėliau automatizuoti growth review, bet tik po stabilaus MVP.
 
@@ -303,15 +308,13 @@ Po Cloudflare deploy:
 
 Kitas darbas turi vykti tokia tvarka:
 
-1. `[x]` Pabaigti `assets/css/styles.css`.
-2. `[x]` Pabaigti `assets/js/site.js`.
-3. `[x]` Sukurti `sitemap.xml` ir `robots.txt`.
-4. `[x]` Sukurti `scripts/check-site-integrity.js`.
-5. `[x]` Paleisti lokalią patikrą ir sutvarkyti rastas klaidas.
-6. `[x]` Sukurti `docs/go-live-checklist.md`.
-7. `[x]` Padaryti pirmą commit ir push į GitHub.
-8. `[x]` Tada ruošti Cloudflare Pages/Workers prijungimą.
+1. `[~]` Užbaigti dabartinį dizaino paketą: patvirtintas portretas, hero proporcijos, atnaujinta pieno/perlo paletė ir GA4 konfigūracija jau paruošti lokaliai; reikia commit, push ir Cloudflare deploy.
+2. `[!]` Po deploy pakartoti production patikrą ir sutvarkyti lietuviško 404 puslapio pateikimą.
+3. `[ ]` Patvirtinti Resend domeną, įdėti `RESEND_API_KEY` ir gyvai patikrinti kontaktų formos laišką; `CONTACT_FROM_EMAIL` jau nustatytas.
+4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
+5. `[ ]` Galutinai patvirtinti privatumo ir slapukų politikų tekstus.
+6. `[ ]` Kai production stabiliai veiks 2-4 savaites, pradėti pirmą GA4 ir Search Console augimo peržiūrą.
 
-Dabartinis sprinto fokusas po Cloudflare/Turnstile: Resend el. pašto siuntimas, GA4, Search Console ir galutinė privatumo / slapukų tekstų peržiūra.
+Dabartinis sprinto fokusas: naujo portreto ir dizaino deploy, production 404, Resend el. pašto siuntimas ir galutiniai Agnės turinio sprendimai. GA4, Search Console ir sitemap darbai užbaigti.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.

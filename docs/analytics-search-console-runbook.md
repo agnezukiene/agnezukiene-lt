@@ -113,8 +113,8 @@ Search Console TXT įrašas gali būti pridėtas kartu su esamais TXT įrašais.
 | Darbas | Statusas |
 | --- | --- |
 | GA4 consent-mode frontend paruoštas | padaryta |
-| GA4 Measurement ID | laukia |
-| GA4 Realtime / DebugView patikra | laukia po Measurement ID |
-| Search Console domain property | laukia |
-| Search Console DNS TXT | laukia Google sugeneruoto TXT |
-| Sitemap pateikimas | laukia po Search Console patvirtinimo |
+| GA4 Measurement ID `G-3N3MGJHS0V` | padaryta |
+| GA4 Realtime / DebugView patikra | padaryta |
+| Search Console domain property | padaryta |
+| Search Console DNS TXT | padaryta, viešai patikrinta 2026-07-13 |
+| Sitemap pateikimas | padaryta; viešas sitemap grąžina HTTP 200 |

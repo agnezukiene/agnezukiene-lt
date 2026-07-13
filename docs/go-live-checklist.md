@@ -72,6 +72,7 @@ Atnaujinta: 2026-07-12
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
+- `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc`.
 - `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
 - `[ ]` Patikrinti sėkmingą formos siuntimą gyvai.
 - `[ ]` Patikrinti formos klaidas gyvai.
@@ -80,8 +81,8 @@ Atnaujinta: 2026-07-12
 
 - `[x]` Sukurtas GA4 ir Search Console runbook `docs/analytics-search-console-runbook.md`.
 - `[x]` GA4 eventų allowlist ir jautrių parametrų patikra automatizuota.
-- `[ ]` Sukurti GA4 property.
-- `[~]` Įdiegti GA4 su sutikimo režimu: kodas paruoštas, reikia Measurement ID.
-- `[ ]` Patikrinti GA4 Realtime.
-- `[ ]` Search Console patvirtinti per Cloudflare DNS TXT.
-- `[ ]` Pateikti `sitemap.xml`.
+- `[x]` Sukurti GA4 property ir Web stream svetainei `agnezukiene.lt`.
+- `[x]` Įdiegti GA4 su sutikimo režimu ir Measurement ID `G-3N3MGJHS0V`.
+- `[x]` Patikrinti GA4 Realtime / DebugView.
+- `[x]` Search Console patvirtinti per Cloudflare DNS TXT; viešas verification įrašas patikrintas 2026-07-13.
+- `[x]` Pateikti `https://agnezukiene.lt/sitemap.xml` ir patikrinti viešą HTTP 200 atsakymą.

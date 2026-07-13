@@ -29,23 +29,23 @@ Atnaujinta: 2026-07-13
 | Statusas | Darbas | Pastaba |
 | --- | --- | --- |
 | laukia | Resend domenas / siuntėjas | reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo |
-| laukia | CONTACT_FROM_EMAIL | reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt> |
+| padaryta | CONTACT_FROM_EMAIL | siuntėjo adresas nustatytas Cloudflare Worker konfigūracijoje |
 | laukia | RESEND_API_KEY secret | reikia Cloudflare Worker secret iš Resend API Keys |
 | laukia | Gyvas kontaktų formos siuntimas | galima tik po Resend secret ir siuntėjo įjungimo |
-| laukia | GA4 Measurement ID | reikia G-... reikšmės į public/assets/js/config.js |
-| laukia | GA4 Realtime / DebugView | galima tik po GA4 Measurement ID |
-| laukia | Search Console domain property | reikia Google TXT įrašo Cloudflare DNS |
-| laukia | Search Console sitemap pateikimas | galima tik po Search Console patvirtinimo |
+| padaryta | GA4 Measurement ID | G-3N3MGJHS0V įrašytas į public/assets/js/config.js |
+| padaryta | GA4 Realtime / DebugView | patikrinta ir pažymėta roadmap |
+| padaryta | Search Console domain property | patvirtinta per Cloudflare DNS TXT |
+| padaryta | Search Console sitemap pateikimas | sitemap pateiktas ir pažymėtas roadmap |
 | laukia | Agnės turinio patvirtinimai | laukia 9 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė, Privatumo politikos tekstas, Slapukų politikos tekstas |
 | laukia | Kitas Agnės turinio klausimas | [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti |
 
 ## Kiti veiksmai
 
 1. Resend domenas / siuntėjas: reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo
-2. CONTACT_FROM_EMAIL: reikia Cloudflare Worker variable, pvz. Agnė Žukienė <noreply@agnezukiene.lt>
-3. RESEND_API_KEY secret: reikia Cloudflare Worker secret iš Resend API Keys
-4. Gyvas kontaktų formos siuntimas: galima tik po Resend secret ir siuntėjo įjungimo
-5. GA4 Measurement ID: reikia G-... reikšmės į public/assets/js/config.js
+2. RESEND_API_KEY secret: reikia Cloudflare Worker secret iš Resend API Keys
+3. Gyvas kontaktų formos siuntimas: galima tik po Resend secret ir siuntėjo įjungimo
+4. Agnės turinio patvirtinimai: laukia 9 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė, Privatumo politikos tekstas, Slapukų politikos tekstas
+5. Kitas Agnės turinio klausimas: [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti
 
 ## Patikros komanda
 

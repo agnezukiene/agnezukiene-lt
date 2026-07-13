@@ -1,6 +1,6 @@
 # Manual setup queue
 
-Atnaujinta: 2026-07-12
+Atnaujinta: 2026-07-13
 
 Šis failas yra trumpa rankinių paskyrų veiksmų eilė. Jis papildo `docs/launch-readiness.md`, `docs/cloudflare-variables-runbook.md` ir `docs/analytics-search-console-runbook.md`.
 
@@ -49,6 +49,8 @@ Patikra po šio žingsnio: Resend turi rodyti domeną / siuntėją kaip verified
 
 ## 2. Cloudflare Worker variables ir secrets
 
+Statusas 2026-07-13: `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` jau yra `wrangler.jsonc`; liko sukurti ir Cloudflare pridėti tik `RESEND_API_KEY` secret po Resend domeno patvirtinimo.
+
 Tikslas: leisti Worker realiai išsiųsti kontaktų formos laišką.
 
 Cloudflare vieta:
@@ -79,7 +81,9 @@ npm run pre-go-live -- https://agnezukiene.lt
 
 Tada gyvai išsiųsti testinę užklausą iš `https://agnezukiene.lt/kontaktai.html` ir patikrinti, ar laiškas ateina į `zukiene.agne@gmail.com`.
 
-## 3. GA4 Measurement ID
+## 3. GA4 Measurement ID - padaryta
+
+Statusas 2026-07-13: GA4 property ir Web stream sukurti, `G-3N3MGJHS0V` įrašytas į svetainę, o Realtime / DebugView patikra užbaigta. Toliau pateikta eiga palikta kaip techninė atmintinė.
 
 Tikslas: įjungti analitiką tik su lankytojo sutikimu.
 
@@ -110,7 +114,9 @@ npm run pre-go-live -- https://agnezukiene.lt
 
 Tada atidaryti svetainę, paspausti `Sutinku` slapukų juostoje ir GA4 Realtime / DebugView patikrinti, kad matomas apsilankymas bei nėra kontaktų formos jautrių laukų.
 
-## 4. Search Console
+## 4. Search Console - padaryta
+
+Statusas 2026-07-13: domain property patvirtintas, Cloudflare DNS turi viešai matomą `google-site-verification` TXT, o sitemap pateiktas. Toliau pateikta eiga palikta kaip techninė atmintinė.
 
 Tikslas: patvirtinti domeną Google Search Console ir pateikti sitemap.
 
