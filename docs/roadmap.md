@@ -45,7 +45,7 @@ Failai, kurie šiuo metu yra projekte:
 | `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir veikiančią GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
-| `assets/images/agne-zukiene-psichologe-sidabro-pienas.png` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas svetainei, patikrintas desktop bei mobile maketuose ir 2026-07-13 įkeltas į production |
+| `assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg` | Patvirtintas Agnės hero portretas | `[~]` spalviškai pritaikytas ir patikrintas; optimizuotas iš 2,1 MB PNG į 440 KB JPEG, laukia deploy ir production patikros |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
 | `README.md` | Repo įėjimo taškas su lokaliomis, patikros, deploy ir blokatorių komandomis | `[x]` sukurta |
@@ -186,6 +186,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Portretui paruoštas atskiras promptas, atlikta tik spalvinė korekcija iš gelsvos į svetainei tinkamą pieno, perlo ir švelnios pilkos kryptį.
 - `[x]` Patvirtintas portretas įkeltas į `public/assets/images/agne-zukiene-psichologe-sidabro-pienas.png` ir prijungtas `public/index.html` bei `og:image`.
 - `[x]` Hero proporcija pritaikyta portretui ir patikrinta 1280px desktop bei 390px mobile vaizduose; horizontalios slinkties nėra.
+- `[~]` Hero paveikslo našumo optimizacija: išlaikant `1089 × 1445` matmenis paruoštas 440 KB JPEG vietoje 2,1 MB PNG, pridėti `width`, `height`, `fetchpriority` ir `decoding`; laukia production deploy patikros.
 
 Vizualinė kryptis:
 

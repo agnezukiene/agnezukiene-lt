@@ -142,6 +142,20 @@ const robots = read("public/robots.txt");
 if (!/User-agent:\s*\*/.test(robots)) errors.push("robots.txt: missing User-agent: *");
 if (!robots.includes("Sitemap: https://agnezukiene.lt/sitemap.xml")) errors.push("robots.txt: missing production sitemap URL");
 
+const homeHtml = readSite("index.html");
+const heroImagePath = "public/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg";
+if (!homeHtml.includes('src="/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg"')) {
+  errors.push("index.html: hero should use the optimized JPEG portrait");
+}
+for (const attribute of ['width="1089"', 'height="1445"', 'fetchpriority="high"', 'decoding="async"']) {
+  if (!homeHtml.includes(attribute)) errors.push(`index.html: hero image missing ${attribute}`);
+}
+if (!fs.existsSync(path.join(root, heroImagePath))) {
+  errors.push(`Missing required hero image: ${heroImagePath}`);
+} else if (fs.statSync(path.join(root, heroImagePath)).size > 600 * 1024) {
+  errors.push(`${heroImagePath}: hero image should stay below 600 KiB`);
+}
+
 const registry = JSON.parse(read("data/site-content-registry.json"));
 if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length) {
   errors.push("data/site-content-registry.json: page count does not match HTML files");
