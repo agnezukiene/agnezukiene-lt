@@ -66,7 +66,7 @@ async function main() {
         fetch: async (request) => {
           const url = new URL(request.url);
           assetCalls.push(url.pathname);
-          if (url.pathname === "/404.html") {
+          if (url.pathname === "/404") {
             return new Response("<!doctype html><html lang=\"lt\"><body><h1>Puslapis nerastas</h1></body></html>", {
               status: 200,
               headers: { "content-type": "text/html; charset=utf-8" }
@@ -78,7 +78,7 @@ async function main() {
     });
     const text = await response.text();
     assert.strictEqual(response.status, 404, "Unknown static GET paths should return a 404 status");
-    assert.deepStrictEqual(assetCalls, ["/neegzistuojantis-puslapis", "/404.html"], "Worker should fetch the custom 404 page after an asset miss");
+    assert.deepStrictEqual(assetCalls, ["/neegzistuojantis-puslapis", "/404"], "Worker should fetch the extensionless custom 404 page after an asset miss");
     assert(text.includes("<html lang=\"lt\">"), "Custom 404 fallback should return Lithuanian HTML");
     assert(text.includes("Puslapis nerastas"), "Custom 404 fallback should return the 404 content");
     assert(response.headers.get("x-content-type-options"), "Custom 404 fallback should include security headers");

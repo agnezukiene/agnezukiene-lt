@@ -45,7 +45,7 @@ Failai, kurie šiuo metu yra projekte:
 | `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir veikiančią GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
-| `assets/images/agne-zukiene-psichologe-sidabro-pienas.png` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas svetainei, įkeltas lokaliai ir patikrintas desktop bei mobile maketuose; laukia commit ir production deploy |
+| `assets/images/agne-zukiene-psichologe-sidabro-pienas.png` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas svetainei, patikrintas desktop bei mobile maketuose ir 2026-07-13 įkeltas į production |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
 | `README.md` | Repo įėjimo taškas su lokaliomis, patikros, deploy ir blokatorių komandomis | `[x]` sukurta |
@@ -280,7 +280,7 @@ Prieš Cloudflare deploy:
 - `[x]` Kontaktų forma validuoja laukus.
 - `[x]` 404 puslapis veikia gyvai ir grąžina `HTTP/2 404`.
 - `[x]` 2026-07-12 Worker fallback kodas ir lokali VM patikra dengia lietuvišką `404.html` turinį su 404 statusu.
-- `[!]` Production nežinomo URL lietuviškas 404 turinys vis dar laukia Cloudflare redeploy iš naujausio `main`: 2026-07-13 live patikra rado, kad 404 atsakyme trūksta lietuviško HTML turinio.
+- `[~]` Production nežinomo URL lietuviško 404 turinio priežastis nustatyta: Cloudflare `/404.html` peradresuoja į extensionless `/404`. Worker fallbackas pakeistas į `/404` ir lokali patikra praėjo; laukia šios pataisos commit, deploy ir live patikra.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
 - `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
 
@@ -290,7 +290,7 @@ Po Cloudflare deploy:
 - `[x]` Atidaryti `https://www.agnezukiene.lt` ir patikrinti nukreipimą.
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
-- `[~]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį ir lietuvišką 404 turinį: 2026-07-13 vienintelis rastas neatitikimas yra production 404 lietuviško HTML turinys.
+- `[~]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį ir lietuvišką 404 turinį: Worker pataisa paruošta lokaliai, galutinis live testas laukia deploy.
 - `[ ]` Patikrinti formos siuntimą gyvai.
 - `[x]` Patikrinti GA4 Realtime / DebugView.
 - `[x]` Patikrinti Search Console sitemap pateikimą ir domain property būseną.
@@ -308,13 +308,13 @@ Po Cloudflare deploy:
 
 Kitas darbas turi vykti tokia tvarka:
 
-1. `[~]` Užbaigti dabartinį dizaino paketą: patvirtintas portretas, hero proporcijos, atnaujinta pieno/perlo paletė ir GA4 konfigūracija jau paruošti lokaliai; reikia commit, push ir Cloudflare deploy.
-2. `[!]` Po deploy pakartoti production patikrą ir sutvarkyti lietuviško 404 puslapio pateikimą.
+1. `[x]` Užbaigti ir deployinti dizaino paketą: patvirtintą portretą, hero proporcijas, pieno/perlo paletę ir GA4 konfigūraciją. Production portretas patikrintas 2026-07-13.
+2. `[~]` Sutvarkyti lietuviško 404 puslapio pateikimą: priežastis nustatyta, Worker fallbackas pataisytas lokaliai; reikia commit, push, Cloudflare deploy ir live testo.
 3. `[ ]` Patvirtinti Resend domeną, įdėti `RESEND_API_KEY` ir gyvai patikrinti kontaktų formos laišką; `CONTACT_FROM_EMAIL` jau nustatytas.
 4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
 5. `[ ]` Galutinai patvirtinti privatumo ir slapukų politikų tekstus.
 6. `[ ]` Kai production stabiliai veiks 2-4 savaites, pradėti pirmą GA4 ir Search Console augimo peržiūrą.
 
-Dabartinis sprinto fokusas: naujo portreto ir dizaino deploy, production 404, Resend el. pašto siuntimas ir galutiniai Agnės turinio sprendimai. GA4, Search Console ir sitemap darbai užbaigti.
+Dabartinis sprinto fokusas: production 404 pataisos deploy, Resend el. pašto siuntimas ir galutiniai Agnės turinio sprendimai. Portretas, dizaino deploy, GA4, Search Console ir sitemap darbai užbaigti.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.

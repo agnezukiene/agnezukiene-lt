@@ -8,7 +8,7 @@ Atnaujinta: 2026-07-13
 
 Tikslas: užtikrinti, kad production Worker naudoja naujausią `main` commitą.
 
-Jei `npm run pre-go-live -- https://agnezukiene.lt` krenta ties nežinomo URL 404 turiniu, Cloudflare Workers build reikia redeployinti iš naujausio GitHub `main`.
+Jei `npm run pre-go-live -- https://agnezukiene.lt` krenta ties nežinomo URL 404 turiniu, patikrinti, ar production jau turi Worker fallback pataisą, kuri kreipiasi į Cloudflare extensionless `/404` kelią. Tada Cloudflare Workers build reikia redeployinti iš naujausio GitHub `main`.
 
 Cloudflare vieta:
 

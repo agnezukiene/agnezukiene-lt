@@ -48,7 +48,7 @@ export default {
 
     const assetResponse = await env.ASSETS.fetch(request);
     if (request.method === "GET" && assetResponse.status === 404) {
-      const notFoundUrl = new URL("/404.html", request.url);
+      const notFoundUrl = new URL("/404", request.url);
       const notFoundResponse = await env.ASSETS.fetch(new Request(notFoundUrl, request));
       if (notFoundResponse.ok) {
         return withSecurityHeaders(new Response(notFoundResponse.body, {
