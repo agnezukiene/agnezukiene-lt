@@ -227,6 +227,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[~]` Puslapiuose pradėti title, description, canonical ir OG metadata.
 - `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
 - `[x]` Sustiprinti SEO patikrą: exact canonical / OG URL, OG paveikslėlio failas, sitemap dublikatai, robots sitemap ir JSON-LD validumas tikrinami automatiškai.
+- `[~]` Suderinti viešus URL su Cloudflare extensionless HTML veikimu: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos pakeisti iš `.html` į švarius adresus; laukia production deploy ir redirect patikros.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
 - `[x]` Sukurti `docs/seo-inventory.md`.

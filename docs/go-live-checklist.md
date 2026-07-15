@@ -50,6 +50,7 @@ Atnaujinta: 2026-07-12
 - `[x]` Lokaliai patikrinti, kad Worker fallback nežinomam URL grąžina lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` Production patikrinti, kad nežinomas URL grąžina lietuvišką `404.html` turinį su 404 statusu; extensionless `/404` fallback gyvai patikrintas 2026-07-13.
 - `[x]` Patikrinti `sitemap.xml`.
+- `[~]` Patikrinti extensionless canonical, sitemap ir vidines nuorodas production; senieji `.html` URL turi nukreipti į švarius adresus.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
 - `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.

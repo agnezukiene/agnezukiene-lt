@@ -36,6 +36,10 @@ function readSite(file) {
   return fs.readFileSync(path.join(siteRoot, file), "utf8");
 }
 
+function routeFor(file) {
+  return file === "index.html" ? "/" : `/${file.replace(/\.html$/, "")}`;
+}
+
 for (const file of requiredFiles) {
   if (!fs.existsSync(path.join(root, file))) {
     errors.push(`Missing required file: ${file}`);
@@ -45,7 +49,7 @@ for (const file of requiredFiles) {
 for (const file of htmlFiles) {
   const html = readSite(file);
   const h1Count = (html.match(/<h1[\s>]/g) || []).length;
-  const expectedUrl = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
+  const expectedUrl = `https://agnezukiene.lt${routeFor(file)}`;
   const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"/);
   const ogUrlMatch = html.match(/<meta property="og:url" content="([^"]+)"/);
   const ogImageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
@@ -56,6 +60,9 @@ for (const file of htmlFiles) {
   }
   if (!technicalPages.has(file) && !/<main[^>]*id="turinys"/.test(html)) {
     errors.push(`${file}: main content should have id="turinys" for the skip link`);
+  }
+  if (technicalPages.has(file) && !/<meta name="robots" content="noindex"/.test(html)) {
+    errors.push(`${file}: technical page should be noindex`);
   }
   if (file !== "404.html" && !/<nav[^>]+aria-label="Pagrindinė navigacija"/.test(html)) {
     errors.push(`${file}: missing labelled primary navigation`);
@@ -70,6 +77,7 @@ for (const file of htmlFiles) {
   if (!/<meta name="description" content="[^"]{30,}"/.test(html)) errors.push(`${file}: missing meta description`);
   if (!/<link rel="canonical" href="https:\/\/agnezukiene\.lt\//.test(html)) errors.push(`${file}: missing canonical`);
   if (canonicalMatch && canonicalMatch[1] !== expectedUrl) errors.push(`${file}: canonical should be ${expectedUrl}`);
+  if (canonicalMatch && canonicalMatch[1].endsWith(".html")) errors.push(`${file}: canonical should use an extensionless URL`);
   if (canonicalMatch && canonicalUrls.has(canonicalMatch[1])) errors.push(`${file}: duplicate canonical ${canonicalMatch[1]}`);
   if (canonicalMatch) canonicalUrls.add(canonicalMatch[1]);
   if (!/<meta property="og:title" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:title`);
@@ -87,6 +95,14 @@ for (const file of htmlFiles) {
   if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);
   if (/lorem ipsum|TODO|href=""|href="#"/i.test(html)) errors.push(`${file}: contains placeholder text or empty link`);
+  if (/href="\/[^"]+\.html(?:[#?"])/.test(html)) errors.push(`${file}: internal links should use extensionless URLs`);
+  for (const match of html.matchAll(/<a\b[^>]*href="(\/[^"#?]*)/g)) {
+    const route = match[1];
+    const target = route === "/" ? "index.html" : `${route.slice(1)}.html`;
+    if (!fs.existsSync(path.join(siteRoot, target))) {
+      errors.push(`${file}: internal link ${route} has no matching ${target}`);
+    }
+  }
   if (/dar reikia patvirtinti|prieš viešą paleidimą|prieš publikavimą/i.test(html)) {
     errors.push(`${file}: contains internal pre-launch wording`);
   }
@@ -126,16 +142,17 @@ const sitemap = read("public/sitemap.xml");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const sitemapUrlSet = new Set(sitemapUrls);
 if (sitemapUrls.length !== sitemapUrlSet.size) errors.push("sitemap.xml: contains duplicate URLs");
-if (sitemapUrls.includes("https://agnezukiene.lt/404.html")) errors.push("sitemap.xml: should not include 404.html");
+if (sitemapUrls.some((url) => url.endsWith(".html"))) errors.push("sitemap.xml: URLs should be extensionless");
+if (sitemapUrls.includes("https://agnezukiene.lt/404")) errors.push("sitemap.xml: should not include 404");
 for (const file of htmlFiles.filter((file) => file !== "404.html")) {
-  const expected = file === "index.html" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt/${file}`;
+  const expected = `https://agnezukiene.lt${routeFor(file)}`;
   if (!sitemapUrlSet.has(expected)) {
     errors.push(`sitemap.xml: missing ${expected}`);
   }
 }
 for (const url of sitemapUrls) {
   const route = url.replace("https://agnezukiene.lt/", "");
-  const file = route === "" ? "index.html" : route;
+  const file = route === "" ? "index.html" : `${route}.html`;
   if (!htmlFiles.includes(file)) errors.push(`sitemap.xml: URL has no matching HTML file: ${url}`);
 }
 
@@ -164,7 +181,7 @@ if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length
 
 const seoInventory = read("docs/seo-inventory.md");
 for (const file of htmlFiles) {
-  const route = file === "index.html" ? "/" : `/${file}`;
+  const route = routeFor(file);
   if (!seoInventory.includes(`| ${route} |`)) {
     errors.push(`docs/seo-inventory.md: missing ${route}`);
   }

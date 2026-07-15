@@ -10,7 +10,7 @@ const htmlFiles = fs.readdirSync(publicDir)
   .sort((a, b) => routeFor(a).localeCompare(routeFor(b), "lt"));
 
 function routeFor(file) {
-  return file === "index.html" ? "/" : `/${file}`;
+  return file === "index.html" ? "/" : `/${file.replace(/\.html$/, "")}`;
 }
 
 function readHtml(file) {

@@ -3,14 +3,15 @@ const assert = require("assert");
 const baseUrl = process.argv[2] || "https://agnezukienepage.petrauskaiteagne.workers.dev";
 const htmlPages = [
   "/",
-  "/apie.html",
-  "/paslaugos.html",
-  "/konsultacijos.html",
-  "/duk.html",
-  "/kontaktai.html",
-  "/privatumo-politika.html",
-  "/slapuku-politika.html"
+  "/apie",
+  "/paslaugos",
+  "/konsultacijos",
+  "/duk",
+  "/kontaktai",
+  "/privatumo-politika",
+  "/slapuku-politika"
 ];
+const legacyHtmlPages = htmlPages.filter((page) => page !== "/").map((page) => `${page}.html`);
 
 const requiredHeaders = {
   "x-content-type-options": "nosniff",
@@ -55,7 +56,8 @@ async function main() {
   assert.strictEqual(sitemapResponse.status, 200, `/sitemap.xml: expected 200, got ${sitemapResponse.status}`);
   const sitemapText = await sitemapResponse.text();
   assert(sitemapText.includes("<urlset"), "/sitemap.xml: missing urlset");
-  assert(!sitemapText.includes("https://agnezukiene.lt/404.html"), "/sitemap.xml: should not include 404");
+  assert(!sitemapText.includes(".html</loc>"), "/sitemap.xml: URLs should be extensionless");
+  assert(!sitemapText.includes("https://agnezukiene.lt/404"), "/sitemap.xml: should not include 404");
   for (const page of htmlPages) {
     const expectedUrl = page === "/" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt${page}`;
     assert(sitemapText.includes(`<loc>${expectedUrl}</loc>`), `/sitemap.xml: missing ${expectedUrl}`);
@@ -75,6 +77,16 @@ async function main() {
   assert(notFoundText.includes("Puslapis nerastas"), "/neegzistuojantis-puslapis: missing Lithuanian 404 content");
 
   if (parsedBaseUrl.hostname === "agnezukiene.lt") {
+    for (const legacyPage of legacyHtmlPages) {
+      const response = await fetch(new URL(legacyPage, baseUrl), { redirect: "manual" });
+      assert.strictEqual(response.status, 307, `${legacyPage}: expected 307, got ${response.status}`);
+      assert.strictEqual(
+        response.headers.get("location"),
+        legacyPage.replace(/\.html$/, ""),
+        `${legacyPage}: expected redirect to extensionless URL`
+      );
+    }
+
     const httpResponse = await fetch("http://agnezukiene.lt", { redirect: "manual" });
     assert.strictEqual(httpResponse.status, 301, `http://agnezukiene.lt: expected 301, got ${httpResponse.status}`);
     assert.strictEqual(
