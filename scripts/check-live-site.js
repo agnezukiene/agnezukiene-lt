@@ -89,6 +89,19 @@ async function main() {
   );
   assert((await faviconResponse.text()).includes("<svg"), "/favicon.svg: missing SVG content");
 
+  for (const image of [
+    "/assets/images/agne-zukiene-psichologe-sidabro-pienas-480w.avif",
+    "/assets/images/agne-zukiene-psichologe-sidabro-pienas-768w.webp",
+    "/assets/images/agne-zukiene-psichologe-sidabro-pienas-1089w.avif"
+  ]) {
+    const imageResponse = await fetch(new URL(image, baseUrl));
+    assert.strictEqual(imageResponse.status, 200, `${image}: expected 200, got ${imageResponse.status}`);
+    assert(
+      (imageResponse.headers.get("content-type") || "").startsWith("image/"),
+      `${image}: expected image content type`
+    );
+  }
+
   const notFoundResponse = await fetch(new URL("/neegzistuojantis-puslapis", baseUrl), {
     redirect: "manual"
   });

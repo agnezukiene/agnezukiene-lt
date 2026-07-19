@@ -181,6 +181,24 @@ if (!fs.existsSync(path.join(root, heroImagePath))) {
   errors.push(`${heroImagePath}: hero image should stay below 600 KiB`);
 }
 
+for (const format of ["avif", "webp"]) {
+  for (const width of [480, 768, 1089]) {
+    const relativePath = `assets/images/agne-zukiene-psichologe-sidabro-pienas-${width}w.${format}`;
+    const filePath = path.join(siteRoot, relativePath);
+    if (!homeHtml.includes(`/${relativePath} ${width}w`)) {
+      errors.push(`index.html: responsive hero image is missing from srcset: ${relativePath}`);
+    }
+    if (!fs.existsSync(filePath)) {
+      errors.push(`Missing responsive hero image: public/${relativePath}`);
+    } else if (fs.statSync(filePath).size > 180 * 1024) {
+      errors.push(`public/${relativePath}: responsive hero image should stay below 180 KiB`);
+    }
+  }
+}
+if (!homeHtml.includes('rel="preload" as="image" type="image/avif"')) {
+  errors.push("index.html: responsive hero image should be discovered early through preload");
+}
+
 const registry = JSON.parse(read("data/site-content-registry.json"));
 if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length) {
   errors.push("data/site-content-registry.json: page count does not match HTML files");

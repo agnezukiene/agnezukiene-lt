@@ -59,6 +59,7 @@ const technicalGates = [
   checked(has("scripts/check-live-site.js", "strict-transport-security") && has("src/index.js", "max-age=31536000"), "Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį"),
   checked(has("scripts/check-live-site.js", "requiredPolicyDirectives") && has("src/index.js", "CONTENT_SECURITY_POLICY"), "Gyva svetainė atmeta neleistiną svetimą kodą"),
   checked(has("scripts/check-live-site.js", "/favicon.svg") && has("scripts/check-site-integrity.js", "missing SVG favicon link"), "Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje"),
+  checked(has("public/index.html", "agne-zukiene-psichologe-sidabro-pienas-768w.avif") && has("scripts/check-site-integrity.js", "responsive hero image"), "Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai"),
   checked(has("scripts/check-contact-api.js", "Email reply choice should require an email address") && has("scripts/check-contact-api.js", "Phone reply choice should require a phone number"), "Kontaktų forma sutikrina pasirinktą atsakymo būdą"),
   checked(has("public/assets/js/site.js", "aria-invalid") && has("public/kontaktai.html", "aria-describedby=\"form-status\""), "Formos klaidos susietos su konkrečiais laukais"),
   checked(has("public/assets/css/styles.css", "prefers-reduced-motion: reduce"), "Svetainė gerbia lankytojo mažesnio judesio pasirinkimą"),

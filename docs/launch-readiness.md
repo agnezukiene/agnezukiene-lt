@@ -22,6 +22,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį
 - `[x]` Gyva svetainė atmeta neleistiną svetimą kodą
 - `[x]` Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje
+- `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą

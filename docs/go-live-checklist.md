@@ -58,6 +58,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Patikrinti mažesnio judesio pasirinkimą ir slapukų pranešimo prieinamą pavadinimą.
 - `[x]` Įjungti ir automatiškai tikrinti vienerių metų saugaus ryšio reikalavimą po stabilaus HTTPS veikimo laikotarpio.
 - `[x]` Pridėti ir patikrinti naršyklės kortelės ženkliuką.
+- `[x]` Pridėti pagrindinės nuotraukos variantus skirtingiems ekranams ir tikroje naršyklėje patikrinti, kad siunčiamas mažesnis failas be vaizdo ar išdėstymo pokyčių.
 - `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.

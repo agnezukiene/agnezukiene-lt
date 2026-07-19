@@ -194,6 +194,8 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patvirtintas portretas įkeltas į `public/assets/images/agne-zukiene-psichologe-sidabro-pienas.png` ir prijungtas `public/index.html` bei `og:image`.
 - `[x]` Hero proporcija pritaikyta portretui ir patikrinta 1280px desktop bei 390px mobile vaizduose; horizontalios slinkties nėra.
 - `[x]` Hero paveikslo našumo optimizacija: išlaikant `1089 × 1445` matmenis production naudoja 440 KB JPEG vietoje 2,1 MB PNG, pridėti `width`, `height`, `fetchpriority` ir `decoding`; live patikra praėjo 2026-07-13.
+- `[x]` 2026-07-19 pagrindinei nuotraukai pridėti 480, 768 ir 1089 pikselių AVIF bei WebP variantai. Naršyklė pagal ekraną pasirenka tinkamą failą, o išankstinis įkėlimas padeda nuotrauką parodyti greičiau; vietinėje telefono ir kompiuterio patikroje vietoje 440 KB JPEG atsisiųstas maždaug 68 KB AVIF failas.
+- `[x]` Automatinės patikros saugo visų šešių sumažintų nuotraukos failų buvimą, dydžio ribą ir prieinamumą gyvoje svetainėje.
 - `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
 - `[x]` Gerbiamas lankytojo naršyklėje pasirinktas mažesnis judesys: išjungiamas sklandus slinkimas ir kortelių pakilimo judesys.
 - `[x]` Slapukų pasirinkimo pranešimas pažymėtas kaip aiškiai pavadinta puslapio sritis pagalbinėms skaitymo priemonėms.
