@@ -45,7 +45,6 @@ Failai, kurie šiuo metu yra projekte:
 | `slapuku-politika.html` | Slapukų politika | `[x]` tekstas ir pasirinkimo valdymas veikia; mygtukai patikrinti tikroje naršyklėje |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
 | `favicon.svg` | Naršyklės kortelės ženkliukas su inicialais AZ | `[x]` sukurtas pagal svetainės spalvas ir patikrintas naršyklėje |
-| `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
 | `assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas, optimizuotas iš 2,1 MB PNG į 440 KB JPEG ir 2026-07-13 patikrintas production |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
 | `wrangler.jsonc` | Cloudflare deploy konfigūracija, kad būtų keliami tik `public/` failai | `[x]` sukurta |
@@ -181,7 +180,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 
 ## 5. Dizainas ir vizualai
 
-- `[x]` Laikinas hero vizualas sukurtas ir paliktas kaip atsarginis: `assets/images/rami-psichologes-svetaines-tekstura.png`.
+- `[x]` Senas laikinas gelsvų ir žalsvų atspalvių paveikslas pašalintas iš viešų failų, nes jo nebenaudoja nė vienas puslapis ir jis neatitinka patvirtintos „Sidabro pieno“ krypties.
 - `[x]` Sukurti MVP CSS sistemą: spalvos, tipografija, layout, kortelės, formos, mobile meniu.
 - `[x]` Patikrinti, kad tekstas netelpa už mygtukų, kortelių ar formos ribų.
 - `[x]` Patikrinti mobile vaizdą.
@@ -239,7 +238,9 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 
 ## 7. SEO, GA4 ir Search Console
 
-- `[~]` Puslapiuose pradėti title, description, canonical ir OG metadata.
+- `[x]` Visi puslapiai turi unikalius pavadinimus, aprašymus, pagrindinius adresus ir dalijimosi metaduomenis.
+- `[x]` 2026-07-19 visų puslapių nuorodų peržiūroms nustatytas patvirtintas Agnės portretas, lietuvių kalba, svetainės pavadinimas, tikslūs nuotraukos matmenys ir aiškus nuotraukos aprašymas; trumpai socialinei peržiūrai naudojamas portretui tinkamas formatas.
+- `[x]` Paieškos suvestinė ir automatinės patikros išplėstos nuotraukos aprašymu, lietuvių kalba, svetainės pavadinimu bei socialinės peržiūros tipu.
 - `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
 - `[x]` Sustiprinti SEO patikrą: exact canonical / OG URL, OG paveikslėlio failas, sitemap dublikatai, robots sitemap ir JSON-LD validumas tikrinami automatiškai.
 - `[x]` Suderinti viešus URL su Cloudflare extensionless HTML veikimu: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus; production patvirtinti tiesioginiai HTTP 200 ir senų `.html` adresų 307 redirectai.

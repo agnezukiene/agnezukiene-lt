@@ -54,6 +54,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Patikrinti `sitemap.xml`.
 - `[x]` Patikrinti extensionless canonical, sitemap ir vidines nuorodas production; senieji `.html` URL nukreipia į švarius adresus.
 - `[x]` Patikrinti `robots.txt`.
+- `[x]` Patikrinti visų puslapių dalijimosi peržiūras: patvirtintas portretas, nuotraukos matmenys ir aprašymas, lietuvių kalba bei svetainės pavadinimas.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
 - `[x]` Įjungti naršyklės apsaugą, kuri atmeta neleistiną svetimą kodą, ir patikrinti ją tikroje naršyklėje.
 - `[x]` Patikrinti mažesnio judesio pasirinkimą ir slapukų pranešimo prieinamą pavadinimą.

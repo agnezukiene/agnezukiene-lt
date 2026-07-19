@@ -61,6 +61,13 @@ async function main() {
     const text = await response.text();
     assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
     assert(!/lorem ipsum|TODO/i.test(text), `${page}: contains placeholder text`);
+    assert(text.includes('<meta property="og:site_name" content="Agnė Žukienė">'), `${page}: missing social site name`);
+    assert(text.includes('<meta property="og:locale" content="lt_LT">'), `${page}: missing Lithuanian social locale`);
+    assert(
+      text.includes('<meta property="og:image:alt" content="Psichologė Agnė Žukienė šviesiame kabinete">'),
+      `${page}: missing social image description`
+    );
+    assert(text.includes('<meta name="twitter:card" content="summary">'), `${page}: missing compact social card`);
   }
 
   const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));

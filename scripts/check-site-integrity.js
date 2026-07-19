@@ -29,6 +29,7 @@ const requiredFiles = [
 const errors = [];
 const canonicalUrls = new Set();
 const technicalPages = new Set(["404.html"]);
+const socialImageUrl = "https://agnezukiene.lt/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg";
 
 function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
@@ -89,15 +90,29 @@ for (const file of htmlFiles) {
   if (canonicalMatch) canonicalUrls.add(canonicalMatch[1]);
   if (!/<meta property="og:title" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:title`);
   if (!/<meta property="og:description" content="[^"]+"/.test(html)) errors.push(`${file}: missing og:description`);
+  if (!html.includes('<meta property="og:site_name" content="Agnė Žukienė">')) errors.push(`${file}: missing og:site_name`);
+  if (!html.includes('<meta property="og:locale" content="lt_LT">')) errors.push(`${file}: missing Lithuanian og:locale`);
   if (!ogUrlMatch) errors.push(`${file}: missing og:url`);
   if (ogUrlMatch && ogUrlMatch[1] !== expectedUrl) errors.push(`${file}: og:url should be ${expectedUrl}`);
   if (!ogImageMatch) {
     errors.push(`${file}: missing og:image`);
+  } else if (ogImageMatch[1] !== socialImageUrl) {
+    errors.push(`${file}: og:image should use the approved portrait`);
   } else if (!ogImageMatch[1].startsWith("https://agnezukiene.lt/")) {
     errors.push(`${file}: og:image should use the production domain`);
   } else {
     const imagePath = ogImageMatch[1].replace("https://agnezukiene.lt/", "");
     if (!fs.existsSync(path.join(siteRoot, imagePath))) errors.push(`${file}: og:image file does not exist: ${imagePath}`);
+  }
+  for (const socialSnippet of [
+    '<meta property="og:image:width" content="1089">',
+    '<meta property="og:image:height" content="1445">',
+    '<meta property="og:image:alt" content="Psichologė Agnė Žukienė šviesiame kabinete">',
+    '<meta name="twitter:card" content="summary">',
+    `<meta name="twitter:image" content="${socialImageUrl}">`,
+    '<meta name="twitter:image:alt" content="Psichologė Agnė Žukienė šviesiame kabinete">'
+  ]) {
+    if (!html.includes(socialSnippet)) errors.push(`${file}: missing social sharing metadata: ${socialSnippet}`);
   }
   if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);

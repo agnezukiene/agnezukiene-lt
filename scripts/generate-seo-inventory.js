@@ -30,7 +30,9 @@ const rows = htmlFiles.map((file) => {
     h1: pick(html, /<h1[^>]*>([\s\S]*?)<\/h1>/i).replace(/<[^>]+>/g, ""),
     canonical: pick(html, /<link rel="canonical" href="([^"]+)"/i),
     ogTitle: pick(html, /<meta property="og:title" content="([^"]+)"/i),
-    ogDescription: pick(html, /<meta property="og:description" content="([^"]+)"/i)
+    ogDescription: pick(html, /<meta property="og:description" content="([^"]+)"/i),
+    ogImageAlt: pick(html, /<meta property="og:image:alt" content="([^"]+)"/i),
+    twitterCard: pick(html, /<meta name="twitter:card" content="([^"]+)"/i)
   };
 });
 
@@ -39,15 +41,17 @@ const md = [
   "",
   `Atnaujinta: ${new Date().toISOString().slice(0, 10)}`,
   "",
-  "| URL | Title | Description | H1 | Canonical | OG title |",
-  "| --- | --- | --- | --- | --- | --- |",
+  "| URL | Title | Description | H1 | Canonical | OG title | Nuotraukos aprašymas | Peržiūros tipas |",
+  "| --- | --- | --- | --- | --- | --- | --- | --- |",
   ...rows.map((row) => [
     row.route,
     row.title,
     row.description,
     row.h1,
     row.canonical,
-    row.ogTitle
+    row.ogTitle,
+    row.ogImageAlt,
+    row.twitterCard
   ].map(escapeCell).join(" | ")).map((line) => `| ${line} |`),
   "",
   "## Pastabos",
