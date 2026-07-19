@@ -46,6 +46,7 @@ const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-site-integrity.js"), "Site integrity check yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-color-contrast.js"), "WCAG spalvų kontrasto patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-analytics-privacy.js"), "GA4 privatumo patikra yra pre-go-live dalis"),
+  checked(has("scripts/check-analytics-privacy.js", "analytics withdrawal should remove Google Analytics cookies") && has("public/assets/js/site.js", "deactivateAnalytics"), "Lankomumo sutikimo atšaukimas sustabdo matavimą ir pašalina jo slapukus"),
   checked(has("scripts/pre-go-live.js", "scripts/check-contact-api.js"), "Kontaktų API patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-content-security-policy.js"), "Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis"),
   checked(has("scripts/check-site-integrity.js", "docs/manual-setup-queue.md"), "Rankinių setup veiksmų eilė yra privalomas repo failas"),

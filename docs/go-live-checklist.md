@@ -67,6 +67,7 @@ Atnaujinta: 2026-07-19
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
 - `[x]` Privatumo politika išsamiai atnaujinta 2026-07-19 pagal veikiančias paslaugas ir lankytojo teises.
 - `[x]` Slapukų politika ir pasirinkimo mygtukai patikrinti tikroje naršyklėje.
+- `[x]` Patikrinti sutikimo atšaukimą: pasirinkimo keitimas sustabdo lankomumo matavimą, pašalina jo slapukus ir leidžia vėliau pasirinkti iš naujo.
 
 ## Kontaktų forma
 

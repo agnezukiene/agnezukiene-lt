@@ -69,12 +69,47 @@ if (!/const initAnalytics = \(\) => \{[\s\S]*gtag\/js\?id=/.test(js)) {
   errors.push("public/assets/js/site.js: GA4 script loader should stay inside initAnalytics()");
 }
 
-if (!/if \(choice === "accepted"\) initAnalytics\(\);/.test(js)) {
-  errors.push("public/assets/js/site.js: analytics must initialize only after accepted cookie choice");
+if (!/const setCookieChoice = \(choice\) => \{[\s\S]*if \(choice === "accepted"\) \{\s*initAnalytics\(\);\s*\} else \{\s*deactivateAnalytics\(\);\s*\}/.test(js)) {
+  errors.push("public/assets/js/site.js: cookie choice should start or stop analytics immediately");
 }
 
-if (!/if \(cookieChoice === "accepted"\) \{\s*initAnalytics\(\);\s*\}/.test(js)) {
-  errors.push("public/assets/js/site.js: returning visitors should only initialize analytics after prior accepted choice");
+if (!/if \(cookieChoice === "accepted"\) \{\s*initAnalytics\(\);\s*\} else \{\s*deactivateAnalytics\(\);\s*\}/.test(js)) {
+  errors.push("public/assets/js/site.js: returning visitors should honor their stored analytics choice");
+}
+
+for (const requiredPrivacyControl of [
+  "analyticsDisableKey",
+  "removeAnalyticsCookies",
+  "deactivateAnalytics",
+  "analytics_storage: analyticsStorage",
+  'analyticsConsent("denied")',
+  'analyticsConsent("granted")',
+  "clearCookieChoice",
+  "readCookieChoice() === \"accepted\""
+]) {
+  if (!js.includes(requiredPrivacyControl)) {
+    errors.push(`public/assets/js/site.js: missing analytics withdrawal control: ${requiredPrivacyControl}`);
+  }
+}
+
+for (const advertisingControl of [
+  'ad_storage: "denied"',
+  'ad_user_data: "denied"',
+  'ad_personalization: "denied"',
+  "allow_google_signals: false",
+  "allow_ad_personalization_signals: false"
+]) {
+  if (!js.includes(advertisingControl)) {
+    errors.push(`public/assets/js/site.js: advertising-related analytics control should stay disabled: ${advertisingControl}`);
+  }
+}
+
+if (!/resetCookies\.addEventListener\("click", \(\) => \{[\s\S]*clearCookieChoice\(\);[\s\S]*deactivateAnalytics\(\);/.test(js)) {
+  errors.push("public/assets/js/site.js: changing the cookie choice should stop analytics before asking again");
+}
+
+if (!js.includes("_ga(?:_|$)") || !js.includes("Max-Age=0")) {
+  errors.push("public/assets/js/site.js: analytics withdrawal should remove Google Analytics cookies");
 }
 
 for (const match of js.matchAll(/\btrack\("([^"]+)"/g)) {

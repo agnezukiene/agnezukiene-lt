@@ -9,6 +9,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Site integrity check yra pre-go-live dalis
 - `[x]` WCAG spalvų kontrasto patikra yra pre-go-live dalis
 - `[x]` GA4 privatumo patikra yra pre-go-live dalis
+- `[x]` Lankomumo sutikimo atšaukimas sustabdo matavimą ir pašalina jo slapukus
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
 - `[x]` Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas

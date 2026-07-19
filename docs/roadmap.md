@@ -200,6 +200,8 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
 - `[x]` Gerbiamas lankytojo naršyklėje pasirinktas mažesnis judesys: išjungiamas sklandus slinkimas ir kortelių pakilimo judesys.
 - `[x]` Slapukų pasirinkimo pranešimas pažymėtas kaip aiškiai pavadinta puslapio sritis pagalbinėms skaitymo priemonėms.
+- `[x]` 2026-07-19 sutvarkytas lankomumo sutikimo atšaukimas: pasirinkimo keitimas arba atsisakymas iškart sustabdo matavimą, pašalina „Google Analytics“ slapukus ir aiškiai parodo dabartinę būseną; pakartotinis sutikimas tame pačiame puslapyje veikia.
+- `[x]` Visas „Sutinku → Keisti pasirinkimą → Atsisakyti → Sutinku“ kelias patikrintas tikroje naršyklėje su bandomaisiais lankomumo slapukais, o pagrindiniai reikalavimai įtraukti į automatinę privatumo patikrą.
 
 Vizualinė kryptis:
 
@@ -253,6 +255,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Įdiegtas GA4 tik su sutikimo režimu; `G-3N3MGJHS0V` įrašytas `public/assets/js/config.js` ir matomas production faile.
 - `[x]` Sukurti `data/analytics-events.json`.
 - `[x]` Sukurti automatinę GA4 eventų allowlist, viešo config formato, consent įkėlimo ir privatumo patikrą `scripts/check-analytics-privacy.js`.
+- `[x]` Automatinė lankomumo privatumo patikra saugo ne tik įjungimą po sutikimo, bet ir matavimo išjungimą, slapukų pašalinimą bei pasirinkimo keitimo kelią.
 - `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
 - `[x]` GA4 Realtime / DebugView patikrintas Google nustatymų darbo metu kitame Codex pokalbyje, kaip patvirtino Agnė 2026-07-13.
 - `[x]` Search Console patvirtinti kaip `agnezukiene.lt` domain property; 2026-07-13 viešame DNS patikrintas `google-site-verification` TXT įrašas.

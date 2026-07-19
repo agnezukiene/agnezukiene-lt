@@ -1,5 +1,45 @@
 (function () {
   const config = window.AGNE_SITE_CONFIG || {};
+  const analyticsDisableKey = config.ga4MeasurementId
+    ? `ga-disable-${config.ga4MeasurementId}`
+    : "";
+  const analyticsConfig = {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    send_page_view: true
+  };
+  const analyticsConsent = (analyticsStorage) => ({
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: analyticsStorage
+  });
+
+  const readCookieChoice = () => {
+    try {
+      const choice = localStorage.getItem("agne_cookie_choice");
+      return choice === "accepted" || choice === "declined" ? choice : "";
+    } catch (error) {
+      return "";
+    }
+  };
+
+  const saveCookieChoice = (choice) => {
+    try {
+      localStorage.setItem("agne_cookie_choice", choice);
+    } catch (error) {
+      // The banner remains usable even when browser storage is unavailable.
+    }
+  };
+
+  const clearCookieChoice = () => {
+    try {
+      localStorage.removeItem("agne_cookie_choice");
+    } catch (error) {
+      // There may be nothing to clear when browser storage is unavailable.
+    }
+  };
 
   const loadScript = (src) => new Promise((resolve, reject) => {
     const script = document.createElement("script");
@@ -11,20 +51,54 @@
   });
 
   const initAnalytics = () => {
-    if (!config.ga4MeasurementId || window.gtag) return;
+    if (!config.ga4MeasurementId) return;
+
+    if (analyticsDisableKey) window[analyticsDisableKey] = false;
+
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", analyticsConsent("granted"));
+      window.gtag("config", config.ga4MeasurementId, analyticsConfig);
+      return;
+    }
 
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () {
       window.dataLayer.push(arguments);
     };
+    window.gtag("consent", "default", analyticsConsent("granted"));
     window.gtag("js", new Date());
-    window.gtag("config", config.ga4MeasurementId, {
-      anonymize_ip: true,
-      send_page_view: true
-    });
+    window.gtag("config", config.ga4MeasurementId, analyticsConfig);
 
     loadScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(config.ga4MeasurementId)}`)
       .catch(() => {});
+  };
+
+  const removeAnalyticsCookies = () => {
+    const cookieNames = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("=")[0].trim())
+      .filter((name) => /^(_ga(?:_|$)|_gid$|_gat(?:_|$)|_gac_|_gcl_)/.test(name));
+    const host = window.location.hostname;
+    const domains = new Set(["", host, `.${host}`]);
+    if (host === "agnezukiene.lt" || host.endsWith(".agnezukiene.lt")) {
+      domains.add("agnezukiene.lt");
+      domains.add(".agnezukiene.lt");
+    }
+
+    cookieNames.forEach((name) => {
+      domains.forEach((domain) => {
+        const domainAttribute = domain ? `; Domain=${domain}` : "";
+        document.cookie = `${name}=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax${domainAttribute}`;
+      });
+    });
+  };
+
+  const deactivateAnalytics = () => {
+    if (analyticsDisableKey) window[analyticsDisableKey] = true;
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", analyticsConsent("denied"));
+    }
+    removeAnalyticsCookies();
   };
 
   const navToggle = document.querySelector(".nav-toggle");
@@ -71,7 +145,11 @@
   }
 
   const track = (eventName, params) => {
-    if (typeof window.gtag === "function") {
+    if (
+      readCookieChoice() === "accepted"
+      && typeof window.gtag === "function"
+      && (!analyticsDisableKey || window[analyticsDisableKey] !== true)
+    ) {
       window.gtag("event", eventName, params || {});
     }
   };
@@ -97,29 +175,38 @@
   const acceptCookies = document.querySelector("[data-cookie-accept]");
   const declineCookies = document.querySelector("[data-cookie-decline]");
   const resetCookies = document.querySelector("[data-cookie-reset]");
-  const cookieChoice = localStorage.getItem("agne_cookie_choice");
+  const choiceStatus = document.querySelector("[data-cookie-choice-status]");
+  const cookieChoice = readCookieChoice();
+
+  const showCookieChoiceStatus = (choice) => {
+    if (!choiceStatus) return;
+    choiceStatus.textContent = choice === "accepted"
+      ? "Pasirinkimas išsaugotas: lankomumo matavimas leidžiamas."
+      : "Pasirinkimas išsaugotas: lankomumo matavimas neleidžiamas.";
+  };
 
   if (cookieBanner && !cookieChoice) {
     cookieBanner.hidden = false;
   }
 
   const setCookieChoice = (choice) => {
-    localStorage.setItem("agne_cookie_choice", choice);
+    saveCookieChoice(choice);
     if (cookieBanner) cookieBanner.hidden = true;
-    if (choice === "accepted") initAnalytics();
-    window.dispatchEvent(new CustomEvent("analytics-consent", { detail: choice }));
-
-    const choiceStatus = document.querySelector("[data-cookie-choice-status]");
-    if (choiceStatus) {
-      choiceStatus.textContent = choice === "accepted"
-        ? "Pasirinkimas išsaugotas: lankomumo matavimas leidžiamas."
-        : "Pasirinkimas išsaugotas: lankomumo matavimas neleidžiamas.";
+    if (choice === "accepted") {
+      initAnalytics();
+    } else {
+      deactivateAnalytics();
     }
+    window.dispatchEvent(new CustomEvent("analytics-consent", { detail: choice }));
+    showCookieChoiceStatus(choice);
   };
 
   if (cookieChoice === "accepted") {
     initAnalytics();
+  } else {
+    deactivateAnalytics();
   }
+  if (cookieChoice) showCookieChoiceStatus(cookieChoice);
 
   if (acceptCookies) {
     acceptCookies.addEventListener("click", () => setCookieChoice("accepted"));
@@ -131,9 +218,9 @@
 
   if (resetCookies) {
     resetCookies.addEventListener("click", () => {
-      localStorage.removeItem("agne_cookie_choice");
+      clearCookieChoice();
+      deactivateAnalytics();
       if (cookieBanner) cookieBanner.hidden = false;
-      const choiceStatus = document.querySelector("[data-cookie-choice-status]");
       if (choiceStatus) choiceStatus.textContent = "Pasirinkite iš naujo žemiau pateiktame pranešime.";
       window.dispatchEvent(new CustomEvent("analytics-consent", { detail: "reset" }));
     });
