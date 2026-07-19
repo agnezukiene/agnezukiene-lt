@@ -8,7 +8,8 @@ const SECURITY_HEADERS = {
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
-  "x-frame-options": "DENY"
+  "x-frame-options": "DENY",
+  "strict-transport-security": "max-age=31536000"
 };
 
 const TOPIC_LABELS = {
@@ -39,7 +40,7 @@ export default {
 
     if (url.hostname === "www.agnezukiene.lt") {
       url.hostname = "agnezukiene.lt";
-      return Response.redirect(url.toString(), 301);
+      return withSecurityHeaders(Response.redirect(url.toString(), 301));
     }
 
     if (url.pathname === "/api/contact") {
@@ -154,6 +155,8 @@ function validateContact(data) {
   if (!data.email && !data.phone) return "Įrašykite el. paštą arba telefoną.";
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return "Patikrinkite el. pašto adresą.";
   if (!REPLY_LABELS[data.replyBy]) return "Pasirinkite, kaip patogiausia atsakyti.";
+  if (data.replyBy === "email" && !data.email) return "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
+  if (data.replyBy === "phone" && !data.phone) return "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
   if (!FORMAT_LABELS[data.format]) return "Pasirinkite konsultacijos formatą.";
   if (!TOPIC_LABELS[data.topic]) return "Pasirinkite bendrą temą.";
   if (!data.privacy) return "Patvirtinkite privatumo sutikimą.";

@@ -17,7 +17,8 @@ const requiredHeaders = {
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
-  "x-frame-options": "DENY"
+  "x-frame-options": "DENY",
+  "strict-transport-security": "max-age=31536000"
 };
 
 async function readJsonMessage(response) {
@@ -63,6 +64,14 @@ async function main() {
     assert(sitemapText.includes(`<loc>${expectedUrl}</loc>`), `/sitemap.xml: missing ${expectedUrl}`);
   }
 
+  const faviconResponse = await fetch(new URL("/favicon.svg", baseUrl));
+  assert.strictEqual(faviconResponse.status, 200, `/favicon.svg: expected 200, got ${faviconResponse.status}`);
+  assert(
+    (faviconResponse.headers.get("content-type") || "").includes("image/svg+xml"),
+    "/favicon.svg: expected SVG content type"
+  );
+  assert((await faviconResponse.text()).includes("<svg"), "/favicon.svg: missing SVG content");
+
   const notFoundResponse = await fetch(new URL("/neegzistuojantis-puslapis", baseUrl), {
     redirect: "manual"
   });
@@ -102,6 +111,7 @@ async function main() {
       "https://agnezukiene.lt/",
       "https://www.agnezukiene.lt: expected redirect to https://agnezukiene.lt/"
     );
+    assertSecurityHeaders(wwwResponse, "https://www.agnezukiene.lt redirect");
   }
 
   const contactGetResponse = await fetch(new URL("/api/contact", baseUrl));
@@ -199,6 +209,42 @@ async function main() {
   assert(
     (await readJsonMessage(contactValidationResponse)).includes("el. paštą arba telefoną"),
     "/api/contact validation: expected missing contact message"
+  );
+
+  const contactEmailChoiceResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      name: "Testas",
+      phone: "+37060000000",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other",
+      privacy: true
+    })
+  });
+  assert.strictEqual(contactEmailChoiceResponse.status, 400, "/api/contact email choice: expected 400");
+  assert(
+    (await readJsonMessage(contactEmailChoiceResponse)).includes("įrašykite el. pašto adresą"),
+    "/api/contact email choice: expected missing email message"
+  );
+
+  const contactPhoneChoiceResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      name: "Testas",
+      email: "test@example.com",
+      replyBy: "phone",
+      format: "unknown",
+      topic: "other",
+      privacy: true
+    })
+  });
+  assert.strictEqual(contactPhoneChoiceResponse.status, 400, "/api/contact phone choice: expected 400");
+  assert(
+    (await readJsonMessage(contactPhoneChoiceResponse)).includes("įrašykite telefono numerį"),
+    "/api/contact phone choice: expected missing phone message"
   );
 
   const contactResponse = await fetch(new URL("/api/contact", baseUrl), {

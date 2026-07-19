@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f2">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <title>Kontaktai | Agnė Žukienė psichologė</title>
   <meta name="description" content="Susisiekite su psichologe Agne Žukiene dėl konsultacijos ar klausimo. Kontaktinė forma ir el. paštas.">
   <link rel="canonical" href="https://agnezukiene.lt/kontaktai">
@@ -20,9 +22,9 @@
     <section class="page-hero"><p class="eyebrow">Kontaktai</p><h1>Galite parašyti trumpai - atsakysiu, kai galėsiu.</h1><p>Pirmam kontaktui nereikia išsamiai aprašyti visos situacijos. Kontaktų forma nėra skubios pagalbos kanalas.</p></section>
     <section class="contact-layout">
       <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
-        <div class="form-row"><label for="name">Vardas</label><input id="name" name="name" autocomplete="name" required></div>
-        <div class="form-row"><label for="email">El. paštas</label><input id="email" name="email" type="email" autocomplete="email"></div>
-        <div class="form-row"><label for="phone">Telefonas</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="form-row"><label for="name">Vardas</label><input id="name" name="name" autocomplete="name" maxlength="80" required></div>
+        <div class="form-row"><label for="email">El. paštas</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"></div>
+        <div class="form-row"><label for="phone">Telefonas</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"></div>
         <div class="form-row"><label for="replyBy">Kaip patogiausia atsakyti?</label><select id="replyBy" name="replyBy" required><option value="">Pasirinkite</option><option value="email">El. paštu</option><option value="phone">Telefonu</option><option value="either">Tinka abu būdai</option></select></div>
         <div class="form-row"><label for="format">Konsultacijos formatas</label><select id="format" name="format" required data-track-select="consultation_format_select"><option value="">Pasirinkite</option><option value="live">Gyvai</option><option value="online">Nuotoliu</option><option value="unknown">Dar nežinau</option></select></div>
         <div class="form-row"><label for="topic">Bendra tema</label><select id="topic" name="topic" required data-track-select="service_interest_select"><option value="">Pasirinkite</option><option value="adult">Suaugusiojo konsultacija</option><option value="teen">Paauglio konsultacija</option><option value="child">Vaiko konsultacija</option><option value="parents">Tėvų konsultacija</option><option value="education">Psichoedukacija</option><option value="career">Karjeros / savęs pažinimo klausimas</option><option value="other">Kita</option></select></div>
@@ -44,7 +46,7 @@
     </section>
   </main>
   <footer class="site-footer"><div><strong>Agnė Žukienė</strong><p>Psichologė, konsultavimo psichologijos magistrantė.</p></div><div class="footer-links"><a href="mailto:zukiene.agne@gmail.com" data-event="mailto_click">zukiene.agne@gmail.com</a><a href="/privatumo-politika">Privatumo politika</a><a href="/slapuku-politika">Slapukų politika</a></div></footer>
-  <div class="cookie-banner" data-cookie-banner hidden><p>Naudojame būtinus slapukus svetainės veikimui. Analitikos slapukai bus naudojami tik gavus sutikimą.</p><div><button class="button secondary" type="button" data-cookie-decline>Atsisakyti</button><button class="button primary" type="button" data-cookie-accept>Sutinku</button></div></div>
+  <div class="cookie-banner" data-cookie-banner hidden><p>Svetainė įsimena jūsų pasirinkimą naršyklėje. Lankomumo matavimas įjungiamas tik gavus sutikimą.</p><div><button class="button secondary" type="button" data-cookie-decline>Atsisakyti</button><button class="button primary" type="button" data-cookie-accept>Sutinku</button></div></div>
   <script src="/assets/js/config.js" defer></script>
   <script src="/assets/js/site.js" defer></script>
 </body>

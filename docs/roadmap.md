@@ -44,6 +44,7 @@ Failai, kurie šiuo metu yra projekte:
 | `privatumo-politika.html` | Privatumo politika | `[x]` 2026-07-19 išsamiai atnaujinta pagal realiai naudojamas paslaugas ir lankytojų teises |
 | `slapuku-politika.html` | Slapukų politika | `[x]` tekstas ir pasirinkimo valdymas veikia; mygtukai patikrinti tikroje naršyklėje |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
+| `favicon.svg` | Naršyklės kortelės ženkliukas su inicialais AZ | `[x]` sukurtas pagal svetainės spalvas ir patikrintas naršyklėje |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
 | `assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas, optimizuotas iš 2,1 MB PNG į 440 KB JPEG ir 2026-07-13 patikrintas production |
 | `public/` | Viešai deployinami svetainės failai Cloudflare Workers/Pages aplinkai | `[x]` sukurta po Cloudflare build klaidos |
@@ -99,6 +100,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
 - `[x]` 2026-07-12 papildyti `scripts/generate-launch-readiness.js`, kad santrauka rodytų manual setup queue, bazinio prieinamumo ir saugumo headerių reikšmių vartus.
+- `[x]` 2026-07-19 papildyti automatines patikras naršyklės ženkliuku, atsakymo būdo laukais ir vienerių metų saugaus ryšio reikalavimu.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
@@ -136,7 +138,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Patikrinti HTTPS.
 - `[x]` Cloudflare DNS sutvarkyta: root ir `www` aptarnaujami per Worker custom domains; rankinis `www AAAA 100::` įrašas pašalintas, kad nekonfliktuotų su Worker domain.
 - `[x]` Cloudflare Edge Certificates: `Always Use HTTPS` įjungtas, `Minimum TLS Version` pakeistas į `TLS 1.2`, `TLS 1.3` ir `Automatic HTTPS Rewrites` patikrinti kaip įjungti.
-- `[~]` HSTS kol kas nejungtas; HTTPS stabilumas patikrintas 2026-07-10 ir 2026-07-11, HSTS svarstyti tik po kelių dienų stabilaus veikimo.
+- `[x]` Po devynių stabilaus saugaus ryšio dienų įjungtas vienerių metų HSTS reikalavimas be subdomenų ir išankstinio naršyklių sąrašo; taip naršyklė nebegrįžta į nesaugų adresą.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
 - `[x]` Sukurti live smoke testą laikinam Cloudflare URL ir production domenui.
 
@@ -161,6 +163,7 @@ Darbai:
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
 - `[x]` `privatumo-politika.html`: 2026-07-19 paskelbimui paruoštas išsamus tekstas apie valdytoją, tikslus, paslaugų teikėjus, saugojimą ir lankytojo teises.
 - `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
+- `[x]` 2026-07-19 slapukų paaiškinimas patikslintas pagal realų naršyklės pasirinkimo įrašą, „Google Analytics“ slapukus ir formos apsaugą.
 - `[x]` `404.html`: patikrintas po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
@@ -189,6 +192,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patvirtintas portretas įkeltas į `public/assets/images/agne-zukiene-psichologe-sidabro-pienas.png` ir prijungtas `public/index.html` bei `og:image`.
 - `[x]` Hero proporcija pritaikyta portretui ir patikrinta 1280px desktop bei 390px mobile vaizduose; horizontalios slinkties nėra.
 - `[x]` Hero paveikslo našumo optimizacija: išlaikant `1089 × 1445` matmenis production naudoja 440 KB JPEG vietoje 2,1 MB PNG, pridėti `width`, `height`, `fetchpriority` ir `decoding`; live patikra praėjo 2026-07-13.
+- `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
 
 Vizualinė kryptis:
 
@@ -215,6 +219,7 @@ Vizualinė kryptis:
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
+- `[x]` Forma sutikrina pasirinktą atsakymo būdą: renkantis el. paštą reikia el. pašto adreso, renkantis telefoną reikia telefono numerio; lankytojui parodomas tikslus paaiškinimas ir pažymimas trūkstamas laukas.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas prieš parsindamas formos duomenis.

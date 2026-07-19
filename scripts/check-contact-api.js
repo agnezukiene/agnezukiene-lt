@@ -60,6 +60,21 @@ async function main() {
   const worker = createWorker();
 
   {
+    const response = await worker.fetch(new Request("https://www.agnezukiene.lt/kontaktai?is=www"), {});
+    assert.strictEqual(response.status, 301, "www requests should redirect permanently to the main domain");
+    assert.strictEqual(
+      response.headers.get("location"),
+      "https://agnezukiene.lt/kontaktai?is=www",
+      "www redirect should preserve the path and query"
+    );
+    assert.strictEqual(
+      response.headers.get("strict-transport-security"),
+      "max-age=31536000",
+      "www redirect should require secure connections"
+    );
+  }
+
+  {
     const assetCalls = [];
     const response = await worker.fetch(new Request("https://agnezukiene.lt/neegzistuojantis-puslapis"), {
       ASSETS: {
@@ -82,12 +97,14 @@ async function main() {
     assert(text.includes("<html lang=\"lt\">"), "Custom 404 fallback should return Lithuanian HTML");
     assert(text.includes("Puslapis nerastas"), "Custom 404 fallback should return the 404 content");
     assert(response.headers.get("x-content-type-options"), "Custom 404 fallback should include security headers");
+    assert.strictEqual(response.headers.get("strict-transport-security"), "max-age=31536000", "Custom 404 should require secure connections");
   }
 
   {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact"), {});
     assert.strictEqual(response.status, 405, "GET /api/contact should be rejected");
     assert(response.headers.get("x-content-type-options"), "API responses should include security headers");
+    assert.strictEqual(response.headers.get("strict-transport-security"), "max-age=31536000", "API responses should require secure connections");
   }
 
   {
@@ -140,6 +157,20 @@ async function main() {
     const body = await readJson(response);
     assert.strictEqual(response.status, 400, "Missing contact method should be rejected");
     assert(body.message.includes("el. paštą arba telefoną"), "Missing contact response should explain the error");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ email: "", phone: "+37060000000", replyBy: "email" })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Email reply choice should require an email address");
+    assert(body.message.includes("įrašykite el. pašto adresą"), "Email reply mismatch should explain what is missing");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ email: "test@example.com", phone: "", replyBy: "phone" })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Phone reply choice should require a phone number");
+    assert(body.message.includes("įrašykite telefono numerį"), "Phone reply mismatch should explain what is missing");
   }
 
   {

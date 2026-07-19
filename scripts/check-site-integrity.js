@@ -8,6 +8,7 @@ const requiredFiles = [
   "public/assets/css/styles.css",
   "public/assets/js/config.js",
   "public/assets/js/site.js",
+  "public/favicon.svg",
   "public/_headers",
   "public/sitemap.xml",
   "public/robots.txt",
@@ -74,6 +75,8 @@ for (const file of htmlFiles) {
     errors.push(`${file}: missing main-menu navigation target`);
   }
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);
+  if (!/<meta name="theme-color" content="#[0-9a-fA-F]{6}">/.test(html)) errors.push(`${file}: missing theme color`);
+  if (!/<link rel="icon" href="\/favicon\.svg" type="image\/svg\+xml">/.test(html)) errors.push(`${file}: missing SVG favicon link`);
   if (!/<meta name="description" content="[^"]{30,}"/.test(html)) errors.push(`${file}: missing meta description`);
   if (!/<link rel="canonical" href="https:\/\/agnezukiene\.lt\//.test(html)) errors.push(`${file}: missing canonical`);
   if (canonicalMatch && canonicalMatch[1] !== expectedUrl) errors.push(`${file}: canonical should be ${expectedUrl}`);
@@ -214,6 +217,9 @@ if (!/<label class="checkbox">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/label>
 if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
   errors.push("kontaktai.html: submit button should preserve its readable label while sending");
 }
+for (const fieldLimit of ['name="name" autocomplete="name" maxlength="80"', 'name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"', 'name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"']) {
+  if (!contactHtml.includes(fieldLimit)) errors.push(`kontaktai.html: missing field limit or keyboard hint: ${fieldLimit}`);
+}
 
 const privacyHtml = readSite("privatumo-politika.html");
 for (const requiredPrivacyText of [
@@ -234,9 +240,14 @@ const cookieHtml = readSite("slapuku-politika.html");
 if (!cookieHtml.includes("data-cookie-choice-status")) {
   errors.push("slapuku-politika.html: missing readable cookie choice status");
 }
+for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "vienkartinį patvirtinimą"]) {
+  if (!cookieHtml.includes(requiredCookieText)) {
+    errors.push(`slapuku-politika.html: missing required cookie disclosure: ${requiredCookieText}`);
+  }
+}
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "data-cookie-choice-status"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "data-cookie-choice-status", "missing_email", "missing_phone"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 
@@ -250,7 +261,8 @@ const requiredStaticHeaders = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=()",
-  "X-Frame-Options": "DENY"
+  "X-Frame-Options": "DENY",
+  "Strict-Transport-Security": "max-age=31536000"
 };
 for (const [name, value] of Object.entries(requiredStaticHeaders)) {
   if (!staticHeaders.includes(`${name}: ${value}`)) errors.push(`public/_headers: missing ${name}: ${value}`);
@@ -261,7 +273,8 @@ for (const [name, value] of Object.entries({
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
-  "x-frame-options": "DENY"
+  "x-frame-options": "DENY",
+  "strict-transport-security": "max-age=31536000"
 })) {
   if (!workerSecurityHeaders.includes(`"${name}": "${value}"`)) {
     errors.push(`src/index.js: missing security header ${name}: ${value}`);

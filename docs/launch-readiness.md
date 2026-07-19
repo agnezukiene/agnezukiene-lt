@@ -18,6 +18,9 @@ Atnaujinta: 2026-07-19
 - `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių
 - `[x]` Public HTML patikra tikrina bazinį prieinamumą
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes
+- `[x]` Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį
+- `[x]` Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje
+- `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją

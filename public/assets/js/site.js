@@ -198,11 +198,30 @@
       const data = new FormData(form);
       const email = String(data.get("email") || "").trim();
       const phone = String(data.get("phone") || "").trim();
+      const replyBy = String(data.get("replyBy") || "");
+      const emailInput = form.querySelector("#email");
+      const phoneInput = form.querySelector("#phone");
 
       if (!email && !phone) {
         status.classList.add("is-error");
         status.textContent = "Įrašykite el. paštą arba telefono numerį, kad būtų galima jums atsakyti.";
         track("form_error", { form_id: "contact", error_type: "missing_contact" });
+        return;
+      }
+
+      if (replyBy === "email" && !email) {
+        status.classList.add("is-error");
+        status.textContent = "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
+        track("form_error", { form_id: "contact", error_type: "missing_email" });
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (replyBy === "phone" && !phone) {
+        status.classList.add("is-error");
+        status.textContent = "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
+        track("form_error", { form_id: "contact", error_type: "missing_phone" });
+        if (phoneInput) phoneInput.focus();
         return;
       }
 

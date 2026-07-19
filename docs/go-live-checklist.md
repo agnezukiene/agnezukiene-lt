@@ -53,6 +53,8 @@ Atnaujinta: 2026-07-19
 - `[x]` Patikrinti extensionless canonical, sitemap ir vidines nuorodas production; senieji `.html` URL nukreipia į švarius adresus.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
+- `[x]` Įjungti ir automatiškai tikrinti vienerių metų saugaus ryšio reikalavimą po stabilaus HTTPS veikimo laikotarpio.
+- `[x]` Pridėti ir patikrinti naršyklės kortelės ženkliuką.
 - `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
@@ -69,6 +71,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
 - `[x]` Kontaktų forma rodo backend klaidas ir atnaujina Turnstile po siuntimo bandymo.
+- `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą su įrašytu el. paštu arba telefono numeriu.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
