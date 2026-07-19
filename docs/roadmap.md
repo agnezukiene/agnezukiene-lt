@@ -200,8 +200,8 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
 - `[x]` Gerbiamas lankytojo naršyklėje pasirinktas mažesnis judesys: išjungiamas sklandus slinkimas ir kortelių pakilimo judesys.
 - `[x]` Slapukų pasirinkimo pranešimas pažymėtas kaip aiškiai pavadinta puslapio sritis pagalbinėms skaitymo priemonėms.
-- `[x]` 2026-07-19 sutvarkytas lankomumo sutikimo atšaukimas: pasirinkimo keitimas arba atsisakymas iškart sustabdo matavimą, pašalina „Google Analytics“ slapukus ir aiškiai parodo dabartinę būseną; pakartotinis sutikimas tame pačiame puslapyje veikia.
-- `[x]` Visas „Sutinku → Keisti pasirinkimą → Atsisakyti → Sutinku“ kelias patikrintas tikroje naršyklėje su bandomaisiais lankomumo slapukais, o pagrindiniai reikalavimai įtraukti į automatinę privatumo patikrą.
+- `[x]` 2026-07-19 sutvarkytas lankomumo sutikimo atšaukimas: pasirinkimo keitimas iškart sustabdo matavimą, pašalina „Google Analytics“ slapukus ir iš naujo atveria puslapį be lankomumo įrankio; atsisakius matavimas lieka išjungtas.
+- `[x]` Visas „Sutinku → Keisti pasirinkimą → Atsisakyti → pereiti į kitą puslapį“ kelias patikrintas tikroje naršyklėje: slapukai pašalinami, o po atšaukimo neišsiunčiama nė viena lankomumo užklausa. Pagrindiniai reikalavimai įtraukti į automatinę privatumo patikrą.
 
 Vizualinė kryptis:
 

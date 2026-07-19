@@ -93,9 +93,9 @@
     });
   };
 
-  const deactivateAnalytics = () => {
+  const deactivateAnalytics = ({ notifyTag = true } = {}) => {
     if (analyticsDisableKey) window[analyticsDisableKey] = true;
-    if (typeof window.gtag === "function") {
+    if (notifyTag && typeof window.gtag === "function") {
       window.gtag("consent", "update", analyticsConsent("denied"));
     }
     removeAnalyticsCookies();
@@ -218,8 +218,13 @@
 
   if (resetCookies) {
     resetCookies.addEventListener("click", () => {
+      const analyticsWasLoaded = typeof window.gtag === "function";
       clearCookieChoice();
-      deactivateAnalytics();
+      deactivateAnalytics({ notifyTag: false });
+      if (analyticsWasLoaded) {
+        window.location.reload();
+        return;
+      }
       if (cookieBanner) cookieBanner.hidden = false;
       if (choiceStatus) choiceStatus.textContent = "Pasirinkite iš naujo žemiau pateiktame pranešime.";
       window.dispatchEvent(new CustomEvent("analytics-consent", { detail: "reset" }));

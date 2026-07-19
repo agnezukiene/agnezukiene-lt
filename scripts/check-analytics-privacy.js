@@ -104,8 +104,12 @@ for (const advertisingControl of [
   }
 }
 
-if (!/resetCookies\.addEventListener\("click", \(\) => \{[\s\S]*clearCookieChoice\(\);[\s\S]*deactivateAnalytics\(\);/.test(js)) {
+if (!/resetCookies\.addEventListener\("click", \(\) => \{[\s\S]*const analyticsWasLoaded = typeof window\.gtag === "function";[\s\S]*clearCookieChoice\(\);[\s\S]*deactivateAnalytics\(\{ notifyTag: false \}\);/.test(js)) {
   errors.push("public/assets/js/site.js: changing the cookie choice should stop analytics before asking again");
+}
+
+if (!/if \(analyticsWasLoaded\) \{\s*window\.location\.reload\(\);\s*return;\s*\}/.test(js)) {
+  errors.push("public/assets/js/site.js: withdrawing consent should reload a page where analytics is no longer loaded");
 }
 
 if (!js.includes("_ga(?:_|$)") || !js.includes("Max-Age=0")) {
