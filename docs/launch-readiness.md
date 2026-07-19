@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-15
+Atnaujinta: 2026-07-19
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
@@ -29,24 +29,21 @@ Atnaujinta: 2026-07-15
 
 | Statusas | Darbas | Pastaba |
 | --- | --- | --- |
-| laukia | Resend domenas / siuntėjas | reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo |
+| padaryta | Resend domenas / siuntėjas | domenas patvirtintas ir paruoštas laiškams siųsti |
 | padaryta | CONTACT_FROM_EMAIL | siuntėjo adresas nustatytas Cloudflare Worker konfigūracijoje |
-| laukia | RESEND_API_KEY secret | reikia Cloudflare Worker secret iš Resend API Keys |
-| laukia | Gyvas kontaktų formos siuntimas | galima tik po Resend secret ir siuntėjo įjungimo |
+| padaryta | RESEND_API_KEY secret | tik siuntimui skirtas raktas saugiai laikomas Cloudflare |
+| padaryta | Gyvas kontaktų formos siuntimas | Resend istorijoje patvirtinti pristatyti laiškai |
 | padaryta | GA4 Measurement ID | G-3N3MGJHS0V įrašytas į public/assets/js/config.js |
 | padaryta | GA4 Realtime / DebugView | patikrinta ir pažymėta roadmap |
 | padaryta | Search Console domain property | patvirtinta per Cloudflare DNS TXT |
 | padaryta | Search Console sitemap pateikimas | sitemap pateiktas ir pažymėtas roadmap |
-| laukia | Agnės turinio patvirtinimai | laukia 9 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė, Privatumo politikos tekstas, Slapukų politikos tekstas |
+| laukia | Agnės turinio patvirtinimai | laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė |
 | laukia | Kitas Agnės turinio klausimas | [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti |
 
 ## Kiti veiksmai
 
-1. Resend domenas / siuntėjas: reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo
-2. RESEND_API_KEY secret: reikia Cloudflare Worker secret iš Resend API Keys
-3. Gyvas kontaktų formos siuntimas: galima tik po Resend secret ir siuntėjo įjungimo
-4. Agnės turinio patvirtinimai: laukia 9 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė, Privatumo politikos tekstas, Slapukų politikos tekstas
-5. Kitas Agnės turinio klausimas: [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti
+1. Agnės turinio patvirtinimai: laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė
+2. Kitas Agnės turinio klausimas: [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti
 
 ## Patikros komanda
 

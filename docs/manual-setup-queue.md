@@ -1,6 +1,6 @@
 # Manual setup queue
 
-Atnaujinta: 2026-07-13
+Atnaujinta: 2026-07-19
 
 Šis failas yra trumpa rankinių paskyrų veiksmų eilė. Jis papildo `docs/launch-readiness.md`, `docs/cloudflare-variables-runbook.md` ir `docs/analytics-search-console-runbook.md`.
 
@@ -34,7 +34,9 @@ https://agnezukiene.lt/neegzistuojantis-puslapis
 
 turi grąžinti `HTTP 404`, o puslapio turinyje turi būti lietuviškas tekstas `Puslapis nerastas`. Jei statusas `404`, bet atsakymo dydis `0` baitų, production Worker dar nėra persidiegęs su naujausiu kodu.
 
-## 1. Resend domenas ir siuntėjas
+## 1. Resend domenas ir siuntėjas - padaryta
+
+Statusas 2026-07-19: domenas `agnezukiene.lt` Resend paskyroje patvirtintas ir paruoštas laiškams siųsti. Toliau pateikta eiga palikta kaip techninė atmintinė.
 
 Tikslas: paruošti kontaktų formos laiškų siuntimą iš `agnezukiene.lt`.
 
@@ -49,9 +51,9 @@ Agnė Žukienė <noreply@agnezukiene.lt>
 
 Patikra po šio žingsnio: Resend turi rodyti domeną / siuntėją kaip verified.
 
-## 2. Cloudflare Worker variables ir secrets
+## 2. Cloudflare Worker kintamieji ir slapti raktai - padaryta
 
-Statusas 2026-07-13: `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` jau yra `wrangler.jsonc`; liko sukurti ir Cloudflare pridėti tik `RESEND_API_KEY` secret po Resend domeno patvirtinimo.
+Statusas 2026-07-19: siuntėjo adresas nustatytas, o tik laiškų siuntimui skirtas Resend raktas saugiai pridėtas Cloudflare. Resend istorijoje matomi du pristatyti laiškai iš gyvos kontaktų formos.
 
 Tikslas: leisti Worker realiai išsiųsti kontaktų formos laišką.
 
@@ -81,7 +83,7 @@ Patikra po šio žingsnio:
 npm run pre-go-live -- https://agnezukiene.lt
 ```
 
-Tada gyvai išsiųsti testinę užklausą iš `https://agnezukiene.lt/kontaktai.html` ir patikrinti, ar laiškas ateina į `zukiene.agne@gmail.com`.
+Tada gyvai išsiųsti bandomąją užklausą iš `https://agnezukiene.lt/kontaktai` ir Resend istorijoje patikrinti, ar laiškas pristatytas į `zukiene.agne@gmail.com`.
 
 ## 3. GA4 Measurement ID - padaryta
 

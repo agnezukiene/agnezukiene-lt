@@ -67,7 +67,9 @@ const launchBlockers = [
   {
     label: "Resend domenas / siuntėjas",
     done: roadmapHasDone("Resend domenas / siuntėjas"),
-    detail: "reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo"
+    detail: roadmapHasDone("Resend domenas / siuntėjas")
+      ? "domenas patvirtintas ir paruoštas laiškams siųsti"
+      : "reikia Resend sugeneruotų DNS įrašų ir patvirtinto siuntėjo"
   },
   {
     label: "CONTACT_FROM_EMAIL",
@@ -79,12 +81,16 @@ const launchBlockers = [
   {
     label: "RESEND_API_KEY secret",
     done: roadmapHasDone("RESEND_API_KEY"),
-    detail: "reikia Cloudflare Worker secret iš Resend API Keys"
+    detail: roadmapHasDone("RESEND_API_KEY")
+      ? "tik siuntimui skirtas raktas saugiai laikomas Cloudflare"
+      : "reikia Cloudflare Worker secret iš Resend API Keys"
   },
   {
     label: "Gyvas kontaktų formos siuntimas",
     done: roadmapHasDone("Patikrinti formos siuntimą gyvai"),
-    detail: "galima tik po Resend secret ir siuntėjo įjungimo"
+    detail: roadmapHasDone("Patikrinti formos siuntimą gyvai")
+      ? "Resend istorijoje patvirtinti pristatyti laiškai"
+      : "galima tik po Resend secret ir siuntėjo įjungimo"
   },
   {
     label: "GA4 Measurement ID",

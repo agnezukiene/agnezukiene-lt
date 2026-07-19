@@ -58,16 +58,12 @@ Svarbu: `wrangler.jsonc` turi kelti tik `./public`, o Worker entrypoint yra `src
 Repo nelaikome secrets. Vieši frontend raktai yra `public/assets/js/config.js`.
 
 Cloudflare Worker variables/secrets aprašyti `docs/cloudflare-variables-runbook.md`.
-Likę rankiniai Resend, GA4, Search Console ir turinio veiksmai sudėti į `docs/manual-setup-queue.md`.
+Rankinių paskyrų darbų istorija ir būsimi turinio veiksmai sudėti į `docs/manual-setup-queue.md`.
 
-Dar reikalingi iki pilno kontaktų formos veikimo:
-
-- `RESEND_API_KEY`
-- gyvas formos siuntimo testas
+Kontaktų forma veikia: Resend domenas patvirtintas, slaptas siuntimo raktas laikomas Cloudflare, o pristatymas į `zukiene.agne@gmail.com` patikrintas Resend istorijoje.
 
 ## Likę MVP blokatoriai
 
 Automatinė santrauka yra `docs/launch-readiness.md`. Šiuo metu pagrindiniai likę darbai:
 
-- Resend domenas / siuntėjas ir `RESEND_API_KEY`
 - Agnės turinio patvirtinimai iš `docs/content-approval.md`

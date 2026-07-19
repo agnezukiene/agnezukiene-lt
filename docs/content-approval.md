@@ -1,6 +1,6 @@
 # Agnės turinio patvirtinimai
 
-Atnaujinta: 2026-07-11
+Atnaujinta: 2026-07-19
 
 Šis failas skirtas sprendimams, kurių reikia prieš pilną viešą MVP paleidimą. Kol sprendimas nepatvirtintas, svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
 
@@ -15,8 +15,8 @@ Atnaujinta: 2026-07-11
 | laukia | Atsakymo į užklausas terminas | Naudojama formuluotė „atsakysiu, kai galėsiu“. | `kontaktai.html`, `konsultacijos.html` |
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
 | laukia | Galutinė kvalifikacijos formuluotė | Naudojama „psichologė, konsultavimo psichologijos magistrantė“. | Visi puslapiai, SEO metadata, schema |
-| laukia | Privatumo politikos tekstas | Techninis tekstas paruoštas, reikia Agnės galutinio patvirtinimo. | `privatumo-politika.html` |
-| laukia | Slapukų politikos tekstas | Techninis tekstas ir GA4 sutikimo logika paruošti, reikia Agnės galutinio teksto patvirtinimo. | `slapuku-politika.html` |
+| padaryta | Privatumo politikos tekstas | Agnė pavedė parengti savo nuožiūra pagal gerąją praktiką; išsamus tekstas parengtas 2026-07-19. | `privatumo-politika.html` |
+| padaryta | Slapukų politikos tekstas | Tekstas ir lankytojo pasirinkimo valdymas parengti bei patikrinti naršyklėje 2026-07-19. | `slapuku-politika.html` |
 
 ## Vienas klausimas vienu metu
 

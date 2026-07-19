@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   color-scheme: light;
   scroll-behavior: smooth;
@@ -246,6 +250,11 @@ textarea {
   background: var(--surface-soft);
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .section,
 .page {
   width: min(100% - 32px, var(--max));
@@ -418,6 +427,28 @@ textarea {
   margin-top: 2rem;
 }
 
+.policy-date {
+  margin-top: 1.25rem;
+  font-size: 0.94rem !important;
+}
+
+.legal-list {
+  margin: 0.5rem 0 1.4rem;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.legal-list li + li {
+  margin-top: 0.55rem;
+}
+
+.text-block a,
+.checkbox a {
+  color: var(--accent-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 .clean-list {
   margin: 0;
   padding-left: 1.2rem;
@@ -517,6 +548,12 @@ textarea {
 
 .form-status.is-success {
   color: var(--accent-strong);
+}
+
+.choice-status {
+  min-height: 1.6rem;
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .contact-email {

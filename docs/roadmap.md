@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-13
+Atnaujinta: 2026-07-19
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -40,9 +40,9 @@ Failai, kurie šiuo metu yra projekte:
 | `paslaugos.html` | Paslaugų puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` trūksta kainos, trukmės, formato patvirtinimo |
 | `duk.html` | Dažni klausimai | `[~]` sukurtas pradinis DUK |
-| `kontaktai.html` | Kontaktai ir forma | `[~]` frontend forma, Turnstile ir backend sukurti; Resend siuntimas dar laukia |
-| `privatumo-politika.html` | Privatumo politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir analitiką; reikia Agnės galutinio patvirtinimo |
-| `slapuku-politika.html` | Slapukų politika | `[~]` techninis tekstas atnaujintas pagal Turnstile ir veikiančią GA4 sutikimo logiką; reikia Agnės galutinio patvirtinimo |
+| `kontaktai.html` | Kontaktai ir forma | `[x]` forma, apsauga nuo automatinių užklausų ir laiškų siuntimas veikia; Resend rodo pristatytus laiškus |
+| `privatumo-politika.html` | Privatumo politika | `[x]` 2026-07-19 išsamiai atnaujinta pagal realiai naudojamas paslaugas ir lankytojų teises |
+| `slapuku-politika.html` | Slapukų politika | `[x]` tekstas ir pasirinkimo valdymas veikia; mygtukai patikrinti tikroje naršyklėje |
 | `404.html` | Klaidos puslapis | `[x]` sukurtas ir patikrintas gyvai |
 | `assets/images/rami-psichologes-svetaines-tekstura.png` | Neutralus atsarginis hero vizualas be žmonių | `[x]` paliktas kaip atsarginis, bet nebenaudojamas pradžios puslapyje |
 | `assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg` | Patvirtintas Agnės hero portretas | `[x]` spalviškai pritaikytas, optimizuotas iš 2,1 MB PNG į 440 KB JPEG ir 2026-07-13 patikrintas production |
@@ -157,10 +157,10 @@ Darbai:
 - `[~]` `paslaugos.html`: patvirtinti, kurios paslaugos tikrai bus rodomos MVP.
 - `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė patvirtins trukmę, kainą, formatą ir atsakymo laiką.
 - `[~]` `duk.html`: peržiūrėti DUK dėl tono ir tikslumo.
-- `[~]` `kontaktai.html`: forma turi būti trumpa, duomenų minimizavimo principu.
+- `[x]` `kontaktai.html`: forma trumpa, renka tik atsakymui reikalingus duomenis, pateikia privatumo nuorodą ir aiškias būsenas.
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
-- `[~]` `privatumo-politika.html`: techninis tekstas atnaujintas, reikia Agnės galutinio patvirtinimo.
-- `[~]` `slapuku-politika.html`: techninis tekstas ir GA4 sutikimo logika atnaujinti, reikia Agnės galutinio teksto patvirtinimo.
+- `[x]` `privatumo-politika.html`: 2026-07-19 paskelbimui paruoštas išsamus tekstas apie valdytoją, tikslus, paslaugų teikėjus, saugojimą ir lankytojo teises.
+- `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
 - `[x]` `404.html`: patikrintas po deploy.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
@@ -201,16 +201,17 @@ Vizualinė kryptis:
 
 ## 6. Kontaktų forma ir privatumas
 
-- `[~]` Kontaktų formos frontend sukurta `kontaktai.html`.
+- `[x]` Kontaktų formos lankytojui matoma dalis sukurta ir patikrinta `kontaktai.html`.
 - `[x]` Sukurti `assets/js/site.js` formos validacijai ir siuntimui.
 - `[x]` Sukurti `src/index.js` Cloudflare Worker `/api/contact` endpointui.
 - `[x]` Sukurti kontaktų API automatinę patikrą su validacijos, Turnstile ir Resend mock sėkmės keliais.
 - `[x]` Integruoti Cloudflare Turnstile: widget sukurtas, frontend site key įrašytas, backend secret įdėtas į Cloudflare.
-- `[~]` Integruoti Resend laiškų siuntimą: backend paruoštas ir patikrintas, reikia API rakto ir siuntėjo adreso.
+- `[x]` Resend domenas / siuntėjas patvirtintas; paskyra rodo `agnezukiene.lt` kaip paruoštą laiškams siųsti.
+- `[x]` Integruoti Resend laiškų siuntimą: ribotų teisių siuntimo raktas prijungtas prie Cloudflare Worker ir naudojamas kontaktų formai.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc` neslaptą variable.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc` neslaptą variable.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc` neslaptą variable.
-- `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
+- `[x]` RESEND_API_KEY ir TURNSTILE_SECRET_KEY saugiai laikomi Cloudflare, o ne viešame projekte.
 - `[x]` Sukurti Cloudflare variables/secrets runbook: `docs/cloudflare-variables-runbook.md`.
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
@@ -295,7 +296,7 @@ Po Cloudflare deploy:
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
 - `[x]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį, saugumo antraštes, kontaktų API klaidų kelius ir lietuvišką 404 turinį; visa patikra praėjo 2026-07-13.
-- `[ ]` Patikrinti formos siuntimą gyvai.
+- `[x]` Patikrinti formos siuntimą gyvai: 2026-07-19 Resend istorijoje matomi du iš svetainės siųsti laiškai, abu pažymėti kaip pristatyti į `zukiene.agne@gmail.com`.
 - `[x]` Patikrinti GA4 Realtime / DebugView.
 - `[x]` Patikrinti Search Console sitemap pateikimą ir domain property būseną.
 
@@ -314,11 +315,11 @@ Kitas darbas turi vykti tokia tvarka:
 
 1. `[x]` Užbaigti ir deployinti dizaino paketą: patvirtintą portretą, hero proporcijas, pieno/perlo paletę ir GA4 konfigūraciją. Production portretas patikrintas 2026-07-13.
 2. `[x]` Sutvarkyti lietuviško 404 puslapio pateikimą ir patikrinti production po Cloudflare deploy.
-3. `[ ]` Patvirtinti Resend domeną, įdėti `RESEND_API_KEY` ir gyvai patikrinti kontaktų formos laišką; `CONTACT_FROM_EMAIL` jau nustatytas.
+3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; du laiškai patvirtinti kaip pristatyti.
 4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
-5. `[ ]` Galutinai patvirtinti privatumo ir slapukų politikų tekstus.
+5. `[x]` Parengti privatumo ir slapukų politikų tekstus bei patikrinti lankytojo pasirinkimo mygtukus.
 6. `[ ]` Kai production stabiliai veiks 2-4 savaites, pradėti pirmą GA4 ir Search Console augimo peržiūrą.
 
-Dabartinis sprinto fokusas: Resend el. pašto siuntimas ir galutiniai Agnės turinio sprendimai. Portretas, dizaino deploy, production 404, GA4, Search Console ir sitemap darbai užbaigti.
+Dabartinis sprinto fokusas: atsargiai pildyti profesinį turinį tik turint patvirtintus faktus ir stebėti svetainės naudojimą. Portretas, dizainas, kontaktų forma, laiškų pristatymas, privatumo tekstai, GA4, Search Console ir sitemap darbai užbaigti.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.

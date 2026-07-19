@@ -1,6 +1,6 @@
 # Cloudflare variables and secrets runbook
 
-Atnaujinta: 2026-07-10
+Atnaujinta: 2026-07-19
 
 Šis dokumentas skirtas `agnezukienepage` Worker nustatymams Cloudflare paskyroje.
 
@@ -18,7 +18,7 @@ Pridėti kaip paprastus variables, ne secrets:
 | --- | --- | --- | --- |
 | `CONTACT_TO_EMAIL` | `zukiene.agne@gmail.com` | `wrangler.jsonc` variable | padaryta |
 | `ALLOWED_ORIGIN` | `https://agnezukiene.lt` | `wrangler.jsonc` variable | padaryta |
-| `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` arba Resend patvirtintas siuntėjas | Variable | laukia po Resend domeno patvirtinimo |
+| `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` | `wrangler.jsonc` variable | padaryta |
 
 `ALLOWED_ORIGIN` jau nustatytas production domenui. Jei kada nors reikės testuoti tik laikiną `workers.dev` domeną, šią reikšmę reikia keisti laikinai ir po testo grąžinti į `https://agnezukiene.lt`.
 
@@ -28,7 +28,7 @@ Pridėti kaip secrets:
 
 | Name | Iš kur gaunama | Statusas |
 | --- | --- | --- |
-| `RESEND_API_KEY` | Resend paskyroje sukurtas API key | laukia |
+| `RESEND_API_KEY` | Resend paskyroje sukurtas tik siuntimui skirtas raktas | padaryta Cloudflare |
 | `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile widget secret key | padaryta Cloudflare dashboard |
 
 Secrets niekada nerašomi į repo, `.env`, dokumentus ar pokalbį.
@@ -39,7 +39,7 @@ Vieši raktai laikomi `public/assets/js/config.js`.
 
 | Laukas | Iš kur gaunama | Statusas |
 | --- | --- | --- |
-| `ga4MeasurementId` | GA4 Web Stream Measurement ID, pvz. `G-XXXXXXXXXX` | laukia |
+| `ga4MeasurementId` | Google lankomumo matavimo numeris | padaryta `public/assets/js/config.js` |
 | `turnstileSiteKey` | Cloudflare Turnstile widget site key | padaryta `public/assets/js/config.js` |
 
 Šie raktai nėra secrets, bet turi būti tikslūs.
@@ -55,17 +55,13 @@ Po kiekvieno Cloudflare variables/secrets pakeitimo:
 node scripts/check-live-site.js https://agnezukienepage.petrauskaiteagne.workers.dev
 ```
 
-3. Kai bus `RESEND_API_KEY` ir `CONTACT_FROM_EMAIL`, atlikti realų formos testą iš `kontaktai.html`.
-4. Patikrinti, kad el. laiškas ateina į `zukiene.agne@gmail.com`.
+3. Atlikti realų formos bandymą iš `https://agnezukiene.lt/kontaktai`.
+4. Patikrinti Resend istorijoje, kad el. laiškas pristatytas į `zukiene.agne@gmail.com`.
 5. Patikrinti, kad GA4 negauna vardo, el. pašto, telefono ar žinutės teksto.
 
-## 5. Dabartinė laukimo seka
+## 5. Dabartinė būsena
 
-1. Resend domeno / siuntėjo paruošimas.
-2. `CONTACT_FROM_EMAIL`.
-3. `RESEND_API_KEY`.
-4. GA4 property.
-5. `ga4MeasurementId` į `public/assets/js/config.js`.
+Visi kontaktų formai ir lankomumo matavimui reikalingi nustatymai yra pridėti. 2026-07-19 Resend siuntimo istorijoje patvirtinti du sėkmingai pristatyti kontaktų formos laiškai. Slaptų raktų reikšmės šiame projekte nesaugomos.
 
 ## 6. Resend rekomenduojamas nustatymas
 
@@ -75,7 +71,7 @@ Rekomenduojamas MVP variantas: Resend pridėti domeną `agnezukiene.lt` ir naudo
 Agnė Žukienė <noreply@agnezukiene.lt>
 ```
 
-Jei Resend paprašys DNS įrašų, į Cloudflare reikia pridėti tik tuos DNS įrašus, kuriuos sugeneruos Resend. Jų nereikia išgalvoti rankiniu būdu. Po Resend domeno patvirtinimo Cloudflare Worker reikia turėti:
+Resend sugeneruoti domeno įrašai jau pridėti ir patvirtinti. Cloudflare Worker turi šiuos nustatymus:
 
 ```text
 CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>

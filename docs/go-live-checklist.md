@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės go-live checklist
 
-Atnaujinta: 2026-07-12
+Atnaujinta: 2026-07-19
 
 ## Prieš pirmą commit
 
@@ -57,14 +57,14 @@ Atnaujinta: 2026-07-12
 - `[ ]` Patvirtinti konsultacijos formatą.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
-- `[~]` Privatumo politikos tekstas techniškai atnaujintas; reikia Agnės galutinio patvirtinimo.
-- `[~]` Slapukų politikos tekstas techniškai atnaujintas; reikia Agnės galutinio patvirtinimo.
+- `[x]` Privatumo politika išsamiai atnaujinta 2026-07-19 pagal veikiančias paslaugas ir lankytojo teises.
+- `[x]` Slapukų politika ir pasirinkimo mygtukai patikrinti tikroje naršyklėje.
 
 ## Kontaktų forma
 
 - `[x]` Sukurti Cloudflare Worker endpointą `/api/contact`.
 - `[x]` Prijungti Turnstile: widget sukurtas, site key kode, secret Cloudflare Worker nustatymuose.
-- `[~]` Prijungti Resend arba kitą laiškų siuntimo servisą: kodas paruoštas, reikia API rakto.
+- `[x]` Prijungtas Resend laiškų siuntimas iš patvirtinto `agnezukiene.lt` domeno.
 - `[x]` `/api/contact` laikiname Cloudflare URL pasiekia Worker backendą.
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
@@ -75,9 +75,9 @@ Atnaujinta: 2026-07-12
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc`.
-- `[~]` Cloudflare secrets: `TURNSTILE_SECRET_KEY` padarytas, `RESEND_API_KEY` laukia.
-- `[ ]` Patikrinti sėkmingą formos siuntimą gyvai.
-- `[ ]` Patikrinti formos klaidas gyvai.
+- `[x]` Cloudflare saugiai pridėti abu slapti raktai: formos apsaugos ir laiškų siuntimo.
+- `[x]` Patikrinti sėkmingą formos siuntimą gyvai: Resend rodo du pristatytus laiškus.
+- `[x]` Patikrinti formos klaidas gyvai ir naršyklėje: tuščia forma pateikia aiškų paaiškinimą.
 
 ## Analitika ir paieška
 

@@ -208,10 +208,41 @@ const contactHtml = readSite("kontaktai.html");
 if (!contactHtml.includes('name="website"') || !contactHtml.includes("honeypot")) {
   errors.push("kontaktai.html: missing honeypot field");
 }
+if (!/<label class="checkbox">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/label>/.test(contactHtml)) {
+  errors.push("kontaktai.html: privacy consent should link to the privacy policy");
+}
+if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
+  errors.push("kontaktai.html: submit button should preserve its readable label while sending");
+}
+
+const privacyHtml = readSite("privatumo-politika.html");
+for (const requiredPrivacyText of [
+  "Duomenų valdytoja yra psichologė Agnė Žukienė",
+  "Cloudflare",
+  "Resend",
+  "Google Gmail",
+  "Google Analytics",
+  "12 mėnesių",
+  "Valstybinę duomenų apsaugos inspekciją"
+]) {
+  if (!privacyHtml.includes(requiredPrivacyText)) {
+    errors.push(`privatumo-politika.html: missing required disclosure: ${requiredPrivacyText}`);
+  }
+}
+
+const cookieHtml = readSite("slapuku-politika.html");
+if (!cookieHtml.includes("data-cookie-choice-status")) {
+  errors.push("slapuku-politika.html: missing readable cookie choice status");
+}
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "data-cookie-choice-status"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
+}
+
+const styles = read("public/assets/css/styles.css");
+if (!/\[hidden\]\s*\{[\s\S]*?display:\s*none\s*!important;[\s\S]*?\}/.test(styles)) {
+  errors.push("public/assets/css/styles.css: hidden elements must stay visually hidden");
 }
 
 const staticHeaders = read("public/_headers");

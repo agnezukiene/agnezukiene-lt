@@ -1,6 +1,6 @@
 # SEO inventory
 
-Atnaujinta: 2026-07-15
+Atnaujinta: 2026-07-19
 
 | URL | Title | Description | H1 | Canonical | OG title |
 | --- | --- | --- | --- | --- | --- |
@@ -11,7 +11,7 @@ Atnaujinta: 2026-07-15
 | /konsultacijos | Kaip vyksta konsultacijos \| Agnė Žukienė | Kaip vyksta pirmas kontaktas, psichologinės konsultacijos, konfidencialumas ir konsultavimo ribos Agnės Žukienės svetainėje. | Aiškumas prieš pirmą pokalbį padeda jaustis ramiau. | https://agnezukiene.lt/konsultacijos | Kaip vyksta konsultacijos |
 | /kontaktai | Kontaktai \| Agnė Žukienė psichologė | Susisiekite su psichologe Agne Žukiene dėl konsultacijos ar klausimo. Kontaktinė forma ir el. paštas. | Galite parašyti trumpai - atsakysiu, kai galėsiu. | https://agnezukiene.lt/kontaktai | Kontaktai \| Agnė Žukienė |
 | /paslaugos | Psichologinės konsultacijos ir psichoedukacija \| Agnė Žukienė | Psichologinės konsultacijos suaugusiesiems, paaugliams, vaikams ir tėvams. Psichoedukaciniai užsiėmimai ir karjeros savęs pažinimo temos. | Psichologinės konsultacijos vaikams, paaugliams, suaugusiesiems ir tėvams. | https://agnezukiene.lt/paslaugos | Paslaugos \| Agnė Žukienė |
-| /privatumo-politika | Privatumo politika \| Agnė Žukienė | Agnės Žukienės svetainės privatumo politika: kokie duomenys renkami, kodėl jie naudojami ir kaip saugomi. | Privatumo politika | https://agnezukiene.lt/privatumo-politika | Privatumo politika |
+| /privatumo-politika | Privatumo politika \| Agnė Žukienė | Agnės Žukienės svetainės privatumo politika: kokie duomenys renkami, kam jie naudojami, kiek laiko saugomi ir kokias teises turite. | Privatumo politika | https://agnezukiene.lt/privatumo-politika | Privatumo politika |
 | /slapuku-politika | Slapukų politika \| Agnė Žukienė | Informacija apie būtinus ir analitikos slapukus Agnės Žukienės svetainėje. | Slapukų politika | https://agnezukiene.lt/slapuku-politika | Slapukų politika |
 
 ## Pastabos

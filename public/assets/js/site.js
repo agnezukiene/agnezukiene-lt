@@ -31,17 +31,42 @@
   const navLinks = document.querySelector("#main-menu");
 
   if (navToggle && navLinks) {
+    const closeMenu = () => {
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Atidaryti meniu");
+      navLinks.classList.remove("is-open");
+    };
+
+    navToggle.setAttribute("aria-label", "Atidaryti meniu");
+
     navToggle.addEventListener("click", () => {
       const isOpen = navToggle.getAttribute("aria-expanded") === "true";
       navToggle.setAttribute("aria-expanded", String(!isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Atidaryti meniu" : "Uždaryti meniu");
       navLinks.classList.toggle("is-open", !isOpen);
     });
 
     navLinks.addEventListener("click", (event) => {
       if (event.target instanceof HTMLAnchorElement) {
-        navToggle.setAttribute("aria-expanded", "false");
-        navLinks.classList.remove("is-open");
+        closeMenu();
       }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navLinks.classList.contains("is-open")) {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (navLinks.classList.contains("is-open") && event.target instanceof Element && !event.target.closest(".nav")) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 920) closeMenu();
     });
   }
 
@@ -83,6 +108,13 @@
     if (cookieBanner) cookieBanner.hidden = true;
     if (choice === "accepted") initAnalytics();
     window.dispatchEvent(new CustomEvent("analytics-consent", { detail: choice }));
+
+    const choiceStatus = document.querySelector("[data-cookie-choice-status]");
+    if (choiceStatus) {
+      choiceStatus.textContent = choice === "accepted"
+        ? "Pasirinkimas išsaugotas: lankomumo matavimas leidžiamas."
+        : "Pasirinkimas išsaugotas: lankomumo matavimas neleidžiamas.";
+    }
   };
 
   if (cookieChoice === "accepted") {
@@ -101,6 +133,8 @@
     resetCookies.addEventListener("click", () => {
       localStorage.removeItem("agne_cookie_choice");
       if (cookieBanner) cookieBanner.hidden = false;
+      const choiceStatus = document.querySelector("[data-cookie-choice-status]");
+      if (choiceStatus) choiceStatus.textContent = "Pasirinkite iš naujo žemiau pateiktame pranešime.";
       window.dispatchEvent(new CustomEvent("analytics-consent", { detail: "reset" }));
     });
   }
@@ -182,7 +216,13 @@
 
       const payload = Object.fromEntries(data.entries());
       const submit = form.querySelector("button[type='submit']");
-      if (submit) submit.disabled = true;
+      const submitLabel = submit ? submit.getAttribute("data-submit-label") || submit.textContent : "";
+      if (submit) {
+        submit.disabled = true;
+        submit.setAttribute("aria-busy", "true");
+        submit.textContent = "Siunčiama...";
+      }
+      form.setAttribute("aria-busy", "true");
       status.textContent = "Siunčiama...";
 
       try {
@@ -208,7 +248,12 @@
         status.textContent = `${error.message} Jei reikia, parašykite tiesiogiai el. paštu: zukiene.agne@gmail.com.`;
         track("form_error", { form_id: "contact", error_type: "submit_failed" });
       } finally {
-        if (submit) submit.disabled = false;
+        form.removeAttribute("aria-busy");
+        if (submit) {
+          submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.textContent = submitLabel;
+        }
       }
     });
   }
