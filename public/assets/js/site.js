@@ -183,6 +183,20 @@
       }
     };
 
+    const validationFields = form.querySelectorAll("input:not([type='hidden']), select, textarea");
+    const markFieldInvalid = (field) => {
+      if (field) field.setAttribute("aria-invalid", "true");
+    };
+    const clearInvalidFields = () => {
+      validationFields.forEach((field) => field.removeAttribute("aria-invalid"));
+    };
+
+    validationFields.forEach((field) => {
+      const clearFieldError = () => field.removeAttribute("aria-invalid");
+      field.addEventListener("input", clearFieldError);
+      field.addEventListener("change", clearFieldError);
+    });
+
     form.addEventListener("input", () => {
       if (!formStarted) {
         formStarted = true;
@@ -194,6 +208,7 @@
       event.preventDefault();
       status.className = "form-status";
       status.textContent = "";
+      clearInvalidFields();
 
       const data = new FormData(form);
       const email = String(data.get("email") || "").trim();
@@ -206,6 +221,9 @@
         status.classList.add("is-error");
         status.textContent = "Įrašykite el. paštą arba telefono numerį, kad būtų galima jums atsakyti.";
         track("form_error", { form_id: "contact", error_type: "missing_contact" });
+        markFieldInvalid(emailInput);
+        markFieldInvalid(phoneInput);
+        if (emailInput) emailInput.focus();
         return;
       }
 
@@ -213,6 +231,7 @@
         status.classList.add("is-error");
         status.textContent = "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
         track("form_error", { form_id: "contact", error_type: "missing_email" });
+        markFieldInvalid(emailInput);
         if (emailInput) emailInput.focus();
         return;
       }
@@ -221,14 +240,17 @@
         status.classList.add("is-error");
         status.textContent = "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
         track("form_error", { form_id: "contact", error_type: "missing_phone" });
+        markFieldInvalid(phoneInput);
         if (phoneInput) phoneInput.focus();
         return;
       }
 
       if (!form.checkValidity()) {
+        const firstInvalidField = form.querySelector(":invalid");
         status.classList.add("is-error");
         status.textContent = "Patikrinkite privalomus laukus ir pabandykite dar kartą.";
         track("form_error", { form_id: "contact", error_type: "invalid_fields" });
+        markFieldInvalid(firstInvalidField);
         form.reportValidity();
         return;
       }
@@ -257,6 +279,7 @@
         }
 
         form.reset();
+        clearInvalidFields();
         resetTurnstile();
         status.classList.add("is-success");
         status.textContent = "Užklausa išsiųsta. Ačiū, kad parašėte.";

@@ -550,6 +550,13 @@ textarea {
   color: var(--accent-strong);
 }
 
+.form-row input[aria-invalid="true"],
+.form-row select[aria-invalid="true"],
+.checkbox input[aria-invalid="true"] {
+  outline: 3px solid #9f2f23;
+  outline-offset: 2px;
+}
+
 .choice-status {
   min-height: 1.6rem;
   color: var(--accent-strong);
@@ -726,5 +733,19 @@ textarea {
   .button,
   .cookie-banner div .button {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .service-card {
+    transition: none;
+  }
+
+  .service-card:hover {
+    transform: none;
   }
 }

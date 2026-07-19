@@ -21,6 +21,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Techninė patikra praėjo 9 HTML failams.
 - `[x]` Analitikos privatumo patikra įtraukta į pre-go-live.
 - `[x]` Kontaktų API patikra įtraukta į pre-go-live.
+- `[x]` Leidžiamų svetainės šaltinių apsaugos patikra įtraukta į pre-go-live.
 - `[x]` Peržiūrėti `git status --short`.
 - `[x]` Padaryti pirmą commit.
 - `[x]` Push į GitHub `main`.
@@ -53,6 +54,8 @@ Atnaujinta: 2026-07-19
 - `[x]` Patikrinti extensionless canonical, sitemap ir vidines nuorodas production; senieji `.html` URL nukreipia į švarius adresus.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
+- `[x]` Įjungti naršyklės apsaugą, kuri atmeta neleistiną svetimą kodą, ir patikrinti ją tikroje naršyklėje.
+- `[x]` Patikrinti mažesnio judesio pasirinkimą ir slapukų pranešimo prieinamą pavadinimą.
 - `[x]` Įjungti ir automatiškai tikrinti vienerių metų saugaus ryšio reikalavimą po stabilaus HTTPS veikimo laikotarpio.
 - `[x]` Pridėti ir patikrinti naršyklės kortelės ženkliuką.
 - `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.
@@ -81,6 +84,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Cloudflare saugiai pridėti abu slapti raktai: formos apsaugos ir laiškų siuntimo.
 - `[x]` Patikrinti sėkmingą formos siuntimą gyvai: Resend rodo du pristatytus laiškus.
 - `[x]` Patikrinti formos klaidas gyvai ir naršyklėje: tuščia forma pateikia aiškų paaiškinimą.
+- `[x]` Formos klaidos susietos su konkrečiais laukais, klaidingi laukai aiškiai pažymimi ir pataisius žymėjimas pašalinamas.
 
 ## Analitika ir paieška
 

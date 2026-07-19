@@ -4,7 +4,23 @@ const JSON_HEADERS = {
 
 const MAX_CONTACT_BODY_BYTES = 10000;
 
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "base-uri 'none'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-S/FPsvSpXLfY4jhsy+ri9ZuT+nt2j8kq137it2pvg84=' 'sha256-1miY1DXof+qP4Bl5UIgmkipjhA4lLNWWI+NSc0bXNbc=' 'sha256-qnlMThNCXqaxMkn2e7z5pyDmjvZu6Mr93H79eSdmKCQ='",
+  "style-src 'self'",
+  "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
+  "font-src 'self'",
+  "frame-src https://challenges.cloudflare.com",
+  "connect-src 'self' https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+  "upgrade-insecure-requests"
+].join("; ");
+
 const SECURITY_HEADERS = {
+  "content-security-policy": CONTENT_SECURITY_POLICY,
   "x-content-type-options": "nosniff",
   "referrer-policy": "strict-origin-when-cross-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",

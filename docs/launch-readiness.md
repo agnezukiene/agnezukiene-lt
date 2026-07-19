@@ -10,6 +10,7 @@ Atnaujinta: 2026-07-19
 - `[x]` WCAG spalvų kontrasto patikra yra pre-go-live dalis
 - `[x]` GA4 privatumo patikra yra pre-go-live dalis
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
+- `[x]` Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas
 - `[x]` Production live check tikrina www nukreipimą
 - `[x]` Production live check tikrina HTTP į HTTPS
@@ -19,8 +20,11 @@ Atnaujinta: 2026-07-19
 - `[x]` Public HTML patikra tikrina bazinį prieinamumą
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes
 - `[x]` Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį
+- `[x]` Gyva svetainė atmeta neleistiną svetimą kodą
 - `[x]` Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
+- `[x]` Formos klaidos susietos su konkrečiais laukais
+- `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją

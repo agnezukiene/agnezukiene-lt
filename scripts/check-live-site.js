@@ -21,6 +21,18 @@ const requiredHeaders = {
   "strict-transport-security": "max-age=31536000"
 };
 
+const requiredPolicyDirectives = [
+  "default-src 'self'",
+  "base-uri 'none'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self'",
+  "script-src 'self'",
+  "style-src 'self'",
+  "frame-src https://challenges.cloudflare.com",
+  "upgrade-insecure-requests"
+];
+
 async function readJsonMessage(response) {
   const body = await response.json();
   assert.strictEqual(typeof body.message, "string", "API response should include JSON message");
@@ -30,6 +42,11 @@ async function readJsonMessage(response) {
 function assertSecurityHeaders(response, source) {
   for (const [header, expected] of Object.entries(requiredHeaders)) {
     assert.strictEqual(response.headers.get(header), expected, `${source}: expected ${header}: ${expected}`);
+  }
+
+  const policy = response.headers.get("content-security-policy") || "";
+  for (const directive of requiredPolicyDirectives) {
+    assert(policy.includes(directive), `${source}: missing Content Security Policy directive: ${directive}`);
   }
 }
 

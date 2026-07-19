@@ -21,6 +21,7 @@ const requiredFiles = [
   "scripts/generate-launch-readiness.js",
   "scripts/pre-go-live.js",
   "scripts/check-color-contrast.js",
+  "scripts/check-content-security-policy.js",
   "scripts/check-live-site.js",
   "src/index.js",
   "wrangler.jsonc"
@@ -73,6 +74,9 @@ for (const file of htmlFiles) {
   }
   if (file !== "404.html" && !/<div class="nav-links" id="main-menu"/.test(html)) {
     errors.push(`${file}: missing main-menu navigation target`);
+  }
+  if (file !== "404.html" && !/<div class="cookie-banner"[^>]+role="region"[^>]+aria-label="Slapukų pasirinkimas"/.test(html)) {
+    errors.push(`${file}: cookie choice should have a labelled page region`);
   }
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);
   if (!/<meta name="theme-color" content="#[0-9a-fA-F]{6}">/.test(html)) errors.push(`${file}: missing theme color`);
@@ -217,6 +221,13 @@ if (!/<label class="checkbox">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/label>
 if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
   errors.push("kontaktai.html: submit button should preserve its readable label while sending");
 }
+if (!contactHtml.includes('id="form-status" role="status" aria-live="polite"')) {
+  errors.push("kontaktai.html: form status should have a stable accessible identifier");
+}
+for (const field of ["name", "email", "phone", "replyBy", "format", "topic"]) {
+  const pattern = new RegExp(`<(?:input|select)[^>]+id="${field}"[^>]+aria-describedby="form-status"`);
+  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to the form status`);
+}
 for (const fieldLimit of ['name="name" autocomplete="name" maxlength="80"', 'name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"', 'name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"']) {
   if (!contactHtml.includes(fieldLimit)) errors.push(`kontaktai.html: missing field limit or keyboard hint: ${fieldLimit}`);
 }
@@ -247,13 +258,16 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "v
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "data-cookie-choice-status", "missing_email", "missing_phone"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 
 const styles = read("public/assets/css/styles.css");
 if (!/\[hidden\]\s*\{[\s\S]*?display:\s*none\s*!important;[\s\S]*?\}/.test(styles)) {
   errors.push("public/assets/css/styles.css: hidden elements must stay visually hidden");
+}
+if (!styles.includes("prefers-reduced-motion: reduce") || !styles.includes("scroll-behavior: auto")) {
+  errors.push("public/assets/css/styles.css: missing reduced-motion support");
 }
 
 const staticHeaders = read("public/_headers");

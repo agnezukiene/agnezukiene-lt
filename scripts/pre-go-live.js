@@ -6,6 +6,7 @@ const steps = [
   ["Generate content registry", [node, "scripts/generate-content-registry.js"]],
   ["Generate launch readiness", [node, "scripts/generate-launch-readiness.js"]],
   ["Run site integrity check", [node, "scripts/check-site-integrity.js"]],
+  ["Run content security policy check", [node, "scripts/check-content-security-policy.js"]],
   ["Run color contrast check", [node, "scripts/check-color-contrast.js"]],
   ["Run analytics privacy check", [node, "scripts/check-analytics-privacy.js"]],
   ["Run contact API check", [node, "scripts/check-contact-api.js"]],

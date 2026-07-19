@@ -101,6 +101,8 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
 - `[x]` 2026-07-12 papildyti `scripts/generate-launch-readiness.js`, kad santrauka rodytų manual setup queue, bazinio prieinamumo ir saugumo headerių reikšmių vartus.
 - `[x]` 2026-07-19 papildyti automatines patikras naršyklės ženkliuku, atsakymo būdo laukais ir vienerių metų saugaus ryšio reikalavimu.
+- `[x]` 2026-07-19 įjungta leidžiamų svetainės šaltinių apsauga: naršyklė priima tik pačios svetainės, Cloudflare formos apsaugos ir lankomumo matavimo kodą; keturi struktūrizuotų duomenų blokai saugomi tiksliais kontroliniais kodais.
+- `[x]` Sukurta atskira automatinė leidžiamų šaltinių apsaugos patikra `scripts/check-content-security-policy.js` ir įtraukta į bendrą patikrą prieš paskelbimą.
 - `[x]` Sukurti `scripts/check-live-site.js`.
 - `[x]` Sukurti `scripts/pre-go-live.js`.
 - `[x]` Paleisti lokalią patikrą ir pataisyti klaidas.
@@ -193,6 +195,8 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Hero proporcija pritaikyta portretui ir patikrinta 1280px desktop bei 390px mobile vaizduose; horizontalios slinkties nėra.
 - `[x]` Hero paveikslo našumo optimizacija: išlaikant `1089 × 1445` matmenis production naudoja 440 KB JPEG vietoje 2,1 MB PNG, pridėti `width`, `height`, `fetchpriority` ir `decoding`; live patikra praėjo 2026-07-13.
 - `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
+- `[x]` Gerbiamas lankytojo naršyklėje pasirinktas mažesnis judesys: išjungiamas sklandus slinkimas ir kortelių pakilimo judesys.
+- `[x]` Slapukų pasirinkimo pranešimas pažymėtas kaip aiškiai pavadinta puslapio sritis pagalbinėms skaitymo priemonėms.
 
 Vizualinė kryptis:
 
@@ -220,6 +224,7 @@ Vizualinė kryptis:
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[x]` Forma sutikrina pasirinktą atsakymo būdą: renkantis el. paštą reikia el. pašto adreso, renkantis telefoną reikia telefono numerio; lankytojui parodomas tikslus paaiškinimas ir pažymimas trūkstamas laukas.
+- `[x]` Formos klaidos susietos su laukais: pagalbinės skaitymo priemonės perskaito paaiškinimą, neteisingas laukas turi aiškų žymėjimą, o pataisius duomenį žymėjimas pašalinamas.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas prieš parsindamas formos duomenis.
@@ -277,6 +282,7 @@ Prieš pirmą commit:
 - `[x]` Patikrinti, kad public HTML neturi vidinių „dar reikia patvirtinti“, „prieš viešą paleidimą“ ar „prieš publikavimą“ frazių.
 - `[x]` Patikrinti, kad public HTML turi bazinius prieinamumo landmark, nav ir formų label ryšius.
 - `[x]` Patikrinti, kad statinių puslapių ir Worker saugumo antraštės turi tikėtinas reikšmes.
+- `[x]` Patikrinti, kad leidžiamų šaltinių apsauga dengia visus keturis struktūrizuotų duomenų blokus, neleidžia savavališko įterpto kodo ir leidžia tik svetainei būtinas išorines paslaugas.
 - `[x]` Patikrinti, kad visi puslapiai turi SEO metadata.
 - `[x]` Patikrinti, kad canonical, OG URL, OG image, sitemap, robots.txt ir JSON-LD yra techniškai korektiški.
 - `[x]` Patikrinti, kad GA4 eventai atitinka allowlist ir nesiunčia kontaktų formos laukų.
