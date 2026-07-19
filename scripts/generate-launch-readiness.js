@@ -55,6 +55,7 @@ const technicalGates = [
   checked(has("scripts/check-live-site.js", "/api/contact") && has("scripts/check-live-site.js", "invalid JSON"), "Production live check tikrina kontaktų API klaidų kelius"),
   checked(has("scripts/check-site-integrity.js", "contains internal pre-launch wording"), "Public HTML patikra saugo nuo vidinių paleidimo frazių"),
   checked(has("scripts/check-site-integrity.js", "missing skip link to main content"), "Public HTML patikra tikrina bazinį prieinamumą"),
+  checked(has("scripts/check-site-integrity.js", "main content should be focusable through the skip link"), "Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį"),
   checked(has("scripts/check-live-site.js", "strict-origin-when-cross-origin") && has("scripts/check-site-integrity.js", "missing security header"), "Live ir lokali patikra tikrina saugumo antraščių reikšmes"),
   checked(has("scripts/check-live-site.js", "strict-transport-security") && has("src/index.js", "max-age=31536000"), "Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį"),
   checked(has("scripts/check-live-site.js", "requiredPolicyDirectives") && has("src/index.js", "CONTENT_SECURITY_POLICY"), "Gyva svetainė atmeta neleistiną svetimą kodą"),

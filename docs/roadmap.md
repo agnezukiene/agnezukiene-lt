@@ -187,6 +187,8 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patikrinti mobile vaizdą.
 - `[x]` Patikrinti desktop vaizdą.
 - `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
+- `[x]` 2026-07-19 visi aštuoni vieši puslapiai patikrinti nepriklausomu automatiniu prieinamumo įrankiu kompiuterio ir telefono dydžiuose; pagrindinių bei papildomų taisyklių klaidų nerasta.
+- `[x]` Klaviatūros nuoroda „Pereiti prie turinio“ pataisyta taip, kad aktyvi klaviatūros vieta iš tikrųjų persikeltų į pagrindinį turinį; patikrinta kompiuterio ir telefono naršyklėje, o reikalavimas įtrauktas į nuolatinę failų patikrą.
 - `[x]` Automatizuoti WCAG spalvų kontrasto patikrą: 9 pagrindinės teksto, mygtukų ir focus spalvų poros atitinka nustatytas ribas ir patikrintos production 2026-07-13.
 - `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
 - `[x]` Agnė pateikė savo nuotraukas ir patvirtino galutinį hero variantą.

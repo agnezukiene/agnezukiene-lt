@@ -60,8 +60,8 @@ for (const file of htmlFiles) {
   if (!technicalPages.has(file) && !/<a class="skip-link" href="#turinys">/.test(html)) {
     errors.push(`${file}: missing skip link to main content`);
   }
-  if (!technicalPages.has(file) && !/<main[^>]*id="turinys"/.test(html)) {
-    errors.push(`${file}: main content should have id="turinys" for the skip link`);
+  if (!technicalPages.has(file) && !/<main[^>]*id="turinys"[^>]*tabindex="-1"/.test(html)) {
+    errors.push(`${file}: main content should be focusable through the skip link`);
   }
   if (technicalPages.has(file) && !/<meta name="robots" content="noindex"/.test(html)) {
     errors.push(`${file}: technical page should be noindex`);

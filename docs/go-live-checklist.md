@@ -46,6 +46,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Patikrinti pradžios puslapį desktop vaizde.
 - `[x]` Patikrinti pradžios puslapį mobile vaizde.
 - `[x]` Patikrinti mobile meniu.
+- `[x]` Patikrinti visus viešus puslapius automatiniu prieinamumo įrankiu ir klaviatūra; nuoroda „Pereiti prie turinio“ perkelia aktyvią vietą į pagrindinį turinį.
 - `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
 - `[x]` Patikrinti `404.html`.
 - `[x]` Lokaliai patikrinti, kad Worker fallback nežinomam URL grąžina lietuvišką `404.html` turinį su 404 statusu.
