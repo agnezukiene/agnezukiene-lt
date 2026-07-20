@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės go-live checklist
 
-Atnaujinta: 2026-07-20
+Atnaujinta: 2026-07-21
 
 ## Prieš pirmą commit
 
@@ -94,6 +94,8 @@ Atnaujinta: 2026-07-20
 - `[x]` Patikrinti formos klaidas gyvai ir naršyklėje: tuščia forma pateikia aiškų paaiškinimą.
 - `[x]` Formos klaidos susietos su konkrečiais laukais, klaidingi laukai aiškiai pažymimi ir pataisius žymėjimas pašalinamas.
 - `[x]` Privatumo politika apima duomenų šaltinį, tikslius teisinius pagrindus, pateikimo neprivalomumą ir pasekmes, perkeliamumo teisę, tarptautinio perdavimo apsaugas bei automatinių sprendimų netaikymą; 2026-07-21 patikrinta gyvoje svetainėje.
+- `[x]` Kontaktų forma pateikia aiškų privatumo paaiškinimą ir nuorodą, bet nereikalauja atskiro sutikimo duomenims, kurie būtini atsakyti į paties lankytojo užklausą; serverio patikra saugo šį reikalavimą.
+- `[x]` Nepriklausoma „Lighthouse 13.4.0“ patikra pagrindiniame ir kontaktų puslapiuose: visų pagrindinių sričių įvertinimai 99-100; rastas logotipo pavadinimo neatitikimas pataisytas.
 
 ## Analitika ir paieška
 

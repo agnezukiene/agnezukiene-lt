@@ -448,7 +448,7 @@ textarea {
 }
 
 .text-block a,
-.checkbox a {
+.form-privacy a {
   color: var(--accent-strong);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
@@ -492,8 +492,7 @@ textarea {
   overflow: hidden;
 }
 
-.form-row label,
-.checkbox {
+.form-row label {
   font-weight: 700;
 }
 
@@ -517,25 +516,14 @@ textarea {
   resize: vertical;
 }
 
-.checkbox {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  gap: 0.65rem;
-  align-items: start;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.checkbox input {
-  width: 18px;
-  height: 18px;
-  margin-top: 0.22rem;
-}
-
 .form-note,
 .small-text {
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+.form-privacy {
+  margin: 0;
 }
 
 .turnstile-slot {
@@ -556,8 +544,7 @@ textarea {
 }
 
 .form-row input[aria-invalid="true"],
-.form-row select[aria-invalid="true"],
-.checkbox input[aria-invalid="true"] {
+.form-row select[aria-invalid="true"] {
   outline: 3px solid #9f2f23;
   outline-offset: 2px;
 }

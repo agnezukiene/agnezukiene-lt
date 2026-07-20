@@ -17,6 +17,17 @@ function checked(done, label, detail = "") {
   return `- \`${mark}\` ${label}${detail ? `: ${detail}` : ""}`;
 }
 
+function vilniusDate() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Vilnius",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${value.year}-${value.month}-${value.day}`;
+}
+
 function roadmapHasDone(text) {
   return roadmap.includes(`\`[x]\` ${text}`) || roadmap.includes(`[x] ${text}`);
 }
@@ -72,6 +83,8 @@ const technicalGates = [
   checked(has("public/index.html", "agne-zukiene-psichologe-sidabro-pienas-768w.avif") && has("scripts/check-site-integrity.js", "responsive hero image"), "Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai"),
   checked(has("scripts/check-contact-api.js", "Email reply choice should require an email address") && has("scripts/check-contact-api.js", "Phone reply choice should require a phone number"), "Kontaktų forma sutikrina pasirinktą atsakymo būdą"),
   checked(has("public/assets/js/site.js", "aria-invalid") && has("public/kontaktai.html", "aria-describedby=\"form-status\""), "Formos klaidos susietos su konkrečiais laukais"),
+  checked(has("public/kontaktai.html", "form-privacy") && !has("public/kontaktai.html", "name=\"privacy\"") && !has("src/index.js", "data.privacy"), "Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo"),
+  checked(has("scripts/check-site-integrity.js", "visible brand text should provide its accessible name"), "Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas"),
   checked(has("public/assets/css/styles.css", "prefers-reduced-motion: reduce"), "Svetainė gerbia lankytojo mažesnio judesio pasirinkimą"),
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
   checked(workerRequiresProtectedFormConfig, "Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo"),
@@ -166,7 +179,7 @@ const nextSteps = launchBlockers
 const md = [
   "# Launch readiness",
   "",
-  `Atnaujinta: ${new Date().toISOString().slice(0, 10)}`,
+  `Atnaujinta: ${vilniusDate()}`,
   "",
   "Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.",
   "",

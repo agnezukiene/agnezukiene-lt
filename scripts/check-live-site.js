@@ -212,8 +212,7 @@ async function main() {
       email: "test@example.com",
       replyBy: "email",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
   assert.strictEqual(contactOriginResponse.status, 403, `/api/contact origin: expected 403, got ${contactOriginResponse.status}`);
@@ -230,8 +229,7 @@ async function main() {
       email: "test@example.com",
       replyBy: "email",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
   assert.strictEqual(
@@ -253,8 +251,7 @@ async function main() {
       replyBy: "email",
       format: "unknown",
       topic: "other",
-      message: "a".repeat(11000),
-      privacy: true
+      message: "a".repeat(11000)
     })
   });
   assert.strictEqual(contactSizeResponse.status, 413, `/api/contact size: expected 413, got ${contactSizeResponse.status}`);
@@ -281,8 +278,7 @@ async function main() {
       name: "Testas",
       replyBy: "email",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
   assert.strictEqual(contactValidationResponse.status, 400, `/api/contact validation: expected 400, got ${contactValidationResponse.status}`);
@@ -299,8 +295,7 @@ async function main() {
       phone: "+37060000000",
       replyBy: "email",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
   assert.strictEqual(contactEmailChoiceResponse.status, 400, "/api/contact email choice: expected 400");
@@ -317,8 +312,7 @@ async function main() {
       email: "test@example.com",
       replyBy: "phone",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
   assert.strictEqual(contactPhoneChoiceResponse.status, 400, "/api/contact phone choice: expected 400");
@@ -335,8 +329,7 @@ async function main() {
       email: "test@example.com",
       replyBy: "email",
       format: "unknown",
-      topic: "other",
-      privacy: true
+      topic: "other"
     })
   });
 

@@ -4,7 +4,7 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "62e775dec627";
+const STATIC_ASSET_VERSION = "21d3d5904b8e";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -172,7 +172,6 @@ function normalizeContact(body) {
     topic: clean(body.topic, 30),
     message: clean(body.message, 1200),
     website: clean(body.website, 120),
-    privacy: body.privacy === "on" || body.privacy === true,
     turnstileToken: clean(body.turnstileToken, 2048)
   };
 }
@@ -193,7 +192,6 @@ function validateContact(data) {
   if (data.replyBy === "phone" && !data.phone) return "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
   if (!FORMAT_LABELS[data.format]) return "Pasirinkite konsultacijos formatą.";
   if (!TOPIC_LABELS[data.topic]) return "Pasirinkite bendrą temą.";
-  if (!data.privacy) return "Patvirtinkite privatumo sutikimą.";
   return "";
 }
 

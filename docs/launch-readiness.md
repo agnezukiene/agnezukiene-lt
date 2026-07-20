@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-20
+Atnaujinta: 2026-07-21
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
@@ -32,6 +32,8 @@ Atnaujinta: 2026-07-20
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Formos klaidos susietos su konkrečiais laukais
+- `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
+- `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo

@@ -51,7 +51,6 @@ function validPayload(overrides = {}) {
     format: "unknown",
     topic: "other",
     message: "Trumpa testine zinute.",
-    privacy: true,
     turnstileToken: "token",
     ...overrides
   };

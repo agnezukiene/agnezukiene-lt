@@ -251,8 +251,15 @@ const contactHtml = readSite("kontaktai.html");
 if (!contactHtml.includes('name="website"') || !contactHtml.includes("honeypot")) {
   errors.push("kontaktai.html: missing honeypot field");
 }
-if (!/<label class="checkbox">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/label>/.test(contactHtml)) {
-  errors.push("kontaktai.html: privacy consent should link to the privacy policy");
+if (!/<p class="form-note form-privacy">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/p>/.test(contactHtml)) {
+  errors.push("kontaktai.html: privacy notice should link to the privacy policy");
+}
+if (contactHtml.includes('name="privacy"') || worker.includes("data.privacy")) {
+  errors.push("Contact form should provide a privacy notice without requesting unnecessary consent");
+}
+const indexHtml = readSite("index.html");
+if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
+  errors.push("index.html: visible brand text should provide its accessible name without an overriding label");
 }
 if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
   errors.push("kontaktai.html: submit button should preserve its readable label while sending");

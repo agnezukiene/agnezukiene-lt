@@ -15,7 +15,7 @@ Atnaujinta: 2026-07-21
 | laukia | Atsakymo į užklausas terminas | Naudojama formuluotė „atsakysiu, kai galėsiu“. | `kontaktai.html`, `konsultacijos.html` |
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
 | laukia | Galutinė kvalifikacijos formuluotė | Naudojama „psichologė, konsultavimo psichologijos magistrantė“. | Visi puslapiai, SEO metadata, schema |
-| padaryta | Privatumo politikos tekstas | Agnė pavedė parengti savo nuožiūra pagal gerąją praktiką; išsamus tekstas parengtas 2026-07-19 ir papildytas pagal BDAR informavimo reikalavimus 2026-07-21. | `privatumo-politika.html` |
+| padaryta | Privatumo politikos tekstas | Agnė pavedė parengti savo nuožiūra pagal gerąją praktiką; išsamus tekstas parengtas 2026-07-19, papildytas pagal BDAR informavimo reikalavimus ir suderintas su kontaktų formos paaiškinimu 2026-07-21. | `privatumo-politika.html`, `kontaktai.html` |
 | padaryta | Slapukų politikos tekstas | Tekstas ir lankytojo pasirinkimo valdymas parengti bei patikrinti naršyklėje 2026-07-19. | `slapuku-politika.html` |
 
 ## Vienas klausimas vienu metu
