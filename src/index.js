@@ -4,7 +4,7 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "719692c160bc";
+const STATIC_ASSET_VERSION = "3788d6a64199";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",

@@ -269,6 +269,14 @@ if (!/<p class="form-note form-privacy">[\s\S]*href="\/privatumo-politika"[\s\S]
 if (contactHtml.includes('name="privacy"') || worker.includes("data.privacy")) {
   errors.push("Contact form should provide a privacy notice without requesting unnecessary consent");
 }
+const siteScript = read("public/assets/js/site.js");
+const siteStyles = read("public/assets/css/styles.css");
+if (!siteScript.includes('document.documentElement.classList.add("has-js")')) {
+  errors.push("site.js: mobile navigation should opt into the compact menu only after JavaScript loads");
+}
+if (!siteStyles.includes(".has-js .nav-toggle") || !siteStyles.includes(".has-js .nav-links")) {
+  errors.push("styles.css: mobile navigation should remain visible when JavaScript is unavailable");
+}
 const indexHtml = readSite("index.html");
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
   errors.push("index.html: visible brand text should provide its accessible name without an overriding label");

@@ -627,21 +627,36 @@ textarea {
 @media (max-width: 920px) {
   .nav {
     min-height: 68px;
+    flex-wrap: wrap;
+    padding-block: 0.65rem;
   }
 
-  .nav-toggle {
+  .has-js .nav {
+    flex-wrap: nowrap;
+    padding-block: 0;
+  }
+
+  .has-js .nav-toggle {
     display: inline-flex;
     align-items: center;
   }
 
   .nav-links {
+    position: static;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 0 0.65rem;
+  }
+
+  .has-js .nav-links {
     position: absolute;
     left: 16px;
     right: 16px;
     top: 76px;
+    width: auto;
     display: none;
-    flex-direction: column;
-    align-items: stretch;
     padding: 0.75rem;
     background: var(--surface);
     border: 1px solid var(--line);
@@ -649,7 +664,7 @@ textarea {
     box-shadow: var(--shadow);
   }
 
-  .nav-links.is-open {
+  .has-js .nav-links.is-open {
     display: flex;
   }
 

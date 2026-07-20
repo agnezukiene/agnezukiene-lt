@@ -26,6 +26,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių
 - `[x]` Public HTML patikra tikrina bazinį prieinamumą
 - `[x]` Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį
+- `[x]` Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes
 - `[x]` Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį
 - `[x]` Gyva svetainė atmeta neleistiną svetimą kodą

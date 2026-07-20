@@ -50,6 +50,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Patikrinti pradžios puslapį desktop vaizde.
 - `[x]` Patikrinti pradžios puslapį mobile vaizde.
 - `[x]` Patikrinti mobile meniu.
+- `[x]` Patikrinti, kad telefono navigacijos nuorodos lieka pasiekiamos ir tada, kai papildomas svetainės kodas neįsikrauna; 2026-07-21 patikrintas 390 pikselių telefono vaizdas abiem režimais.
 - `[x]` Patikrinti visus viešus puslapius automatiniu prieinamumo įrankiu ir klaviatūra; nuoroda „Pereiti prie turinio“ perkelia aktyvią vietą į pagrindinį turinį.
 - `[x]` Patikrinti visus vidinius puslapius laikiname Cloudflare URL.
 - `[x]` Patikrinti `404.html`.
