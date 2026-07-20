@@ -83,7 +83,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 ## 2. Techninė bazė
 
 - `[x]` Lokaliai inicijuoti Git projektą.
-- `[~]` Sukurti pradinę failų struktūrą.
+- `[x]` Sukurti pradinę failų struktūrą.
 - `[x]` Pabaigti `assets/css/styles.css`.
 - `[x]` Pabaigti `assets/js/site.js`.
 - `[x]` Sukurti `public/sitemap.xml`.
@@ -241,7 +241,7 @@ Vizualinė kryptis:
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[x]` Forma sutikrina pasirinktą atsakymo būdą: renkantis el. paštą reikia el. pašto adreso, renkantis telefoną reikia telefono numerio; lankytojui parodomas tikslus paaiškinimas ir pažymimas trūkstamas laukas.
-- `[~]` 2026-07-21 virš kontaktų laukų pridėtas iš anksto matomas paaiškinimas, kad būtinas bent el. paštas arba telefonas; pasirinkus atsakymo būdą atitinkamas laukas pažymimas kaip privalomas, o akivaizdžiai neteisingas telefono numeris sustabdomas naršyklėje ir serveryje. Vietinė telefono, kompiuterio ir automatinė patikra praėjo, laukia patikra gyvoje svetainėje.
+- `[x]` 2026-07-21 virš kontaktų laukų pridėtas iš anksto matomas paaiškinimas, kad būtinas bent el. paštas arba telefonas; pasirinkus atsakymo būdą atitinkamas laukas pažymimas kaip privalomas, o akivaizdžiai neteisingas telefono numeris sustabdomas naršyklėje ir serveryje. Vietinė, gyva telefono bei kompiuterio ir automatinė patikra praėjo.
 - `[x]` Formos klaidos susietos su laukais: pagalbinės skaitymo priemonės perskaito paaiškinimą, neteisingas laukas turi aiškų žymėjimą, o pataisius duomenį žymėjimas pašalinamas.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
@@ -325,7 +325,7 @@ Prieš Cloudflare deploy:
 - `[x]` 2026-07-12 Worker fallback kodas ir lokali VM patikra dengia lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` Production nežinomo URL lietuviškas 404 sutvarkytas: Worker fallbackas naudoja Cloudflare extensionless `/404`; 2026-07-13 production grąžino HTTP 404 ir lietuvišką `Puslapis nerastas` turinį.
 - `[x]` `sitemap.xml` ir `robots.txt` yra vietoje.
-- `[~]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; reikia Agnės galutinio patvirtinimo.
+- `[x]` Privatumo ir slapukų puslapiai techniškai peržiūrėti; Agnė pavedė juos parengti savo nuožiūra pagal gerąją praktiką, todėl atskiras teksto patvirtinimas nebelaikomas technine kliūtimi.
 
 Po Cloudflare deploy:
 

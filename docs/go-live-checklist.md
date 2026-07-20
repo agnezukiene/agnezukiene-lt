@@ -86,7 +86,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
 - `[x]` Kontaktų forma rodo backend klaidas ir atnaujina Turnstile po siuntimo bandymo.
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą su įrašytu el. paštu arba telefono numeriu.
-- `[~]` Iš anksto paaiškinta, kad būtinas bent vienas kontaktas, pasirinktas atsakymo laukas tampa privalomas, o telefono numerio forma tikrinama naršyklėje ir serveryje; vietinė patikra praėjo, laukia gyva patikra.
+- `[x]` Iš anksto paaiškinta, kad būtinas bent vienas kontaktas, pasirinktas atsakymo laukas tampa privalomas, o telefono numerio forma tikrinama naršyklėje ir serveryje; vietinė ir gyva telefono bei kompiuterio patikra praėjo 2026-07-21.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas.
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
