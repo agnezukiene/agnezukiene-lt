@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="https://agnezukiene.lt/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg">
   <meta name="twitter:image:alt" content="Psichologė Agnė Žukienė šviesiame kabinete">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=5f0336a98a7d">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=a090f039c2ce">
 </head>
 <body>
   <a class="skip-link" href="#turinys">Pereiti prie turinio</a>
@@ -30,21 +30,24 @@
     <section class="page-hero"><p class="eyebrow">Kontaktai</p><h1>Galite parašyti trumpai - atsakysiu, kai galėsiu.</h1><p>Pirmam kontaktui nereikia išsamiai aprašyti visos situacijos. Kontaktų forma nėra skubios pagalbos kanalas.</p></section>
     <section class="contact-layout">
       <form class="contact-form" id="contact-form" action="/api/contact" method="post" novalidate>
-        <div class="form-row"><label for="name">Vardas</label><input id="name" name="name" autocomplete="name" maxlength="80" aria-describedby="form-status" required></div>
-        <p class="form-note contact-method-note" id="contact-method-help">Įrašykite bent vieną: el. pašto adresą arba telefono numerį.</p>
-        <div class="form-row"><label for="email">El. paštas</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" aria-describedby="contact-method-help form-status"></div>
-        <div class="form-row"><label for="phone">Telefonas</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="contact-method-help form-status"></div>
-        <div class="form-row"><label for="replyBy">Kaip patogiausia atsakyti?</label><select id="replyBy" name="replyBy" aria-describedby="form-status" required><option value="">Pasirinkite</option><option value="email">El. paštu</option><option value="phone">Telefonu</option><option value="either">Tinka abu būdai</option></select></div>
-        <div class="form-row"><label for="format">Konsultacijos formatas</label><select id="format" name="format" aria-describedby="form-status" required data-track-select="consultation_format_select"><option value="">Pasirinkite</option><option value="live">Gyvai</option><option value="online">Nuotoliu</option><option value="unknown">Dar nežinau</option></select></div>
-        <div class="form-row"><label for="topic">Bendra tema</label><select id="topic" name="topic" aria-describedby="form-status" required data-track-select="service_interest_select"><option value="">Pasirinkite</option><option value="adult">Suaugusiojo konsultacija</option><option value="teen">Paauglio konsultacija</option><option value="child">Vaiko konsultacija</option><option value="parents">Tėvų konsultacija</option><option value="education">Psichoedukacija</option><option value="career">Karjeros / savęs pažinimo klausimas</option><option value="other">Kita</option></select></div>
-        <div class="form-row"><label for="message">Trumpas komentaras <span>neprivaloma</span></label><textarea id="message" name="message" rows="5" maxlength="1200" aria-describedby="message-count form-status" placeholder="Keli sakiniai, jei norisi patikslinti. Nerašykite labai jautrių detalių."></textarea><output class="character-count" id="message-count" for="message" data-message-count>Iki 1200 ženklų</output><span class="visually-hidden" data-message-count-live aria-live="polite"></span></div>
-        <div class="form-row honeypot" aria-hidden="true"><label for="website">Svetainė</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-        <p class="form-note form-privacy">Pateikti duomenys bus naudojami tik atsakyti į jūsų užklausą. Kaip jie saugomi ir kokias teises turite, paaiškinta <a href="/privatumo-politika" target="_blank" rel="noopener">privatumo politikoje</a>.</p>
-        <div class="turnstile-slot" data-turnstile></div>
-        <input type="hidden" name="turnstileToken" id="turnstile-token">
-        <p class="form-note">Jei kyla tiesioginė grėsmė jūsų ar kito žmogaus saugumui, <a href="tel:112">skambinkite 112</a>. Ši forma nėra skubios pagalbos kanalas.</p>
-        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-        <button class="button primary" type="submit" data-submit-label="Siųsti užklausą">Siųsti užklausą</button>
+        <p class="form-fallback">Šioje naršyklėje kontaktų forma nepasiekiama. Parašykite tiesiogiai el. paštu <a href="mailto:zukiene.agne@gmail.com">zukiene.agne@gmail.com</a>.</p>
+        <div class="contact-form-fields">
+          <div class="form-row"><label for="name">Vardas</label><input id="name" name="name" autocomplete="name" maxlength="80" aria-describedby="form-status" required></div>
+          <p class="form-note contact-method-note" id="contact-method-help">Įrašykite bent vieną: el. pašto adresą arba telefono numerį.</p>
+          <div class="form-row"><label for="email">El. paštas</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" aria-describedby="contact-method-help form-status"></div>
+          <div class="form-row"><label for="phone">Telefonas</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" aria-describedby="contact-method-help form-status"></div>
+          <div class="form-row"><label for="replyBy">Kaip patogiausia atsakyti?</label><select id="replyBy" name="replyBy" aria-describedby="form-status" required><option value="">Pasirinkite</option><option value="email">El. paštu</option><option value="phone">Telefonu</option><option value="either">Tinka abu būdai</option></select></div>
+          <div class="form-row"><label for="format">Konsultacijos formatas</label><select id="format" name="format" aria-describedby="form-status" required data-track-select="consultation_format_select"><option value="">Pasirinkite</option><option value="live">Gyvai</option><option value="online">Nuotoliu</option><option value="unknown">Dar nežinau</option></select></div>
+          <div class="form-row"><label for="topic">Bendra tema</label><select id="topic" name="topic" aria-describedby="form-status" required data-track-select="service_interest_select"><option value="">Pasirinkite</option><option value="adult">Suaugusiojo konsultacija</option><option value="teen">Paauglio konsultacija</option><option value="child">Vaiko konsultacija</option><option value="parents">Tėvų konsultacija</option><option value="education">Psichoedukacija</option><option value="career">Karjeros / savęs pažinimo klausimas</option><option value="other">Kita</option></select></div>
+          <div class="form-row"><label for="message">Trumpas komentaras <span>neprivaloma</span></label><textarea id="message" name="message" rows="5" maxlength="1200" aria-describedby="message-count form-status" placeholder="Keli sakiniai, jei norisi patikslinti. Nerašykite labai jautrių detalių."></textarea><output class="character-count" id="message-count" for="message" data-message-count>Iki 1200 ženklų</output><span class="visually-hidden" data-message-count-live aria-live="polite"></span></div>
+          <div class="form-row honeypot" aria-hidden="true"><label for="website">Svetainė</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <p class="form-note form-privacy">Pateikti duomenys bus naudojami tik atsakyti į jūsų užklausą. Kaip jie saugomi ir kokias teises turite, paaiškinta <a href="/privatumo-politika" target="_blank" rel="noopener">privatumo politikoje</a>.</p>
+          <div class="turnstile-slot" data-turnstile></div>
+          <input type="hidden" name="turnstileToken" id="turnstile-token">
+          <p class="form-note">Jei kyla tiesioginė grėsmė jūsų ar kito žmogaus saugumui, <a href="tel:112">skambinkite 112</a>. Ši forma nėra skubios pagalbos kanalas.</p>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          <button class="button primary" type="submit" data-submit-label="Siųsti užklausą">Siųsti užklausą</button>
+        </div>
       </form>
       <aside class="side-panel contact-panel">
         <h2>Kiti kontaktai</h2>
@@ -56,7 +59,7 @@
   </main>
   <footer class="site-footer"><div><strong>Agnė Žukienė</strong><p>Psichologė, konsultavimo psichologijos magistrantė.</p></div><div class="footer-links"><a href="mailto:zukiene.agne@gmail.com" data-event="mailto_click">zukiene.agne@gmail.com</a><a href="/privatumo-politika">Privatumo politika</a><a href="/slapuku-politika">Slapukų politika</a></div></footer>
   <div class="cookie-banner" data-cookie-banner role="region" aria-label="Slapukų pasirinkimas" hidden><p>Svetainė įsimena jūsų pasirinkimą naršyklėje. Lankomumo matavimas įjungiamas tik gavus sutikimą. <a href="/slapuku-politika">Plačiau apie slapukus</a>.</p><div><button class="button secondary" type="button" data-cookie-decline>Neleisti matavimo</button><button class="button primary" type="button" data-cookie-accept>Leisti matavimą</button></div></div>
-  <script src="/assets/js/config.js?v=5f0336a98a7d" defer></script>
-  <script src="/assets/js/site.js?v=5f0336a98a7d" defer></script>
+  <script src="/assets/js/config.js?v=a090f039c2ce" defer></script>
+  <script src="/assets/js/site.js?v=a090f039c2ce" defer></script>
 </body>
 </html>

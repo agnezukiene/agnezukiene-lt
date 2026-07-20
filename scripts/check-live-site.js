@@ -107,6 +107,12 @@ async function main() {
           && text.includes('aria-describedby="contact-method-help form-status"'),
         `${page}: phone field should refer to contact guidance and form status`
       );
+      assert(
+        text.includes('<p class="form-fallback">')
+          && text.includes('href="mailto:zukiene.agne@gmail.com"')
+          && text.includes('<div class="contact-form-fields">'),
+        `${page}: unavailable form should provide a direct email fallback`
+      );
     }
     if (page === "/privatumo-politika") {
       for (const disclosure of [

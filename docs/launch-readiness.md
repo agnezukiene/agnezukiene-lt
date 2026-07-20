@@ -39,6 +39,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Komentaro laukas aiškiai rodo nustatytą teksto ribą
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
+- `[x]` Neveikianti kontaktų forma pakeičiama tiesioginiu el. pašto adresu
 - `[x]` Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus
 - `[x]` Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas

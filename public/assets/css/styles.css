@@ -488,6 +488,27 @@ textarea {
   gap: 1rem;
 }
 
+.contact-form-fields {
+  display: none;
+}
+
+.has-js .contact-form-fields {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-fallback {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  padding: 1rem;
+}
+
+.has-js .form-fallback {
+  display: none;
+}
+
 .form-row {
   display: grid;
   gap: 0.35rem;

@@ -266,6 +266,12 @@ if (!contactHtml.includes('name="website"') || !contactHtml.includes("honeypot")
 if (!/<p class="form-note form-privacy">[\s\S]*href="\/privatumo-politika"[\s\S]*<\/p>/.test(contactHtml)) {
   errors.push("kontaktai.html: privacy notice should link to the privacy policy");
 }
+if (!/<p class="form-fallback">[\s\S]*href="mailto:zukiene\.agne@gmail\.com"[\s\S]*<\/p>/.test(contactHtml)) {
+  errors.push("kontaktai.html: unavailable form should provide a direct email fallback");
+}
+if (!contactHtml.includes('<div class="contact-form-fields">')) {
+  errors.push("kontaktai.html: working form fields should have a resilient visibility wrapper");
+}
 if (contactHtml.includes('name="privacy"') || worker.includes("data.privacy")) {
   errors.push("Contact form should provide a privacy notice without requesting unnecessary consent");
 }
@@ -276,6 +282,9 @@ if (!siteScript.includes('document.documentElement.classList.add("has-js")')) {
 }
 if (!siteStyles.includes(".has-js .nav-toggle") || !siteStyles.includes(".has-js .nav-links")) {
   errors.push("styles.css: mobile navigation should remain visible when JavaScript is unavailable");
+}
+if (!siteStyles.includes(".contact-form-fields") || !siteStyles.includes(".has-js .contact-form-fields") || !siteStyles.includes(".has-js .form-fallback")) {
+  errors.push("styles.css: contact form should swap to a direct email fallback when JavaScript is unavailable");
 }
 if (/font-size:\s*[^;]*(?:vw|vh)/.test(siteStyles)) {
   errors.push("styles.css: font sizes should use stable type scales instead of viewport-based scaling");
