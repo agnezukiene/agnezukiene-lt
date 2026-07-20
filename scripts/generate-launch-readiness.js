@@ -43,6 +43,9 @@ const ga4MeasurementId = config.match(/ga4MeasurementId:\s*"(G-[A-Z0-9]+)"/)?.[1
 const turnstileConfigured = /turnstileSiteKey:\s*"0x[0-9A-Za-z_-]+"/.test(config);
 const contactOriginConfigured = wrangler.includes('"ALLOWED_ORIGIN": "https://agnezukiene.lt"');
 const contactRecipientConfigured = wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"');
+const contactRateLimiterConfigured = wrangler.includes('"name": "CONTACT_RATE_LIMITER"')
+  && wrangler.includes('"limit": 5')
+  && wrangler.includes('"period": 60');
 const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmapHasDone("CONTACT_FROM_EMAIL");
 const workerRequiresEmailConfig = worker.includes("env.RESEND_API_KEY") && worker.includes("env.CONTACT_FROM_EMAIL");
 const workerRequiresProtectedFormConfig = worker.includes("!env.TURNSTILE_SECRET_KEY")
@@ -91,6 +94,7 @@ const technicalGates = [
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
   checked(workerRequiresProtectedFormConfig, "Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo"),
   checked(has("scripts/check-contact-api.js", "Unexpected Turnstile hostname should be rejected") && has("scripts/check-contact-api.js", "Unexpected Turnstile action should be rejected"), "Formos apsauga tikrina agnezukiene.lt adresą ir kontaktų formos paskirtį"),
+  checked(contactRateLimiterConfigured && has("scripts/check-contact-api.js", "Too many verified submissions should be rate limited"), "Kontaktų forma riboja per dažną laiškų siuntimą ir paaiškina, kada bandyti dar kartą"),
   checked(workerRequiresEmailConfig, "Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos"),
   checked(workerCanSendViaResend, "Worker turi Resend laiško siuntimo implementaciją"),
   checked(has("scripts/check-contact-api.js", "resend_test"), "Kontaktų API mock testas padengia Resend sėkmės kelią"),

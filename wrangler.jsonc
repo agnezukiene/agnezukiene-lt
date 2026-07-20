@@ -13,6 +13,16 @@
     "CONTACT_FROM_EMAIL": "Agnė Žukienė <noreply@agnezukiene.lt>",
     "ALLOWED_ORIGIN": "https://agnezukiene.lt"
   },
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "2026072101",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ],
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",

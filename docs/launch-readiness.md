@@ -40,6 +40,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo
 - `[x]` Formos apsauga tikrina agnezukiene.lt adresą ir kontaktų formos paskirtį
+- `[x]` Kontaktų forma riboja per dažną laiškų siuntimą ir paaiškina, kada bandyti dar kartą
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją
 - `[x]` Kontaktų API mock testas padengia Resend sėkmės kelią

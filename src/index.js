@@ -138,6 +138,7 @@ async function handleContact(request, env) {
     || !env.RESEND_API_KEY
     || !env.CONTACT_TO_EMAIL
     || !env.CONTACT_FROM_EMAIL
+    || !env.CONTACT_RATE_LIMITER
   ) {
     return json({ message: "Kontaktų forma dar nėra pilnai sukonfigūruota." }, 503);
   }
@@ -157,6 +158,23 @@ async function handleContact(request, env) {
 
   if (!turnstileOk) {
     return json({ message: "Nepavyko patvirtinti, kad formą siunčia žmogus." }, 400);
+  }
+
+  let rateLimitResult;
+  try {
+    rateLimitResult = await env.CONTACT_RATE_LIMITER.limit({
+      key: request.headers.get("CF-Connecting-IP") || "unknown"
+    });
+  } catch (error) {
+    return json({ message: "Formos apsauga laikinai nepasiekiama. Pabandykite po kelių minučių." }, 503);
+  }
+
+  if (!rateLimitResult.success) {
+    return json(
+      { message: "Per trumpą laiką išsiųsta per daug užklausų. Palaukite minutę ir pabandykite dar kartą." },
+      429,
+      { "retry-after": "60" }
+    );
   }
 
   let emailResponse;
@@ -259,10 +277,10 @@ async function sendEmail(data, env) {
   });
 }
 
-function json(payload, status) {
+function json(payload, status, extraHeaders = {}) {
   return withSecurityHeaders(new Response(JSON.stringify(payload), {
     status,
-    headers: JSON_HEADERS
+    headers: { ...JSON_HEADERS, ...extraHeaders }
   }));
 }
 

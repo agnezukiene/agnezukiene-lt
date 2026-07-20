@@ -1,6 +1,6 @@
 # Cloudflare variables and secrets runbook
 
-Atnaujinta: 2026-07-19
+Atnaujinta: 2026-07-21
 
 Šis dokumentas skirtas `agnezukienepage` Worker nustatymams Cloudflare paskyroje.
 
@@ -44,7 +44,13 @@ Vieši raktai laikomi `public/assets/js/config.js`.
 
 Šie raktai nėra secrets, bet turi būti tikslūs.
 
-## 4. Patikra po kintamųjų pridėjimo
+## 4. Laiškų dažnio apsauga
+
+`wrangler.jsonc` faile nustatyta `CONTACT_RATE_LIMITER` apsauga. Ji leidžia ne daugiau kaip 5 patvirtintus formos siuntimus per minutę iš tos pačios interneto jungties. Riba tikrinama tik po „Cloudflare Turnstile“ patvirtinimo ir prieš perduodant laišką į „Resend“.
+
+Šiai apsaugai nereikia papildomo slapto rakto ar rankinio nustatymo. Ji paskelbiama kartu su visa svetaine. Jei riba viršijama, laiškas nesiunčiamas, o lankytojui aiškiai pasiūloma palaukti minutę.
+
+## 5. Patikra po kintamųjų pridėjimo
 
 Po kiekvieno Cloudflare variables/secrets pakeitimo:
 
@@ -59,11 +65,11 @@ node scripts/check-live-site.js https://agnezukiene.lt
 4. Patikrinti Resend istorijoje, kad el. laiškas pristatytas į `zukiene.agne@gmail.com`.
 5. Patikrinti, kad GA4 negauna vardo, el. pašto, telefono ar žinutės teksto.
 
-## 5. Dabartinė būsena
+## 6. Dabartinė būsena
 
 Visi kontaktų formai ir lankomumo matavimui reikalingi nustatymai yra pridėti. 2026-07-19 Resend siuntimo istorijoje patvirtinti du sėkmingai pristatyti kontaktų formos laiškai. Slaptų raktų reikšmės šiame projekte nesaugomos.
 
-## 6. Resend rekomenduojamas nustatymas
+## 7. Resend rekomenduojamas nustatymas
 
 Rekomenduojamas MVP variantas: Resend pridėti domeną `agnezukiene.lt` ir naudoti siuntėją:
 

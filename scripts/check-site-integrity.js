@@ -249,9 +249,13 @@ if (!wrangler.includes('"run_worker_first": true')) errors.push("wrangler.jsonc:
 if (!wrangler.includes('"workers_dev": false')) errors.push("wrangler.jsonc: public workers.dev copy should stay disabled");
 if (!wrangler.includes('"preview_urls": false')) errors.push("wrangler.jsonc: public Worker preview URLs should stay disabled");
 if (!wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"')) errors.push("wrangler.jsonc: missing CONTACT_TO_EMAIL variable");
+if (!wrangler.includes('"name": "CONTACT_RATE_LIMITER"')) errors.push("wrangler.jsonc: missing contact form rate limiter binding");
+if (!wrangler.includes('"limit": 5') || !wrangler.includes('"period": 60')) {
+  errors.push("wrangler.jsonc: contact form rate limiter should allow 5 submissions per minute");
+}
 
 const worker = read("src/index.js");
-for (const requiredSnippet of ["/api/contact", "new URL(\"/404\"", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website", "origin !== env.ALLOWED_ORIGIN", "expectedHostname", "expectedAction"]) {
+for (const requiredSnippet of ["/api/contact", "new URL(\"/404\"", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "CONTACT_RATE_LIMITER", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website", "origin !== env.ALLOWED_ORIGIN", "expectedHostname", "expectedAction"]) {
   if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
 }
 

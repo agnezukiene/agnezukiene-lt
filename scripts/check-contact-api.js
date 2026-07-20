@@ -32,10 +32,25 @@ function jsonRequest(body, init = {}) {
     headers: {
       "content-type": "application/json",
       origin: "https://agnezukiene.lt",
+      "CF-Connecting-IP": "203.0.113.10",
       ...init.headers
     },
     body: JSON.stringify(body)
   });
+}
+
+function configuredEnv(overrides = {}) {
+  return {
+    TURNSTILE_SECRET_KEY: "secret",
+    RESEND_API_KEY: "resend_test",
+    CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+    CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+    ALLOWED_ORIGIN: "https://agnezukiene.lt",
+    CONTACT_RATE_LIMITER: {
+      limit: async () => ({ success: true })
+    },
+    ...overrides
+  };
 }
 
 async function readJson(response) {
@@ -197,13 +212,7 @@ async function main() {
   }
 
   {
-    const response = await worker.fetch(jsonRequest(validPayload({ turnstileToken: "" })), {
-      TURNSTILE_SECRET_KEY: "secret",
-      RESEND_API_KEY: "resend_test",
-      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
-      ALLOWED_ORIGIN: "https://agnezukiene.lt"
-    });
+    const response = await worker.fetch(jsonRequest(validPayload({ turnstileToken: "" })), configuredEnv());
     const body = await readJson(response);
     assert.strictEqual(response.status, 400, "Missing Turnstile token should be rejected when Turnstile secret is set");
     assert(body.message.includes("patvirtinti"), "Turnstile response should explain the verification failure");
@@ -224,13 +233,7 @@ async function main() {
       if (String(url).includes("siteverify")) return Response.json(result);
       return Response.json({ id: "email_should_not_send" });
     });
-    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
-      TURNSTILE_SECRET_KEY: "secret",
-      RESEND_API_KEY: "resend_test",
-      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
-      ALLOWED_ORIGIN: "https://agnezukiene.lt"
-    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv());
     assert.strictEqual(response.status, 400, message);
     assert(!calls.some((url) => url.includes("api.resend.com")), `${message}; Resend should not be called`);
   }
@@ -240,14 +243,51 @@ async function main() {
       if (String(url).includes("siteverify")) throw new Error("Turnstile unavailable");
       return Response.json({ id: "email_should_not_send" });
     });
-    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
-      TURNSTILE_SECRET_KEY: "secret",
-      RESEND_API_KEY: "resend_test",
-      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
-      ALLOWED_ORIGIN: "https://agnezukiene.lt"
-    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv());
     assert.strictEqual(response.status, 400, "Turnstile service errors should fail safely");
+  }
+
+  {
+    const calls = [];
+    const workerWithFetch = createWorker(async (url) => {
+      calls.push(String(url));
+      if (String(url).includes("siteverify")) {
+        return Response.json({ success: true, hostname: "agnezukiene.lt", action: "contact" });
+      }
+      return Response.json({ id: "email_should_not_send" });
+    });
+    const seenKeys = [];
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv({
+      CONTACT_RATE_LIMITER: {
+        limit: async ({ key }) => {
+          seenKeys.push(key);
+          return { success: false };
+        }
+      }
+    }));
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 429, "Too many verified submissions should be rate limited");
+    assert.strictEqual(response.headers.get("retry-after"), "60", "Rate limited responses should say when to retry");
+    assert(body.message.includes("per daug užklausų"), "Rate limit response should clearly explain what happened");
+    assert.deepStrictEqual(seenKeys, ["203.0.113.10"], "Rate limit should use the Cloudflare visitor identifier");
+    assert(!calls.some((url) => url.includes("api.resend.com")), "Rate limited submissions should not send email");
+  }
+
+  {
+    const workerWithFetch = createWorker(async (url) => {
+      if (String(url).includes("siteverify")) {
+        return Response.json({ success: true, hostname: "agnezukiene.lt", action: "contact" });
+      }
+      return Response.json({ id: "email_should_not_send" });
+    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv({
+      CONTACT_RATE_LIMITER: {
+        limit: async () => {
+          throw new Error("Rate limiter unavailable");
+        }
+      }
+    }));
+    assert.strictEqual(response.status, 503, "Rate limiter errors should fail safely before sending email");
   }
 
   {
@@ -257,13 +297,7 @@ async function main() {
       }
       throw new Error("Resend unavailable");
     });
-    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
-      TURNSTILE_SECRET_KEY: "secret",
-      RESEND_API_KEY: "resend_test",
-      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
-      ALLOWED_ORIGIN: "https://agnezukiene.lt"
-    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv());
     assert.strictEqual(response.status, 502, "Resend service errors should return a readable temporary failure");
   }
 
@@ -280,13 +314,7 @@ async function main() {
       return new Response("not found", { status: 404 });
     });
 
-    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
-      TURNSTILE_SECRET_KEY: "secret",
-      RESEND_API_KEY: "resend_test",
-      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
-      ALLOWED_ORIGIN: "https://agnezukiene.lt"
-    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv());
     assert.strictEqual(response.status, 200, "Valid request should succeed when Turnstile and Resend are configured");
 
     const resendCall = calls.find((call) => call.url.includes("api.resend.com"));
