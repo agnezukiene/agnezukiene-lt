@@ -244,7 +244,27 @@
     const messageInput = form.querySelector("#message");
     const messageCount = form.querySelector("[data-message-count]");
     const messageCountLive = form.querySelector("[data-message-count-live]");
+    const emailInput = form.querySelector("#email");
+    const phoneInput = form.querySelector("#phone");
+    const replyByInput = form.querySelector("#replyBy");
     let lastMessageThreshold = null;
+
+    const isValidPhone = (value) => {
+      if (!/^\+?[\d\s().-]+$/.test(value)) return false;
+      const digitCount = value.replace(/\D/g, "").length;
+      return digitCount >= 6 && digitCount <= 15;
+    };
+
+    const updateReplyRequirements = () => {
+      if (!emailInput || !phoneInput || !replyByInput) return;
+      emailInput.required = replyByInput.value === "email";
+      phoneInput.required = replyByInput.value === "phone";
+    };
+
+    if (replyByInput) {
+      replyByInput.addEventListener("change", updateReplyRequirements);
+      updateReplyRequirements();
+    }
 
     const updateMessageCount = () => {
       if (!messageInput || !messageCount) return;
@@ -346,8 +366,6 @@
       const email = String(data.get("email") || "").trim();
       const phone = String(data.get("phone") || "").trim();
       const replyBy = String(data.get("replyBy") || "");
-      const emailInput = form.querySelector("#email");
-      const phoneInput = form.querySelector("#phone");
 
       if (!email && !phone) {
         status.classList.add("is-error");
@@ -365,6 +383,15 @@
         track("form_error", { form_id: "contact", error_type: "missing_email" });
         markFieldInvalid(emailInput);
         if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (phone && !isValidPhone(phone)) {
+        status.classList.add("is-error");
+        status.textContent = "Patikrinkite telefono numerį. Galite naudoti skaitmenis, tarpus, skliaustus, brūkšnelį ir ženklą „+“ numerio pradžioje.";
+        track("form_error", { form_id: "contact", error_type: "invalid_phone" });
+        markFieldInvalid(phoneInput);
+        if (phoneInput) phoneInput.focus();
         return;
       }
 
@@ -411,6 +438,7 @@
         }
 
         form.reset();
+        updateReplyRequirements();
         updateMessageCount();
         clearInvalidFields();
         resetTurnstile();

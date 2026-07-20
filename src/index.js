@@ -4,7 +4,7 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "9eeaa2174b88";
+const STATIC_ASSET_VERSION = "5f0336a98a7d";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -218,9 +218,16 @@ function validateContact(data) {
   if (!REPLY_LABELS[data.replyBy]) return "Pasirinkite, kaip patogiausia atsakyti.";
   if (data.replyBy === "email" && !data.email) return "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
   if (data.replyBy === "phone" && !data.phone) return "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
+  if (data.phone && !isValidPhone(data.phone)) return "Patikrinkite telefono numerį.";
   if (!FORMAT_LABELS[data.format]) return "Pasirinkite konsultacijos formatą.";
   if (!TOPIC_LABELS[data.topic]) return "Pasirinkite bendrą temą.";
   return "";
+}
+
+function isValidPhone(value) {
+  if (!/^\+?[\d\s().-]+$/.test(value)) return false;
+  const digitCount = value.replace(/\D/g, "").length;
+  return digitCount >= 6 && digitCount <= 15;
 }
 
 async function verifyTurnstile({ token, secret, ip, expectedHostname, expectedAction }) {

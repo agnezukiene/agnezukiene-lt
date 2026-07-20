@@ -241,6 +241,7 @@ Vizualinė kryptis:
 - `[x]` Patikrinti, kad forma nesiunčia jautraus turinio į GA4.
 - `[x]` Patikrinti, kad forma turi aiškias klaidas žmogui.
 - `[x]` Forma sutikrina pasirinktą atsakymo būdą: renkantis el. paštą reikia el. pašto adreso, renkantis telefoną reikia telefono numerio; lankytojui parodomas tikslus paaiškinimas ir pažymimas trūkstamas laukas.
+- `[~]` 2026-07-21 virš kontaktų laukų pridėtas iš anksto matomas paaiškinimas, kad būtinas bent el. paštas arba telefonas; pasirinkus atsakymo būdą atitinkamas laukas pažymimas kaip privalomas, o akivaizdžiai neteisingas telefono numeris sustabdomas naršyklėje ir serveryje. Vietinė telefono, kompiuterio ir automatinė patikra praėjo, laukia patikra gyvoje svetainėje.
 - `[x]` Formos klaidos susietos su laukais: pagalbinės skaitymo priemonės perskaito paaiškinimą, neteisingas laukas turi aiškų žymėjimą, o pataisius duomenį žymėjimas pašalinamas.
 - `[x]` Kontaktų forma rodo backend klaidos žinutę ir po siuntimo bandymo atnaujina Turnstile tokeną.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.

@@ -98,6 +98,15 @@ async function main() {
     if (page === "/kontaktai") {
       assert(text.includes('maxlength="1200" aria-describedby="message-count form-status"'), `${page}: missing message limit`);
       assert(text.includes('data-message-count-live aria-live="polite"'), `${page}: missing accessible message count`);
+      assert(
+        text.includes('id="contact-method-help">Įrašykite bent vieną: el. pašto adresą arba telefono numerį.'),
+        `${page}: missing contact method guidance`
+      );
+      assert(
+        text.includes('id="phone" name="phone" type="tel"')
+          && text.includes('aria-describedby="contact-method-help form-status"'),
+        `${page}: phone field should refer to contact guidance and form status`
+      );
     }
     if (page === "/privatumo-politika") {
       for (const disclosure of [
@@ -375,6 +384,23 @@ async function main() {
   assert(
     (await readJsonMessage(contactPhoneChoiceResponse)).includes("įrašykite telefono numerį"),
     "/api/contact phone choice: expected missing phone message"
+  );
+
+  const contactInvalidPhoneResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: productionOrigin },
+    body: JSON.stringify({
+      name: "Testas",
+      phone: "telefonas",
+      replyBy: "phone",
+      format: "unknown",
+      topic: "other"
+    })
+  });
+  assert.strictEqual(contactInvalidPhoneResponse.status, 400, "/api/contact invalid phone: expected 400");
+  assert(
+    (await readJsonMessage(contactInvalidPhoneResponse)).includes("Patikrinkite telefono numerį"),
+    "/api/contact invalid phone: expected readable phone error"
   );
 
   const contactResponse = await fetch(new URL("/api/contact", baseUrl), {

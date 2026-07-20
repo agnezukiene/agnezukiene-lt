@@ -212,6 +212,18 @@ async function main() {
     assert(body.message.includes("įrašykite telefono numerį"), "Phone reply mismatch should explain what is missing");
   }
 
+  for (const phone of ["12345", "telefonas", "+370 600 00000 papildomas tekstas", "+3706000000000000"]) {
+    const response = await worker.fetch(jsonRequest(validPayload({ email: "", phone, replyBy: "phone" })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, `Invalid phone should be rejected: ${phone}`);
+    assert(body.message.includes("telefono numerį"), `Invalid phone response should explain the error: ${phone}`);
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ email: "", phone: "+370 (600) 00000", replyBy: "phone" })), {});
+    assert.strictEqual(response.status, 503, "A valid international phone should pass validation and reach setup checks");
+  }
+
   {
     const response = await worker.fetch(jsonRequest(validPayload({ turnstileToken: "" })), configuredEnv());
     const body = await readJson(response);

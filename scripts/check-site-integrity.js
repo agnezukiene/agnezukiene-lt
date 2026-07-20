@@ -312,9 +312,16 @@ if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
 if (!contactHtml.includes('id="form-status" role="status" aria-live="polite"')) {
   errors.push("kontaktai.html: form status should have a stable accessible identifier");
 }
-for (const field of ["name", "email", "phone", "replyBy", "format", "topic"]) {
+for (const field of ["name", "replyBy", "format", "topic"]) {
   const pattern = new RegExp(`<(?:input|select)[^>]+id="${field}"[^>]+aria-describedby="form-status"`);
   if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to the form status`);
+}
+for (const field of ["email", "phone"]) {
+  const pattern = new RegExp(`<input[^>]+id="${field}"[^>]+aria-describedby="contact-method-help form-status"`);
+  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to contact guidance and form status`);
+}
+if (!contactHtml.includes('id="contact-method-help">Įrašykite bent vieną: el. pašto adresą arba telefono numerį.')) {
+  errors.push("kontaktai.html: contact methods should explain that at least one is required");
 }
 for (const fieldLimit of ['name="name" autocomplete="name" maxlength="80"', 'name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"', 'name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"']) {
   if (!contactHtml.includes(fieldLimit)) errors.push(`kontaktai.html: missing field limit or keyboard hint: ${fieldLimit}`);
@@ -373,7 +380,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "v
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

@@ -535,6 +535,10 @@ textarea {
   margin: 0;
 }
 
+.contact-method-note {
+  margin: 0;
+}
+
 .character-count {
   color: var(--muted);
   font-size: 0.9rem;

@@ -35,6 +35,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Nuorodų dalijimosi peržiūros tikrinamos lokaliai ir gyvoje svetainėje
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
+- `[x]` Kontaktų forma atmeta akivaizdžiai neteisingą telefono numerį
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Komentaro laukas aiškiai rodo nustatytą teksto ribą
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
