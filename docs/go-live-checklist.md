@@ -88,7 +88,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
 - `[x]` Kontaktų formos apsauga tikrina `agnezukiene.lt` adresą, kontaktų formos paskirtį ir saugiai sustoja, jei trūksta apsaugos nustatymų.
-- `[x]` Kontaktų forma riboja per dažną patvirtintų laiškų siuntimą iki 5 bandymų per minutę iš tos pačios interneto jungties; viršijus ribą „Resend“ nekviečiamas, o lankytojas gauna aiškų paaiškinimą.
+- `[x]` Kontaktų forma riboja per dažną patvirtintų laiškų siuntimą iki 5 bandymų per minutę iš tos pačios interneto jungties; viršijus ribą „Resend“ nekviečiamas, o lankytojas gauna aiškų paaiškinimą. Nustatymas paskelbtas ir gyva svetainė patikrinta 2026-07-21.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc`.
 - `[x]` Cloudflare saugiai pridėti abu slapti raktai: formos apsaugos ir laiškų siuntimo.
 - `[x]` Patikrinti sėkmingą formos siuntimą gyvai: 2026-07-20 po apsaugos sustiprinimo išsiųstas techninis bandymas, o „Resend“ jį pažymėjo kaip pristatytą.

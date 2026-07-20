@@ -67,7 +67,7 @@ node scripts/check-live-site.js https://agnezukiene.lt
 
 ## 6. Dabartinė būsena
 
-Visi kontaktų formai ir lankomumo matavimui reikalingi nustatymai yra pridėti. 2026-07-19 Resend siuntimo istorijoje patvirtinti du sėkmingai pristatyti kontaktų formos laiškai. Slaptų raktų reikšmės šiame projekte nesaugomos.
+Visi kontaktų formai ir lankomumo matavimui reikalingi nustatymai yra pridėti. 2026-07-19 Resend siuntimo istorijoje patvirtinti du sėkmingai pristatyti kontaktų formos laiškai. 2026-07-21 „Cloudflare“ priėmė laiškų dažnio apsaugos nustatymą, o visa gyva svetainė po paskelbimo praėjo pilną patikrą. Slaptų raktų reikšmės šiame projekte nesaugomos.
 
 ## 7. Resend rekomenduojamas nustatymas
 

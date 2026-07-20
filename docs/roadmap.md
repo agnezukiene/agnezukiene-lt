@@ -242,7 +242,7 @@ Vizualinė kryptis:
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas prieš parsindamas formos duomenis.
 - `[x]` Pridėti nematomą honeypot lauką paprastų botų filtravimui iki Turnstile.
 - `[x]` 2026-07-20 sustiprinta formos apsauga: laiškas siunčiamas tik gavus „Cloudflare Turnstile“ patvirtinimą iš `agnezukiene.lt` ir būtent kontaktų formai; užklausos be tinkamo svetainės adreso atmetamos.
-- `[x]` 2026-07-21 pridėta papildoma laiškų dažnio apsauga: po 5 patvirtintų siuntimų per minutę iš tos pačios interneto jungties papildomi laiškai laikinai neperduodami į „Resend“, lankytojui pateikiamas aiškus paaiškinimas, o abu galimi apsaugos atsakymai padengti automatiniais bandymais.
+- `[x]` 2026-07-21 pridėta papildoma laiškų dažnio apsauga: po 5 patvirtintų siuntimų per minutę iš tos pačios interneto jungties papildomi laiškai laikinai neperduodami į „Resend“, lankytojui pateikiamas aiškus paaiškinimas, o abu galimi apsaugos atsakymai padengti automatiniais bandymais. „Cloudflare“ priėmė naują nustatymą, o visa gyva svetainė po paskelbimo praėjo pilną patikrą.
 - `[x]` Forma saugiai sustabdoma, jei trūksta apsaugos rakto arba laikinai neatsako „Cloudflare“ ar „Resend“; šie klaidų keliai padengti automatiniais bandymais.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 - `[x]` 2026-07-21 kontaktų formos privatumo tekstas suderintas su paskelbtu duomenų naudojimo pagrindu: lankytojas aiškiai informuojamas ir gauna privatumo politikos nuorodą, tačiau iš jo nereikalaujama klaidinančio atskiro sutikimo vien tam, kad būtų atsakyta į jo paties užklausą. Forma ir serveris patikrinti be perteklinio sutikimo lauko vietinėje ir gyvoje svetainėje.
