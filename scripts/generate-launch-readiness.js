@@ -81,6 +81,7 @@ const technicalGates = [
   checked(has("scripts/check-site-integrity.js", "missing skip link to main content"), "Public HTML patikra tikrina bazinį prieinamumą"),
   checked(has("scripts/check-site-integrity.js", "main content should be focusable through the skip link"), "Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį"),
   checked(has("public/assets/js/site.js", 'classList.add("has-js")') && has("public/assets/css/styles.css", ".has-js .nav-links"), "Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna"),
+  checked(has("scripts/check-site-integrity.js", "font sizes should use stable type scales") && !/font-size:\s*[^;]*(?:vw|vh)/.test(read("public/assets/css/styles.css")), "Antraščių dydžiai stabilūs, o vidiniai puslapiai naudoja ramesnį mastelį"),
   checked(has("scripts/check-live-site.js", "strict-origin-when-cross-origin") && has("scripts/check-site-integrity.js", "missing security header"), "Live ir lokali patikra tikrina saugumo antraščių reikšmes"),
   checked(has("scripts/check-live-site.js", "strict-transport-security") && has("src/index.js", "max-age=31536000"), "Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį"),
   checked(has("scripts/check-live-site.js", "requiredPolicyDirectives") && has("src/index.js", "CONTENT_SECURITY_POLICY"), "Gyva svetainė atmeta neleistiną svetimą kodą"),

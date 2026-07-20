@@ -277,6 +277,12 @@ if (!siteScript.includes('document.documentElement.classList.add("has-js")')) {
 if (!siteStyles.includes(".has-js .nav-toggle") || !siteStyles.includes(".has-js .nav-links")) {
   errors.push("styles.css: mobile navigation should remain visible when JavaScript is unavailable");
 }
+if (/font-size:\s*[^;]*(?:vw|vh)/.test(siteStyles)) {
+  errors.push("styles.css: font sizes should use stable type scales instead of viewport-based scaling");
+}
+if (!siteStyles.includes(".hero h1") || !siteStyles.includes(".page-hero h1")) {
+  errors.push("styles.css: homepage and inner-page headings should use separate type scales");
+}
 const indexHtml = readSite("index.html");
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
   errors.push("index.html: visible brand text should provide its accessible name without an overriding label");

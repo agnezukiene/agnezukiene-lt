@@ -159,13 +159,13 @@ textarea {
 
 .hero {
   width: min(100% - 32px, 1240px);
-  min-height: calc(100vh - 76px);
+  min-height: calc(100vh - 120px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.8fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
-  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  padding: 2rem 0;
 }
 
 .hero-copy {
@@ -176,9 +176,18 @@ textarea {
 .page-hero h1,
 .not-found h1 {
   margin: 0;
-  font-size: clamp(2.25rem, 6vw, 5.2rem);
-  line-height: 1.02;
   max-width: 980px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.02;
+}
+
+.page-hero h1,
+.not-found h1 {
+  font-size: 3.5rem;
+  line-height: 1.08;
 }
 
 .hero p {
@@ -301,7 +310,7 @@ textarea {
 .text-block h2,
 .side-panel h2 {
   margin: 0 0 0.75rem;
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-size: 2.25rem;
   line-height: 1.15;
 }
 
@@ -684,6 +693,24 @@ textarea {
     min-height: auto;
   }
 
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .page-hero h1,
+  .not-found h1 {
+    font-size: 2.75rem;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .cta-band h2,
+  .note h2,
+  .text-block h2,
+  .side-panel h2 {
+    font-size: 2rem;
+  }
+
   .hero-media {
     width: min(100%, 620px);
     margin-inline: auto;
@@ -719,6 +746,21 @@ textarea {
   .hero {
     width: min(100% - 24px, 1240px);
     padding-top: 2rem;
+  }
+
+  .hero h1,
+  .page-hero h1,
+  .not-found h1 {
+    font-size: 2.25rem;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .cta-band h2,
+  .note h2,
+  .text-block h2,
+  .side-panel h2 {
+    font-size: 1.55rem;
   }
 
   .topic-grid,
