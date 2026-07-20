@@ -10,6 +10,7 @@ const steps = [
   ["Run color contrast check", [node, "scripts/check-color-contrast.js"]],
   ["Run analytics privacy check", [node, "scripts/check-analytics-privacy.js"]],
   ["Run contact API check", [node, "scripts/check-contact-api.js"]],
+  ["Run static asset cache check", [node, "scripts/check-static-asset-cache.js"]],
   ["Check git whitespace", ["git", "diff", "--check"]]
 ];
 

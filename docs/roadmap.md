@@ -71,6 +71,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-color-contrast.js` | WCAG spalvų kontrasto patikra | `[x]` tikrina 9 paletės poras, įtraukta į pre-go-live ir 2026-07-13 patikrinta production |
 | `scripts/check-analytics-privacy.js` | GA4 eventų allowlist ir jautrių parametrų patikra | `[x]` sukurta |
 | `scripts/check-contact-api.js` | Kontaktų API validacijos, Turnstile ir Resend mock patikra | `[x]` sukurta |
+| `scripts/check-static-asset-cache.js` | Stilių, programos failų versijų ir naršyklės talpyklos patikra | `[x]` sukurta ir įtraukta į bendrą patikrą 2026-07-20 |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API klaidos, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
 | `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta; 2026-07-11 sustiprinta pagal realią Worker, Resend ir live check konfigūraciją |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
@@ -95,6 +96,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `scripts/check-site-integrity.js`.
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-contact-api.js`.
+- `[x]` Sukurti `scripts/check-static-asset-cache.js` ir įtraukti į bendrą patikrą prieš paskelbimą.
 - `[x]` Sukurti `scripts/generate-launch-readiness.js`.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
@@ -197,6 +199,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Hero paveikslo našumo optimizacija: išlaikant `1089 × 1445` matmenis production naudoja 440 KB JPEG vietoje 2,1 MB PNG, pridėti `width`, `height`, `fetchpriority` ir `decoding`; live patikra praėjo 2026-07-13.
 - `[x]` 2026-07-19 pagrindinei nuotraukai pridėti 480, 768 ir 1089 pikselių AVIF bei WebP variantai. Naršyklė pagal ekraną pasirenka tinkamą failą, o išankstinis įkėlimas padeda nuotrauką parodyti greičiau; vietinėje telefono ir kompiuterio patikroje vietoje 440 KB JPEG atsisiųstas maždaug 68 KB AVIF failas.
 - `[x]` Automatinės patikros saugo visų šešių sumažintų nuotraukos failų buvimą, dydžio ribą ir prieinamumą gyvoje svetainėje.
+- `[x]` 2026-07-20 stiliai ir programos failai susieti su jų turinio versija: nepasikeitusius failus naršyklė gali naudoti vienerius metus, nuotraukas saugo savaitę, o pakeitus failą automatinė patikra pareikalauja naujos versijos. Kontaktų formos serverio atsakymai naršyklėje nesaugomi.
 - `[x]` Pridėtas lengvas AZ naršyklės ženkliukas ir svetainės spalva naršyklės kortelei bei telefono viršutinei juostai.
 - `[x]` Gerbiamas lankytojo naršyklėje pasirinktas mažesnis judesys: išjungiamas sklandus slinkimas ir kortelių pakilimo judesys.
 - `[x]` Slapukų pasirinkimo pranešimas pažymėtas kaip aiškiai pavadinta puslapio sritis pagalbinėms skaitymo priemonėms.

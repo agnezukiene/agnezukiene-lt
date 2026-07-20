@@ -1,8 +1,10 @@
 const JSON_HEADERS = {
-  "content-type": "application/json; charset=utf-8"
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-store"
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
+const STATIC_ASSET_VERSION = "62e775dec627";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -75,7 +77,7 @@ export default {
       }
     }
 
-    return withSecurityHeaders(assetResponse);
+    return withSecurityHeaders(withAssetCacheHeaders(assetResponse, url));
   }
 };
 
@@ -254,6 +256,16 @@ function json(payload, status) {
     status,
     headers: JSON_HEADERS
   }));
+}
+
+function withAssetCacheHeaders(response, url) {
+  const cached = new Response(response.body, response);
+  if (response.ok && /^\/assets\/(?:css|js)\//.test(url.pathname) && url.searchParams.get("v") === STATIC_ASSET_VERSION) {
+    cached.headers.set("cache-control", "public, max-age=31536000, immutable");
+  } else if (response.ok && (url.pathname.startsWith("/assets/images/") || url.pathname === "/favicon.svg")) {
+    cached.headers.set("cache-control", "public, max-age=604800, stale-while-revalidate=86400");
+  }
+  return cached;
 }
 
 function withSecurityHeaders(response) {

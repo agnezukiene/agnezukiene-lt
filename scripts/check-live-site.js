@@ -53,6 +53,7 @@ function assertSecurityHeaders(response, source) {
 async function main() {
   const parsedBaseUrl = new URL(baseUrl);
   const productionOrigin = "https://agnezukiene.lt";
+  let assetVersion = "";
 
   for (const page of htmlPages) {
     const response = await fetch(new URL(page, baseUrl));
@@ -69,6 +70,26 @@ async function main() {
       `${page}: missing social image description`
     );
     assert(text.includes('<meta name="twitter:card" content="summary">'), `${page}: missing compact social card`);
+    const pageAssetVersion = text.match(/\/assets\/css\/styles\.css\?v=([a-f0-9]{12})/)?.[1] || "";
+    assert(pageAssetVersion, `${page}: missing versioned stylesheet`);
+    if (!assetVersion) assetVersion = pageAssetVersion;
+    assert.strictEqual(pageAssetVersion, assetVersion, `${page}: asset version differs from the homepage`);
+    assert(text.includes(`/assets/js/config.js?v=${assetVersion}`), `${page}: missing versioned config.js`);
+    assert(text.includes(`/assets/js/site.js?v=${assetVersion}`), `${page}: missing versioned site.js`);
+  }
+
+  for (const asset of [
+    `/assets/css/styles.css?v=${assetVersion}`,
+    `/assets/js/config.js?v=${assetVersion}`,
+    `/assets/js/site.js?v=${assetVersion}`
+  ]) {
+    const assetResponse = await fetch(new URL(asset, baseUrl));
+    assert.strictEqual(assetResponse.status, 200, `${asset}: expected 200, got ${assetResponse.status}`);
+    assert.strictEqual(
+      assetResponse.headers.get("cache-control"),
+      "public, max-age=31536000, immutable",
+      `${asset}: expected long browser cache for the versioned file`
+    );
   }
 
   const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
@@ -96,6 +117,11 @@ async function main() {
     "/favicon.svg: expected SVG content type"
   );
   assert((await faviconResponse.text()).includes("<svg"), "/favicon.svg: missing SVG content");
+  assert.strictEqual(
+    faviconResponse.headers.get("cache-control"),
+    "public, max-age=604800, stale-while-revalidate=86400",
+    "/favicon.svg: expected one-week browser cache"
+  );
 
   for (const image of [
     "/assets/images/agne-zukiene-psichologe-sidabro-pienas-480w.avif",
@@ -107,6 +133,11 @@ async function main() {
     assert(
       (imageResponse.headers.get("content-type") || "").startsWith("image/"),
       `${image}: expected image content type`
+    );
+    assert.strictEqual(
+      imageResponse.headers.get("cache-control"),
+      "public, max-age=604800, stale-while-revalidate=86400",
+      `${image}: expected one-week browser cache`
     );
   }
 
@@ -154,6 +185,7 @@ async function main() {
 
   const contactGetResponse = await fetch(new URL("/api/contact", baseUrl));
   assert.strictEqual(contactGetResponse.status, 405, `/api/contact GET: expected 405, got ${contactGetResponse.status}`);
+  assert.strictEqual(contactGetResponse.headers.get("cache-control"), "no-store", "/api/contact GET should not be cached");
   assertSecurityHeaders(contactGetResponse, "/api/contact GET");
   assert(
     (await readJsonMessage(contactGetResponse)).includes("POST"),

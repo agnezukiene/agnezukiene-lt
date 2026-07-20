@@ -22,6 +22,7 @@ const requiredFiles = [
   "scripts/pre-go-live.js",
   "scripts/check-color-contrast.js",
   "scripts/check-content-security-policy.js",
+  "scripts/check-static-asset-cache.js",
   "scripts/check-live-site.js",
   "src/index.js",
   "wrangler.jsonc"

@@ -28,7 +28,7 @@ Pagrindinė prieš paleidimą naudojama komanda:
 npm run pre-go-live -- https://agnezukiene.lt
 ```
 
-Ji sugeneruoja SEO inventorių, turinio registrą, paleidimo santrauką, patikrina HTML/SEO vientisumą, WCAG spalvų kontrastą, GA4 privatumą, kontaktų API, whitespace ir gyvą production svetainę.
+Ji sugeneruoja SEO inventorių, turinio registrą, paleidimo santrauką, patikrina HTML/SEO vientisumą, WCAG spalvų kontrastą, GA4 privatumą, kontaktų API, failų versijas bei naršyklės talpyklą, whitespace ir gyvą production svetainę.
 
 Atskiros komandos:
 
@@ -37,6 +37,7 @@ npm run check
 npm run check:contrast
 npm run check:analytics
 npm run check:contact
+npm run check:cache
 npm run check:live -- https://agnezukiene.lt
 npm run seo:inventory
 npm run content:registry

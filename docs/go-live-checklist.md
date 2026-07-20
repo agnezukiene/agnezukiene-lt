@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės go-live checklist
 
-Atnaujinta: 2026-07-19
+Atnaujinta: 2026-07-20
 
 ## Prieš pirmą commit
 
@@ -14,6 +14,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Sukurtas ir į pre-go-live įtrauktas `scripts/check-color-contrast.js`; 9 paletės poros patikrintos production 2026-07-13.
 - `[x]` Sukurtas `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurtas `scripts/check-contact-api.js`.
+- `[x]` Sukurtas `scripts/check-static-asset-cache.js`: failų turinio versijos, ilgalaikė nekintančių failų talpykla ir formos atsakymų nesaugojimas tikrinami automatiškai.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Sukurtas `scripts/pre-go-live.js`.
 - `[x]` Sukurtas `docs/content-approval.md`.
