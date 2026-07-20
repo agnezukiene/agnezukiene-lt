@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-19
+Atnaujinta: 2026-07-20
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -234,6 +234,8 @@ Vizualinė kryptis:
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
 - `[x]` Kontaktų API atmeta ne JSON ir per dideles užklausas prieš parsindamas formos duomenis.
 - `[x]` Pridėti nematomą honeypot lauką paprastų botų filtravimui iki Turnstile.
+- `[x]` 2026-07-20 sustiprinta formos apsauga: laiškas siunčiamas tik gavus „Cloudflare Turnstile“ patvirtinimą iš `agnezukiene.lt` ir būtent kontaktų formai; užklausos be tinkamo svetainės adreso atmetamos.
+- `[x]` Forma saugiai sustabdoma, jei trūksta apsaugos rakto arba laikinai neatsako „Cloudflare“ ar „Resend“; šie klaidų keliai padengti automatiniais bandymais.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.

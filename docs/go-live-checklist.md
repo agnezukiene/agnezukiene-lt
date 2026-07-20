@@ -84,6 +84,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Sukurtas Cloudflare variables/secrets runbook `docs/cloudflare-variables-runbook.md`.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_TO_EMAIL=zukiene.agne@gmail.com` per `wrangler.jsonc`.
 - `[x]` Cloudflare/Worker nustatyti `ALLOWED_ORIGIN=https://agnezukiene.lt` per `wrangler.jsonc`.
+- `[x]` Kontaktų formos apsauga tikrina `agnezukiene.lt` adresą, kontaktų formos paskirtį ir saugiai sustoja, jei trūksta apsaugos nustatymų.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc`.
 - `[x]` Cloudflare saugiai pridėti abu slapti raktai: formos apsaugos ir laiškų siuntimo.
 - `[x]` Patikrinti sėkmingą formos siuntimą gyvai: Resend rodo du pristatytus laiškus.

@@ -243,18 +243,25 @@
       window.onloadTurnstileCallback = function () {
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
           sitekey: config.turnstileSiteKey,
+          action: "contact",
+          language: "lt",
           callback: (token) => {
             turnstileToken.value = token;
           },
           "expired-callback": () => {
             turnstileToken.value = "";
+          },
+          "error-callback": () => {
+            turnstileToken.value = "";
+            status.className = "form-status is-error";
+            status.textContent = "Nepavyko atlikti formos apsaugos patikros. Atnaujinkite puslapį arba parašykite el. paštu.";
           }
         });
       };
 
-      loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback")
+      loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit")
         .catch(() => {
-          status.classList.add("is-error");
+          status.className = "form-status is-error";
           status.textContent = "Nepavyko įkelti formos apsaugos. Pabandykite vėliau arba parašykite el. paštu.";
         });
     }

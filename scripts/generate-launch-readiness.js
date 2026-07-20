@@ -34,6 +34,9 @@ const contactOriginConfigured = wrangler.includes('"ALLOWED_ORIGIN": "https://ag
 const contactRecipientConfigured = wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"');
 const contactSenderConfigured = wrangler.includes('"CONTACT_FROM_EMAIL"') || roadmapHasDone("CONTACT_FROM_EMAIL");
 const workerRequiresEmailConfig = worker.includes("env.RESEND_API_KEY") && worker.includes("env.CONTACT_FROM_EMAIL");
+const workerRequiresProtectedFormConfig = worker.includes("!env.TURNSTILE_SECRET_KEY")
+  && worker.includes("!env.ALLOWED_ORIGIN")
+  && worker.includes("!env.RESEND_API_KEY");
 const workerCanSendViaResend = worker.includes("https://api.resend.com/emails") && worker.includes("reply_to");
 const pendingContentDecisions = [...contentApproval.matchAll(/^\| laukia \| ([^|]+) \|/gm)]
   .map((match) => match[1].trim());
@@ -67,6 +70,8 @@ const technicalGates = [
   checked(has("public/assets/js/site.js", "aria-invalid") && has("public/kontaktai.html", "aria-describedby=\"form-status\""), "Formos klaidos susietos su konkrečiais laukais"),
   checked(has("public/assets/css/styles.css", "prefers-reduced-motion: reduce"), "Svetainė gerbia lankytojo mažesnio judesio pasirinkimą"),
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
+  checked(workerRequiresProtectedFormConfig, "Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo"),
+  checked(has("scripts/check-contact-api.js", "Unexpected Turnstile hostname should be rejected") && has("scripts/check-contact-api.js", "Unexpected Turnstile action should be rejected"), "Formos apsauga tikrina agnezukiene.lt adresą ir kontaktų formos paskirtį"),
   checked(workerRequiresEmailConfig, "Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos"),
   checked(workerCanSendViaResend, "Worker turi Resend laiško siuntimo implementaciją"),
   checked(has("scripts/check-contact-api.js", "resend_test"), "Kontaktų API mock testas padengia Resend sėkmės kelią"),

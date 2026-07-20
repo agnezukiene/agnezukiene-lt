@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-19
+Atnaujinta: 2026-07-20
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
@@ -30,6 +30,8 @@ Atnaujinta: 2026-07-19
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą
 - `[x]` Turnstile site key yra frontend konfigūracijoje
+- `[x]` Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo
+- `[x]` Formos apsauga tikrina agnezukiene.lt adresą ir kontaktų formos paskirtį
 - `[x]` Worker nepaleidžia formos sėkmės be Resend ir siuntėjo konfigūracijos
 - `[x]` Worker turi Resend laiško siuntimo implementaciją
 - `[x]` Kontaktų API mock testas padengia Resend sėkmės kelią

@@ -31,6 +31,7 @@ function jsonRequest(body, init = {}) {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      origin: "https://agnezukiene.lt",
       ...init.headers
     },
     body: JSON.stringify(body)
@@ -117,6 +118,15 @@ async function main() {
   {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
       method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(validPayload())
+    }), { ALLOWED_ORIGIN: "https://agnezukiene.lt" });
+    assert.strictEqual(response.status, 403, "Missing origin should be rejected when the production origin is configured");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
       body: JSON.stringify(validPayload())
     }), {});
     const body = await readJson(response);
@@ -175,7 +185,11 @@ async function main() {
 
   {
     const response = await worker.fetch(jsonRequest(validPayload({ turnstileToken: "" })), {
-      TURNSTILE_SECRET_KEY: "secret"
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "resend_test",
+      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+      ALLOWED_ORIGIN: "https://agnezukiene.lt"
     });
     const body = await readJson(response);
     assert.strictEqual(response.status, 400, "Missing Turnstile token should be rejected when Turnstile secret is set");
@@ -184,7 +198,60 @@ async function main() {
 
   {
     const response = await worker.fetch(jsonRequest(validPayload()), {});
-    assert.strictEqual(response.status, 503, "Valid request should stay setup-pending until Resend variables are present");
+    assert.strictEqual(response.status, 503, "Valid request should stay setup-pending until every protected form variable is present");
+  }
+
+  for (const [result, message] of [
+    [{ success: true, hostname: "example.com", action: "contact" }, "Unexpected Turnstile hostname should be rejected"],
+    [{ success: true, hostname: "agnezukiene.lt", action: "login" }, "Unexpected Turnstile action should be rejected"]
+  ]) {
+    const calls = [];
+    const workerWithFetch = createWorker(async (url) => {
+      calls.push(String(url));
+      if (String(url).includes("siteverify")) return Response.json(result);
+      return Response.json({ id: "email_should_not_send" });
+    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "resend_test",
+      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+      ALLOWED_ORIGIN: "https://agnezukiene.lt"
+    });
+    assert.strictEqual(response.status, 400, message);
+    assert(!calls.some((url) => url.includes("api.resend.com")), `${message}; Resend should not be called`);
+  }
+
+  {
+    const workerWithFetch = createWorker(async (url) => {
+      if (String(url).includes("siteverify")) throw new Error("Turnstile unavailable");
+      return Response.json({ id: "email_should_not_send" });
+    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "resend_test",
+      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+      ALLOWED_ORIGIN: "https://agnezukiene.lt"
+    });
+    assert.strictEqual(response.status, 400, "Turnstile service errors should fail safely");
+  }
+
+  {
+    const workerWithFetch = createWorker(async (url) => {
+      if (String(url).includes("siteverify")) {
+        return Response.json({ success: true, hostname: "agnezukiene.lt", action: "contact" });
+      }
+      throw new Error("Resend unavailable");
+    });
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), {
+      TURNSTILE_SECRET_KEY: "secret",
+      RESEND_API_KEY: "resend_test",
+      CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+      ALLOWED_ORIGIN: "https://agnezukiene.lt"
+    });
+    assert.strictEqual(response.status, 502, "Resend service errors should return a readable temporary failure");
   }
 
   {
@@ -192,7 +259,7 @@ async function main() {
     const workerWithFetch = createWorker(async (url, init = {}) => {
       calls.push({ url: String(url), init });
       if (String(url).includes("siteverify")) {
-        return Response.json({ success: true });
+        return Response.json({ success: true, hostname: "agnezukiene.lt", action: "contact" });
       }
       if (String(url).includes("api.resend.com")) {
         return Response.json({ id: "email_test" });
@@ -204,7 +271,8 @@ async function main() {
       TURNSTILE_SECRET_KEY: "secret",
       RESEND_API_KEY: "resend_test",
       CONTACT_TO_EMAIL: "zukiene.agne@gmail.com",
-      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>"
+      CONTACT_FROM_EMAIL: "Agnė Žukienė <noreply@agnezukiene.lt>",
+      ALLOWED_ORIGIN: "https://agnezukiene.lt"
     });
     assert.strictEqual(response.status, 200, "Valid request should succeed when Turnstile and Resend are configured");
 

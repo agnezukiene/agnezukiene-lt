@@ -52,6 +52,7 @@ function assertSecurityHeaders(response, source) {
 
 async function main() {
   const parsedBaseUrl = new URL(baseUrl);
+  const productionOrigin = "https://agnezukiene.lt";
 
   for (const page of htmlPages) {
     const response = await fetch(new URL(page, baseUrl));
@@ -182,6 +183,7 @@ async function main() {
 
   const contactContentTypeResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
+    headers: { origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       email: "test@example.com",
@@ -203,7 +205,7 @@ async function main() {
 
   const contactSizeResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       email: "test@example.com",
@@ -222,7 +224,7 @@ async function main() {
 
   const contactJsonResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: "{"
   });
   assert.strictEqual(contactJsonResponse.status, 400, `/api/contact invalid JSON: expected 400, got ${contactJsonResponse.status}`);
@@ -233,7 +235,7 @@ async function main() {
 
   const contactValidationResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       replyBy: "email",
@@ -250,7 +252,7 @@ async function main() {
 
   const contactEmailChoiceResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       phone: "+37060000000",
@@ -268,7 +270,7 @@ async function main() {
 
   const contactPhoneChoiceResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       email: "test@example.com",
@@ -286,7 +288,7 @@ async function main() {
 
   const contactResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", origin: productionOrigin },
     body: JSON.stringify({
       name: "Testas",
       email: "test@example.com",

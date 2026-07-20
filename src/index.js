@@ -85,7 +85,7 @@ async function handleContact(request, env) {
   }
 
   const origin = request.headers.get("origin");
-  if (env.ALLOWED_ORIGIN && origin && origin !== env.ALLOWED_ORIGIN) {
+  if (env.ALLOWED_ORIGIN && origin !== env.ALLOWED_ORIGIN) {
     return json({ message: "Užklausa negalima iš šio adreso." }, 403);
   }
 
@@ -120,23 +120,39 @@ async function handleContact(request, env) {
     return json({ message: validationError }, 400);
   }
 
-  if (env.TURNSTILE_SECRET_KEY) {
-    const turnstileOk = await verifyTurnstile({
-      token: data.turnstileToken,
-      secret: env.TURNSTILE_SECRET_KEY,
-      ip: request.headers.get("CF-Connecting-IP")
-    });
-
-    if (!turnstileOk) {
-      return json({ message: "Nepavyko patvirtinti, kad formą siunčia žmogus." }, 400);
-    }
-  }
-
-  if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
+  if (
+    !env.ALLOWED_ORIGIN
+    || !env.TURNSTILE_SECRET_KEY
+    || !env.RESEND_API_KEY
+    || !env.CONTACT_TO_EMAIL
+    || !env.CONTACT_FROM_EMAIL
+  ) {
     return json({ message: "Kontaktų forma dar nėra pilnai sukonfigūruota." }, 503);
   }
 
-  const emailResponse = await sendEmail(data, env);
+  let turnstileOk = false;
+  try {
+    turnstileOk = await verifyTurnstile({
+      token: data.turnstileToken,
+      secret: env.TURNSTILE_SECRET_KEY,
+      ip: request.headers.get("CF-Connecting-IP"),
+      expectedHostname: new URL(env.ALLOWED_ORIGIN).hostname,
+      expectedAction: "contact"
+    });
+  } catch (error) {
+    turnstileOk = false;
+  }
+
+  if (!turnstileOk) {
+    return json({ message: "Nepavyko patvirtinti, kad formą siunčia žmogus." }, 400);
+  }
+
+  let emailResponse;
+  try {
+    emailResponse = await sendEmail(data, env);
+  } catch (error) {
+    return json({ message: "Šiuo metu formos išsiųsti nepavyko." }, 502);
+  }
   if (!emailResponse.ok) {
     return json({ message: "Šiuo metu formos išsiųsti nepavyko." }, 502);
   }
@@ -179,7 +195,7 @@ function validateContact(data) {
   return "";
 }
 
-async function verifyTurnstile({ token, secret, ip }) {
+async function verifyTurnstile({ token, secret, ip, expectedHostname, expectedAction }) {
   if (!token) return false;
 
   const form = new FormData();
@@ -194,7 +210,9 @@ async function verifyTurnstile({ token, secret, ip }) {
 
   if (!response.ok) return false;
   const result = await response.json();
-  return result.success === true;
+  return result.success === true
+    && result.hostname === expectedHostname
+    && result.action === expectedAction;
 }
 
 async function sendEmail(data, env) {
