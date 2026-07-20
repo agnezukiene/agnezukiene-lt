@@ -93,7 +93,7 @@ export default {
 
 async function handleContact(request, env) {
   if (request.method !== "POST") {
-    return json({ message: "Leidžiamas tik POST metodas." }, 405);
+    return json({ message: "Leidžiamas tik POST metodas." }, 405, { allow: "POST" });
   }
 
   const origin = request.headers.get("origin");

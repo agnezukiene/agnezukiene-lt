@@ -132,6 +132,7 @@ async function main() {
   {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact"), {});
     assert.strictEqual(response.status, 405, "GET /api/contact should be rejected");
+    assert.strictEqual(response.headers.get("allow"), "POST", "GET /api/contact should explain the allowed method");
     assert(response.headers.get("x-content-type-options"), "API responses should include security headers");
     assert.strictEqual(response.headers.get("strict-transport-security"), "max-age=31536000", "API responses should require secure connections");
   }

@@ -209,6 +209,7 @@ async function main() {
 
   const contactGetResponse = await fetch(new URL("/api/contact", baseUrl));
   assert.strictEqual(contactGetResponse.status, 405, `/api/contact GET: expected 405, got ${contactGetResponse.status}`);
+  assert.strictEqual(contactGetResponse.headers.get("allow"), "POST", "/api/contact GET should explain the allowed method");
   assert.strictEqual(contactGetResponse.headers.get("cache-control"), "no-store", "/api/contact GET should not be cached");
   assertSecurityHeaders(contactGetResponse, "/api/contact GET");
   assert(
