@@ -241,6 +241,37 @@
   let turnstileWidgetId = null;
 
   if (form && status) {
+    const messageInput = form.querySelector("#message");
+    const messageCount = form.querySelector("[data-message-count]");
+    const messageCountLive = form.querySelector("[data-message-count-live]");
+    let lastMessageThreshold = null;
+
+    const updateMessageCount = () => {
+      if (!messageInput || !messageCount) return;
+
+      const maximum = messageInput.maxLength;
+      const entered = messageInput.value.length;
+      const remaining = Math.max(0, maximum - entered);
+      const thresholds = [0, 10, 20, 50, 100];
+      const activeThreshold = thresholds.find((threshold) => remaining <= threshold) ?? null;
+
+      messageCount.textContent = `Įrašyta ${entered} iš ${maximum} ženklų`;
+
+      if (messageCountLive && activeThreshold !== lastMessageThreshold) {
+        messageCountLive.textContent = activeThreshold === null
+          ? ""
+          : remaining === 0
+            ? "Pasiekta komentaro riba."
+            : `Komentaro lauke liko ne daugiau kaip ${activeThreshold} ženklų.`;
+        lastMessageThreshold = activeThreshold;
+      }
+    };
+
+    if (messageInput && messageCount) {
+      messageInput.addEventListener("input", updateMessageCount);
+      updateMessageCount();
+    }
+
     if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
       window.onloadTurnstileCallback = function () {
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
@@ -380,6 +411,7 @@
         }
 
         form.reset();
+        updateMessageCount();
         clearInvalidFields();
         resetTurnstile();
         status.classList.add("is-success");

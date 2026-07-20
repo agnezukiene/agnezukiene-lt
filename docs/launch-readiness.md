@@ -36,7 +36,10 @@ Atnaujinta: 2026-07-21
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Formos klaidos susietos su konkrečiais laukais
+- `[x]` Komentaro laukas aiškiai rodo nustatytą teksto ribą
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
+- `[x]` Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus
+- `[x]` Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas
 - `[x]` Skubios pagalbos nuorodos veikia ir jų paspaudimai sąmoningai nematuojami
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą

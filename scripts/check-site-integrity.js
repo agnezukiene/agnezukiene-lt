@@ -319,6 +319,15 @@ for (const field of ["name", "email", "phone", "replyBy", "format", "topic"]) {
 for (const fieldLimit of ['name="name" autocomplete="name" maxlength="80"', 'name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"', 'name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"']) {
   if (!contactHtml.includes(fieldLimit)) errors.push(`kontaktai.html: missing field limit or keyboard hint: ${fieldLimit}`);
 }
+for (const messageControl of [
+  'maxlength="1200" aria-describedby="message-count form-status"',
+  'id="message-count" for="message" data-message-count',
+  'data-message-count-live aria-live="polite"'
+]) {
+  if (!contactHtml.includes(messageControl)) {
+    errors.push(`kontaktai.html: missing accessible message length control: ${messageControl}`);
+  }
+}
 
 const privacyHtml = readSite("privatumo-politika.html");
 for (const requiredPrivacyText of [
@@ -328,6 +337,7 @@ for (const requiredPrivacyText of [
   "Google Gmail",
   "Google Analytics",
   "12 mėnesių",
+  "per vieną mėnesį",
   "BDAR 6 straipsnio 1 dalies",
   "Duomenų pateikimas nėra privalomas",
   "duomenų perkeliamumo sąlygos",
@@ -343,6 +353,19 @@ const cookieHtml = readSite("slapuku-politika.html");
 if (!cookieHtml.includes("data-cookie-choice-status")) {
   errors.push("slapuku-politika.html: missing readable cookie choice status");
 }
+
+for (const file of htmlFiles.filter((file) => file !== "404.html")) {
+  const html = readSite(file);
+  for (const requiredCookieControl of [
+    'href="/slapuku-politika">Plačiau apie slapukus</a>',
+    'data-cookie-decline>Neleisti matavimo</button>',
+    'data-cookie-accept>Leisti matavimą</button>'
+  ]) {
+    if (!html.includes(requiredCookieControl)) {
+      errors.push(`${file}: missing clear cookie choice control: ${requiredCookieControl}`);
+    }
+  }
+}
 for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "vienkartinį patvirtinimą"]) {
   if (!cookieHtml.includes(requiredCookieText)) {
     errors.push(`slapuku-politika.html: missing required cookie disclosure: ${requiredCookieText}`);
@@ -350,7 +373,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "v
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

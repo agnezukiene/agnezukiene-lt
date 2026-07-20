@@ -167,8 +167,10 @@ Darbai:
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
 - `[x]` `privatumo-politika.html`: 2026-07-19 paskelbimui paruoštas išsamus tekstas apie valdytoją, tikslus, paslaugų teikėjus, saugojimą ir lankytojo teises.
 - `[x]` 2026-07-21 privatumo politika papildyta tiksliais BDAR teisiniais pagrindais, duomenų šaltiniu, pateikimo neprivalomumu ir pasekmėmis, perkeliamumo teise, perdavimo už Europos ekonominės erdvės ribų apsaugomis bei automatinių sprendimų netaikymu; nauja versija patikrinta gyvoje svetainėje telefonu ir kompiuteriu.
+- `[~]` 2026-07-21 privatumo politika dar papildyta techninių saugumo duomenų paaiškinimu, vieno mėnesio atsakymo į teisių prašymą terminu ir tiesioginėmis paslaugų teikėjų privatumo nuorodomis; vietinė telefono ir kompiuterio patikra praėjo, laukia patikra gyvoje svetainėje.
 - `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
 - `[x]` 2026-07-19 slapukų paaiškinimas patikslintas pagal realų naršyklės pasirinkimo įrašą, „Google Analytics“ slapukus ir formos apsaugą.
+- `[~]` 2026-07-21 visuose puslapiuose slapukų mygtukai pervadinti į aiškius veiksmus „Neleisti matavimo“ ir „Leisti matavimą“, o prieš pasirenkant pateikta nuoroda į paaiškinimą; abu pasirinkimai ir jų pakeitimas patikrinti vietinėje naršyklėje, laukia gyva patikra.
 - `[x]` `404.html`: patikrintas po deploy.
 - `[x]` 2026-07-21 skubios pagalbos informacija paversta tiesiogiai naudojama: pagrindiniame, konsultacijų ir kontaktų puslapiuose numerį 112 galima paspausti ir iškart skambinti, o pagrindiniame bei konsultacijų puslapiuose pateikta nuoroda į oficialų „Pagalba sau“ emocinės paramos pasirinkimų sąrašą. Šių jautrių paspaudimų lankomumo matavimas sąmoningai nevykdomas; veiksmai ir jų išdėstymas patikrinti vietinėje bei gyvoje telefono ir kompiuterio versijoje.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
@@ -249,6 +251,7 @@ Vizualinė kryptis:
 - `[x]` Forma saugiai sustabdoma, jei trūksta apsaugos rakto arba laikinai neatsako „Cloudflare“ ar „Resend“; šie klaidų keliai padengti automatiniais bandymais.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
 - `[x]` 2026-07-21 kontaktų formos privatumo tekstas suderintas su paskelbtu duomenų naudojimo pagrindu: lankytojas aiškiai informuojamas ir gauna privatumo politikos nuorodą, tačiau iš jo nereikalaujama klaidinančio atskiro sutikimo vien tam, kad būtų atsakyta į jo paties užklausą. Forma ir serveris patikrinti be perteklinio sutikimo lauko vietinėje ir gyvoje svetainėje.
+- `[~]` 2026-07-21 komentaro laukas rodo, kiek iš 1200 ženklų įrašyta, praneša artėjant prie ribos ir neleidžia jos viršyti; patikrinta 390 ir 1280 pikselių pločiuose bei be papildomo svetainės kodo, laukia gyva patikra.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
 

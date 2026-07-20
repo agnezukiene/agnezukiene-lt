@@ -89,6 +89,26 @@ async function main() {
         `${page}: missing official emotional support options link`
       );
     }
+    assert(
+      text.includes('href="/slapuku-politika">Plačiau apie slapukus</a>')
+        && text.includes('data-cookie-decline>Neleisti matavimo</button>')
+        && text.includes('data-cookie-accept>Leisti matavimą</button>'),
+      `${page}: cookie choices should be clear and link to their explanation`
+    );
+    if (page === "/kontaktai") {
+      assert(text.includes('maxlength="1200" aria-describedby="message-count form-status"'), `${page}: missing message limit`);
+      assert(text.includes('data-message-count-live aria-live="polite"'), `${page}: missing accessible message count`);
+    }
+    if (page === "/privatumo-politika") {
+      for (const disclosure of [
+        "per vieną mėnesį",
+        "https://www.cloudflare.com/policies/privacy/",
+        "https://resend.com/legal/privacy-policy",
+        "https://policies.google.com/privacy"
+      ]) {
+        assert(text.includes(disclosure), `${page}: missing privacy disclosure ${disclosure}`);
+      }
+    }
     const pageAssetVersion = text.match(/\/assets\/css\/styles\.css\?v=([a-f0-9]{12})/)?.[1] || "";
     assert(pageAssetVersion, `${page}: missing versioned stylesheet`);
     if (!assetVersion) assetVersion = pageAssetVersion;

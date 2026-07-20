@@ -73,6 +73,7 @@ Atnaujinta: 2026-07-21
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
 - `[x]` Privatumo politika išsamiai atnaujinta 2026-07-19 pagal veikiančias paslaugas ir lankytojo teises.
 - `[x]` Slapukų politika ir pasirinkimo mygtukai patikrinti tikroje naršyklėje.
+- `[~]` Aiškūs mygtukai „Neleisti matavimo“ ir „Leisti matavimą“ bei nuoroda į slapukų paaiškinimą patikrinti telefone ir kompiuteryje; laukia patikra gyvoje svetainėje.
 - `[x]` Patikrinti sutikimo atšaukimą: pasirinkimo keitimas sustabdo lankomumo matavimą, pašalina jo slapukus ir leidžia vėliau pasirinkti iš naujo.
 
 ## Kontaktų forma
@@ -99,6 +100,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Formos klaidos susietos su konkrečiais laukais, klaidingi laukai aiškiai pažymimi ir pataisius žymėjimas pašalinamas.
 - `[x]` Privatumo politika apima duomenų šaltinį, tikslius teisinius pagrindus, pateikimo neprivalomumą ir pasekmes, perkeliamumo teisę, tarptautinio perdavimo apsaugas bei automatinių sprendimų netaikymą; 2026-07-21 patikrinta gyvoje svetainėje.
 - `[x]` Kontaktų forma pateikia aiškų privatumo paaiškinimą ir nuorodą, bet nereikalauja atskiro sutikimo duomenims, kurie būtini atsakyti į paties lankytojo užklausą; serverio patikra saugo šį reikalavimą.
+- `[~]` Komentaro lauko 1200 ženklų riba, matomas skaitiklis ir pagalbinis pranešimas patikrinti telefone, kompiuteryje bei be papildomo svetainės kodo; laukia patikra gyvoje svetainėje.
 - `[x]` Nepriklausoma „Lighthouse 13.4.0“ patikra pagrindiniame ir kontaktų puslapiuose: rastas logotipo pavadinimo neatitikimas pataisytas; po paskelbimo gyvas pagrindinis puslapis visose penkiose vertintose srityse gavo po 100 balų.
 - `[x]` Skubios pagalbos veiksmai praktiškai naudojami telefone: 112 yra tiesioginė skambinimo nuoroda, pateiktas oficialus emocinės paramos pasirinkimų puslapis, o šie jautrūs paspaudimai nėra matuojami. Vaizdas, klaviatūros naudojimas ir gyva svetainė patikrinti telefone bei kompiuteryje 2026-07-21.
 
