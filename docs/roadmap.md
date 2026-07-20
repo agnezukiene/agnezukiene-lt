@@ -191,7 +191,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` Patikrinti desktop vaizdą.
 - `[x]` Automatizuoti bazinę public HTML prieinamumo patikrą: `main`, skip link, nav ARIA, button `type` ir formos label ryšiai.
 - `[x]` 2026-07-19 visi aštuoni vieši puslapiai patikrinti nepriklausomu automatiniu prieinamumo įrankiu kompiuterio ir telefono dydžiuose; pagrindinių bei papildomų taisyklių klaidų nerasta.
-- `[x]` 2026-07-21 gyvas pagrindinis ir kontaktų puslapiai papildomai patikrinti „Lighthouse 13.4.0“: greitis, prieinamumas, gera praktika ir paieškos paruošimas įvertinti 99-100 balų. Aptiktas papildomas logotipo pavadinimo neatitikimas pataisytas ir apsaugotas nuolatine patikra.
+- `[x]` 2026-07-21 gyvas pagrindinis ir kontaktų puslapiai papildomai patikrinti „Lighthouse 13.4.0“. Aptiktas papildomas logotipo pavadinimo neatitikimas pataisytas ir apsaugotas nuolatine patikra; po paskelbimo gyvas pagrindinis puslapis visose penkiose vertintose srityse gavo po 100 balų, svarbiausias turinys parodytas per 1,9 sekundės, vaizdo šokinėjimas lygus nuliui.
 - `[x]` Klaviatūros nuoroda „Pereiti prie turinio“ pataisyta taip, kad aktyvi klaviatūros vieta iš tikrųjų persikeltų į pagrindinį turinį; patikrinta kompiuterio ir telefono naršyklėje, o reikalavimas įtrauktas į nuolatinę failų patikrą.
 - `[x]` Automatizuoti WCAG spalvų kontrasto patikrą: 9 pagrindinės teksto, mygtukų ir focus spalvų poros atitinka nustatytas ribas ir patikrintos production 2026-07-13.
 - `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
@@ -243,7 +243,7 @@ Vizualinė kryptis:
 - `[x]` 2026-07-20 sustiprinta formos apsauga: laiškas siunčiamas tik gavus „Cloudflare Turnstile“ patvirtinimą iš `agnezukiene.lt` ir būtent kontaktų formai; užklausos be tinkamo svetainės adreso atmetamos.
 - `[x]` Forma saugiai sustabdoma, jei trūksta apsaugos rakto arba laikinai neatsako „Cloudflare“ ar „Resend“; šie klaidų keliai padengti automatiniais bandymais.
 - `[x]` Patikrinti, kad jei forma neveiktų, lieka alternatyva el. paštu.
-- `[x]` 2026-07-21 kontaktų formos privatumo tekstas suderintas su paskelbtu duomenų naudojimo pagrindu: lankytojas aiškiai informuojamas ir gauna privatumo politikos nuorodą, tačiau iš jo nereikalaujama klaidinančio atskiro sutikimo vien tam, kad būtų atsakyta į jo paties užklausą. Forma ir serveris patikrinti be perteklinio sutikimo lauko.
+- `[x]` 2026-07-21 kontaktų formos privatumo tekstas suderintas su paskelbtu duomenų naudojimo pagrindu: lankytojas aiškiai informuojamas ir gauna privatumo politikos nuorodą, tačiau iš jo nereikalaujama klaidinančio atskiro sutikimo vien tam, kad būtų atsakyta į jo paties užklausą. Forma ir serveris patikrinti be perteklinio sutikimo lauko vietinėje ir gyvoje svetainėje.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
 
