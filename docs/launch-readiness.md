@@ -45,7 +45,7 @@ Atnaujinta: 2026-07-20
 | padaryta | Resend domenas / siuntėjas | domenas patvirtintas ir paruoštas laiškams siųsti |
 | padaryta | CONTACT_FROM_EMAIL | siuntėjo adresas nustatytas Cloudflare Worker konfigūracijoje |
 | padaryta | RESEND_API_KEY secret | tik siuntimui skirtas raktas saugiai laikomas Cloudflare |
-| padaryta | Gyvas kontaktų formos siuntimas | Resend istorijoje patvirtinti pristatyti laiškai |
+| padaryta | Gyvas kontaktų formos siuntimas | 2026-07-20 po apsaugos sustiprinimo Resend patvirtino pristatytą techninį laišką |
 | padaryta | GA4 Measurement ID | G-3N3MGJHS0V įrašytas į public/assets/js/config.js |
 | padaryta | GA4 Realtime / DebugView | patikrinta ir pažymėta roadmap |
 | padaryta | Search Console domain property | patvirtinta per Cloudflare DNS TXT |

@@ -105,7 +105,7 @@ const launchBlockers = [
     label: "Gyvas kontaktų formos siuntimas",
     done: roadmapHasDone("Patikrinti formos siuntimą gyvai"),
     detail: roadmapHasDone("Patikrinti formos siuntimą gyvai")
-      ? "Resend istorijoje patvirtinti pristatyti laiškai"
+      ? "2026-07-20 po apsaugos sustiprinimo Resend patvirtino pristatytą techninį laišką"
       : "galima tik po Resend secret ir siuntėjo įjungimo"
   },
   {

@@ -317,7 +317,7 @@ Po Cloudflare deploy:
 - `[x]` Patikrinti visus pagrindinius puslapius gyvai per smoke testą.
 - `[x]` Patikrinti laikiną Cloudflare URL su `scripts/check-live-site.js`.
 - `[x]` Patikrinti production URL su `scripts/check-live-site.js https://agnezukiene.lt`, įskaitant `www`, HTTP į HTTPS, SEO failų turinį, saugumo antraštes, kontaktų API klaidų kelius ir lietuvišką 404 turinį; visa patikra praėjo 2026-07-13.
-- `[x]` Patikrinti formos siuntimą gyvai: 2026-07-19 Resend istorijoje matomi du iš svetainės siųsti laiškai, abu pažymėti kaip pristatyti į `zukiene.agne@gmail.com`.
+- `[x]` Patikrinti formos siuntimą gyvai: 2026-07-20 po apsaugos sustiprinimo per tikrą naršyklę išsiųsta aiškiai pažymėta techninė užklausa; svetainė parodė sėkmę, o „Resend“ įrašas `8602df9f-43fa-427a-923d-38aab00e788d` pažymėtas kaip pristatytas į `zukiene.agne@gmail.com` 23:19.
 - `[x]` Patikrinti GA4 Realtime / DebugView.
 - `[x]` Patikrinti Search Console sitemap pateikimą ir domain property būseną.
 
@@ -336,7 +336,7 @@ Kitas darbas turi vykti tokia tvarka:
 
 1. `[x]` Užbaigti ir deployinti dizaino paketą: patvirtintą portretą, hero proporcijas, pieno/perlo paletę ir GA4 konfigūraciją. Production portretas patikrintas 2026-07-13.
 2. `[x]` Sutvarkyti lietuviško 404 puslapio pateikimą ir patikrinti production po Cloudflare deploy.
-3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; du laiškai patvirtinti kaip pristatyti.
+3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; naujausias bandymas po apsaugos sustiprinimo pristatytas 2026-07-20.
 4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
 5. `[x]` Parengti privatumo ir slapukų politikų tekstus bei patikrinti lankytojo pasirinkimo mygtukus.
 6. `[ ]` Kai production stabiliai veiks 2-4 savaites, pradėti pirmą GA4 ir Search Console augimo peržiūrą.

@@ -87,7 +87,7 @@ Atnaujinta: 2026-07-19
 - `[x]` Kontaktų formos apsauga tikrina `agnezukiene.lt` adresą, kontaktų formos paskirtį ir saugiai sustoja, jei trūksta apsaugos nustatymų.
 - `[x]` Cloudflare/Worker nustatyti `CONTACT_FROM_EMAIL=Agnė Žukienė <noreply@agnezukiene.lt>` per `wrangler.jsonc`.
 - `[x]` Cloudflare saugiai pridėti abu slapti raktai: formos apsaugos ir laiškų siuntimo.
-- `[x]` Patikrinti sėkmingą formos siuntimą gyvai: Resend rodo du pristatytus laiškus.
+- `[x]` Patikrinti sėkmingą formos siuntimą gyvai: 2026-07-20 po apsaugos sustiprinimo išsiųstas techninis bandymas, o „Resend“ jį pažymėjo kaip pristatytą.
 - `[x]` Patikrinti formos klaidas gyvai ir naršyklėje: tuščia forma pateikia aiškų paaiškinimą.
 - `[x]` Formos klaidos susietos su konkrečiais laukais, klaidingi laukai aiškiai pažymimi ir pataisius žymėjimas pašalinamas.
 
