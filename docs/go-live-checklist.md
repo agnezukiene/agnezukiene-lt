@@ -93,6 +93,7 @@ Atnaujinta: 2026-07-20
 - `[x]` Patikrinti sėkmingą formos siuntimą gyvai: 2026-07-20 po apsaugos sustiprinimo išsiųstas techninis bandymas, o „Resend“ jį pažymėjo kaip pristatytą.
 - `[x]` Patikrinti formos klaidas gyvai ir naršyklėje: tuščia forma pateikia aiškų paaiškinimą.
 - `[x]` Formos klaidos susietos su konkrečiais laukais, klaidingi laukai aiškiai pažymimi ir pataisius žymėjimas pašalinamas.
+- `[x]` Privatumo politika apima duomenų šaltinį, tikslius teisinius pagrindus, pateikimo neprivalomumą ir pasekmes, perkeliamumo teisę, tarptautinio perdavimo apsaugas bei automatinių sprendimų netaikymą.
 
 ## Analitika ir paieška
 

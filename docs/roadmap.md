@@ -166,6 +166,7 @@ Darbai:
 - `[x]` `kontaktai.html`: forma trumpa, renka tik atsakymui reikalingus duomenis, pateikia privatumo nuorodą ir aiškias būsenas.
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
 - `[x]` `privatumo-politika.html`: 2026-07-19 paskelbimui paruoštas išsamus tekstas apie valdytoją, tikslus, paslaugų teikėjus, saugojimą ir lankytojo teises.
+- `[x]` 2026-07-21 privatumo politika papildyta tiksliais BDAR teisiniais pagrindais, duomenų šaltiniu, pateikimo neprivalomumu ir pasekmėmis, perkeliamumo teise, perdavimo už Europos ekonominės erdvės ribų apsaugomis bei automatinių sprendimų netaikymu.
 - `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
 - `[x]` 2026-07-19 slapukų paaiškinimas patikslintas pagal realų naršyklės pasirinkimo įrašą, „Google Analytics“ slapukus ir formos apsaugą.
 - `[x]` `404.html`: patikrintas po deploy.

@@ -276,6 +276,10 @@ for (const requiredPrivacyText of [
   "Google Gmail",
   "Google Analytics",
   "12 mėnesių",
+  "BDAR 6 straipsnio 1 dalies",
+  "Duomenų pateikimas nėra privalomas",
+  "duomenų perkeliamumo sąlygos",
+  "Netaikomi automatizuoti sprendimai",
   "Valstybinę duomenų apsaugos inspekciją"
 ]) {
   if (!privacyHtml.includes(requiredPrivacyText)) {
