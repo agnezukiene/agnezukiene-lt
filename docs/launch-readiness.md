@@ -13,6 +13,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
 - `[x]` Failų versijų ir naršyklės talpyklos patikra yra pre-go-live dalis
 - `[x]` Nekintantys stiliai ir programos failai pakartotinai naudojami be bereikalingo laukimo
+- `[x]` Gyvi puslapių tekstai persitikrina naršyklėje ir neužstringa senoje versijoje
 - `[x]` Kontaktų formos serverio atsakymai nesaugomi naršyklės talpykloje
 - `[x]` Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas

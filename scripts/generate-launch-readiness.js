@@ -67,6 +67,7 @@ const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-contact-api.js"), "Kontaktų API patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-static-asset-cache.js"), "Failų versijų ir naršyklės talpyklos patikra yra pre-go-live dalis"),
   checked(has("scripts/check-live-site.js", "public, max-age=31536000, immutable") && has("src/index.js", "STATIC_ASSET_VERSION"), "Nekintantys stiliai ir programos failai pakartotinai naudojami be bereikalingo laukimo"),
+  checked(has("scripts/check-live-site.js", "page text should be revalidated so visitors receive updates"), "Gyvi puslapių tekstai persitikrina naršyklėje ir neužstringa senoje versijoje"),
   checked(has("scripts/check-live-site.js", '"no-store"') && has("src/index.js", '"cache-control": "no-store"'), "Kontaktų formos serverio atsakymai nesaugomi naršyklės talpykloje"),
   checked(has("scripts/pre-go-live.js", "scripts/check-content-security-policy.js"), "Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis"),
   checked(has("scripts/check-site-integrity.js", "docs/manual-setup-queue.md"), "Rankinių setup veiksmų eilė yra privalomas repo failas"),

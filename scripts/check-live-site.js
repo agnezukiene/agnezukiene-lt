@@ -64,6 +64,11 @@ async function main() {
     const response = await fetch(new URL(page, baseUrl));
     assert.strictEqual(response.status, 200, `${page}: expected 200, got ${response.status}`);
     assertSecurityHeaders(response, page);
+    assert.strictEqual(
+      response.headers.get("cache-control"),
+      "public, max-age=0, must-revalidate",
+      `${page}: page text should be revalidated so visitors receive updates`
+    );
 
     const text = await response.text();
     assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
@@ -108,6 +113,11 @@ async function main() {
 
   const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));
   assert.strictEqual(robotsResponse.status, 200, `/robots.txt: expected 200, got ${robotsResponse.status}`);
+  assert.strictEqual(
+    robotsResponse.headers.get("cache-control"),
+    "public, max-age=0, must-revalidate",
+    "/robots.txt: search instructions should be revalidated"
+  );
   const robotsText = await robotsResponse.text();
   assert(robotsText.includes("User-agent: *"), "/robots.txt: missing User-agent");
   assert(robotsText.includes("Allow: /"), "/robots.txt: missing Allow");
@@ -115,6 +125,11 @@ async function main() {
 
   const sitemapResponse = await fetch(new URL("/sitemap.xml", baseUrl));
   assert.strictEqual(sitemapResponse.status, 200, `/sitemap.xml: expected 200, got ${sitemapResponse.status}`);
+  assert.strictEqual(
+    sitemapResponse.headers.get("cache-control"),
+    "public, max-age=0, must-revalidate",
+    "/sitemap.xml: page list should be revalidated"
+  );
   const sitemapText = await sitemapResponse.text();
   assert(sitemapText.includes("<urlset"), "/sitemap.xml: missing urlset");
   assert(!sitemapText.includes(".html</loc>"), "/sitemap.xml: URLs should be extensionless");
@@ -164,6 +179,11 @@ async function main() {
     `/neegzistuojantis-puslapis: expected 404, got ${notFoundResponse.status}`
   );
   assertSecurityHeaders(notFoundResponse, "/neegzistuojantis-puslapis");
+  assert.strictEqual(
+    notFoundResponse.headers.get("cache-control"),
+    "public, max-age=0, must-revalidate",
+    "/neegzistuojantis-puslapis: error page should be revalidated"
+  );
   const notFoundText = await notFoundResponse.text();
   assert(notFoundText.includes("<html lang=\"lt\">"), "/neegzistuojantis-puslapis: missing Lithuanian html lang");
   assert(notFoundText.includes("Puslapis nerastas"), "/neegzistuojantis-puslapis: missing Lithuanian 404 content");

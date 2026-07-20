@@ -16,6 +16,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Sukurtas `scripts/check-contact-api.js`.
 - `[x]` Sukurtas `scripts/check-static-asset-cache.js`: failų turinio versijos, ilgalaikė nekintančių failų talpykla ir formos atsakymų nesaugojimas tikrinami automatiškai.
 - `[x]` 2026-07-20 gyvoje telefono naršyklės patikroje pereinant tarp puslapių bendri stiliai ir abu programos failai panaudoti iš atminties, jų pakartotinai neatsisiunčiant.
+- `[x]` 2026-07-21 gyvai patikrinta ir automatizuota, kad puslapių bei privatumo tekstai persitikrina naršyklėje, todėl paskelbti pakeitimai neužstringa senoje versijoje.
 - `[x]` Sukurtas `scripts/check-live-site.js`.
 - `[x]` Sukurtas `scripts/pre-go-live.js`.
 - `[x]` Sukurtas `docs/content-approval.md`.
