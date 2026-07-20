@@ -17,6 +17,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas
 - `[x]` Production live check tikrina www nukreipimą
+- `[x]` Seni .html puslapių adresai visam laikui nukreipiami į dabartinius adresus
 - `[x]` Production live check tikrina HTTP į HTTPS
 - `[x]` Vieša techninė workers.dev kopija ir automatinės peržiūros nuorodos išjungtos bei tikrinamos gyvai
 - `[x]` Production live check tikrina 404

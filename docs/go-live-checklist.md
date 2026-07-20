@@ -55,7 +55,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Lokaliai patikrinti, kad Worker fallback nežinomam URL grąžina lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` Production patikrinti, kad nežinomas URL grąžina lietuvišką `404.html` turinį su 404 statusu; extensionless `/404` fallback gyvai patikrintas 2026-07-13.
 - `[x]` Patikrinti `sitemap.xml`.
-- `[x]` Patikrinti extensionless canonical, sitemap ir vidines nuorodas production; senieji `.html` URL nukreipia į švarius adresus.
+- `[x]` Patikrinti canonical, sitemap ir vidines nuorodas gyvoje svetainėje; nuo 2026-07-21 senieji `.html` adresai visam laikui nukreipia į dabartinius adresus.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti visų puslapių dalijimosi peržiūras: patvirtintas portretas, nuotraukos matmenys ir aprašymas, lietuvių kalba bei svetainės pavadinimas.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
@@ -107,3 +107,4 @@ Atnaujinta: 2026-07-21
 - `[x]` Patikrinti GA4 Realtime / DebugView.
 - `[x]` Search Console patvirtinti per Cloudflare DNS TXT; viešas verification įrašas patikrintas 2026-07-13.
 - `[x]` Pateikti `https://agnezukiene.lt/sitemap.xml` ir patikrinti viešą HTTP 200 atsakymą.
+- `[x]` 2026-07-21 atlikti pirmą „Search Console“ būklės patikrinimą: svetainės žemėlapio būsena sėkminga, aptikti 8 puslapiai, nėra saugumo ar rankinių nuobaudų įspėjimų; senas `/apie.html` adresas rastas ir jo nukreipimas sustiprintas.

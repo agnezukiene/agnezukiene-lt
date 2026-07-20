@@ -1,6 +1,6 @@
 # GA4 and Search Console runbook
 
-Atnaujinta: 2026-07-10
+Atnaujinta: 2026-07-21
 
 Šis dokumentas skirtas dviem likusiems MVP matavimo ir paieškos darbams:
 
@@ -118,3 +118,9 @@ Search Console TXT įrašas gali būti pridėtas kartu su esamais TXT įrašais.
 | Search Console domain property | padaryta |
 | Search Console DNS TXT | padaryta, viešai patikrinta 2026-07-13 |
 | Sitemap pateikimas | padaryta; viešas sitemap grąžina HTTP 200 |
+
+## 7. Pirmoji būklės peržiūra
+
+2026-07-21 ankstyva „Search Console“ peržiūra užfiksuota faile `docs/search-console-review-2026-07-21.md`.
+
+Kadangi svetainė dar nauja ir duomenų nedaug, išvadų apie temas ar naujų straipsnių kryptis kol kas nedarome. Pirmą pilną paieškos ir lankomumo augimo peržiūrą numatyta atlikti 2026-08-10.

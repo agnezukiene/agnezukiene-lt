@@ -74,6 +74,20 @@ async function main() {
     );
   }
 
+  for (const [oldPath, expectedUrl] of [
+    ["/index.html", "https://agnezukiene.lt/?is=senas"],
+    ["/apie.html", "https://agnezukiene.lt/apie?is=senas"]
+  ]) {
+    const response = await worker.fetch(new Request(`https://agnezukiene.lt${oldPath}?is=senas`), {});
+    assert.strictEqual(response.status, 301, `${oldPath} should redirect permanently to the clean URL`);
+    assert.strictEqual(response.headers.get("location"), expectedUrl, `${oldPath} redirect should preserve the query`);
+    assert.strictEqual(
+      response.headers.get("strict-transport-security"),
+      "max-age=31536000",
+      `${oldPath} redirect should require secure connections`
+    );
+  }
+
   {
     const assetCalls = [];
     const response = await worker.fetch(new Request("https://agnezukiene.lt/neegzistuojantis-puslapis"), {

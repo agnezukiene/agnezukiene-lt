@@ -255,7 +255,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Paieškos suvestinė ir automatinės patikros išplėstos nuotraukos aprašymu, lietuvių kalba, svetainės pavadinimu bei socialinės peržiūros tipu.
 - `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
 - `[x]` Sustiprinti SEO patikrą: exact canonical / OG URL, OG paveikslėlio failas, sitemap dublikatai, robots sitemap ir JSON-LD validumas tikrinami automatiškai.
-- `[x]` Suderinti viešus URL su Cloudflare extensionless HTML veikimu: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus; production patvirtinti tiesioginiai HTTP 200 ir senų `.html` adresų 307 redirectai.
+- `[x]` Suderinti viešus URL su Cloudflare adresais be `.html`: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus. 2026-07-21 senų `.html` adresų laikinas nukreipimas pakeistas nuolatiniu, nes „Google Search Console“ dar rodė seno `/apie.html` adreso parodymus.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.
 - `[x]` Sukurti `docs/seo-inventory.md`.
@@ -270,6 +270,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` GA4 Realtime / DebugView patikrintas Google nustatymų darbo metu kitame Codex pokalbyje, kaip patvirtino Agnė 2026-07-13.
 - `[x]` Search Console patvirtinti kaip `agnezukiene.lt` domain property; 2026-07-13 viešame DNS patikrintas `google-site-verification` TXT įrašas.
 - `[x]` `https://agnezukiene.lt/sitemap.xml` pateiktas Search Console, kaip patvirtino Agnė; viešas sitemap ir `robots.txt` grąžina HTTP 200.
+- `[x]` 2026-07-21 atlikta pirmoji ankstyva „Search Console“ būklės peržiūra: liepos 12-18 d. svetainė gavo 2 paspaudimus ir 10 parodymų, svetainės žemėlapis sėkmingai perskaitytas, rasti 8 puslapiai, saugumo ir rankinių nuobaudų įspėjimų nėra. Išsami suvestinė: `docs/search-console-review-2026-07-21.md`.
 
 Leidžiami GA4 eventai MVP:
 
@@ -331,7 +332,7 @@ Po Cloudflare deploy:
 
 ## 9. Vėlesnis augimas po MVP
 
-- `[ ]` Po 2-4 savaičių peržiūrėti GA4 ir Search Console duomenis.
+- `[~]` 2026-07-21 atlikta ankstyva „Search Console“ būklės patikra; pilną GA4 ir paieškos augimo peržiūrą atlikti 2026-08-10, kai bus daugiau duomenų.
 - `[ ]` Pagal realias paieškas sudaryti pirmų tinklaraščio / edukacinių tekstų sąrašą.
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
@@ -347,7 +348,7 @@ Kitas darbas turi vykti tokia tvarka:
 3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; naujausias bandymas po apsaugos sustiprinimo pristatytas 2026-07-20.
 4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
 5. `[x]` Parengti privatumo ir slapukų politikų tekstus bei patikrinti lankytojo pasirinkimo mygtukus.
-6. `[ ]` Kai production stabiliai veiks 2-4 savaites, pradėti pirmą GA4 ir Search Console augimo peržiūrą.
+6. `[~]` Ankstyva „Search Console“ būklė patikrinta 2026-07-21; pirmą pilną GA4 ir paieškos augimo peržiūrą atlikti 2026-08-10.
 
 Dabartinis sprinto fokusas: atsargiai pildyti profesinį turinį tik turint patvirtintus faktus ir stebėti svetainės naudojimą. Portretas, dizainas, kontaktų forma, laiškų pristatymas, privatumo tekstai, GA4, Search Console ir sitemap darbai užbaigti.
 

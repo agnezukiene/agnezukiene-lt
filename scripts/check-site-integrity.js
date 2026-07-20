@@ -17,6 +17,7 @@ const requiredFiles = [
   "docs/content-approval.md",
   "docs/launch-readiness.md",
   "docs/manual-setup-queue.md",
+  "docs/search-console-review-2026-07-21.md",
   "docs/seo-inventory.md",
   "scripts/generate-launch-readiness.js",
   "scripts/pre-go-live.js",
@@ -48,6 +49,13 @@ for (const file of requiredFiles) {
   if (!fs.existsSync(path.join(root, file))) {
     errors.push(`Missing required file: ${file}`);
   }
+}
+
+if (
+  !read("src/index.js").includes('url.pathname.endsWith(".html")')
+  || !read("src/index.js").includes("Response.redirect(url.toString(), 301)")
+) {
+  errors.push("src/index.js: missing permanent redirect from legacy .html URLs");
 }
 
 for (const file of htmlFiles) {

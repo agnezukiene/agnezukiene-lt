@@ -61,6 +61,16 @@ export default {
       return withSecurityHeaders(Response.redirect(url.toString(), 301));
     }
 
+    if (
+      (request.method === "GET" || request.method === "HEAD")
+      && url.pathname.endsWith(".html")
+    ) {
+      url.pathname = url.pathname === "/index.html"
+        ? "/"
+        : url.pathname.slice(0, -".html".length);
+      return withSecurityHeaders(Response.redirect(url.toString(), 301));
+    }
+
     if (url.pathname === "/api/contact") {
       return handleContact(request, env);
     }

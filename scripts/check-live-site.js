@@ -11,7 +11,12 @@ const htmlPages = [
   "/privatumo-politika",
   "/slapuku-politika"
 ];
-const legacyHtmlPages = htmlPages.filter((page) => page !== "/").map((page) => `${page}.html`);
+const legacyHtmlPages = [
+  { oldPath: "/index.html", newPath: "/" },
+  ...htmlPages
+    .filter((page) => page !== "/")
+    .map((page) => ({ oldPath: `${page}.html`, newPath: page }))
+];
 
 const requiredHeaders = {
   "x-content-type-options": "nosniff",
@@ -173,14 +178,15 @@ async function main() {
       `Public workers.dev copy should stay disabled, got ${workersDevResponse.status}`
     );
 
-    for (const legacyPage of legacyHtmlPages) {
-      const response = await fetch(new URL(legacyPage, baseUrl), { redirect: "manual" });
-      assert.strictEqual(response.status, 307, `${legacyPage}: expected 307, got ${response.status}`);
+    for (const { oldPath, newPath } of legacyHtmlPages) {
+      const response = await fetch(new URL(`${oldPath}?is=senas`, baseUrl), { redirect: "manual" });
+      assert.strictEqual(response.status, 301, `${oldPath}: expected 301, got ${response.status}`);
       assert.strictEqual(
         response.headers.get("location"),
-        legacyPage.replace(/\.html$/, ""),
-        `${legacyPage}: expected redirect to extensionless URL`
+        `https://agnezukiene.lt${newPath}?is=senas`,
+        `${oldPath}: expected permanent redirect to the clean URL while preserving the query`
       );
+      assertSecurityHeaders(response, `${oldPath} redirect`);
     }
 
     const httpResponse = await fetch("http://agnezukiene.lt", { redirect: "manual" });
