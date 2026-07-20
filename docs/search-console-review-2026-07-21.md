@@ -32,6 +32,8 @@ Ataskaitoje dar buvo rodomas senas adresas `https://agnezukiene.lt/apie.html`, g
 
 Automatinė patikra saugo visus senus `.html` adresus, įskaitant `/index.html`, ir tikrina, kad nukreipiant nebūtų pamesti papildomi adreso duomenys.
 
+Pakeitimas paskelbtas ir 2026-07-21 patvirtintas gyvoje svetainėje. Po paskelbimo visa svetainės patikra praėjo: visi vieši puslapiai pasiekiami, seni adresai nukreipiami teisingai, o kontaktų formos ir saugumo patikros klaidų nerado.
+
 ## Kitas patikrinimas
 
 - Trumpa būklės patikra: nuo 2026-07-27, jei reikia įsitikinti, kad puslapių įtraukimo ataskaita jau paruošta.

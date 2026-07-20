@@ -55,7 +55,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Lokaliai patikrinti, kad Worker fallback nežinomam URL grąžina lietuvišką `404.html` turinį su 404 statusu.
 - `[x]` Production patikrinti, kad nežinomas URL grąžina lietuvišką `404.html` turinį su 404 statusu; extensionless `/404` fallback gyvai patikrintas 2026-07-13.
 - `[x]` Patikrinti `sitemap.xml`.
-- `[x]` Patikrinti canonical, sitemap ir vidines nuorodas gyvoje svetainėje; nuo 2026-07-21 senieji `.html` adresai visam laikui nukreipia į dabartinius adresus.
+- `[x]` Patikrinti canonical, sitemap ir vidines nuorodas gyvoje svetainėje; 2026-07-21 gyvai patvirtinta, kad senieji `.html` adresai visam laikui nukreipia į dabartinius adresus ir išsaugo papildomus adreso duomenis.
 - `[x]` Patikrinti `robots.txt`.
 - `[x]` Patikrinti visų puslapių dalijimosi peržiūras: patvirtintas portretas, nuotraukos matmenys ir aprašymas, lietuvių kalba bei svetainės pavadinimas.
 - `[x]` Patikrinti saugumo antraštes gyvame puslapyje.
