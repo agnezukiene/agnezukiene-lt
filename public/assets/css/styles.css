@@ -448,7 +448,7 @@ textarea {
 }
 
 .text-block a,
-.form-privacy a {
+.form-note a {
   color: var(--accent-strong);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;

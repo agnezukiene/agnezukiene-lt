@@ -170,6 +170,7 @@ Darbai:
 - `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
 - `[x]` 2026-07-19 slapukų paaiškinimas patikslintas pagal realų naršyklės pasirinkimo įrašą, „Google Analytics“ slapukus ir formos apsaugą.
 - `[x]` `404.html`: patikrintas po deploy.
+- `[x]` 2026-07-21 skubios pagalbos informacija paversta tiesiogiai naudojama: pagrindiniame, konsultacijų ir kontaktų puslapiuose numerį 112 galima paspausti ir iškart skambinti, o pagrindiniame bei konsultacijų puslapiuose pateikta nuoroda į oficialų „Pagalba sau“ emocinės paramos pasirinkimų sąrašą. Šių jautrių paspaudimų lankomumo matavimas sąmoningai nevykdomas.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
 Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildoma `docs/content-approval.md`:

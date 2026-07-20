@@ -261,6 +261,25 @@ const indexHtml = readSite("index.html");
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
   errors.push("index.html: visible brand text should provide its accessible name without an overriding label");
 }
+const consultationHtml = readSite("konsultacijos.html");
+for (const [file, html] of [["index.html", indexHtml], ["konsultacijos.html", consultationHtml], ["kontaktai.html", contactHtml]]) {
+  if (!html.includes('href="tel:112"')) {
+    errors.push(`${file}: emergency guidance should provide a direct 112 call link`);
+  }
+  for (const match of html.matchAll(/<a\b([^>]*)>/g)) {
+    const attributes = match[1];
+    const isEmergencyLink = attributes.includes('href="tel:112"')
+      || attributes.includes('href="https://pagalbasau.lt/gauk-pagalba/"');
+    if (isEmergencyLink && attributes.includes("data-event")) {
+      errors.push(`${file}: emergency links should not be tracked`);
+    }
+  }
+}
+for (const [file, html] of [["index.html", indexHtml], ["konsultacijos.html", consultationHtml]]) {
+  if (!html.includes('href="https://pagalbasau.lt/gauk-pagalba/"')) {
+    errors.push(`${file}: emergency guidance should link to the official emotional support options`);
+  }
+}
 if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
   errors.push("kontaktai.html: submit button should preserve its readable label while sending");
 }

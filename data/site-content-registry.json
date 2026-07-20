@@ -15,6 +15,8 @@
       "ctas": [
         "Susisiekti dėl konsultacijos",
         "Peržiūrėti paslaugas",
+        "Skambinti 112",
+        "Rasti emocinę paramą",
         "Užduoti klausimą"
       ],
       "images": [
@@ -87,7 +89,10 @@
       "inSitemap": true,
       "ogTitle": "Kaip vyksta konsultacijos",
       "ogDescription": "Aiškiai apie pirmą kontaktą, konsultacijų eigą, konfidencialumą ir ribas.",
-      "ctas": [],
+      "ctas": [
+        "Skambinti 112",
+        "Rasti emocinę paramą"
+      ],
       "images": [],
       "schemas": []
     },

@@ -85,6 +85,7 @@ const technicalGates = [
   checked(has("public/assets/js/site.js", "aria-invalid") && has("public/kontaktai.html", "aria-describedby=\"form-status\""), "Formos klaidos susietos su konkrečiais laukais"),
   checked(has("public/kontaktai.html", "form-privacy") && !has("public/kontaktai.html", "name=\"privacy\"") && !has("src/index.js", "data.privacy"), "Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo"),
   checked(has("scripts/check-site-integrity.js", "visible brand text should provide its accessible name"), "Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas"),
+  checked(has("scripts/check-site-integrity.js", "emergency links should not be tracked") && has("scripts/check-live-site.js", "missing direct 112 call link"), "Skubios pagalbos nuorodos veikia ir jų paspaudimai sąmoningai nematuojami"),
   checked(has("public/assets/css/styles.css", "prefers-reduced-motion: reduce"), "Svetainė gerbia lankytojo mažesnio judesio pasirinkimą"),
   checked(turnstileConfigured, "Turnstile site key yra frontend konfigūracijoje"),
   checked(workerRequiresProtectedFormConfig, "Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo"),

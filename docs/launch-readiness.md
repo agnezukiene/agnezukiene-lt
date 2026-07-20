@@ -34,6 +34,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas
+- `[x]` Skubios pagalbos nuorodos veikia ir jų paspaudimai sąmoningai nematuojami
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą
 - `[x]` Turnstile site key yra frontend konfigūracijoje
 - `[x]` Kontaktų forma neveikia, jei trūksta bent vieno apsaugos nustatymo

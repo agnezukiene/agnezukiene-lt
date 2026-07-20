@@ -70,6 +70,15 @@ async function main() {
       `${page}: missing social image description`
     );
     assert(text.includes('<meta name="twitter:card" content="summary">'), `${page}: missing compact social card`);
+    if (["/", "/konsultacijos", "/kontaktai"].includes(page)) {
+      assert(text.includes('href="tel:112"'), `${page}: missing direct 112 call link`);
+    }
+    if (["/", "/konsultacijos"].includes(page)) {
+      assert(
+        text.includes('href="https://pagalbasau.lt/gauk-pagalba/"'),
+        `${page}: missing official emotional support options link`
+      );
+    }
     const pageAssetVersion = text.match(/\/assets\/css\/styles\.css\?v=([a-f0-9]{12})/)?.[1] || "";
     assert(pageAssetVersion, `${page}: missing versioned stylesheet`);
     if (!assetVersion) assetVersion = pageAssetVersion;
