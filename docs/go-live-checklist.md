@@ -35,6 +35,7 @@ Atnaujinta: 2026-07-20
 - `[x]` Cloudflare Workers prijungtas prie GitHub repo.
 - `[x]` Production branch: `main`.
 - `[x]` Deploy command: `npx wrangler deploy`.
+- `[x]` 2026-07-21 išjungta vieša `workers.dev` kopija ir automatinės peržiūros nuorodos, nes production domenas jau stabiliai veikia.
 - `[x]` Assets output directory: `./public`.
 - `[x]` Jei Cloudflare naudoja `npx wrangler deploy`, assets directory turi būti `./public`, ne repo šaknis.
 - `[x]` Pirmas deploy sėkmingas į `https://agnezukienepage.petrauskaiteagne.workers.dev`.

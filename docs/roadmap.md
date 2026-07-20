@@ -142,6 +142,7 @@ Sprendimas: MVP lieka statinis HTML/CSS/JS, be React, Next.js, Astro ar WordPres
 - `[x]` Cloudflare DNS sutvarkyta: root ir `www` aptarnaujami per Worker custom domains; rankinis `www AAAA 100::` įrašas pašalintas, kad nekonfliktuotų su Worker domain.
 - `[x]` Cloudflare Edge Certificates: `Always Use HTTPS` įjungtas, `Minimum TLS Version` pakeistas į `TLS 1.2`, `TLS 1.3` ir `Automatic HTTPS Rewrites` patikrinti kaip įjungti.
 - `[x]` Po devynių stabilaus saugaus ryšio dienų įjungtas vienerių metų HSTS reikalavimas be subdomenų ir išankstinio naršyklių sąrašo; taip naršyklė nebegrįžta į nesaugų adresą.
+- `[x]` 2026-07-21 išjungta nebereikalinga vieša `workers.dev` svetainės kopija ir automatinės Worker versijų peržiūros nuorodos. Paieškos sistemoms ir lankytojams paliktas tik pagrindinis `agnezukiene.lt` adresas.
 - `[x]` Po deploy patikrinti gyvą svetainę, ne tik lokalią versiją.
 - `[x]` Sukurti live smoke testą laikinam Cloudflare URL ir production domenui.
 

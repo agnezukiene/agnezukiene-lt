@@ -20,7 +20,7 @@ Pridėti kaip paprastus variables, ne secrets:
 | `ALLOWED_ORIGIN` | `https://agnezukiene.lt` | `wrangler.jsonc` variable | padaryta |
 | `CONTACT_FROM_EMAIL` | `Agnė Žukienė <noreply@agnezukiene.lt>` | `wrangler.jsonc` variable | padaryta |
 
-`ALLOWED_ORIGIN` jau nustatytas production domenui. Jei kada nors reikės testuoti tik laikiną `workers.dev` domeną, šią reikšmę reikia keisti laikinai ir po testo grąžinti į `https://agnezukiene.lt`.
+`ALLOWED_ORIGIN` nustatytas tik pagrindiniam production domenui. Vieša `workers.dev` kopija ir automatinės peržiūros nuorodos išjungtos, todėl forma priima užklausas tik iš `https://agnezukiene.lt`.
 
 ## 2. Secrets
 
@@ -52,7 +52,7 @@ Po kiekvieno Cloudflare variables/secrets pakeitimo:
 2. Patikrinti kontaktų endpointą:
 
 ```bash
-node scripts/check-live-site.js https://agnezukienepage.petrauskaiteagne.workers.dev
+node scripts/check-live-site.js https://agnezukiene.lt
 ```
 
 3. Atlikti realų formos bandymą iš `https://agnezukiene.lt/kontaktai`.

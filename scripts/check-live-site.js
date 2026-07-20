@@ -1,6 +1,6 @@
 const assert = require("assert");
 
-const baseUrl = process.argv[2] || "https://agnezukienepage.petrauskaiteagne.workers.dev";
+const baseUrl = process.argv[2] || "https://agnezukiene.lt";
 const htmlPages = [
   "/",
   "/apie",

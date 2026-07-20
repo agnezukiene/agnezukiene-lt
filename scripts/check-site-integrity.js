@@ -238,6 +238,8 @@ if (!wrangler.includes('"main": "src/index.js"')) errors.push("wrangler.jsonc: m
 if (!wrangler.includes('"directory": "./public"')) errors.push("wrangler.jsonc: assets directory must be ./public");
 if (!wrangler.includes('"binding": "ASSETS"')) errors.push("wrangler.jsonc: missing ASSETS binding");
 if (!wrangler.includes('"run_worker_first": true')) errors.push("wrangler.jsonc: Worker must run before assets");
+if (!wrangler.includes('"workers_dev": false')) errors.push("wrangler.jsonc: public workers.dev copy should stay disabled");
+if (!wrangler.includes('"preview_urls": false')) errors.push("wrangler.jsonc: public Worker preview URLs should stay disabled");
 if (!wrangler.includes('"CONTACT_TO_EMAIL": "zukiene.agne@gmail.com"')) errors.push("wrangler.jsonc: missing CONTACT_TO_EMAIL variable");
 
 const worker = read("src/index.js");
