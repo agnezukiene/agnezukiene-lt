@@ -18,7 +18,7 @@ Atnaujinta: 2026-07-20
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas
 - `[x]` Production live check tikrina www nukreipimą
 - `[x]` Production live check tikrina HTTP į HTTPS
-- `[x]` Vieša techninė workers.dev kopija ir automatinės peržiūros nuorodos išjungtos
+- `[x]` Vieša techninė workers.dev kopija ir automatinės peržiūros nuorodos išjungtos bei tikrinamos gyvai
 - `[x]` Production live check tikrina 404
 - `[x]` Production live check tikrina kontaktų API klaidų kelius
 - `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių

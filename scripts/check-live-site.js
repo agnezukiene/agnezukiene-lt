@@ -155,6 +155,15 @@ async function main() {
   assert(notFoundText.includes("Puslapis nerastas"), "/neegzistuojantis-puslapis: missing Lithuanian 404 content");
 
   if (parsedBaseUrl.hostname === "agnezukiene.lt") {
+    const workersDevResponse = await fetch("https://agnezukienepage.petrauskaiteagne.workers.dev/", {
+      redirect: "manual"
+    });
+    assert.strictEqual(
+      workersDevResponse.status,
+      404,
+      `Public workers.dev copy should stay disabled, got ${workersDevResponse.status}`
+    );
+
     for (const legacyPage of legacyHtmlPages) {
       const response = await fetch(new URL(legacyPage, baseUrl), { redirect: "manual" });
       assert.strictEqual(response.status, 307, `${legacyPage}: expected 307, got ${response.status}`);

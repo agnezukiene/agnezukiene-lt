@@ -58,7 +58,7 @@ const technicalGates = [
   checked(has("scripts/check-site-integrity.js", "docs/manual-setup-queue.md"), "Rankinių setup veiksmų eilė yra privalomas repo failas"),
   checked(has("scripts/check-live-site.js", "https://www.agnezukiene.lt"), "Production live check tikrina www nukreipimą"),
   checked(has("scripts/check-live-site.js", "http://agnezukiene.lt"), "Production live check tikrina HTTP į HTTPS"),
-  checked(has("wrangler.jsonc", '"workers_dev": false') && has("wrangler.jsonc", '"preview_urls": false'), "Vieša techninė workers.dev kopija ir automatinės peržiūros nuorodos išjungtos"),
+  checked(has("wrangler.jsonc", '"workers_dev": false') && has("wrangler.jsonc", '"preview_urls": false') && has("scripts/check-live-site.js", "Public workers.dev copy should stay disabled"), "Vieša techninė workers.dev kopija ir automatinės peržiūros nuorodos išjungtos bei tikrinamos gyvai"),
   checked(has("scripts/check-live-site.js", "/neegzistuojantis-puslapis"), "Production live check tikrina 404"),
   checked(has("scripts/check-live-site.js", "/api/contact") && has("scripts/check-live-site.js", "invalid JSON"), "Production live check tikrina kontaktų API klaidų kelius"),
   checked(has("scripts/check-site-integrity.js", "contains internal pre-launch wording"), "Public HTML patikra saugo nuo vidinių paleidimo frazių"),
