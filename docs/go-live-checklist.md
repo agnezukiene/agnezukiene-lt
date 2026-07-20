@@ -49,7 +49,7 @@ Atnaujinta: 2026-07-21
 
 - `[x]` Patikrinti pradžios puslapį desktop vaizde.
 - `[x]` Patikrinti pradžios puslapį mobile vaizde.
-- `[x]` Patikrinti atskirą pagrindinio ir vidinių puslapių antraščių mastelį telefone, planšetėje ir kompiuteryje; visi 8 vieši puslapiai telpa 390, 768 ir 1280 pikselių pločiuose.
+- `[x]` Patikrinti atskirą pagrindinio ir vidinių puslapių antraščių mastelį telefone, planšetėje ir kompiuteryje; visi 8 vieši puslapiai telpa 390, 768 ir 1280 pikselių pločiuose vietinėje ir gyvoje svetainėje.
 - `[x]` Patikrinti mobile meniu.
 - `[x]` Patikrinti, kad telefono navigacijos nuorodos lieka pasiekiamos ir tada, kai papildomas svetainės kodas neįsikrauna; 2026-07-21 patikrintas 390 pikselių telefono vaizdas abiem režimais vietinėje ir gyvoje svetainėje.
 - `[x]` Patikrinti visus viešus puslapius automatiniu prieinamumo įrankiu ir klaviatūra; nuoroda „Pereiti prie turinio“ perkelia aktyvią vietą į pagrindinį turinį.
