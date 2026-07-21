@@ -97,6 +97,21 @@ async function main() {
       assert(!text.includes("Klaipėdos regione ir nuotoliu"), `${page}: homepage should not promise an unconfirmed remote format`);
       assert(!/"areaServed"\s*:\s*\[[^\]]*"Lietuva"/.test(text), `${page}: structured service area should stay regional`);
     }
+    if (page === "/duk") {
+      const visibleFaqs = [...text.matchAll(/<details(?:\s+open)?><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
+        .map((match) => ({ question: match[1], answer: match[2] }));
+      const faqSchemas = [...text.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+        .map((match) => JSON.parse(match[1]));
+      const faqSchema = faqSchemas.find((schema) => schema["@type"] === "FAQPage");
+      const structuredFaqs = Array.isArray(faqSchema?.mainEntity)
+        ? faqSchema.mainEntity.map((item) => ({
+            question: item.name,
+            answer: item.acceptedAnswer?.text
+          }))
+        : [];
+      assert.strictEqual(visibleFaqs.length, 5, `${page}: expected 5 visible questions`);
+      assert.deepStrictEqual(structuredFaqs, visibleFaqs, `${page}: structured questions should match visible content`);
+    }
     assert(
       text.includes('href="/slapuku-politika">Plačiau apie slapukus</a>')
         && text.includes('data-cookie-decline>Neleisti matavimo</button>')

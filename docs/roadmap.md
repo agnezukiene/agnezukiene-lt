@@ -267,6 +267,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Paieškos suvestinė ir automatinės patikros išplėstos nuotraukos aprašymu, lietuvių kalba, svetainės pavadinimu bei socialinės peržiūros tipu.
 - `[x]` Patikrinti visų puslapių H1, title, description, canonical ir OG per `docs/seo-inventory.md`.
 - `[x]` Sustiprinti SEO patikrą: exact canonical / OG URL, OG paveikslėlio failas, sitemap dublikatai, robots sitemap ir JSON-LD validumas tikrinami automatiškai.
+- `[~]` 2026-07-21 dažnų klausimų puslapio paieškos aprašas papildytas visais penkiais lankytojui matomais klausimais ir tiksliais atsakymais; pridėta vietinė bei gyva sutapimo patikra. Laukia paskelbimas ir gyva peržiūra.
 - `[x]` Suderinti viešus URL su Cloudflare adresais be `.html`: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus. 2026-07-21 senų `.html` adresų laikinas nukreipimas pakeistas nuolatiniu, nes „Google Search Console“ dar rodė seno `/apie.html` adreso parodymus; pakeitimas patvirtintas gyvoje svetainėje visiems seniems adresams.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` Sukurti `robots.txt`.

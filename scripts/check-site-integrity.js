@@ -187,6 +187,25 @@ for (const url of sitemapUrls) {
   if (!htmlFiles.includes(file)) errors.push(`sitemap.xml: URL has no matching HTML file: ${url}`);
 }
 
+const faqHtml = readSite("duk.html");
+const visibleFaqs = [...faqHtml.matchAll(/<details(?:\s+open)?><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
+  .map((match) => ({ question: match[1], answer: match[2] }));
+const faqSchemas = [...faqHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .map((match) => JSON.parse(match[1]));
+const faqSchema = faqSchemas.find((schema) => schema["@type"] === "FAQPage");
+const structuredFaqs = Array.isArray(faqSchema?.mainEntity)
+  ? faqSchema.mainEntity.map((item) => ({
+      question: item.name,
+      answer: item.acceptedAnswer?.text
+    }))
+  : [];
+if (visibleFaqs.length !== 5) {
+  errors.push(`duk.html: expected 5 visible questions, found ${visibleFaqs.length}`);
+}
+if (JSON.stringify(structuredFaqs) !== JSON.stringify(visibleFaqs)) {
+  errors.push("duk.html: FAQ structured data should exactly match every visible question and answer");
+}
+
 const robots = read("public/robots.txt");
 if (!/User-agent:\s*\*/.test(robots)) errors.push("robots.txt: missing User-agent: *");
 if (!robots.includes("Sitemap: https://agnezukiene.lt/sitemap.xml")) errors.push("robots.txt: missing production sitemap URL");
