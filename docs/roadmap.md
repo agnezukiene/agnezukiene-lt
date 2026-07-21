@@ -255,7 +255,7 @@ Vizualinė kryptis:
 - `[x]` 2026-07-21 kontaktų puslapis padarytas atsparus papildomo svetainės kodo sutrikimui: neveikiant formai jos laukai ir siuntimo mygtukas nerodomi, o vietoje jų pateikiamas aiškus tiesioginis el. pašto adresas. Vietinė ir gyva telefono bei kompiuterio patikra praėjo abiem režimais.
 - `[x]` 2026-07-21 kontaktų formos privatumo tekstas suderintas su paskelbtu duomenų naudojimo pagrindu: lankytojas aiškiai informuojamas ir gauna privatumo politikos nuorodą, tačiau iš jo nereikalaujama klaidinančio atskiro sutikimo vien tam, kad būtų atsakyta į jo paties užklausą. Forma ir serveris patikrinti be perteklinio sutikimo lauko vietinėje ir gyvoje svetainėje.
 - `[x]` 2026-07-21 komentaro laukas rodo, kiek iš 1200 ženklų įrašyta, praneša artėjant prie ribos ir neleidžia jos viršyti; patikrinta vietinėje ir gyvoje svetainėje 390 bei 1280 pikselių pločiuose, taip pat be papildomo svetainės kodo.
-- `[~]` 2026-07-21 formos siuntimo ar apsaugos klaida pateikia vienu paspaudimu atidaromą atsarginį el. laišką, o lankytojo įrašyti laukai lieka vietoje. Vietinė patikra telefono ir kompiuterio dydžiu sėkminga, laukia gyvos svetainės patikra.
+- `[x]` 2026-07-21 formos siuntimo ar apsaugos klaida pateikia vienu paspaudimu atidaromą atsarginį el. laišką, o lankytojo įrašyti laukai lieka vietoje. Vietinė klaidos kelio patikra ir gyvos svetainės peržiūra telefono bei kompiuterio dydžiu sėkminga.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
 
