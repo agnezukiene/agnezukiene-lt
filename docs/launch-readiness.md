@@ -33,6 +33,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Gyva svetainė atmeta neleistiną svetimą kodą
 - `[x]` Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje
 - `[x]` Nuorodų dalijimosi peržiūros tikrinamos lokaliai ir gyvoje svetainėje
+- `[x]` Dažnų klausimų paieškos aprašas tiksliai sutampa su visais lankytojui matomais klausimais ir atsakymais
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Kontaktų forma atmeta akivaizdžiai neteisingą telefono numerį
