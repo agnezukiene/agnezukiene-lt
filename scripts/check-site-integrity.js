@@ -330,6 +330,12 @@ for (const [file, html] of [["index.html", indexHtml], ["paslaugos.html", readSi
   }
 }
 const consultationHtml = readSite("konsultacijos.html");
+for (const file of ["index.html", "apie.html", "paslaugos.html", "konsultacijos.html", "duk.html"]) {
+  const html = readSite(file);
+  if (!html.includes('href="/kontaktai" data-event="contact_intent_click"')) {
+    errors.push(`${file}: main content should provide a direct, measurable contact action`);
+  }
+}
 for (const [file, html] of [["index.html", indexHtml], ["konsultacijos.html", consultationHtml], ["kontaktai.html", contactHtml]]) {
   if (!html.includes('href="tel:112"')) {
     errors.push(`${file}: emergency guidance should provide a direct 112 call link`);

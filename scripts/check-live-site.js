@@ -112,6 +112,12 @@ async function main() {
       assert.strictEqual(visibleFaqs.length, 5, `${page}: expected 5 visible questions`);
       assert.deepStrictEqual(structuredFaqs, visibleFaqs, `${page}: structured questions should match visible content`);
     }
+    if (["/", "/apie", "/paslaugos", "/konsultacijos", "/duk"].includes(page)) {
+      assert(
+        text.includes('href="/kontaktai" data-event="contact_intent_click"'),
+        `${page}: main content should provide a direct contact action`
+      );
+    }
     assert(
       text.includes('href="/slapuku-politika">Plačiau apie slapukus</a>')
         && text.includes('data-cookie-decline>Neleisti matavimo</button>')
