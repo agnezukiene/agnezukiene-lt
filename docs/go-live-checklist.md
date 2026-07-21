@@ -85,7 +85,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Kontaktų forma turi honeypot lauką paprastų botų filtravimui.
 - `[x]` Kontaktų API validacija ir mock Resend sėkmės kelias patikrinti automatiškai.
 - `[x]` Kontaktų forma rodo backend klaidas ir atnaujina Turnstile po siuntimo bandymo.
-- `[~]` Jei naršyklėje forma negali veikti, jos laukai ir neveikiantis siuntimo mygtukas pakeičiami aiškiu tiesioginiu el. pašto adresu; vietinė telefono ir kompiuterio patikra praėjo, laukia gyva patikra.
+- `[x]` Jei naršyklėje forma negali veikti, jos laukai ir neveikiantis siuntimo mygtukas pakeičiami aiškiu tiesioginiu el. pašto adresu; vietinė ir gyva telefono bei kompiuterio patikra praėjo 2026-07-21.
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą su įrašytu el. paštu arba telefono numeriu.
 - `[x]` Iš anksto paaiškinta, kad būtinas bent vienas kontaktas, pasirinktas atsakymo laukas tampa privalomas, o telefono numerio forma tikrinama naršyklėje ir serveryje; vietinė ir gyva telefono bei kompiuterio patikra praėjo 2026-07-21.
 - `[x]` Production smoke testas tikrina kontaktų API GET, origin, content-type, request size, JSON ir validacijos klaidas.
