@@ -428,7 +428,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "A
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"']) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "waitingForTurnstile", "Palaukite akimirką, kol paruošiama formos apsauga.", "Formos apsauga paruošta. Dabar galite siųsti užklausą."]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

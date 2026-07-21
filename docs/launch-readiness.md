@@ -43,6 +43,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
 - `[x]` Neveikianti kontaktų forma pakeičiama tiesioginiu el. pašto adresu
 - `[x]` Formos apsaugos paslauga įkeliama tik žmogui pradėjus naudoti kontaktų formą
+- `[x]` Per anksti paspaudus siuntimo mygtuką forma palaukia apsaugos patikros ir išsaugo įvestus duomenis
 - `[x]` Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus
 - `[x]` Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas

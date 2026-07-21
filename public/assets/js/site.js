@@ -308,9 +308,19 @@
     };
 
     let turnstileLoadStarted = false;
+    let turnstileState = "idle";
+
+    const showTurnstileReady = () => {
+      if (status.dataset.waitingForTurnstile !== "true") return;
+      delete status.dataset.waitingForTurnstile;
+      status.className = "form-status is-success";
+      status.textContent = "Formos apsauga paruošta. Dabar galite siųsti užklausą.";
+    };
+
     const startTurnstile = () => {
       if (turnstileLoadStarted) return;
       turnstileLoadStarted = true;
+      turnstileState = "loading";
 
       window.onloadTurnstileCallback = function () {
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
@@ -319,12 +329,17 @@
           language: "lt",
           callback: (token) => {
             turnstileToken.value = token;
+            turnstileState = "ready";
+            showTurnstileReady();
           },
           "expired-callback": () => {
             turnstileToken.value = "";
+            turnstileState = "loading";
           },
           "error-callback": () => {
             turnstileToken.value = "";
+            turnstileState = "error";
+            delete status.dataset.waitingForTurnstile;
             showSendFallback("Nepavyko atlikti formos apsaugos patikros. Galite atnaujinti puslapį arba");
           }
         });
@@ -332,6 +347,8 @@
 
       loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit")
         .catch(() => {
+          turnstileState = "error";
+          delete status.dataset.waitingForTurnstile;
           showSendFallback("Nepavyko įkelti formos apsaugos. Galite pabandyti vėliau arba");
         });
     };
@@ -439,6 +456,19 @@
         track("form_error", { form_id: "contact", error_type: "invalid_fields" });
         markFieldInvalid(firstInvalidField);
         form.reportValidity();
+        return;
+      }
+
+      if (turnstileToken && !turnstileToken.value) {
+        if (turnstileState === "error") {
+          showSendFallback("Formos apsauga šiuo metu nepasiekiama. Galite atnaujinti puslapį arba");
+          return;
+        }
+
+        startTurnstile();
+        status.className = "form-status";
+        status.dataset.waitingForTurnstile = "true";
+        status.textContent = "Palaukite akimirką, kol paruošiama formos apsauga. Kai ji bus paruošta, galėsite siųsti dar kartą.";
         return;
       }
 
