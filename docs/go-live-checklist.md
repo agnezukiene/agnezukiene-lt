@@ -69,7 +69,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Pridėti pagrindinės nuotraukos variantus skirtingiems ekranams ir tikroje naršyklėje patikrinti, kad siunčiamas mažesnis failas be vaizdo ar išdėstymo pokyčių.
 - `[x]` Production smoke testas patikrina HTTP į HTTPS, `www` į root ir nežinomo puslapio 404.
 - `[ ]` Patvirtinti konsultacijos formatą.
-- `[~]` Kol konsultacijų formatas nepatvirtintas, pagrindinis puslapis ir paieškos sistemoms skirta informacija nežada nuotolinių ar visoje Lietuvoje teikiamų konsultacijų; vietinė patikra sėkminga, laukia gyvos svetainės patikra.
+- `[x]` Kol konsultacijų formatas nepatvirtintas, pagrindinis puslapis ir paieškos sistemoms skirta informacija nežada nuotolinių ar visoje Lietuvoje teikiamų konsultacijų; vietinė ir gyvos svetainės patikra telefono bei kompiuterio dydžiu sėkminga 2026-07-21.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
 - `[x]` Privatumo politika išsamiai atnaujinta 2026-07-19 pagal veikiančias paslaugas ir lankytojo teises.
