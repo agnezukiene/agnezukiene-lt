@@ -292,6 +292,21 @@
       updateMessageCount();
     }
 
+    const showSendFallback = (message) => {
+      status.className = "form-status is-error";
+      status.textContent = `${message} `;
+
+      const emailLink = document.createElement("a");
+      emailLink.href = "mailto:zukiene.agne@gmail.com";
+      emailLink.textContent = "parašyti el. paštu";
+      emailLink.setAttribute("data-form-email-fallback", "");
+      emailLink.addEventListener("click", () => {
+        track("mailto_click", { source_page: window.location.pathname });
+      });
+
+      status.append(emailLink, ".");
+    };
+
     if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
       window.onloadTurnstileCallback = function () {
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
@@ -306,16 +321,14 @@
           },
           "error-callback": () => {
             turnstileToken.value = "";
-            status.className = "form-status is-error";
-            status.textContent = "Nepavyko atlikti formos apsaugos patikros. Atnaujinkite puslapį arba parašykite el. paštu.";
+            showSendFallback("Nepavyko atlikti formos apsaugos patikros. Galite atnaujinti puslapį arba");
           }
         });
       };
 
       loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit")
         .catch(() => {
-          status.className = "form-status is-error";
-          status.textContent = "Nepavyko įkelti formos apsaugos. Pabandykite vėliau arba parašykite el. paštu.";
+          showSendFallback("Nepavyko įkelti formos apsaugos. Galite pabandyti vėliau arba");
         });
     }
 
@@ -447,8 +460,10 @@
         track("generate_lead", { form_id: "contact", source_page: window.location.pathname });
       } catch (error) {
         resetTurnstile();
-        status.classList.add("is-error");
-        status.textContent = `${error.message} Jei reikia, parašykite tiesiogiai el. paštu: zukiene.agne@gmail.com.`;
+        const message = error instanceof Error
+          ? error.message
+          : "Šiuo metu formos išsiųsti nepavyko.";
+        showSendFallback(`${message} Jei reikia, galite`);
         track("form_error", { form_id: "contact", error_type: "submit_failed" });
       } finally {
         form.removeAttribute("aria-busy");

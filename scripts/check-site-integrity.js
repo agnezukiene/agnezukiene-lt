@@ -332,7 +332,7 @@ for (const [file, html] of [["index.html", indexHtml], ["konsultacijos.html", co
 if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
   errors.push("kontaktai.html: submit button should preserve its readable label while sending");
 }
-if (!contactHtml.includes('id="form-status" role="status" aria-live="polite"')) {
+if (!contactHtml.includes('id="form-status" role="status" aria-live="polite" aria-atomic="true"')) {
   errors.push("kontaktai.html: form status should have a stable accessible identifier");
 }
 for (const field of ["name", "replyBy", "format", "topic"]) {
@@ -403,7 +403,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "v
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount"]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu"]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 
