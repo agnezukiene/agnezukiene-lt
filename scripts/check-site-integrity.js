@@ -296,6 +296,20 @@ const indexHtml = readSite("index.html");
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
   errors.push("index.html: visible brand text should provide its accessible name without an overriding label");
 }
+if (!indexHtml.includes('<p class="eyebrow">Psichologė Palangoje ir Klaipėdos regione</p>')) {
+  errors.push("index.html: homepage should use the confirmed regional wording");
+}
+if (indexHtml.includes("Klaipėdos regione ir nuotoliu")) {
+  errors.push("index.html: homepage should not promise an unconfirmed remote consultation format");
+}
+for (const [file, html] of [["index.html", indexHtml], ["paslaugos.html", readSite("paslaugos.html")]]) {
+  if (!html.includes('"areaServed"') || !html.includes('"Palanga"') || !html.includes('"Klaipėdos regionas"')) {
+    errors.push(`${file}: structured service area should use the confirmed region`);
+  }
+  if (/"areaServed"\s*:\s*"Lietuva"/.test(html) || /"areaServed"\s*:\s*\[[^\]]*"Lietuva"/.test(html)) {
+    errors.push(`${file}: structured service area should not claim an unconfirmed nationwide service`);
+  }
+}
 const consultationHtml = readSite("konsultacijos.html");
 for (const [file, html] of [["index.html", indexHtml], ["konsultacijos.html", consultationHtml], ["kontaktai.html", contactHtml]]) {
   if (!html.includes('href="tel:112"')) {

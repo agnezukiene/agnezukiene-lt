@@ -89,6 +89,14 @@ async function main() {
         `${page}: missing official emotional support options link`
       );
     }
+    if (page === "/") {
+      assert(
+        text.includes('<p class="eyebrow">Psichologė Palangoje ir Klaipėdos regione</p>'),
+        `${page}: homepage should use confirmed regional wording`
+      );
+      assert(!text.includes("Klaipėdos regione ir nuotoliu"), `${page}: homepage should not promise an unconfirmed remote format`);
+      assert(!/"areaServed"\s*:\s*\[[^\]]*"Lietuva"/.test(text), `${page}: structured service area should stay regional`);
+    }
     assert(
       text.includes('href="/slapuku-politika">Plačiau apie slapukus</a>')
         && text.includes('data-cookie-decline>Neleisti matavimo</button>')

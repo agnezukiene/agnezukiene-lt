@@ -12,7 +12,7 @@ const CONTENT_SECURITY_POLICY = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-S/FPsvSpXLfY4jhsy+ri9ZuT+nt2j8kq137it2pvg84=' 'sha256-1miY1DXof+qP4Bl5UIgmkipjhA4lLNWWI+NSc0bXNbc=' 'sha256-qnlMThNCXqaxMkn2e7z5pyDmjvZu6Mr93H79eSdmKCQ='",
+  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-S/FPsvSpXLfY4jhsy+ri9ZuT+nt2j8kq137it2pvg84=' 'sha256-unatGkmvht9DYqcmqL9xVtEie3qUreyRO/JnKxnPR0s=' 'sha256-DR5kfH467saheQWvyEc+i4HU8g94I2NcvUgp4lTWNpw='",
   "style-src 'self'",
   "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
   "font-src 'self'",

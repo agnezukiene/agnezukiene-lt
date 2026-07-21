@@ -159,6 +159,7 @@ Turinio taisyklės:
 Darbai:
 
 - `[~]` `index.html`: patikrinti hero tekstą, CTA, paslaugų kryptis, krizės pranešimą.
+- `[~]` 2026-07-21 pagrindinio puslapio vietos formuluotė suderinta su nepatvirtintu konsultacijų formatu: pašalintas tvirtas pažadas konsultuoti nuotoliu, palikta patvirtinta Palangos ir Klaipėdos regiono kryptis, o galimybė pasiteirauti apie nuotolinį formatą išsaugota DUK ir kontaktų formoje. Vietinė patikra telefono ir kompiuterio dydžiu sėkminga, laukia gyvos svetainės patikra.
 - `[~]` `apie.html`: patikrinti kvalifikacijos formuluotes ir ar tinka viešinti profesinį kelią.
 - `[~]` `paslaugos.html`: patvirtinti, kurios paslaugos tikrai bus rodomos MVP.
 - `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė patvirtins trukmę, kainą, formatą ir atsakymo laiką.
