@@ -26,6 +26,7 @@ Atnaujinta: 2026-07-21
 - `[x]` Public HTML patikra saugo nuo vidinių paleidimo frazių
 - `[x]` Public HTML patikra tikrina bazinį prieinamumą
 - `[x]` Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį
+- `[x]` Pagalbinė skaitymo priemonė kiekviename puslapyje aiškiai praneša dabartinę vietą
 - `[x]` Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna
 - `[x]` Antraščių dydžiai stabilūs, o vidiniai puslapiai naudoja ramesnį mastelį
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes

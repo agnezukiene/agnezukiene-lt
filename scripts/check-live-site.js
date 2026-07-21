@@ -80,6 +80,10 @@ async function main() {
       `${page}: missing social image description`
     );
     assert(text.includes('<meta name="twitter:card" content="summary">'), `${page}: missing compact social card`);
+    const currentPageLinks = [...text.matchAll(/<a\b[^>]*\baria-current="page"[^>]*>/g)];
+    assert.strictEqual(currentPageLinks.length, 1, `${page}: expected exactly one current-page link`);
+    const currentHref = currentPageLinks[0][0].match(/\bhref="([^"]+)"/)?.[1];
+    assert.strictEqual(currentHref, page, `${page}: current-page link should point to the current page`);
     if (["/", "/konsultacijos", "/kontaktai"].includes(page)) {
       assert(text.includes('href="tel:112"'), `${page}: missing direct 112 call link`);
     }

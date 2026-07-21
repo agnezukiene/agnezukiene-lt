@@ -80,6 +80,7 @@ const technicalGates = [
   checked(has("scripts/check-site-integrity.js", "contains internal pre-launch wording"), "Public HTML patikra saugo nuo vidinių paleidimo frazių"),
   checked(has("scripts/check-site-integrity.js", "missing skip link to main content"), "Public HTML patikra tikrina bazinį prieinamumą"),
   checked(has("scripts/check-site-integrity.js", "main content should be focusable through the skip link"), "Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį"),
+  checked(has("scripts/check-site-integrity.js", "expected exactly one current-page link") && has("scripts/check-live-site.js", "current-page link should point to the current page"), "Pagalbinė skaitymo priemonė kiekviename puslapyje aiškiai praneša dabartinę vietą"),
   checked(has("public/assets/js/site.js", 'classList.add("has-js")') && has("public/assets/css/styles.css", ".has-js .nav-links"), "Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna"),
   checked(has("scripts/check-site-integrity.js", "font sizes should use stable type scales") && !/font-size:\s*[^;]*(?:vw|vh)/.test(read("public/assets/css/styles.css")), "Antraščių dydžiai stabilūs, o vidiniai puslapiai naudoja ramesnį mastelį"),
   checked(has("scripts/check-live-site.js", "strict-origin-when-cross-origin") && has("scripts/check-site-integrity.js", "missing security header"), "Live ir lokali patikra tikrina saugumo antraščių reikšmes"),

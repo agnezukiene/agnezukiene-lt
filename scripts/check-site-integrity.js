@@ -85,6 +85,17 @@ for (const file of htmlFiles) {
   if (file !== "404.html" && !/<div class="nav-links" id="main-menu"/.test(html)) {
     errors.push(`${file}: missing main-menu navigation target`);
   }
+  if (!technicalPages.has(file)) {
+    const currentPageLinks = [...html.matchAll(/<a\b[^>]*\baria-current="page"[^>]*>/g)];
+    if (currentPageLinks.length !== 1) {
+      errors.push(`${file}: expected exactly one current-page link, found ${currentPageLinks.length}`);
+    } else {
+      const currentHref = currentPageLinks[0][0].match(/\bhref="([^"]+)"/)?.[1];
+      if (currentHref !== routeFor(file)) {
+        errors.push(`${file}: current-page link should point to ${routeFor(file)}, found ${currentHref || "no href"}`);
+      }
+    }
+  }
   if (file !== "404.html" && !/<div class="cookie-banner"[^>]+role="region"[^>]+aria-label="Slapukų pasirinkimas"/.test(html)) {
     errors.push(`${file}: cookie choice should have a labelled page region`);
   }
