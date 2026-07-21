@@ -307,7 +307,11 @@
       status.append(emailLink, ".");
     };
 
-    if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
+    let turnstileLoadStarted = false;
+    const startTurnstile = () => {
+      if (turnstileLoadStarted) return;
+      turnstileLoadStarted = true;
+
       window.onloadTurnstileCallback = function () {
         turnstileWidgetId = window.turnstile.render(turnstileContainer, {
           sitekey: config.turnstileSiteKey,
@@ -330,6 +334,17 @@
         .catch(() => {
           showSendFallback("Nepavyko įkelti formos apsaugos. Galite pabandyti vėliau arba");
         });
+    };
+
+    if (config.turnstileSiteKey && turnstileContainer && turnstileToken) {
+      form.addEventListener("focusin", (event) => {
+        if (
+          event.target instanceof Element
+          && event.target.matches("input:not([name='website']), select, textarea, button[type='submit']")
+        ) {
+          startTurnstile();
+        }
+      });
     }
 
     const resetTurnstile = () => {

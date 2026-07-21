@@ -116,6 +116,14 @@ if (!js.includes("_ga(?:_|$)") || !js.includes("Max-Age=0")) {
   errors.push("public/assets/js/site.js: analytics withdrawal should remove Google Analytics cookies");
 }
 
+if (
+  !js.includes("const startTurnstile = () =>")
+  || !js.includes('form.addEventListener("focusin"')
+  || !js.includes("input:not([name='website']), select, textarea, button[type='submit']")
+) {
+  errors.push("public/assets/js/site.js: form protection should load only after a visitor starts using the contact form");
+}
+
 for (const match of js.matchAll(/\btrack\("([^"]+)"/g)) {
   addEvent(match[1], "public/assets/js/site.js track()");
 }
