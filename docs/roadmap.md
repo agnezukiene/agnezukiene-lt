@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-21
+Atnaujinta: 2026-07-22
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -198,7 +198,7 @@ Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildom
 - `[x]` 2026-07-21 gyvas pagrindinis ir kontaktų puslapiai papildomai patikrinti „Lighthouse 13.4.0“. Aptiktas papildomas logotipo pavadinimo neatitikimas pataisytas ir apsaugotas nuolatine patikra; po paskelbimo gyvas pagrindinis puslapis visose penkiose vertintose srityse gavo po 100 balų, svarbiausias turinys parodytas per 1,9 sekundės, vaizdo šokinėjimas lygus nuliui.
 - `[x]` Klaviatūros nuoroda „Pereiti prie turinio“ pataisyta taip, kad aktyvi klaviatūros vieta iš tikrųjų persikeltų į pagrindinį turinį; patikrinta kompiuterio ir telefono naršyklėje, o reikalavimas įtrauktas į nuolatinę failų patikrą.
 - `[x]` 2026-07-21 visuose puslapiuose pažymėta dabartinė lankytojo vieta, kad ją aiškiai praneštų ekrano skaitymo priemonė. Reikalavimas įtrauktas į vietinę ir gyvos svetainės patikrą; visi 8 puslapiai patikrinti telefonu ir kompiuteriu, įskaitant klaviatūros pasiekiamumą ir telefono meniu.
-- `[~]` 2026-07-22 paslaugų kortelių nuorodos pradėtos tikrinti iki tikslios puslapio skilties, o apie naujame lange atidaromas emocinės paramos ir privatumo nuorodas pranešama ekrano skaitymo priemonei. Oficiali „Pagalba sau“ nuoroda patikrinta. Tikras paspaudimas parodė, kad paslaugos antraštę dengė viršutinis meniu, todėl pridėtas saugus tarpas; laukia pakartotinė naršyklės ir gyvos svetainės patikra.
+- `[x]` 2026-07-22 paslaugų kortelių nuorodos tikrinamos iki tikslios puslapio skilties, o apie naujame lange atidaromas emocinės paramos ir privatumo nuorodas pranešama ekrano skaitymo priemonei. Oficiali „Pagalba sau“ nuoroda patikrinta. Tikras paspaudimas parodė, kad paslaugos antraštę dengė viršutinis meniu, todėl pridėtas saugus tarpas; visos keturios kortelės, nauji langai ir jų saugumas patikrinti vietinėje bei gyvoje telefono ir kompiuterio versijoje.
 - `[x]` 2026-07-21 telefono navigacija padaryta atspari papildomo svetainės kodo sutrikimui: įprastai veikia kompaktiškas atidaromas meniu, o kodui neįsikrovus visos nuorodos lieka matomos ir naudojamos. Patikrinti 390 pikselių telefono vaizdai su kodu ir be jo bei 1280 pikselių kompiuterio vaizdas; persidengimų ir šoninio slinkimo nėra. Po paskelbimo abu telefono režimai ir visa gyva svetainė patikrinti dar kartą.
 - `[x]` 2026-07-21 atskirtas pagrindinio ir vidinių puslapių antraščių mastelis: vidinių puslapių antraštės kompiuteryje sumažintos, telefono dydis išlaikytas, o teksto dydžiai nebeskaičiuojami tiesiogiai pagal kiekvieną ekrano pločio pokytį. Visi 8 vieši puslapiai patikrinti 390, 768 ir 1280 pikselių pločiuose vietinėje ir gyvoje svetainėje; antraštės telpa, šoninio slinkimo nėra.
 - `[x]` Automatizuoti WCAG spalvų kontrasto patikrą: 9 pagrindinės teksto, mygtukų ir focus spalvų poros atitinka nustatytas ribas ir patikrintos production 2026-07-13.
