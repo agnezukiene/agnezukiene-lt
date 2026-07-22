@@ -17,6 +17,7 @@ const legacyHtmlPages = [
     .filter((page) => page !== "/")
     .map((page) => ({ oldPath: `${page}.html`, newPath: page }))
 ];
+const serviceSectionIds = ["suaugusiesiems", "paaugliams", "vaikams", "tevams"];
 
 const requiredHeaders = {
   "x-content-type-options": "nosniff",
@@ -100,6 +101,17 @@ async function main() {
       );
       assert(!text.includes("Klaipėdos regione ir nuotoliu"), `${page}: homepage should not promise an unconfirmed remote format`);
       assert(!/"areaServed"\s*:\s*\[[^\]]*"Lietuva"/.test(text), `${page}: structured service area should stay regional`);
+      for (const sectionId of serviceSectionIds) {
+        assert(
+          text.includes(`href="/paslaugos#${sectionId}"`),
+          `${page}: missing direct link to service section ${sectionId}`
+        );
+      }
+    }
+    if (page === "/paslaugos") {
+      for (const sectionId of serviceSectionIds) {
+        assert(text.includes(`id="${sectionId}"`), `${page}: missing linked service section ${sectionId}`);
+      }
     }
     if (page === "/duk") {
       const visibleFaqs = [...text.matchAll(/<details(?:\s+open)?><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
@@ -147,6 +159,10 @@ async function main() {
         `${page}: unavailable form should provide a direct email fallback`
       );
     }
+    for (const match of text.matchAll(/<a\b([^>]*)target="_blank"([^>]*)>([\s\S]*?)<\/a>/g)) {
+      assert(/\brel="[^"]*\bnoopener\b[^"]*"/.test(`${match[1]} ${match[2]}`), `${page}: new-window link should use noopener`);
+      assert(match[3].includes("atsidarys naujame lange"), `${page}: new-window link should announce its behavior`);
+    }
     if (page === "/privatumo-politika") {
       for (const disclosure of [
         "per vieną mėnesį",
@@ -177,6 +193,10 @@ async function main() {
       "public, max-age=31536000, immutable",
       `${asset}: expected long browser cache for the versioned file`
     );
+    if (asset.startsWith("/assets/css/")) {
+      const css = await assetResponse.text();
+      assert(css.includes("scroll-margin-top: 6rem"), `${asset}: linked service sections should clear the sticky header`);
+    }
   }
 
   const robotsResponse = await fetch(new URL("/robots.txt", baseUrl));

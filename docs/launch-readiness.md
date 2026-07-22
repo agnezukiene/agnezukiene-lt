@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-21
+Atnaujinta: 2026-07-22
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
@@ -27,6 +27,9 @@ Atnaujinta: 2026-07-21
 - `[x]` Public HTML patikra tikrina bazinį prieinamumą
 - `[x]` Klaviatūros nuoroda perkelia aktyvią vietą į pagrindinį turinį
 - `[x]` Pagalbinė skaitymo priemonė kiekviename puslapyje aiškiai praneša dabartinę vietą
+- `[x]` Paslaugų kortelės nuveda į tikslią pasirinktą paslaugos vietą
+- `[x]` Pasirinktos paslaugos antraštės neuždengia prilipęs viršutinis meniu
+- `[x]` Pagalbinė skaitymo priemonė perspėja apie naujame lange atidaromas nuorodas
 - `[x]` Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna
 - `[x]` Antraščių dydžiai stabilūs, o vidiniai puslapiai naudoja ramesnį mastelį
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes

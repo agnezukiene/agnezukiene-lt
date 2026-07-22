@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21",
+  "generatedAt": "2026-07-22",
   "domain": "https://agnezukiene.lt",
   "pages": [
     {
@@ -16,7 +16,7 @@
         "Susisiekti dėl konsultacijos",
         "Peržiūrėti paslaugas",
         "Skambinti 112",
-        "Rasti emocinę paramą",
+        "Rasti emocinę paramą (atsidarys naujame lange)",
         "Užduoti klausimą"
       ],
       "images": [
@@ -102,7 +102,7 @@
       "ctas": [
         "Užduoti klausimą",
         "Skambinti 112",
-        "Rasti emocinę paramą"
+        "Rasti emocinę paramą (atsidarys naujame lange)"
       ],
       "images": [],
       "schemas": []

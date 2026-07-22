@@ -145,6 +145,40 @@ for (const file of htmlFiles) {
       errors.push(`${file}: internal link ${route} has no matching ${target}`);
     }
   }
+  for (const match of html.matchAll(/<a\b[^>]*href="((?:\/[^"#?]*)?#[^"?]+)"/g)) {
+    const href = match[1];
+    const [linkedRoute, encodedFragment] = href.split("#", 2);
+    const targetFile = !linkedRoute
+      ? file
+      : linkedRoute === "/"
+        ? "index.html"
+        : `${linkedRoute.slice(1)}.html`;
+    const targetPath = path.join(siteRoot, targetFile);
+    if (!fs.existsSync(targetPath)) continue;
+
+    let fragment;
+    try {
+      fragment = decodeURIComponent(encodedFragment);
+    } catch (error) {
+      errors.push(`${file}: link ${href} has an invalid fragment`);
+      continue;
+    }
+
+    const targetHtml = readSite(targetFile);
+    if (!targetHtml.includes(`id="${fragment}"`)) {
+      errors.push(`${file}: link ${href} has no matching id in ${targetFile}`);
+    }
+  }
+  for (const match of html.matchAll(/<a\b([^>]*)target="_blank"([^>]*)>([\s\S]*?)<\/a>/g)) {
+    const attributes = `${match[1]} ${match[2]}`;
+    const content = match[3];
+    if (!/\brel="[^"]*\bnoopener\b[^"]*"/.test(attributes)) {
+      errors.push(`${file}: new-window link should use rel="noopener"`);
+    }
+    if (!content.includes('class="visually-hidden"') || !content.includes("atsidarys naujame lange")) {
+      errors.push(`${file}: new-window link should explain its behavior to assistive technology`);
+    }
+  }
   if (/dar reikia patvirtinti|prieš viešą paleidimą|prieš publikavimą/i.test(html)) {
     errors.push(`${file}: contains internal pre-launch wording`);
   }
@@ -321,6 +355,9 @@ if (/font-size:\s*[^;]*(?:vw|vh)/.test(siteStyles)) {
 }
 if (!siteStyles.includes(".hero h1") || !siteStyles.includes(".page-hero h1")) {
   errors.push("styles.css: homepage and inner-page headings should use separate type scales");
+}
+if (!/\.service-detail\s*\{[\s\S]*?scroll-margin-top:\s*6rem;[\s\S]*?\}/.test(siteStyles)) {
+  errors.push("styles.css: linked service sections should stay visible below the sticky header");
 }
 const indexHtml = readSite("index.html");
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
