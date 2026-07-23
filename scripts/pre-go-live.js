@@ -5,6 +5,7 @@ const steps = [
   ["Generate SEO inventory", [node, "scripts/generate-seo-inventory.js"]],
   ["Generate content registry", [node, "scripts/generate-content-registry.js"]],
   ["Generate launch readiness", [node, "scripts/generate-launch-readiness.js"]],
+  ["Run repository safety check", [node, "scripts/check-repository-safety.js"]],
   ["Run site integrity check", [node, "scripts/check-site-integrity.js"]],
   ["Run content security policy check", [node, "scripts/check-content-security-policy.js"]],
   ["Run color contrast check", [node, "scripts/check-color-contrast.js"]],

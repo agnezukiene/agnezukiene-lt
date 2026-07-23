@@ -38,6 +38,7 @@ npm run check:contrast
 npm run check:analytics
 npm run check:contact
 npm run check:cache
+npm run check:repo-safety
 npm run check:live -- https://agnezukiene.lt
 npm run seo:inventory
 npm run content:registry

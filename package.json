@@ -9,6 +9,7 @@
     "check:analytics": "node scripts/check-analytics-privacy.js",
     "check:contact": "node scripts/check-contact-api.js",
     "check:cache": "node scripts/check-static-asset-cache.js",
+    "check:repo-safety": "node scripts/check-repository-safety.js",
     "check:security": "node scripts/check-content-security-policy.js",
     "check:live": "node scripts/check-live-site.js",
     "content:registry": "node scripts/generate-content-registry.js",

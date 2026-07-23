@@ -70,6 +70,7 @@ const technicalGates = [
   checked(has("scripts/check-live-site.js", "page text should be revalidated so visitors receive updates"), "Gyvi puslapių tekstai persitikrina naršyklėje ir neužstringa senoje versijoje"),
   checked(has("scripts/check-live-site.js", '"no-store"') && has("src/index.js", '"cache-control": "no-store"'), "Kontaktų formos serverio atsakymai nesaugomi naršyklės talpykloje"),
   checked(has("scripts/pre-go-live.js", "scripts/check-content-security-policy.js"), "Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis"),
+  checked(has("scripts/pre-go-live.js", "scripts/check-repository-safety.js") && has("scripts/check-repository-safety.js", "Git istorija"), "Slapti raktai ir nepublikuotinos nuotraukos tikrinami dabartiniuose failuose bei Git istorijoje"),
   checked(has("scripts/check-site-integrity.js", "docs/manual-setup-queue.md"), "Rankinių setup veiksmų eilė yra privalomas repo failas"),
   checked(has("scripts/check-live-site.js", "https://www.agnezukiene.lt"), "Production live check tikrina www nukreipimą"),
   checked(has("src/index.js", 'url.pathname.endsWith(".html")') && has("scripts/check-live-site.js", "expected 301"), "Seni .html puslapių adresai visam laikui nukreipiami į dabartinius adresus"),

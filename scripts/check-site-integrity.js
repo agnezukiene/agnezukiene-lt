@@ -25,6 +25,7 @@ const requiredFiles = [
   "scripts/check-content-security-policy.js",
   "scripts/check-static-asset-cache.js",
   "scripts/check-live-site.js",
+  "scripts/check-repository-safety.js",
   "src/index.js",
   "wrangler.jsonc"
 ];

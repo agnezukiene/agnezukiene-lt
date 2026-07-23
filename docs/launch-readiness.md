@@ -1,6 +1,6 @@
 # Launch readiness
 
-Atnaujinta: 2026-07-22
+Atnaujinta: 2026-07-23
 
 Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
 
@@ -16,6 +16,7 @@ Atnaujinta: 2026-07-22
 - `[x]` Gyvi puslapių tekstai persitikrina naršyklėje ir neužstringa senoje versijoje
 - `[x]` Kontaktų formos serverio atsakymai nesaugomi naršyklės talpykloje
 - `[x]` Leidžiamų svetainės šaltinių apsauga yra pre-go-live dalis
+- `[x]` Slapti raktai ir nepublikuotinos nuotraukos tikrinami dabartiniuose failuose bei Git istorijoje
 - `[x]` Rankinių setup veiksmų eilė yra privalomas repo failas
 - `[x]` Production live check tikrina www nukreipimą
 - `[x]` Seni .html puslapių adresai visam laikui nukreipiami į dabartinius adresus
