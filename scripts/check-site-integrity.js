@@ -299,6 +299,14 @@ if (!Array.isArray(registry.pages) || registry.pages.length !== htmlFiles.length
   errors.push("data/site-content-registry.json: page count does not match HTML files");
 }
 
+const launchReadiness = read("docs/launch-readiness.md");
+if (!launchReadiness.includes("Svetainė jau paskelbta adresu `https://agnezukiene.lt`")) {
+  errors.push("docs/launch-readiness.md: should clearly state that the website is already live");
+}
+if (/blokuoja pilną paleidimą|## Blokatoriai/.test(launchReadiness)) {
+  errors.push("docs/launch-readiness.md: should not describe pending content choices as launch blockers");
+}
+
 const seoInventory = read("docs/seo-inventory.md");
 for (const file of htmlFiles) {
   const route = routeFor(file);

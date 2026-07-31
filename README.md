@@ -28,7 +28,7 @@ Pagrindinė prieš paleidimą naudojama komanda:
 npm run pre-go-live -- https://agnezukiene.lt
 ```
 
-Ji sugeneruoja SEO inventorių, turinio registrą, paleidimo santrauką, patikrina HTML/SEO vientisumą, WCAG spalvų kontrastą, GA4 privatumą, kontaktų API, failų versijas bei naršyklės talpyklą, whitespace ir gyvą production svetainę.
+Ji sugeneruoja paieškos sistemoms skirtą suvestinę, turinio registrą ir svetainės būklės santrauką, tada patikrina puslapių vientisumą, spalvų įskaitomumą, lankomumo matavimo privatumą, kontaktų formą, failų versijas ir gyvą svetainę.
 
 Atskiros komandos:
 
@@ -64,8 +64,8 @@ Rankinių paskyrų darbų istorija ir būsimi turinio veiksmai sudėti į `docs/
 
 Kontaktų forma veikia: Resend domenas patvirtintas, slaptas siuntimo raktas laikomas Cloudflare, o pristatymas į `zukiene.agne@gmail.com` patikrintas Resend istorijoje.
 
-## Likę MVP blokatoriai
+## Tolesni turinio sprendimai
 
-Automatinė santrauka yra `docs/launch-readiness.md`. Šiuo metu pagrindiniai likę darbai:
+Svetainė techniškai paleista ir veikia. Automatinė būklės santrauka yra `docs/launch-readiness.md`. Toliau galima pildyti Agnės patvirtintas paslaugų detales:
 
 - Agnės turinio patvirtinimai iš `docs/content-approval.md`

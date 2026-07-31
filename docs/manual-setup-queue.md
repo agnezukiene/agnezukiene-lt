@@ -116,7 +116,7 @@ Patikra:
 npm run pre-go-live -- https://agnezukiene.lt
 ```
 
-Tada atidaryti svetainę, paspausti `Sutinku` slapukų juostoje ir GA4 Realtime / DebugView patikrinti, kad matomas apsilankymas bei nėra kontaktų formos jautrių laukų.
+Tada atidaryti svetainę, paspausti `Leisti matavimą` slapukų juostoje ir GA4 Realtime / DebugView patikrinti, kad matomas apsilankymas bei nėra kontaktų formos jautrių laukų.
 
 ## 4. Search Console - padaryta
 
@@ -149,9 +149,9 @@ https://agnezukiene.lt/sitemap.xml
 
 Patikra po šio žingsnio: Search Console rodo domain property kaip verified, o sitemap kaip submitted / discovered.
 
-## 5. Agnės turinio patvirtinimai
+## 5. Agnės turinio sprendimai
 
-Tikslas: pašalinti likusius turinio blokatorius prieš pilną viešą paleidimą.
+Tikslas: po techninio paleidimo papildyti viešą svetainę tik Agnės patvirtintomis paslaugų detalėmis.
 
 Pildomas failas:
 

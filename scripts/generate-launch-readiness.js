@@ -64,6 +64,7 @@ const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-color-contrast.js"), "WCAG spalvų kontrasto patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-analytics-privacy.js"), "GA4 privatumo patikra yra pre-go-live dalis"),
   checked(has("scripts/check-analytics-privacy.js", "withdrawing consent should reload a page where analytics is no longer loaded") && has("public/assets/js/site.js", "window.location.reload()"), "Lankomumo sutikimo atšaukimas sustabdo matavimą, pašalina jo slapukus ir iš naujo atveria puslapį be lankomumo įrankio"),
+  checked(has("data/analytics-events.json", "service_card_click") && has("data/analytics-events.json", "faq_open") && has("data/analytics-events.json", "selected service names") && has("scripts/check-analytics-privacy.js", '"question"') && has("scripts/check-analytics-privacy.js", '"service"') && has("scripts/check-analytics-privacy.js", "allowed event"), "Paslaugų kortelių ir dažnų klausimų naudojimas skaičiuojamas neperduodant pasirinktos temos ar klausimo teksto"),
   checked(has("scripts/pre-go-live.js", "scripts/check-contact-api.js"), "Kontaktų API patikra yra pre-go-live dalis"),
   checked(has("scripts/pre-go-live.js", "scripts/check-static-asset-cache.js"), "Failų versijų ir naršyklės talpyklos patikra yra pre-go-live dalis"),
   checked(has("scripts/check-live-site.js", "public, max-age=31536000, immutable") && has("src/index.js", "STATIC_ASSET_VERSION"), "Nekintantys stiliai ir programos failai pakartotinai naudojami be bereikalingo laukimo"),
@@ -97,6 +98,7 @@ const technicalGates = [
   checked(has("public/index.html", "agne-zukiene-psichologe-sidabro-pienas-768w.avif") && has("scripts/check-site-integrity.js", "responsive hero image"), "Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai"),
   checked(has("scripts/check-contact-api.js", "Email reply choice should require an email address") && has("scripts/check-contact-api.js", "Phone reply choice should require a phone number"), "Kontaktų forma sutikrina pasirinktą atsakymo būdą"),
   checked(has("scripts/check-contact-api.js", "Invalid phone should be rejected") && has("scripts/check-live-site.js", "invalid phone: expected 400"), "Kontaktų forma atmeta akivaizdžiai neteisingą telefono numerį"),
+  checked(has("src/index.js", "validateContactPayload") && has("scripts/check-contact-api.js", "Non-object contact payload should be rejected") && has("scripts/check-live-site.js", "contactShapeResponse"), "Kontaktų forma saugiai atmeta netaisyklingą duomenų sandarą, laukų tipus ir per dideles užklausas"),
   checked(has("public/assets/js/site.js", "aria-invalid") && has("public/kontaktai.html", "aria-describedby=\"form-status\""), "Formos klaidos susietos su konkrečiais laukais"),
   checked(has("public/kontaktai.html", "data-message-count-live") && has("public/assets/js/site.js", "messageInput.maxLength"), "Komentaro laukas aiškiai rodo nustatytą teksto ribą"),
   checked(has("public/kontaktai.html", "form-privacy") && !has("public/kontaktai.html", "name=\"privacy\"") && !has("src/index.js", "data.privacy"), "Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo"),
@@ -119,7 +121,7 @@ const technicalGates = [
   checked(contactRecipientConfigured, "CONTACT_TO_EMAIL nustatytas")
 ];
 
-const launchBlockers = [
+const readinessItems = [
   {
     label: "Resend domenas / siuntėjas",
     done: roadmapHasDone("Resend domenas / siuntėjas"),
@@ -190,33 +192,33 @@ const launchBlockers = [
   }
 ];
 
-const blockerRows = launchBlockers.map((item) => (
+const statusRows = readinessItems.map((item) => (
   `| ${item.done ? "padaryta" : "laukia"} | ${item.label} | ${item.detail} |`
 ));
 
-const nextSteps = launchBlockers
+const nextSteps = readinessItems
   .filter((item) => !item.done)
   .slice(0, 5)
   .map((item, index) => `${index + 1}. ${item.label}: ${item.detail}`);
 
 const md = [
-  "# Launch readiness",
+  "# Svetainės būklės santrauka",
   "",
   `Atnaujinta: ${vilniusDate()}`,
   "",
-  "Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.",
+  "Šis failas yra automatiškai sugeneruota svetainės būklės santrauka. Svetainė jau paskelbta adresu `https://agnezukiene.lt`. Čia parodoma, kas techniškai veikia ir kokių turinio sprendimų dar laukiama. Pagrindinis darbo planas lieka `docs/roadmap.md`.",
   "",
-  "## Techniniai vartai",
+  "## Techninės apsaugos ir patikros",
   "",
   ...technicalGates,
   "",
-  "## Blokatoriai",
+  "## Būklė ir laukiantys sprendimai",
   "",
   "| Statusas | Darbas | Pastaba |",
   "| --- | --- | --- |",
-  ...blockerRows,
+  ...statusRows,
   "",
-  "## Kiti veiksmai",
+  "## Tolesni darbai",
   "",
   ...nextSteps,
   "",

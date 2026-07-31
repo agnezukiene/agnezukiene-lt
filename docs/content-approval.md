@@ -2,7 +2,7 @@
 
 Atnaujinta: 2026-07-21
 
-Šis failas skirtas sprendimams, kurių reikia prieš pilną viešą MVP paleidimą. Kol sprendimas nepatvirtintas, svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
+Šis failas skirtas turinio sprendimams po techninio svetainės paleidimo. Kol sprendimas nepatvirtintas, veikiančioje svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
 
 ## Sprendimų lentelė
 
@@ -26,7 +26,7 @@ Rekomenduojama pildyti taip:
 2. Tada patvirtinti, ar rodyti miestą / adresą.
 3. Tada patvirtinti trukmę ir kainą.
 4. Tada patvirtinti atsakymo į užklausas terminą.
-5. Galiausiai patvirtinti kvalifikacijos ir privatumo tekstus.
+5. Galiausiai patvirtinti kvalifikacijos formuluotę.
 
 ## Turinio saugumo taisyklės
 

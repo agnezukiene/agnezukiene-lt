@@ -89,7 +89,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `public/sitemap.xml`.
 - `[x]` Sukurti `public/robots.txt`.
 - `[x]` Sukurti `docs/go-live-checklist.md`.
-- `[x]` Sukurti `README.md` su pagrindinėmis lokaliomis, pre-go-live, deploy ir likusių blokatorių nuorodomis.
+- `[x]` Sukurti `README.md` su pagrindinėmis vietinio darbo, patikros, paskelbimo ir likusių darbų nuorodomis.
 - `[x]` Sukurti `docs/content-approval.md`.
 - `[x]` Sukurti `docs/launch-readiness.md`.
 - `[x]` Sukurti `docs/manual-setup-queue.md`, kad likę paskyrų veiksmai būtų vienoje eilėje.
@@ -100,7 +100,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` 2026-07-23 sukurta `scripts/check-repository-safety.js`, kad prieš kiekvieną paskelbimą būtų tikrinami dabartiniai bei dar neįkelti projekto failai ir visa Git istorija dėl slaptų raktų, paskyrų failų bei nepublikuotinų originalių nuotraukų. 2026-07-31 pakartotinai patikrinti 57 failai ir visi 117 pakeitimų; nieko pavojingo nerasta, apsauga įtraukta į bendrą patikrą ir paskelbta.
 - `[x]` Sukurti `scripts/generate-launch-readiness.js`.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
-- `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
+- `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad laukiančius Agnės turinio sprendimus skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
 - `[x]` 2026-07-12 papildyti `scripts/generate-launch-readiness.js`, kad santrauka rodytų manual setup queue, bazinio prieinamumo ir saugumo headerių reikšmių vartus.
 - `[x]` 2026-07-19 papildyti automatines patikras naršyklės ženkliuku, atsakymo būdo laukais ir vienerių metų saugaus ryšio reikalavimu.
 - `[x]` 2026-07-19 įjungta leidžiamų svetainės šaltinių apsauga: naršyklė priima tik pačios svetainės, Cloudflare formos apsaugos ir lankomumo matavimo kodą; keturi struktūrizuotų duomenų blokai saugomi tiksliais kontroliniais kodais.
@@ -178,7 +178,7 @@ Darbai:
 - `[x]` 2026-07-21 skubios pagalbos informacija paversta tiesiogiai naudojama: pagrindiniame, konsultacijų ir kontaktų puslapiuose numerį 112 galima paspausti ir iškart skambinti, o pagrindiniame bei konsultacijų puslapiuose pateikta nuoroda į oficialų „Pagalba sau“ emocinės paramos pasirinkimų sąrašą. Šių jautrių paspaudimų lankomumo matavimas sąmoningai nevykdomas; veiksmai ir jų išdėstymas patikrinti vietinėje bei gyvoje telefono ir kompiuterio versijoje.
 - `[-]` Tinklaraščio aktyviai nepaleidžiame MVP, kol nėra bent 3-5 patvirtintų tekstų.
 
-Reikia Agnės patvirtinimo prieš viešą paleidimą. Sprendimų lentelė pildoma `docs/content-approval.md`:
+Reikia Agnės patvirtinimo prieš viešai įrašant šias paslaugų detales. Svetainės techninio veikimo tai neblokuoja. Sprendimų lentelė pildoma `docs/content-approval.md`:
 
 - `[!]` Konsultacijos trukmė.
 - `[!]` Kaina.
@@ -363,6 +363,7 @@ Po Cloudflare deploy:
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.
 - `[x]` 2026-07-31 suplanuota mėnesinė automatinė svetainės būklės ir augimo peržiūra kiekvieno mėnesio 10 d. 10:00 val. Pirmoji peržiūra 2026-08-10 patikrins gyvą svetainę, tikrus GA4 ir „Search Console“ duomenis, atnaujins projekto dokumentus ir parengs temų pasiūlymus, tačiau nesiųs bandomųjų laiškų ir neviešins tekstų be Agnės patvirtinimo. Vėliau failai nebus keičiami vien dėl datos, jei nebus prasmingų naujų duomenų ar problemų.
+- `[x]` 2026-07-31 projekto būklės dokumentai suderinti su faktine padėtimi: svetainė jau techniškai paleista, o septyni laukiantys Agnės sprendimai aiškiai atskirti kaip būsimi turinio papildymai, ne veikiančios svetainės kliūtys.
 
 ## 10. Artimiausias darbo sprintas
 

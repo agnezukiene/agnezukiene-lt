@@ -1,15 +1,16 @@
-# Launch readiness
+# Svetainės būklės santrauka
 
 Atnaujinta: 2026-07-31
 
-Šis failas yra automatiškai sugeneruota MVP paleidimo santrauka. Ji nepakeičia `docs/roadmap.md`, bet parodo, kas jau techniškai padengta ir kas dar blokuoja pilną paleidimą.
+Šis failas yra automatiškai sugeneruota svetainės būklės santrauka. Svetainė jau paskelbta adresu `https://agnezukiene.lt`. Čia parodoma, kas techniškai veikia ir kokių turinio sprendimų dar laukiama. Pagrindinis darbo planas lieka `docs/roadmap.md`.
 
-## Techniniai vartai
+## Techninės apsaugos ir patikros
 
 - `[x]` Site integrity check yra pre-go-live dalis
 - `[x]` WCAG spalvų kontrasto patikra yra pre-go-live dalis
 - `[x]` GA4 privatumo patikra yra pre-go-live dalis
 - `[x]` Lankomumo sutikimo atšaukimas sustabdo matavimą, pašalina jo slapukus ir iš naujo atveria puslapį be lankomumo įrankio
+- `[x]` Paslaugų kortelių ir dažnų klausimų naudojimas skaičiuojamas neperduodant pasirinktos temos ar klausimo teksto
 - `[x]` Kontaktų API patikra yra pre-go-live dalis
 - `[x]` Failų versijų ir naršyklės talpyklos patikra yra pre-go-live dalis
 - `[x]` Nekintantys stiliai ir programos failai pakartotinai naudojami be bereikalingo laukimo
@@ -43,6 +44,7 @@ Atnaujinta: 2026-07-31
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Kontaktų forma atmeta akivaizdžiai neteisingą telefono numerį
+- `[x]` Kontaktų forma saugiai atmeta netaisyklingą duomenų sandarą, laukų tipus ir per dideles užklausas
 - `[x]` Formos klaidos susietos su konkrečiais laukais
 - `[x]` Komentaro laukas aiškiai rodo nustatytą teksto ribą
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
@@ -64,7 +66,7 @@ Atnaujinta: 2026-07-31
 - `[x]` ALLOWED_ORIGIN nustatytas production domenui
 - `[x]` CONTACT_TO_EMAIL nustatytas
 
-## Blokatoriai
+## Būklė ir laukiantys sprendimai
 
 | Statusas | Darbas | Pastaba |
 | --- | --- | --- |
@@ -79,7 +81,7 @@ Atnaujinta: 2026-07-31
 | laukia | Agnės turinio patvirtinimai | laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė |
 | laukia | Kitas Agnės turinio klausimas | [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti |
 
-## Kiti veiksmai
+## Tolesni darbai
 
 1. Agnės turinio patvirtinimai: laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė
 2. Kitas Agnės turinio klausimas: [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti
