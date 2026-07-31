@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-22
+Atnaujinta: 2026-07-31
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -97,7 +97,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 - `[x]` Sukurti `scripts/check-analytics-privacy.js`.
 - `[x]` Sukurti `scripts/check-contact-api.js`.
 - `[x]` Sukurti `scripts/check-static-asset-cache.js` ir įtraukti į bendrą patikrą prieš paskelbimą.
-- `[~]` 2026-07-23 sukurti `scripts/check-repository-safety.js`, kad prieš kiekvieną paskelbimą būtų tikrinami dabartiniai failai ir visa Git istorija dėl slaptų raktų, paskyrų failų bei nepublikuotinų originalių nuotraukų. Pirminė rankinė patikra nieko pavojingo nerado; laukia naujos automatinės patikros išbandymas ir paskelbimas.
+- `[x]` 2026-07-23 sukurta `scripts/check-repository-safety.js`, kad prieš kiekvieną paskelbimą būtų tikrinami dabartiniai bei dar neįkelti projekto failai ir visa Git istorija dėl slaptų raktų, paskyrų failų bei nepublikuotinų originalių nuotraukų. 2026-07-31 pakartotinai patikrinti 57 failai ir visi 117 pakeitimų; nieko pavojingo nerasta, apsauga įtraukta į bendrą patikrą ir paskelbta.
 - `[x]` Sukurti `scripts/generate-launch-readiness.js`.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad paleidimo santrauka atskirtų Resend domeną, `CONTACT_FROM_EMAIL`, `RESEND_API_KEY` ir kontaktų API techninius vartus.
 - `[x]` Sustiprinti `scripts/generate-launch-readiness.js`, kad Agnės turinio blokatorius skaičiuotų iš `docs/content-approval.md` ir rodytų kitą turinio klausimą.
