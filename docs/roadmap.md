@@ -170,6 +170,7 @@ Darbai:
 - `[x]` `privatumo-politika.html`: 2026-07-19 paskelbimui paruoštas išsamus tekstas apie valdytoją, tikslus, paslaugų teikėjus, saugojimą ir lankytojo teises.
 - `[x]` 2026-07-21 privatumo politika papildyta tiksliais BDAR teisiniais pagrindais, duomenų šaltiniu, pateikimo neprivalomumu ir pasekmėmis, perkeliamumo teise, perdavimo už Europos ekonominės erdvės ribų apsaugomis bei automatinių sprendimų netaikymu; nauja versija patikrinta gyvoje svetainėje telefonu ir kompiuteriu.
 - `[x]` 2026-07-21 privatumo politika dar papildyta techninių saugumo duomenų paaiškinimu, vieno mėnesio atsakymo į teisių prašymą terminu ir tiesioginėmis paslaugų teikėjų privatumo nuorodomis; vietinė ir gyva telefono bei kompiuterio patikra praėjo.
+- `[x]` 2026-07-31 privatumo politika papildyta aiškiu patvirtinimu, kad kontaktų duomenys neparduodami ir nenaudojami tiesioginei rinkodarai, bei tiesiogine nuoroda į oficialią skundo pateikimo tvarką.
 - `[x]` `slapuku-politika.html`: tekstas ir lankytojo pasirinkimo keitimas paruošti; atsisakymo, sutikimo ir pasirinkimo keitimo mygtukai patikrinti naršyklėje.
 - `[x]` 2026-07-19 slapukų paaiškinimas patikslintas pagal realų naršyklės pasirinkimo įrašą, „Google Analytics“ slapukus ir formos apsaugą.
 - `[x]` 2026-07-21 visuose puslapiuose slapukų mygtukai pervadinti į aiškius veiksmus „Neleisti matavimo“ ir „Leisti matavimą“, o prieš pasirenkant pateikta nuoroda į paaiškinimą; abu pasirinkimai ir jų pakeitimas patikrinti vietinėje bei gyvoje telefono ir kompiuterio naršyklėje.
