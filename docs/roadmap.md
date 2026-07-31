@@ -355,7 +355,7 @@ Po Cloudflare deploy:
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.
-- `[x]` 2026-07-31 suplanuota vienkartinė automatinė pirmoji augimo peržiūra 2026-08-10 10:00 val. Ji peržiūrės tikrus GA4 ir „Search Console“ duomenis, atnaujins projekto dokumentus ir parengs temų pasiūlymus, tačiau tekstų neviešins be Agnės patvirtinimo.
+- `[x]` 2026-07-31 suplanuota mėnesinė automatinė svetainės būklės ir augimo peržiūra kiekvieno mėnesio 10 d. 10:00 val. Pirmoji peržiūra 2026-08-10 patikrins gyvą svetainę, tikrus GA4 ir „Search Console“ duomenis, atnaujins projekto dokumentus ir parengs temų pasiūlymus, tačiau nesiųs bandomųjų laiškų ir neviešins tekstų be Agnės patvirtinimo. Vėliau failai nebus keičiami vien dėl datos, jei nebus prasmingų naujų duomenų ar problemų.
 
 ## 10. Artimiausias darbo sprintas
 
