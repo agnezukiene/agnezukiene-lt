@@ -320,7 +320,7 @@ if (!wrangler.includes('"limit": 5') || !wrangler.includes('"period": 60')) {
 }
 
 const worker = read("src/index.js");
-for (const requiredSnippet of ["/api/contact", "new URL(\"/404\"", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "CONTACT_RATE_LIMITER", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website", "origin !== env.ALLOWED_ORIGIN", "expectedHostname", "expectedAction"]) {
+for (const requiredSnippet of ["/api/contact", "new URL(\"/404\"", "RESEND_API_KEY", "CONTACT_TO_EMAIL", "TURNSTILE_SECRET_KEY", "CONTACT_RATE_LIMITER", "env.ASSETS.fetch", "www.agnezukiene.lt", "x-content-type-options", "permissions-policy", "data.website", "origin !== env.ALLOWED_ORIGIN", "expectedHostname", "expectedAction", "validateContactPayload", "new TextEncoder().encode(text).byteLength", "mediaType !== \"application/json\""]) {
   if (!worker.includes(requiredSnippet)) errors.push(`src/index.js: missing ${requiredSnippet}`);
 }
 

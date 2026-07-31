@@ -5,6 +5,17 @@ const JSON_HEADERS = {
 
 const MAX_CONTACT_BODY_BYTES = 10000;
 const STATIC_ASSET_VERSION = "972ab9ad5d63";
+const CONTACT_FIELD_LIMITS = {
+  name: 80,
+  email: 120,
+  phone: 40,
+  replyBy: 20,
+  format: 20,
+  topic: 30,
+  message: 1200,
+  website: 120,
+  turnstileToken: 2048
+};
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -102,7 +113,8 @@ async function handleContact(request, env) {
   }
 
   const contentType = request.headers.get("content-type") || "";
-  if (!contentType.toLowerCase().includes("application/json")) {
+  const mediaType = contentType.split(";", 1)[0].trim().toLowerCase();
+  if (mediaType !== "application/json") {
     return json({ message: "Kontaktų forma priima tik JSON duomenis." }, 415);
   }
 
@@ -114,12 +126,17 @@ async function handleContact(request, env) {
   let body;
   try {
     const text = await request.text();
-    if (text.length > MAX_CONTACT_BODY_BYTES) {
+    if (new TextEncoder().encode(text).byteLength > MAX_CONTACT_BODY_BYTES) {
       return json({ message: "Formos duomenų kiekis per didelis." }, 413);
     }
     body = JSON.parse(text);
   } catch (error) {
     return json({ message: "Nepavyko perskaityti formos duomenų." }, 400);
+  }
+
+  const payloadError = validateContactPayload(body);
+  if (payloadError) {
+    return json({ message: payloadError }, 400);
   }
 
   const data = normalizeContact(body);
@@ -192,20 +209,36 @@ async function handleContact(request, env) {
 
 function normalizeContact(body) {
   return {
-    name: clean(body.name, 80),
-    email: clean(body.email, 120),
-    phone: clean(body.phone, 40),
-    replyBy: clean(body.replyBy, 20),
-    format: clean(body.format, 20),
-    topic: clean(body.topic, 30),
-    message: clean(body.message, 1200),
-    website: clean(body.website, 120),
-    turnstileToken: clean(body.turnstileToken, 2048)
+    name: clean(body.name, CONTACT_FIELD_LIMITS.name),
+    email: clean(body.email, CONTACT_FIELD_LIMITS.email),
+    phone: clean(body.phone, CONTACT_FIELD_LIMITS.phone),
+    replyBy: clean(body.replyBy, CONTACT_FIELD_LIMITS.replyBy),
+    format: clean(body.format, CONTACT_FIELD_LIMITS.format),
+    topic: clean(body.topic, CONTACT_FIELD_LIMITS.topic),
+    message: clean(body.message, CONTACT_FIELD_LIMITS.message),
+    website: clean(body.website, CONTACT_FIELD_LIMITS.website),
+    turnstileToken: clean(body.turnstileToken, CONTACT_FIELD_LIMITS.turnstileToken)
   };
+}
+
+function validateContactPayload(body) {
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return "Nepavyko perskaityti formos laukų.";
+  }
+
+  for (const [field, maxLength] of Object.entries(CONTACT_FIELD_LIMITS)) {
+    const value = body[field];
+    if (value === undefined) continue;
+    if (typeof value !== "string") return "Vienas ar keli formos laukai pateikti netinkamai.";
+    if (value.length > maxLength) return "Viename ar keliuose formos laukuose įrašyta per daug teksto.";
+  }
+
+  return "";
 }
 
 function clean(value, maxLength) {
   return String(value || "")
+    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, maxLength);

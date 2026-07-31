@@ -16,6 +16,7 @@ function createWorker(fetchMock = fetch) {
     Request,
     Response,
     FormData,
+    TextEncoder,
     fetch: fetchMock,
     globalThis: {}
   };
@@ -166,6 +167,15 @@ async function main() {
   {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
       method: "POST",
+      headers: { "content-type": "application/jsonp" },
+      body: JSON.stringify(validPayload())
+    }), {});
+    assert.strictEqual(response.status, 415, "JSON-like but invalid media types should be rejected");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
         "content-length": "10001"
@@ -181,9 +191,45 @@ async function main() {
     const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
+      body: JSON.stringify({ message: "ą".repeat(6000) })
+    }), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 413, "Multibyte contact requests should be limited by transferred bytes");
+    assert(body.message.includes("per didelis"), "Multibyte size rejection should explain the size problem");
+  }
+
+  {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
       body: "{"
     }), {});
     assert.strictEqual(response.status, 400, "Invalid JSON should be rejected");
+  }
+
+  for (const invalidBody of [null, [], "textas", 7]) {
+    const response = await worker.fetch(new Request("https://agnezukiene.lt/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(invalidBody)
+    }), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, `Non-object contact payload should be rejected: ${JSON.stringify(invalidBody)}`);
+    assert(body.message.includes("formos laukų"), "Invalid payload shape should have a readable response");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ name: { text: "Testas" } })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Non-text contact fields should be rejected");
+    assert(body.message.includes("pateikti netinkamai"), "Invalid field type should have a readable response");
+  }
+
+  {
+    const response = await worker.fetch(jsonRequest(validPayload({ name: "a".repeat(81) })), {});
+    const body = await readJson(response);
+    assert.strictEqual(response.status, 400, "Overlong contact fields should be rejected instead of silently truncated");
+    assert(body.message.includes("per daug teksto"), "Overlong field response should explain the problem");
   }
 
   {
@@ -327,7 +373,10 @@ async function main() {
       return new Response("not found", { status: 404 });
     });
 
-    const response = await workerWithFetch.fetch(jsonRequest(validPayload()), configuredEnv());
+    const response = await workerWithFetch.fetch(jsonRequest(validPayload({
+      name: "Tes\u0000tas",
+      message: "Pirma eilutė\u0007 ir tęsinys"
+    })), configuredEnv());
     assert.strictEqual(response.status, 200, "Valid request should succeed when Turnstile and Resend are configured");
 
     const resendCall = calls.find((call) => call.url.includes("api.resend.com"));
@@ -336,6 +385,7 @@ async function main() {
     assert.deepStrictEqual(resendPayload.to, ["zukiene.agne@gmail.com"], "Resend recipient should be the configured inbox");
     assert.strictEqual(resendPayload.reply_to, "test@example.com", "Resend reply_to should use the submitted email");
     assert(!("html" in resendPayload), "Resend payload should use plain text for the MVP");
+    assert(!/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(resendPayload.text), "Resend text should not contain control characters");
   }
 
   console.log("Contact API check passed.");

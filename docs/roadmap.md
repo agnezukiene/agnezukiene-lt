@@ -262,6 +262,7 @@ Vizualinė kryptis:
 - `[x]` 2026-07-21 formos siuntimo ar apsaugos klaida pateikia vienu paspaudimu atidaromą atsarginį el. laišką, o lankytojo įrašyti laukai lieka vietoje. Vietinė klaidos kelio patikra ir gyvos svetainės peržiūra telefono bei kompiuterio dydžiu sėkminga.
 - `[x]` 2026-07-21 kontaktų formos apsauga nuo automatinių užklausų atidedama iki pirmo žmogaus veiksmo formoje, todėl vien kontaktų puslapio peržiūra nebeįkelia trečiosios šalies apsaugos kodo. Vietinė ir gyva telefono patikra patvirtino, kad prieš paliečiant formą kodas neįkeliamas, o pasirinkus lauką apsauga įsijungia ir paruošia patvirtinimą; kompiuterio vaizdas taip pat patikrintas.
 - `[x]` 2026-07-21 sutvarkytas labai greitas formos siuntimas: jei apsaugos patikra dar nepasiruošusi, laiškas nesiunčiamas per anksti, įvesti duomenys išlieka, o žmogus gauna laukimo ir pasiruošimo pranešimus. Vietinė ir gyvos svetainės telefono bei kompiuterio patikra sėkminga; bandomasis laiškas sąmoningai nesiųstas.
+- `[x]` 2026-07-31 kontaktų formos serveris sustiprintas nuo netaisyklingai suformuotų užklausų: tikrinamas tikras perduodamų duomenų dydis, tikslus duomenų formatas, laukų tipai ir ribos, o laiške pašalinami nematomi valdymo ženklai. Nauji klaidų keliai įtraukti į nuolatinę automatinę patikrą.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
 

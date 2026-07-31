@@ -366,6 +366,17 @@ async function main() {
     "/api/contact content-type: expected JSON requirement message"
   );
 
+  const contactInvalidMediaTypeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/jsonp", origin: productionOrigin },
+    body: JSON.stringify({ name: "Testas" })
+  });
+  assert.strictEqual(
+    contactInvalidMediaTypeResponse.status,
+    415,
+    `/api/contact invalid media type: expected 415, got ${contactInvalidMediaTypeResponse.status}`
+  );
+
   const contactSizeResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
     headers: { "content-type": "application/json", origin: productionOrigin },
@@ -384,6 +395,17 @@ async function main() {
     "/api/contact size: expected size rejection message"
   );
 
+  const contactMultibyteSizeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: productionOrigin },
+    body: JSON.stringify({ message: "ą".repeat(6000) })
+  });
+  assert.strictEqual(
+    contactMultibyteSizeResponse.status,
+    413,
+    `/api/contact multibyte size: expected 413, got ${contactMultibyteSizeResponse.status}`
+  );
+
   const contactJsonResponse = await fetch(new URL("/api/contact", baseUrl), {
     method: "POST",
     headers: { "content-type": "application/json", origin: productionOrigin },
@@ -393,6 +415,38 @@ async function main() {
   assert(
     (await readJsonMessage(contactJsonResponse)).includes("Nepavyko perskaityti"),
     "/api/contact invalid JSON: expected parse error message"
+  );
+
+  const contactShapeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: productionOrigin },
+    body: "null"
+  });
+  assert.strictEqual(contactShapeResponse.status, 400, `/api/contact shape: expected 400, got ${contactShapeResponse.status}`);
+  assert(
+    (await readJsonMessage(contactShapeResponse)).includes("formos laukų"),
+    "/api/contact shape: expected readable payload message"
+  );
+
+  const contactFieldTypeResponse = await fetch(new URL("/api/contact", baseUrl), {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: productionOrigin },
+    body: JSON.stringify({
+      name: { text: "Testas" },
+      email: "test@example.com",
+      replyBy: "email",
+      format: "unknown",
+      topic: "other"
+    })
+  });
+  assert.strictEqual(
+    contactFieldTypeResponse.status,
+    400,
+    `/api/contact field type: expected 400, got ${contactFieldTypeResponse.status}`
+  );
+  assert(
+    (await readJsonMessage(contactFieldTypeResponse)).includes("pateikti netinkamai"),
+    "/api/contact field type: expected readable field type message"
   );
 
   const contactValidationResponse = await fetch(new URL("/api/contact", baseUrl), {
