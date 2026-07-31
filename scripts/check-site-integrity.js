@@ -234,7 +234,7 @@ for (const url of sitemapUrls) {
 }
 
 const faqHtml = readSite("duk.html");
-const visibleFaqs = [...faqHtml.matchAll(/<details(?:\s+open)?><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
+const visibleFaqs = [...faqHtml.matchAll(/<details\b[^>]*><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
   .map((match) => ({ question: match[1], answer: match[2] }));
 const faqSchemas = [...faqHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
   .map((match) => JSON.parse(match[1]));
@@ -251,12 +251,18 @@ if (visibleFaqs.length !== 5) {
 if (JSON.stringify(structuredFaqs) !== JSON.stringify(visibleFaqs)) {
   errors.push("duk.html: FAQ structured data should exactly match every visible question and answer");
 }
+if ((faqHtml.match(/data-track-open="faq_open"/g) || []).length !== 5) {
+  errors.push("duk.html: every visible question should use the privacy-safe FAQ open event");
+}
 
 const robots = read("public/robots.txt");
 if (!/User-agent:\s*\*/.test(robots)) errors.push("robots.txt: missing User-agent: *");
 if (!robots.includes("Sitemap: https://agnezukiene.lt/sitemap.xml")) errors.push("robots.txt: missing production sitemap URL");
 
 const homeHtml = readSite("index.html");
+if ((homeHtml.match(/class="service-card"[^>]+data-event="service_card_click"/g) || []).length !== 4) {
+  errors.push("index.html: every primary service card should use the privacy-safe generic click event");
+}
 const heroImagePath = "public/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg";
 if (!homeHtml.includes('src="/assets/images/agne-zukiene-psichologe-sidabro-pienas.jpg"')) {
   errors.push("index.html: hero should use the optimized JPEG portrait");

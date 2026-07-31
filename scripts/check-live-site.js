@@ -107,6 +107,11 @@ async function main() {
           `${page}: missing direct link to service section ${sectionId}`
         );
       }
+      assert.strictEqual(
+        (text.match(/class="service-card"[^>]+data-event="service_card_click"/g) || []).length,
+        4,
+        `${page}: every primary service card should use the generic click event`
+      );
     }
     if (page === "/paslaugos") {
       for (const sectionId of serviceSectionIds) {
@@ -114,7 +119,7 @@ async function main() {
       }
     }
     if (page === "/duk") {
-      const visibleFaqs = [...text.matchAll(/<details(?:\s+open)?><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
+      const visibleFaqs = [...text.matchAll(/<details\b[^>]*><summary>([^<]+)<\/summary><p>([^<]+)<\/p><\/details>/g)]
         .map((match) => ({ question: match[1], answer: match[2] }));
       const faqSchemas = [...text.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
         .map((match) => JSON.parse(match[1]));
@@ -127,6 +132,11 @@ async function main() {
         : [];
       assert.strictEqual(visibleFaqs.length, 5, `${page}: expected 5 visible questions`);
       assert.deepStrictEqual(structuredFaqs, visibleFaqs, `${page}: structured questions should match visible content`);
+      assert.strictEqual(
+        (text.match(/data-track-open="faq_open"/g) || []).length,
+        5,
+        `${page}: every visible question should use the generic open event`
+      );
     }
     if (["/", "/apie", "/paslaugos", "/konsultacijos", "/duk"].includes(page)) {
       assert(

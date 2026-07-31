@@ -286,6 +286,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Sukurti `data/analytics-events.json`.
 - `[x]` Sukurti automatinę GA4 eventų allowlist, viešo config formato, consent įkėlimo ir privatumo patikrą `scripts/check-analytics-privacy.js`.
 - `[x]` Automatinė lankomumo privatumo patikra saugo ne tik įjungimą po sutikimo, bet ir matavimo išjungimą, slapukų pašalinimą bei pasirinkimo keitimo kelią.
+- `[x]` 2026-07-31 pridėtas bendras paslaugų kortelių paspaudimų ir dažnų klausimų atidarymo skaičiavimas. Jis veikia tik gavus lankytojo leidimą ir neperduoda pasirinktos paslaugos, klausimo ar atsakymo teksto; šią ribą saugo automatinė privatumo patikra.
 - `[x]` Sukurti `docs/analytics-search-console-runbook.md`.
 - `[x]` GA4 Realtime / DebugView patikrintas Google nustatymų darbo metu kitame Codex pokalbyje, kaip patvirtino Agnė 2026-07-13.
 - `[x]` Search Console patvirtinti kaip `agnezukiene.lt` domain property; 2026-07-13 viešame DNS patikrintas `google-site-verification` TXT įrašas.
@@ -301,6 +302,8 @@ Leidžiami GA4 eventai MVP:
 - `mailto_click`
 - `service_interest_select`
 - `consultation_format_select`
+- `service_card_click`
+- `faq_open`
 
 Draudžiama į GA4 siųsti:
 
@@ -308,6 +311,8 @@ Draudžiama į GA4 siųsti:
 - el. paštą;
 - telefono numerį;
 - žinutės tekstą;
+- pasirinktos paslaugos ar konsultacijos formato pavadinimą;
+- atidaryto klausimo ar atsakymo tekstą;
 - konkrečias jautrias detales.
 
 ## 8. Patikros prieš pirmą paleidimą

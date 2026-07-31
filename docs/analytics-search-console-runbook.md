@@ -49,6 +49,8 @@ generate_lead
 mailto_click
 service_interest_select
 consultation_format_select
+service_card_click
+faq_open
 ```
 
 Draudžiama į GA4 siųsti:
@@ -57,6 +59,8 @@ Draudžiama į GA4 siųsti:
 - el. paštą;
 - telefono numerį;
 - žinutės tekstą;
+- pasirinktos paslaugos ar konsultacijos formato pavadinimą;
+- atidaryto klausimo ar atsakymo tekstą;
 - diagnozes ar konkrečias jautrias detales.
 
 ## 3. GA4 patikra
@@ -70,7 +74,7 @@ node scripts/pre-go-live.js https://agnezukiene.lt
 ```
 
 2. Atidaryti `https://agnezukiene.lt`.
-3. Paspausti slapukų juostoje `Sutinku`.
+3. Paspausti slapukų juostoje `Leisti matavimą`.
 4. GA4 Realtime arba DebugView patikrinti, kad matomas puslapio apsilankymas.
 5. Kontaktų puslapyje pradėti pildyti formą ir patikrinti, kad matomas `form_start`.
 6. Patikrinti, kad event parametruose nėra vardo, el. pašto, telefono ar žinutės teksto.

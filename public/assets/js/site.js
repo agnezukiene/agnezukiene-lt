@@ -173,6 +173,15 @@
     });
   });
 
+  document.querySelectorAll("[data-track-open]").forEach((element) => {
+    element.addEventListener("toggle", () => {
+      if (!element.open) return;
+      track(element.getAttribute("data-track-open"), {
+        source_page: window.location.pathname
+      });
+    });
+  });
+
   const cookieBanner = document.querySelector("[data-cookie-banner]");
   const acceptCookies = document.querySelector("[data-cookie-accept]");
   const declineCookies = document.querySelector("[data-cookie-decline]");
