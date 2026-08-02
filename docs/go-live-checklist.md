@@ -71,8 +71,7 @@ Atnaujinta: 2026-07-21
 
 ## Tolesni turinio sprendimai
 
-- `[ ]` Patvirtinti konsultacijos formatą.
-- `[x]` Kol konsultacijų formatas nepatvirtintas, pagrindinis puslapis ir paieškos sistemoms skirta informacija nežada nuotolinių ar visoje Lietuvoje teikiamų konsultacijų; vietinė ir gyvos svetainės patikra telefono bei kompiuterio dydžiu sėkminga 2026-07-21.
+- `[~]` 2026-08-02 Agnė nusprendė konsultacijų formato kol kas neviešinti; formatų pasirinkimai pašalinti iš viešų puslapių ir kontaktų formos.
 - `[ ]` Patvirtinti kainą, jei ji bus rodoma.
 - `[ ]` Patvirtinti konsultacijos trukmę, jei ji bus rodoma.
 

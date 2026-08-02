@@ -1,6 +1,6 @@
 # Agnės turinio patvirtinimai
 
-Atnaujinta: 2026-07-21
+Atnaujinta: 2026-08-02
 
 Šis failas skirtas turinio sprendimams po techninio svetainės paleidimo. Kol sprendimas nepatvirtintas, veikiančioje svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
 
@@ -10,7 +10,7 @@ Atnaujinta: 2026-07-21
 | --- | --- | --- | --- |
 | laukia | Konsultacijos trukmė | Trukmės nerodome, kol nepatvirtinta. | `konsultacijos.html`, `kontaktai.html`, DUK |
 | laukia | Kaina | Kainos nerodome, kol nepatvirtinta. | `konsultacijos.html`, `kontaktai.html`, galimai `paslaugos.html` |
-| laukia | Konsultacijų formatas | Forma leidžia pasirinkti gyvai, nuotoliu arba dar nežinau; viešame tekste nurodoma, kad formatas aptariamas individualiai. | `index.html`, `konsultacijos.html`, `kontaktai.html`, DUK |
+| atidėta | Konsultacijų formatas | 2026-08-02 Agnė nusprendė šios informacijos kol kas neviešinti. Vieši pasirinkimai ir nuotolinių konsultacijų klausimas pašalinti. | `konsultacijos.html`, `kontaktai.html`, DUK |
 | laukia | Miestas / adresas | Viešinamas tik bendras regionas, tikslaus adreso nerodome. | `index.html`, `kontaktai.html`, SEO schema |
 | laukia | Atsakymo į užklausas terminas | Naudojama formuluotė „atsakysiu, kai galėsiu“. | `kontaktai.html`, `konsultacijos.html` |
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
@@ -22,8 +22,8 @@ Atnaujinta: 2026-07-21
 
 Rekomenduojama pildyti taip:
 
-1. Pirmiausia patvirtinti konsultacijų formatą: gyvai, nuotoliu ar mišriai.
-2. Tada patvirtinti, ar rodyti miestą / adresą.
+1. Konsultacijų formato neklausti, kol Agnė pati nenuspręs prie jo grįžti.
+2. Vėliau patvirtinti, ar rodyti miestą / adresą.
 3. Tada patvirtinti trukmę ir kainą.
 4. Tada patvirtinti atsakymo į užklausas terminą.
 5. Galiausiai patvirtinti kvalifikacijos formuluotę.
@@ -38,11 +38,8 @@ Rekomenduojama pildyti taip:
 
 ## Kitas klausimas Agnei
 
-Konsultacijos vyks:
+Kol kas kito turinio klausimo neužduodame:
 
 ```text
-[ ] tik gyvai
-[ ] tik nuotoliu
-[ ] gyvai ir nuotoliu
-[ ] dar nenoriu to viešinti
+[x] Konsultacijų formato neviešinti ir prie šio klausimo grįžti tik Agnei nusprendus.
 ```

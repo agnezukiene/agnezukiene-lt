@@ -58,6 +58,7 @@ const nextContentQuestion = contentApproval.match(/## Kitas klausimas Agnei[\s\S
 const contentQuestionDetail = nextContentQuestion
   ? nextContentQuestion[1].split("\n").map((line) => line.trim()).filter(Boolean).join(" ")
   : "žr. docs/content-approval.md";
+const currentContentDecisionDone = contentQuestionDetail.startsWith("[x]");
 
 const technicalGates = [
   checked(has("scripts/pre-go-live.js", "scripts/check-site-integrity.js"), "Site integrity check yra pre-go-live dalis"),
@@ -104,7 +105,7 @@ const technicalGates = [
   checked(has("public/kontaktai.html", "form-privacy") && !has("public/kontaktai.html", "name=\"privacy\"") && !has("src/index.js", "data.privacy"), "Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo"),
   checked(has("public/kontaktai.html", "form-fallback") && has("public/assets/css/styles.css", ".has-js .contact-form-fields") && has("scripts/check-live-site.js", "unavailable form should provide a direct email fallback"), "Neveikianti kontaktų forma pakeičiama tiesioginiu el. pašto adresu"),
   checked(has("public/assets/js/site.js", 'form.addEventListener("focusin"') && has("public/slapuku-politika.html", "Apsaugos kodas įkeliamas tik pradėjus pildyti kontaktų formą") && has("scripts/check-analytics-privacy.js", "form protection should load only after"), "Formos apsaugos paslauga įkeliama tik žmogui pradėjus naudoti kontaktų formą"),
-  checked(has("public/assets/js/site.js", "waitingForTurnstile") && has("scripts/check-site-integrity.js", "Formos apsauga paruošta. Dabar galite siųsti užklausą."), "Per anksti paspaudus siuntimo mygtuką forma palaukia apsaugos patikros ir išsaugo įvestus duomenis"),
+  checked(has("public/assets/js/site.js", "submitPendingForTurnstile") && has("public/assets/js/site.js", "form.requestSubmit()") && has("scripts/check-site-integrity.js", "Užklausa bus išsiųsta automatiškai."), "Vieno siuntimo paspaudimo pakanka net tada, kai formos apsauga dar tik ruošiama"),
   checked(has("public/privatumo-politika.html", "per vieną mėnesį") && has("scripts/check-live-site.js", "missing privacy disclosure"), "Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus"),
   checked(has("scripts/check-site-integrity.js", "missing clear cookie choice control") && has("scripts/check-live-site.js", "cookie choices should be clear"), "Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą"),
   checked(has("scripts/check-site-integrity.js", "visible brand text should provide its accessible name"), "Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas"),
@@ -186,8 +187,8 @@ const readinessItems = [
       : "visi docs/content-approval.md sprendimai pažymėti kaip užbaigti"
   },
   {
-    label: "Kitas Agnės turinio klausimas",
-    done: pendingContentDecisions.length === 0,
+    label: "Dabartinis Agnės turinio sprendimas",
+    done: pendingContentDecisions.length === 0 || currentContentDecisionDone,
     detail: contentQuestionDetail
   }
 ];

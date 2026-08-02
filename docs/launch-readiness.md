@@ -1,6 +1,6 @@
 # Svetainės būklės santrauka
 
-Atnaujinta: 2026-07-31
+Atnaujinta: 2026-08-02
 
 Šis failas yra automatiškai sugeneruota svetainės būklės santrauka. Svetainė jau paskelbta adresu `https://agnezukiene.lt`. Čia parodoma, kas techniškai veikia ir kokių turinio sprendimų dar laukiama. Pagrindinis darbo planas lieka `docs/roadmap.md`.
 
@@ -50,7 +50,7 @@ Atnaujinta: 2026-07-31
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
 - `[x]` Neveikianti kontaktų forma pakeičiama tiesioginiu el. pašto adresu
 - `[x]` Formos apsaugos paslauga įkeliama tik žmogui pradėjus naudoti kontaktų formą
-- `[x]` Per anksti paspaudus siuntimo mygtuką forma palaukia apsaugos patikros ir išsaugo įvestus duomenis
+- `[x]` Vieno siuntimo paspaudimo pakanka net tada, kai formos apsauga dar tik ruošiama
 - `[x]` Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus
 - `[x]` Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas
@@ -78,13 +78,12 @@ Atnaujinta: 2026-07-31
 | padaryta | GA4 Realtime / DebugView | patikrinta ir pažymėta roadmap |
 | padaryta | Search Console domain property | patvirtinta per Cloudflare DNS TXT |
 | padaryta | Search Console sitemap pateikimas | sitemap pateiktas ir pažymėtas roadmap |
-| laukia | Agnės turinio patvirtinimai | laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė |
-| laukia | Kitas Agnės turinio klausimas | [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti |
+| laukia | Agnės turinio patvirtinimai | laukia 6 sprendimų: Konsultacijos trukmė, Kaina, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė |
+| padaryta | Dabartinis Agnės turinio sprendimas | [x] Konsultacijų formato neviešinti ir prie šio klausimo grįžti tik Agnei nusprendus. |
 
 ## Tolesni darbai
 
-1. Agnės turinio patvirtinimai: laukia 7 sprendimų: Konsultacijos trukmė, Kaina, Konsultacijų formatas, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė
-2. Kitas Agnės turinio klausimas: [ ] tik gyvai [ ] tik nuotoliu [ ] gyvai ir nuotoliu [ ] dar nenoriu to viešinti
+1. Agnės turinio patvirtinimai: laukia 6 sprendimų: Konsultacijos trukmė, Kaina, Miestas / adresas, Atsakymo į užklausas terminas, Ar minėti darbovietes pavadinimais, Galutinė kvalifikacijos formuluotė
 
 ## Patikros komanda
 

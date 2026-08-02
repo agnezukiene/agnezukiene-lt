@@ -4,13 +4,12 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "657e97ac3b2c";
+const STATIC_ASSET_VERSION = "4c7edd09ab10";
 const CONTACT_FIELD_LIMITS = {
   name: 80,
   email: 120,
   phone: 40,
   replyBy: 20,
-  format: 20,
   topic: 30,
   message: 1200,
   website: 120,
@@ -23,7 +22,7 @@ const CONTENT_SECURITY_POLICY = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-a5VqJm+MNbzb7ErzbbD5y0BwmBAypS4bfw5j1Am2Oc0=' 'sha256-unatGkmvht9DYqcmqL9xVtEie3qUreyRO/JnKxnPR0s=' 'sha256-DR5kfH467saheQWvyEc+i4HU8g94I2NcvUgp4lTWNpw='",
+  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-CcqWDflhWvoO3TSFVzvy5qBvsQRfJPB90VTtj0G0gIQ=' 'sha256-unatGkmvht9DYqcmqL9xVtEie3qUreyRO/JnKxnPR0s=' 'sha256-DR5kfH467saheQWvyEc+i4HU8g94I2NcvUgp4lTWNpw='",
   "style-src 'self'",
   "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
   "font-src 'self'",
@@ -49,12 +48,6 @@ const TOPIC_LABELS = {
   education: "Psichoedukacija",
   career: "Karjeros / savęs pažinimo klausimas",
   other: "Kita"
-};
-
-const FORMAT_LABELS = {
-  live: "Gyvai",
-  online: "Nuotoliu",
-  unknown: "Dar nežinau"
 };
 
 const REPLY_LABELS = {
@@ -213,7 +206,6 @@ function normalizeContact(body) {
     email: clean(body.email, CONTACT_FIELD_LIMITS.email),
     phone: clean(body.phone, CONTACT_FIELD_LIMITS.phone),
     replyBy: clean(body.replyBy, CONTACT_FIELD_LIMITS.replyBy),
-    format: clean(body.format, CONTACT_FIELD_LIMITS.format),
     topic: clean(body.topic, CONTACT_FIELD_LIMITS.topic),
     message: clean(body.message, CONTACT_FIELD_LIMITS.message),
     website: clean(body.website, CONTACT_FIELD_LIMITS.website),
@@ -252,7 +244,6 @@ function validateContact(data) {
   if (data.replyBy === "email" && !data.email) return "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
   if (data.replyBy === "phone" && !data.phone) return "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
   if (data.phone && !isValidPhone(data.phone)) return "Patikrinkite telefono numerį.";
-  if (!FORMAT_LABELS[data.format]) return "Pasirinkite konsultacijos formatą.";
   if (!TOPIC_LABELS[data.topic]) return "Pasirinkite bendrą temą.";
   return "";
 }
@@ -292,7 +283,6 @@ async function sendEmail(data, env) {
     `El. paštas: ${data.email || "-"}`,
     `Telefonas: ${data.phone || "-"}`,
     `Pageidaujamas atsakymo būdas: ${REPLY_LABELS[data.replyBy]}`,
-    `Konsultacijos formatas: ${FORMAT_LABELS[data.format]}`,
     `Tema: ${TOPIC_LABELS[data.topic]}`,
     "",
     "Komentaras:",

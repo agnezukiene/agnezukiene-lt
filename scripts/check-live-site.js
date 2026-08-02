@@ -130,11 +130,11 @@ async function main() {
             answer: item.acceptedAnswer?.text
           }))
         : [];
-      assert.strictEqual(visibleFaqs.length, 5, `${page}: expected 5 visible questions`);
+      assert.strictEqual(visibleFaqs.length, 4, `${page}: expected 4 visible questions`);
       assert.deepStrictEqual(structuredFaqs, visibleFaqs, `${page}: structured questions should match visible content`);
       assert.strictEqual(
         (text.match(/data-track-open="faq_open"/g) || []).length,
-        5,
+        visibleFaqs.length,
         `${page}: every visible question should use the generic open event`
       );
     }
@@ -345,7 +345,6 @@ async function main() {
       name: "Testas",
       email: "test@example.com",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -362,7 +361,6 @@ async function main() {
       name: "Testas",
       email: "test@example.com",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -394,7 +392,6 @@ async function main() {
       name: "Testas",
       email: "test@example.com",
       replyBy: "email",
-      format: "unknown",
       topic: "other",
       message: "a".repeat(11000)
     })
@@ -445,7 +442,6 @@ async function main() {
       name: { text: "Testas" },
       email: "test@example.com",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -465,7 +461,6 @@ async function main() {
     body: JSON.stringify({
       name: "Testas",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -482,7 +477,6 @@ async function main() {
       name: "Testas",
       phone: "+37060000000",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -499,7 +493,6 @@ async function main() {
       name: "Testas",
       email: "test@example.com",
       replyBy: "phone",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -516,7 +509,6 @@ async function main() {
       name: "Testas",
       phone: "telefonas",
       replyBy: "phone",
-      format: "unknown",
       topic: "other"
     })
   });
@@ -533,7 +525,6 @@ async function main() {
       name: "Testas",
       email: "test@example.com",
       replyBy: "email",
-      format: "unknown",
       topic: "other"
     })
   });

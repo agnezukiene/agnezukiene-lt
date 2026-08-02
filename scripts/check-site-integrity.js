@@ -245,13 +245,13 @@ const structuredFaqs = Array.isArray(faqSchema?.mainEntity)
       answer: item.acceptedAnswer?.text
     }))
   : [];
-if (visibleFaqs.length !== 5) {
-  errors.push(`duk.html: expected 5 visible questions, found ${visibleFaqs.length}`);
+if (visibleFaqs.length !== 4) {
+  errors.push(`duk.html: expected 4 visible questions, found ${visibleFaqs.length}`);
 }
 if (JSON.stringify(structuredFaqs) !== JSON.stringify(visibleFaqs)) {
   errors.push("duk.html: FAQ structured data should exactly match every visible question and answer");
 }
-if ((faqHtml.match(/data-track-open="faq_open"/g) || []).length !== 5) {
+if ((faqHtml.match(/data-track-open="faq_open"/g) || []).length !== visibleFaqs.length) {
   errors.push("duk.html: every visible question should use the privacy-safe FAQ open event");
 }
 
@@ -423,9 +423,16 @@ if (!contactHtml.includes('data-submit-label="Siųsti užklausą"')) {
 if (!contactHtml.includes('id="form-status" role="status" aria-live="polite" aria-atomic="true"')) {
   errors.push("kontaktai.html: form status should have a stable accessible identifier");
 }
-for (const field of ["name", "replyBy", "format", "topic"]) {
+for (const field of ["name", "replyBy", "topic"]) {
   const pattern = new RegExp(`<(?:input|select)[^>]+id="${field}"[^>]+aria-describedby="form-status"`);
   if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to the form status`);
+}
+for (const privateFormatText of ["Konsultacijos formatas", "Gyvo, nuotolinio ar mišraus", "Ar konsultuojate nuotoliniu būdu?"]) {
+  for (const [file, html] of [["kontaktai.html", contactHtml], ["konsultacijos.html", consultationHtml], ["duk.html", faqHtml]]) {
+    if (html.includes(privateFormatText)) {
+      errors.push(`${file}: consultation format should stay unpublished`);
+    }
+  }
 }
 for (const field of ["email", "phone"]) {
   const pattern = new RegExp(`<input[^>]+id="${field}"[^>]+aria-describedby="contact-method-help form-status"`);
@@ -491,7 +498,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "A
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "waitingForTurnstile", "Palaukite akimirką, kol paruošiama formos apsauga.", "Formos apsauga paruošta. Dabar galite siųsti užklausą."]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "submitPendingForTurnstile", "form.requestSubmit()", "Ruošiama apsauga...", "Palaukite akimirką, kol paruošiama formos apsauga.", "Užklausa bus išsiųsta automatiškai."]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

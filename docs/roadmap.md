@@ -38,7 +38,7 @@ Failai, kurie šiuo metu yra projekte:
 | `index.html` | Pradinis puslapis | `[~]` turinys sukurtas, patvirtintas portretas įkeltas lokaliai, bazinė techninė patikra praėjo; laukia galutinių tekstų sprendimų |
 | `apie.html` | Apie Agnę puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
 | `paslaugos.html` | Paslaugų puslapis | `[~]` turinys sukurtas, bazinė techninė patikra praėjo |
-| `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` trūksta kainos, trukmės, formato patvirtinimo |
+| `konsultacijos.html` | Konsultacijų eiga, konfidencialumas, ribos | `[~]` kaina, trukmė ir formatas neviešinami, kol Agnė nenuspręs kitaip |
 | `duk.html` | Dažni klausimai | `[~]` sukurtas pradinis DUK |
 | `kontaktai.html` | Kontaktai ir forma | `[x]` forma, apsauga nuo automatinių užklausų ir laiškų siuntimas veikia; Resend rodo pristatytus laiškus |
 | `privatumo-politika.html` | Privatumo politika | `[x]` 2026-07-19 išsamiai atnaujinta pagal realiai naudojamas paslaugas ir lankytojų teises |
@@ -160,10 +160,10 @@ Turinio taisyklės:
 Darbai:
 
 - `[~]` `index.html`: patikrinti hero tekstą, CTA, paslaugų kryptis, krizės pranešimą.
-- `[x]` 2026-07-21 pagrindinio puslapio vietos formuluotė suderinta su nepatvirtintu konsultacijų formatu: pašalintas tvirtas pažadas konsultuoti nuotoliu, palikta patvirtinta Palangos ir Klaipėdos regiono kryptis, o galimybė pasiteirauti apie nuotolinį formatą išsaugota DUK ir kontaktų formoje. Vietinė ir gyvos svetainės patikra telefono bei kompiuterio dydžiu sėkminga.
+- `[x]` 2026-08-02 pagal Agnės sprendimą konsultacijų formatas visiškai pašalintas iš viešo turinio: jo nebeprašo kontaktų forma, apie nuotolines konsultacijas nebeklausiama DUK, o konsultacijų puslapyje neliko galimų formatų sąrašo.
 - `[~]` `apie.html`: patikrinti kvalifikacijos formuluotes ir ar tinka viešinti profesinį kelią.
 - `[~]` `paslaugos.html`: patvirtinti, kurios paslaugos tikrai bus rodomos MVP.
-- `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė patvirtins trukmę, kainą, formatą ir atsakymo laiką.
+- `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė pati nuspręs viešinti trukmę, kainą, formatą ar atsakymo laiką.
 - `[~]` `duk.html`: peržiūrėti DUK dėl tono ir tikslumo.
 - `[x]` `kontaktai.html`: forma trumpa, renka tik atsakymui reikalingus duomenis, pateikia privatumo nuorodą ir aiškias būsenas.
 - `[x]` Viešuose tekstuose pakeistos vidinės „dar reikia patvirtinti / prieš paleidimą“ frazės į lankytojui tinkamas atsargias MVP formuluotes.
@@ -182,7 +182,7 @@ Reikia Agnės patvirtinimo prieš viešai įrašant šias paslaugų detales. Sve
 
 - `[!]` Konsultacijos trukmė.
 - `[!]` Kaina.
-- `[!]` Ar konsultacijos vyks gyvai, nuotoliu, ar mišriai.
+- `[-]` Konsultacijų formatas kol kas neviešinamas; prie šio klausimo grįžti tik Agnei pačiai nusprendus.
 - `[!]` Tikslus miestas / adresas, jei viešinamas.
 - `[!]` Darbo laikas arba atsakymo į užklausas terminas.
 - `[!]` Ar minėti darbovietes pavadinimais.
@@ -263,6 +263,7 @@ Vizualinė kryptis:
 - `[x]` 2026-07-21 kontaktų formos apsauga nuo automatinių užklausų atidedama iki pirmo žmogaus veiksmo formoje, todėl vien kontaktų puslapio peržiūra nebeįkelia trečiosios šalies apsaugos kodo. Vietinė ir gyva telefono patikra patvirtino, kad prieš paliečiant formą kodas neįkeliamas, o pasirinkus lauką apsauga įsijungia ir paruošia patvirtinimą; kompiuterio vaizdas taip pat patikrintas.
 - `[x]` 2026-07-21 sutvarkytas labai greitas formos siuntimas: jei apsaugos patikra dar nepasiruošusi, laiškas nesiunčiamas per anksti, įvesti duomenys išlieka, o žmogus gauna laukimo ir pasiruošimo pranešimus. Vietinė ir gyvos svetainės telefono bei kompiuterio patikra sėkminga; bandomasis laiškas sąmoningai nesiųstas.
 - `[x]` 2026-07-31 kontaktų formos serveris sustiprintas nuo netaisyklingai suformuotų užklausų: tikrinamas tikras perduodamų duomenų dydis, tikslus duomenų formatas, laukų tipai ir ribos, o laiške pašalinami nematomi valdymo ženklai. Nauji klaidų keliai įtraukti į nuolatinę automatinę patikrą.
+- `[x]` 2026-08-02 kontaktų forma po vieno siuntimo paspaudimo pati palaukia apsaugos patikros ir tęsia siuntimą automatiškai. Patikrai nepavykus mygtukas vėl tampa naudojamas, o lankytojas gali parašyti tiesiogiai el. paštu.
 
 Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą. Neprašome diagnozės, asmens kodo, adreso, sveikatos dokumentų ar išsamios istorijos.
 
@@ -301,7 +302,6 @@ Leidžiami GA4 eventai MVP:
 - `generate_lead`
 - `mailto_click`
 - `service_interest_select`
-- `consultation_format_select`
 - `service_card_click`
 - `faq_open`
 
@@ -372,7 +372,7 @@ Kitas darbas turi vykti tokia tvarka:
 1. `[x]` Užbaigti ir deployinti dizaino paketą: patvirtintą portretą, hero proporcijas, pieno/perlo paletę ir GA4 konfigūraciją. Production portretas patikrintas 2026-07-13.
 2. `[x]` Sutvarkyti lietuviško 404 puslapio pateikimą ir patikrinti production po Cloudflare deploy.
 3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; naujausias bandymas po apsaugos sustiprinimo pristatytas 2026-07-20.
-4. `[ ]` Po vieną surinkti Agnės turinio sprendimus: pirmas klausimas yra konsultacijų formatas.
+4. `[~]` Likusius Agnės turinio sprendimus rinkti tik tada, kai ji norės prie jų grįžti; konsultacijų formatas sąmoningai neviešinamas.
 5. `[x]` Parengti privatumo ir slapukų politikų tekstus bei patikrinti lankytojo pasirinkimo mygtukus.
 6. `[~]` Ankstyva „Search Console“ būklė patikrinta 2026-07-21; pirmą pilną GA4 ir paieškos augimo peržiūrą atlikti 2026-08-10.
 

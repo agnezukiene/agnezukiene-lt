@@ -250,6 +250,10 @@
   let turnstileWidgetId = null;
 
   if (form && status) {
+    const submitButton = form.querySelector("button[type='submit']");
+    const submitLabel = submitButton
+      ? submitButton.getAttribute("data-submit-label") || submitButton.textContent
+      : "";
     const messageInput = form.querySelector("#message");
     const messageCount = form.querySelector("[data-message-count]");
     const messageCountLive = form.querySelector("[data-message-count-live]");
@@ -318,12 +322,25 @@
 
     let turnstileLoadStarted = false;
     let turnstileState = "idle";
+    let submitPendingForTurnstile = false;
 
-    const showTurnstileReady = () => {
-      if (status.dataset.waitingForTurnstile !== "true") return;
+    const setSubmitWaiting = (waiting) => {
+      if (!submitButton) return;
+      submitButton.disabled = waiting;
+      if (waiting) {
+        submitButton.setAttribute("aria-busy", "true");
+        submitButton.textContent = "Ruošiama apsauga...";
+      } else {
+        submitButton.removeAttribute("aria-busy");
+        submitButton.textContent = submitLabel;
+      }
+    };
+
+    const cancelPendingSubmit = () => {
+      const wasPending = submitPendingForTurnstile;
+      submitPendingForTurnstile = false;
       delete status.dataset.waitingForTurnstile;
-      status.className = "form-status is-success";
-      status.textContent = "Formos apsauga paruošta. Dabar galite siųsti užklausą.";
+      if (wasPending) setSubmitWaiting(false);
     };
 
     const startTurnstile = () => {
@@ -339,16 +356,24 @@
           callback: (token) => {
             turnstileToken.value = token;
             turnstileState = "ready";
-            showTurnstileReady();
+            if (submitPendingForTurnstile) {
+              cancelPendingSubmit();
+              form.requestSubmit();
+            }
           },
           "expired-callback": () => {
             turnstileToken.value = "";
             turnstileState = "loading";
+            if (submitPendingForTurnstile) {
+              cancelPendingSubmit();
+              showSendFallback("Formos apsaugos patikra užtruko per ilgai. Galite pabandyti dar kartą arba");
+            }
           },
           "error-callback": () => {
             turnstileToken.value = "";
             turnstileState = "error";
-            delete status.dataset.waitingForTurnstile;
+            if (form.getAttribute("aria-busy") === "true") return;
+            cancelPendingSubmit();
             showSendFallback("Nepavyko atlikti formos apsaugos patikros. Galite atnaujinti puslapį arba");
           }
         });
@@ -357,7 +382,7 @@
       loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit")
         .catch(() => {
           turnstileState = "error";
-          delete status.dataset.waitingForTurnstile;
+          cancelPendingSubmit();
           showSendFallback("Nepavyko įkelti formos apsaugos. Galite pabandyti vėliau arba");
         });
     };
@@ -474,20 +499,20 @@
           return;
         }
 
+        submitPendingForTurnstile = true;
         startTurnstile();
+        setSubmitWaiting(true);
         status.className = "form-status";
         status.dataset.waitingForTurnstile = "true";
-        status.textContent = "Palaukite akimirką, kol paruošiama formos apsauga. Kai ji bus paruošta, galėsite siųsti dar kartą.";
+        status.textContent = "Palaukite akimirką, kol paruošiama formos apsauga. Užklausa bus išsiųsta automatiškai.";
         return;
       }
 
       const payload = Object.fromEntries(data.entries());
-      const submit = form.querySelector("button[type='submit']");
-      const submitLabel = submit ? submit.getAttribute("data-submit-label") || submit.textContent : "";
-      if (submit) {
-        submit.disabled = true;
-        submit.setAttribute("aria-busy", "true");
-        submit.textContent = "Siunčiama...";
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute("aria-busy", "true");
+        submitButton.textContent = "Siunčiama...";
       }
       form.setAttribute("aria-busy", "true");
       status.textContent = "Siunčiama...";
@@ -521,11 +546,7 @@
         track("form_error", { form_id: "contact", error_type: "submit_failed" });
       } finally {
         form.removeAttribute("aria-busy");
-        if (submit) {
-          submit.disabled = false;
-          submit.removeAttribute("aria-busy");
-          submit.textContent = submitLabel;
-        }
+        setSubmitWaiting(false);
       }
     });
   }

@@ -64,7 +64,6 @@ function validPayload(overrides = {}) {
     email: "test@example.com",
     phone: "",
     replyBy: "email",
-    format: "unknown",
     topic: "other",
     message: "Trumpa testine zinute.",
     turnstileToken: "token",

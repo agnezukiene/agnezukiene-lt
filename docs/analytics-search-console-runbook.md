@@ -48,7 +48,6 @@ form_error
 generate_lead
 mailto_click
 service_interest_select
-consultation_format_select
 service_card_click
 faq_open
 ```

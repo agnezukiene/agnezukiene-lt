@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31",
+  "generatedAt": "2026-08-02",
   "domain": "https://agnezukiene.lt",
   "pages": [
     {
@@ -77,8 +77,6 @@
       "images": [],
       "schemas": [
         "FAQPage",
-        "Question",
-        "Answer",
         "Question",
         "Answer",
         "Question",
