@@ -14,6 +14,8 @@ Naujų „Google Search Console“ ir svetainės lankomumo skaičių šį kartą
 
 Svetainės žemėlapis papildytas tiksliomis kiekvieno puslapio paskutinio reikšmingo pakeitimo datomis. Datos nustatomos pagal tikrus puslapių pakeitimus ir automatiškai patikrinamos. „Google“ nurodo, kad tokias datas naudoja tada, kai jos yra nuoseklios ir patikrinamai tikslios. [Oficialios svetainės žemėlapio gairės](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 
+Pagrindinio puslapio paieškos pavadinimas patikslintas į „Psichologė Palangoje | Agnė Žukienė“, o trumpame aprašyme aiškiai nurodyta Palanga ir Klaipėdos regionas. Naudojama tik anksčiau patvirtinta vietovės formuluotė, neskelbiant tikslaus adreso. „Google“ rekomenduoja svarbius žmonių vartojamus žodžius aiškiai pateikti puslapio pavadinime ir pagrindinėje antraštėje. [Pagrindinės „Google“ paieškos rekomendacijos](https://developers.google.com/search/docs/essentials)
+
 ## Pagrindinė rekomendacija
 
 Verta kurti edukacinių tekstų skiltį, tačiau jos nereikia pildyti dažnais bendriniais tekstais vien tam, kad jų būtų daugiau. Svetainėje geriau vartoti pavadinimą **„Straipsniai“** arba **„Naudinga informacija“** ir pradėti tik tada, kai bus parengti bei Agnės patvirtinti bent trys geri tekstai.

@@ -282,6 +282,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` Suderinti viešus URL su Cloudflare adresais be `.html`: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus. 2026-07-21 senų `.html` adresų laikinas nukreipimas pakeistas nuolatiniu, nes „Google Search Console“ dar rodė seno `/apie.html` adreso parodymus; pakeitimas patvirtintas gyvoje svetainėje visiems seniems adresams.
 - `[x]` Sukurti `sitemap.xml`.
 - `[x]` 2026-09-10 svetainės žemėlapis papildytas kiekvieno puslapio paskutinio reikšmingo pakeitimo data. Datos automatiškai nustatomos pagal tikrus puslapio pakeitimus, o patikra neleidžia praleistų, neteisingų ar būsimų datų.
+- `[x]` 2026-09-10 pagrindinio puslapio paieškos pavadinimas ir aprašymas sustiprinti jau patvirtinta vietovės formuluote: „Psichologė Palangoje“ bei „Palangoje ir Klaipėdos regione“. Tikslus adresas ir nepatvirtintos konsultacijų sąlygos nepridėtos; vietinis signalas saugomas automatine patikra.
 - `[x]` Sukurti `robots.txt`.
 - `[x]` Sukurti `docs/seo-inventory.md`.
 - `[x]` Sukurti `scripts/generate-seo-inventory.js`.

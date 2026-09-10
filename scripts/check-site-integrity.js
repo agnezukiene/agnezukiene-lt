@@ -393,6 +393,15 @@ if (!/\.service-detail\s*\{[\s\S]*?scroll-margin-top:\s*6rem;[\s\S]*?\}/.test(si
   errors.push("styles.css: linked service sections should stay visible below the sticky header");
 }
 const indexHtml = readSite("index.html");
+if (!indexHtml.includes("<title>Psichologė Palangoje | Agnė Žukienė</title>")) {
+  errors.push("index.html: title should clearly identify the confirmed Palanga service area");
+}
+if (!/<meta name="description" content="[^"]*Palangoje ir Klaipėdos regione[^"]*">/.test(indexHtml)) {
+  errors.push("index.html: description should include the confirmed Palanga and Klaipėda region wording");
+}
+if (!indexHtml.includes('<meta property="og:title" content="Psichologė Palangoje | Agnė Žukienė">')) {
+  errors.push("index.html: social title should match the clear local homepage identity");
+}
 if (/<a class="brand"[^>]+aria-label=/.test(indexHtml)) {
   errors.push("index.html: visible brand text should provide its accessible name without an overriding label");
 }
