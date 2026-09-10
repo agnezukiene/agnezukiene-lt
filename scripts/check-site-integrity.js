@@ -140,6 +140,9 @@ for (const file of htmlFiles) {
     if (!html.includes(socialSnippet)) errors.push(`${file}: missing social sharing metadata: ${socialSnippet}`);
   }
   if (file !== "404.html" && !html.includes('/assets/js/config.js')) errors.push(`${file}: missing config.js`);
+  if (file !== "404.html" && !html.includes('<script data-early-js>document.documentElement.classList.add("has-js");</script>')) {
+    errors.push(`${file}: missing the early JavaScript marker that prevents mobile menu layout shift`);
+  }
   if (h1Count !== 1) errors.push(`${file}: expected exactly one h1, found ${h1Count}`);
   if (/lorem ipsum|TODO|href=""|href="#"/i.test(html)) errors.push(`${file}: contains placeholder text or empty link`);
   if (/href="\/[^"]+\.html(?:[#?"])/.test(html)) errors.push(`${file}: internal links should use extensionless URLs`);
@@ -374,8 +377,8 @@ if (contactHtml.includes('name="privacy"') || worker.includes("data.privacy")) {
 }
 const siteScript = read("public/assets/js/site.js");
 const siteStyles = read("public/assets/css/styles.css");
-if (!siteScript.includes('document.documentElement.classList.add("has-js")')) {
-  errors.push("site.js: mobile navigation should opt into the compact menu only after JavaScript loads");
+if (siteScript.includes('document.documentElement.classList.add("has-js")')) {
+  errors.push("site.js: the mobile navigation marker should run in the head before first paint");
 }
 if (!siteStyles.includes(".has-js .nav-toggle") || !siteStyles.includes(".has-js .nav-links")) {
   errors.push("styles.css: mobile navigation should remain visible when JavaScript is unavailable");

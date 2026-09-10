@@ -4,7 +4,7 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "ba928151d772";
+const STATIC_ASSET_VERSION = "0a373c651a45";
 const CONTACT_FIELD_LIMITS = {
   name: 80,
   email: 120,
@@ -22,7 +22,7 @@ const CONTENT_SECURITY_POLICY = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-CcqWDflhWvoO3TSFVzvy5qBvsQRfJPB90VTtj0G0gIQ=' 'sha256-unatGkmvht9DYqcmqL9xVtEie3qUreyRO/JnKxnPR0s=' 'sha256-DR5kfH467saheQWvyEc+i4HU8g94I2NcvUgp4lTWNpw='",
+  "script-src 'self' https://www.googletagmanager.com https://challenges.cloudflare.com 'sha256-PyuQPO6OWJEADMTdmcTDMljy9n3xSQzWDMOtPM5LmME=' 'sha256-/raimQxqzYInYMMY3ytAcJrfim3+mrjSsXYwV/1mthI=' 'sha256-CcqWDflhWvoO3TSFVzvy5qBvsQRfJPB90VTtj0G0gIQ=' 'sha256-unatGkmvht9DYqcmqL9xVtEie3qUreyRO/JnKxnPR0s=' 'sha256-DR5kfH467saheQWvyEc+i4HU8g94I2NcvUgp4lTWNpw='",
   "style-src 'self'",
   "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
   "font-src 'self'",

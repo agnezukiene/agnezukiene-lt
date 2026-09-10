@@ -1,6 +1,4 @@
 (function () {
-  document.documentElement.classList.add("has-js");
-
   const config = window.AGNE_SITE_CONFIG || {};
   const analyticsDisableKey = config.ga4MeasurementId
     ? `ga-disable-${config.ga4MeasurementId}`

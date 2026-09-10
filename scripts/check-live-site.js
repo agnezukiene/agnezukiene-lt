@@ -74,6 +74,10 @@ async function main() {
     const text = await response.text();
     assert(text.includes("<html lang=\"lt\">"), `${page}: missing Lithuanian html lang`);
     assert(!/lorem ipsum|TODO/i.test(text), `${page}: contains placeholder text`);
+    assert(
+      text.includes('<script data-early-js>document.documentElement.classList.add("has-js");</script>'),
+      `${page}: missing early mobile navigation marker`
+    );
     assert(text.includes('<meta property="og:site_name" content="Agnė Žukienė">'), `${page}: missing social site name`);
     assert(text.includes('<meta property="og:locale" content="lt_LT">'), `${page}: missing Lithuanian social locale`);
     assert(

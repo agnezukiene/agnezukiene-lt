@@ -42,19 +42,34 @@ assert(!policy.includes("'unsafe-inline'"), "Content Security Policy should not 
 assert(!policy.includes("default-src *"), "Content Security Policy should not allow every source");
 assert(worker.includes('"content-security-policy": CONTENT_SECURITY_POLICY'), "Worker should send the policy as a response header");
 
-let inlineScriptCount = 0;
+let structuredDataCount = 0;
+let earlyScriptCount = 0;
 for (const file of htmlFiles) {
   const html = fs.readFileSync(path.join(publicDir, file), "utf8");
   assert(!/\son(?:click|change|input|submit|load)=/i.test(html), `${file} should not contain inline event handlers`);
 
-  for (const match of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)) {
-    if (!match[1].trim()) continue;
-    inlineScriptCount += 1;
-    const hash = `'sha256-${crypto.createHash("sha256").update(match[1]).digest("base64")}'`;
+  for (const match of html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi)) {
+    const attributes = match[1] || "";
+    const content = match[2];
+    if (!content.trim()) continue;
+    if (attributes.includes("data-early-js")) {
+      earlyScriptCount += 1;
+      assert.strictEqual(
+        content,
+        'document.documentElement.classList.add("has-js");',
+        `${file}: early JavaScript marker should stay minimal`
+      );
+    } else if (attributes.includes('type="application/ld+json"')) {
+      structuredDataCount += 1;
+    } else {
+      assert.fail(`${file}: unexpected inline script`);
+    }
+    const hash = `'sha256-${crypto.createHash("sha256").update(content).digest("base64")}'`;
     assert(policy.includes(hash), `${file}: inline structured data hash is missing from public/_headers`);
     assert(worker.includes(hash), `${file}: inline structured data hash is missing from the Worker policy`);
   }
 }
 
-assert.strictEqual(inlineScriptCount, 4, "Expected four inline structured-data scripts");
+assert.strictEqual(structuredDataCount, 4, "Expected four inline structured-data scripts");
+assert.strictEqual(earlyScriptCount, 8, "Expected one early JavaScript marker on every interactive page");
 console.log(`Content Security Policy check passed for ${htmlFiles.length} HTML files.`);
