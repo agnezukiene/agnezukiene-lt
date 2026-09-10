@@ -79,6 +79,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
 | `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md` | Svetainės matomumo kryptis ir preliminarios edukacinių tekstų temos | `[x]` parengta pagal techninę būklę, patvirtintą turinį ir oficialias „Google“ gaires; laukia naujų paieškos duomenų ir Agnės temų patvirtinimo |
+| `docs/straipsniu-parengimo-planas.md` | Pirmųjų trijų edukacinių tekstų struktūros, šaltiniai ir viešinimo ribos | `[x]` vidinis planas parengtas 2026-09-10; vieši tekstai nekuriami be Agnės patvirtinimo |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -366,6 +367,7 @@ Po Cloudflare deploy:
 - `[x]` 2026-09-10 visa vietinė ir gyvos svetainės techninė patikra praėjo be klaidų. Patikrinti pagrindiniai puslapiai, saugus ryšys, nukreipimai, klaidos puslapis, saugumo nustatymai, paieškos sistemoms skirti failai, pagrindinė nuotrauka, kontaktų formos klaidų keliai, viešos techninės kopijos išjungimas ir projekto saugumas. Bandomasis laiškas nesiųstas.
 - `[~]` 2026-09-10 naujų „Google Search Console“ ir lankomumo skaičių perskaityti nepavyko, nes Codex neturi leidimo valdyti atidarytą „Chrome“ naršyklę. Jokių skaičių neišgalvojame; gavus leidimą peržiūrą reikia užbaigti pagal tikrus paskyros duomenis.
 - `[~]` Parengtas preliminarus pirmų edukacinių tekstų sąrašas pagal patvirtintą svetainės auditoriją, paslaugas ir oficialias „Google“ rekomendacijas. Tikslinti pagal naujas tikras paieškas ir neviešinti be Agnės patvirtinimo. Planas: `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md`.
+- `[x]` 2026-09-10 trims pirmosioms temoms parengtos išsamios vidinės struktūros, patikimų Lietuvos ir tarptautinių šaltinių sąrašai, saugios profesinės ribos ir tikslūs Agnės patvirtinimo klausimai. Vieši straipsnių puslapiai sąmoningai nesukurti. Planas: `docs/straipsniu-parengimo-planas.md`.
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.

@@ -47,6 +47,8 @@ Verta kurti edukacinių tekstų skiltį, tačiau jos nereikia pildyti dažnais b
 
 Pirmiausia rekomenduojama parengti pirmą, antrą ir trečią temas. Jos tinka plačiai auditorijai, papildo jau esamus svetainės puslapius ir nereikalauja viešinti dar nepatvirtintų konsultacijų sąlygų.
 
+Šių trijų temų struktūros, šaltiniai ir Agnės patvirtinimo klausimai parengti faile `docs/straipsniu-parengimo-planas.md`. Tai vidinis darbo dokumentas; vieši straipsnių puslapiai dar nesukurti.
+
 ## Teksto kokybės taisyklės
 
 - Tekstas turi būti tokio ilgio, kokio reikia aiškiai ir ramiai atsakyti į klausimą; dirbtinio žodžių skaičiaus tikslo nėra.

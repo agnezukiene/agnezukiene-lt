@@ -19,6 +19,7 @@ const requiredFiles = [
   "docs/manual-setup-queue.md",
   "docs/search-console-review-2026-07-21.md",
   "docs/seo-inventory.md",
+  "docs/straipsniu-parengimo-planas.md",
   "scripts/generate-launch-readiness.js",
   "scripts/generate-sitemap.js",
   "scripts/pre-go-live.js",
