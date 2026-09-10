@@ -77,6 +77,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
+| `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md` | Svetainės matomumo kryptis ir preliminarios edukacinių tekstų temos | `[x]` parengta pagal techninę būklę, patvirtintą turinį ir oficialias „Google“ gaires; laukia naujų paieškos duomenų ir Agnės temų patvirtinimo |
 | `wrangler.jsonc` | Cloudflare Worker static assets ir API konfigūracija | `[x]` sukurta |
 | `public/_headers` | Bazinės saugumo antraštės statiniams puslapiams | `[x]` sukurta |
 
@@ -358,13 +359,14 @@ Po Cloudflare deploy:
 
 ## 9. Vėlesnis augimas po MVP
 
-- `[~]` 2026-07-21 atlikta ankstyva „Search Console“ būklės patikra; pilną GA4 ir paieškos augimo peržiūrą atlikti 2026-08-10, kai bus daugiau duomenų.
-- `[ ]` Pagal realias paieškas sudaryti pirmų tinklaraščio / edukacinių tekstų sąrašą.
+- `[x]` 2026-09-10 visa vietinė ir gyvos svetainės techninė patikra praėjo be klaidų. Patikrinti pagrindiniai puslapiai, saugus ryšys, nukreipimai, klaidos puslapis, saugumo nustatymai, paieškos sistemoms skirti failai, pagrindinė nuotrauka, kontaktų formos klaidų keliai, viešos techninės kopijos išjungimas ir projekto saugumas. Bandomasis laiškas nesiųstas.
+- `[~]` 2026-09-10 naujų „Google Search Console“ ir lankomumo skaičių perskaityti nepavyko, nes Codex neturi leidimo valdyti atidarytą „Chrome“ naršyklę. Jokių skaičių neišgalvojame; gavus leidimą peržiūrą reikia užbaigti pagal tikrus paskyros duomenis.
+- `[~]` Parengtas preliminarus pirmų edukacinių tekstų sąrašas pagal patvirtintą svetainės auditoriją, paslaugas ir oficialias „Google“ rekomendacijas. Tikslinti pagal naujas tikras paieškas ir neviešinti be Agnės patvirtinimo. Planas: `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md`.
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.
 - `[x]` 2026-07-31 suplanuota mėnesinė automatinė svetainės būklės ir augimo peržiūra kiekvieno mėnesio 10 d. 10:00 val. Pirmoji peržiūra 2026-08-10 patikrins gyvą svetainę, tikrus GA4 ir „Search Console“ duomenis, atnaujins projekto dokumentus ir parengs temų pasiūlymus, tačiau nesiųs bandomųjų laiškų ir neviešins tekstų be Agnės patvirtinimo. Vėliau failai nebus keičiami vien dėl datos, jei nebus prasmingų naujų duomenų ar problemų.
-- `[x]` 2026-07-31 projekto būklės dokumentai suderinti su faktine padėtimi: svetainė jau techniškai paleista, o septyni laukiantys Agnės sprendimai aiškiai atskirti kaip būsimi turinio papildymai, ne veikiančios svetainės kliūtys.
+- `[x]` 2026-09-10 projekto būklės dokumentai suderinti su faktine padėtimi: konsultacijų formatas sąmoningai neviešinamas, o likę šeši laukiantys Agnės sprendimai yra būsimi turinio papildymai, ne veikiančios svetainės kliūtys.
 
 ## 10. Artimiausias darbo sprintas
 
@@ -375,8 +377,8 @@ Kitas darbas turi vykti tokia tvarka:
 3. `[x]` Patvirtinti Resend domeną, prijungti slaptą siuntimo raktą ir gyvai patikrinti kontaktų formos laišką; naujausias bandymas po apsaugos sustiprinimo pristatytas 2026-07-20.
 4. `[~]` Likusius Agnės turinio sprendimus rinkti tik tada, kai ji norės prie jų grįžti; konsultacijų formatas sąmoningai neviešinamas.
 5. `[x]` Parengti privatumo ir slapukų politikų tekstus bei patikrinti lankytojo pasirinkimo mygtukus.
-6. `[~]` Ankstyva „Search Console“ būklė patikrinta 2026-07-21; pirmą pilną GA4 ir paieškos augimo peržiūrą atlikti 2026-08-10.
+6. `[~]` 2026-09-10 techninė mėnesio patikra baigta, o matomumo planas parengtas. Naujų „Google“ paieškos ir lankomumo duomenų peržiūrą užbaigti suteikus Codex leidimą valdyti „Chrome“.
 
-Dabartinis sprinto fokusas: atsargiai pildyti profesinį turinį tik turint patvirtintus faktus ir stebėti svetainės naudojimą. Portretas, dizainas, kontaktų forma, laiškų pristatymas, privatumo tekstai, GA4, Search Console ir sitemap darbai užbaigti.
+Dabartinis sprinto fokusas: pagal Agnės patvirtinimą parengti tris pirmuosius edukacinius tekstus, sustiprinti vietinį matomumą ir stebėti tikrus svetainės naudojimo duomenis. Portretas, dizainas, kontaktų forma, laiškų pristatymas, privatumo tekstai, svetainės lankomumo matavimas, „Google Search Console“ ir svetainės žemėlapio darbai užbaigti.
 
 Po kiekvieno sprinto šiame faile atnaujiname statusus ir trumpai įrašome, kas patikrinta.

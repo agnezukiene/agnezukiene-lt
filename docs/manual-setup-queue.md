@@ -1,6 +1,6 @@
 # Manual setup queue
 
-Atnaujinta: 2026-07-19
+Atnaujinta: 2026-09-10
 
 Šis failas yra trumpa rankinių paskyrų veiksmų eilė. Jis papildo `docs/launch-readiness.md`, `docs/cloudflare-variables-runbook.md` ir `docs/analytics-search-console-runbook.md`.
 
@@ -159,17 +159,14 @@ Pildomas failas:
 docs/content-approval.md
 ```
 
-Dabartinis kitas klausimas:
+Dabartinė būsena:
 
 ```text
-Konsultacijos vyks:
-[ ] tik gyvai
-[ ] tik nuotoliu
-[ ] gyvai ir nuotoliu
-[ ] dar nenoriu to viešinti
+[x] Konsultacijų formato kol kas neviešinti.
+[x] Prie šio klausimo grįžti tik tada, kai Agnė pati to norės.
 ```
 
-Po kiekvieno sprendimo reikia atnaujinti viešus puslapius, `docs/content-approval.md`, `docs/roadmap.md` ir paleisti:
+Šiuo metu naujo turinio klausimo Agnei neužduodame. Po būsimo jos sprendimo reikia atnaujinti viešus puslapius, `docs/content-approval.md`, `docs/roadmap.md` ir paleisti:
 
 ```bash
 npm run pre-go-live -- https://agnezukiene.lt
