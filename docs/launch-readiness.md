@@ -1,6 +1,6 @@
 # Svetainės būklės santrauka
 
-Atnaujinta: 2026-08-02
+Atnaujinta: 2026-09-10
 
 Šis failas yra automatiškai sugeneruota svetainės būklės santrauka. Svetainė jau paskelbta adresu `https://agnezukiene.lt`. Čia parodoma, kas techniškai veikia ir kokių turinio sprendimų dar laukiama. Pagrindinis darbo planas lieka `docs/roadmap.md`.
 

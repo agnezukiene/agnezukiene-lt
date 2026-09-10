@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-07-31
+Atnaujinta: 2026-09-10
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -203,6 +203,7 @@ Reikia Agnės patvirtinimo prieš viešai įrašant šias paslaugų detales. Sve
 - `[x]` 2026-07-22 paslaugų kortelių nuorodos tikrinamos iki tikslios puslapio skilties, o apie naujame lange atidaromas emocinės paramos ir privatumo nuorodas pranešama ekrano skaitymo priemonei. Oficiali „Pagalba sau“ nuoroda patikrinta. Tikras paspaudimas parodė, kad paslaugos antraštę dengė viršutinis meniu, todėl pridėtas saugus tarpas; visos keturios kortelės, nauji langai ir jų saugumas patikrinti vietinėje bei gyvoje telefono ir kompiuterio versijoje.
 - `[x]` 2026-07-21 telefono navigacija padaryta atspari papildomo svetainės kodo sutrikimui: įprastai veikia kompaktiškas atidaromas meniu, o kodui neįsikrovus visos nuorodos lieka matomos ir naudojamos. Patikrinti 390 pikselių telefono vaizdai su kodu ir be jo bei 1280 pikselių kompiuterio vaizdas; persidengimų ir šoninio slinkimo nėra. Po paskelbimo abu telefono režimai ir visa gyva svetainė patikrinti dar kartą.
 - `[x]` 2026-07-21 atskirtas pagrindinio ir vidinių puslapių antraščių mastelis: vidinių puslapių antraštės kompiuteryje sumažintos, telefono dydis išlaikytas, o teksto dydžiai nebeskaičiuojami tiesiogiai pagal kiekvieną ekrano pločio pokytį. Visi 8 vieši puslapiai patikrinti 390, 768 ir 1280 pikselių pločiuose vietinėje ir gyvoje svetainėje; antraštės telpa, šoninio slinkimo nėra.
+- `[x]` 2026-09-10 visuose pagrindiniuose puslapiuose į esamą apatinę dalį subtiliai įdėtas sprendimo autoriaus paminėjimas „Sukurta D2.lt“. Nuoroda saugiai atidaroma naujame skirtuke, o išdėstymas patikrintas kompiuterio ir telefono dydžiuose.
 - `[x]` Automatizuoti WCAG spalvų kontrasto patikrą: 9 pagrindinės teksto, mygtukų ir focus spalvų poros atitinka nustatytas ribas ir patikrintos production 2026-07-13.
 - `[x]` 2026-07-12 pridėti skip link ir `main id="turinys"` privatumo bei slapukų puslapiams.
 - `[x]` Agnė pateikė savo nuotraukas ir patvirtino galutinį hero variantą.
