@@ -74,6 +74,7 @@ Failai / katalogai, kuriuos dar reikia sukurti:
 | `scripts/check-static-asset-cache.js` | Stilių, programos failų versijų ir naršyklės talpyklos patikra | `[x]` sukurta ir įtraukta į bendrą patikrą 2026-07-20 |
 | `scripts/check-live-site.js` | Gyvos Cloudflare svetainės smoke testas: puslapiai, antraštės, 404, kontaktų API klaidos, production redirectai | `[x]` sukurta ir išplėsta 2026-07-11 |
 | `scripts/generate-launch-readiness.js` | Paleidimo readiness santraukos generatorius | `[x]` sukurta; 2026-07-11 sustiprinta pagal realią Worker, Resend ir live check konfigūraciją |
+| `scripts/generate-sitemap.js` | Svetainės žemėlapis su tikromis puslapių atnaujinimo datomis | `[x]` sukurtas ir įtrauktas į bendrą patikrą 2026-09-10 |
 | `scripts/pre-go-live.js` | Viena prieš paleidimą skirta patikra: registrai, integrity, whitespace, optional live URL | `[x]` sukurta |
 | `docs/cloudflare-variables-runbook.md` | Cloudflare variables/secrets nustatymų runbook formai, Turnstile, Resend ir GA4 | `[x]` sukurta |
 | `docs/analytics-search-console-runbook.md` | GA4 ir Search Console nustatymo bei patikros eiga | `[x]` sukurta |
@@ -280,6 +281,7 @@ Formos duomenų principas: renkame tik tiek, kiek reikia atsakyti į užklausą.
 - `[x]` 2026-07-21 puslapių „Apie mane“, „Konsultacijos“ ir DUK turinio pabaigoje pridėti aiškūs susisiekimo veiksmai, kad telefone nereikėtų grįžti į viršutinį meniu. Vietinė telefono ir kompiuterio patikra sėkminga; gyvai paspaustas DUK mygtukas atidarė veikiantį kontaktų puslapį be šoninio slinkimo.
 - `[x]` Suderinti viešus URL su Cloudflare adresais be `.html`: canonical, OG, JSON-LD, sitemap ir vidinės nuorodos naudoja švarius adresus. 2026-07-21 senų `.html` adresų laikinas nukreipimas pakeistas nuolatiniu, nes „Google Search Console“ dar rodė seno `/apie.html` adreso parodymus; pakeitimas patvirtintas gyvoje svetainėje visiems seniems adresams.
 - `[x]` Sukurti `sitemap.xml`.
+- `[x]` 2026-09-10 svetainės žemėlapis papildytas kiekvieno puslapio paskutinio reikšmingo pakeitimo data. Datos automatiškai nustatomos pagal tikrus puslapio pakeitimus, o patikra neleidžia praleistų, neteisingų ar būsimų datų.
 - `[x]` Sukurti `robots.txt`.
 - `[x]` Sukurti `docs/seo-inventory.md`.
 - `[x]` Sukurti `scripts/generate-seo-inventory.js`.

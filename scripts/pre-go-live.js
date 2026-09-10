@@ -2,6 +2,7 @@ const { spawnSync } = require("child_process");
 const node = process.execPath;
 
 const steps = [
+  ["Generate sitemap", [node, "scripts/generate-sitemap.js"]],
   ["Generate SEO inventory", [node, "scripts/generate-seo-inventory.js"]],
   ["Generate content registry", [node, "scripts/generate-content-registry.js"]],
   ["Generate launch readiness", [node, "scripts/generate-launch-readiness.js"]],

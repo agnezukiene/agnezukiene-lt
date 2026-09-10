@@ -232,9 +232,21 @@ async function main() {
   assert(sitemapText.includes("<urlset"), "/sitemap.xml: missing urlset");
   assert(!sitemapText.includes(".html</loc>"), "/sitemap.xml: URLs should be extensionless");
   assert(!sitemapText.includes("https://agnezukiene.lt/404"), "/sitemap.xml: should not include 404");
+  const sitemapEntries = [...sitemapText.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/url>/g)]
+    .map((match) => ({ url: match[1], lastmod: match[2] }));
+  assert.strictEqual(sitemapEntries.length, htmlPages.length, "/sitemap.xml: every public page should have one update date");
+  const today = new Date().toISOString().slice(0, 10);
+  for (const entry of sitemapEntries) {
+    const parsedDate = new Date(`${entry.lastmod}T00:00:00Z`);
+    const isValidDate = /^\d{4}-\d{2}-\d{2}$/.test(entry.lastmod)
+      && !Number.isNaN(parsedDate.getTime())
+      && parsedDate.toISOString().slice(0, 10) === entry.lastmod;
+    assert(isValidDate, `/sitemap.xml: invalid update date for ${entry.url}`);
+    assert(entry.lastmod <= today, `/sitemap.xml: future update date for ${entry.url}`);
+  }
   for (const page of htmlPages) {
     const expectedUrl = page === "/" ? "https://agnezukiene.lt/" : `https://agnezukiene.lt${page}`;
-    assert(sitemapText.includes(`<loc>${expectedUrl}</loc>`), `/sitemap.xml: missing ${expectedUrl}`);
+    assert(sitemapEntries.some((entry) => entry.url === expectedUrl), `/sitemap.xml: missing ${expectedUrl}`);
   }
 
   const faviconResponse = await fetch(new URL("/favicon.svg", baseUrl));

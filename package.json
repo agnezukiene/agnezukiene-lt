@@ -15,6 +15,7 @@
     "content:registry": "node scripts/generate-content-registry.js",
     "launch:readiness": "node scripts/generate-launch-readiness.js",
     "seo:inventory": "node scripts/generate-seo-inventory.js",
+    "seo:sitemap": "node scripts/generate-sitemap.js",
     "pre-go-live": "node scripts/pre-go-live.js",
     "serve": "python3 -m http.server 4173 --directory public",
     "deploy": "wrangler deploy"

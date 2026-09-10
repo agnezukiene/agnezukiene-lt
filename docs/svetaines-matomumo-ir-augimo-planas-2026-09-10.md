@@ -10,6 +10,10 @@ Taip pat patikrinta, kad į viešą projektą nepateko Agnės originalios nuotra
 
 Naujų „Google Search Console“ ir svetainės lankomumo skaičių šį kartą perskaityti nepavyko, nes Codex programai nesuteiktas leidimas valdyti atidarytą „Chrome“ naršyklę. Paskutiniai patvirtinti skaičiai yra 2026-07-12–2026-07-18 laikotarpio, tačiau jų dar per mažai patikimoms išvadoms apie žmonių paieškas.
 
+2026-09-10 atlikta ir vieša paieškos patikra. Pagal svetainės adresą dar nerodomas aiškus pačios svetainės rezultatas, o pagal Agnės vardą randamas kitas viešas profesinis paminėjimas. Tai nėra „Google Search Console“ duomenų pakaitalas, tačiau patvirtina, kad pirmiausia verta stiprinti pačios svetainės turinį ir teisėtus profesinius paminėjimus.
+
+Svetainės žemėlapis papildytas tiksliomis kiekvieno puslapio paskutinio reikšmingo pakeitimo datomis. Datos nustatomos pagal tikrus puslapių pakeitimus ir automatiškai patikrinamos. „Google“ nurodo, kad tokias datas naudoja tada, kai jos yra nuoseklios ir patikrinamai tikslios. [Oficialios svetainės žemėlapio gairės](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+
 ## Pagrindinė rekomendacija
 
 Verta kurti edukacinių tekstų skiltį, tačiau jos nereikia pildyti dažnais bendriniais tekstais vien tam, kad jų būtų daugiau. Svetainėje geriau vartoti pavadinimą **„Straipsniai“** arba **„Naudinga informacija“** ir pradėti tik tada, kai bus parengti bei Agnės patvirtinti bent trys geri tekstai.

@@ -28,7 +28,7 @@ Pagrindinė prieš paleidimą naudojama komanda:
 npm run pre-go-live -- https://agnezukiene.lt
 ```
 
-Ji sugeneruoja paieškos sistemoms skirtą suvestinę, turinio registrą ir svetainės būklės santrauką, tada patikrina puslapių vientisumą, spalvų įskaitomumą, lankomumo matavimo privatumą, kontaktų formą, failų versijas ir gyvą svetainę.
+Ji sugeneruoja svetainės žemėlapį su tikromis puslapių atnaujinimo datomis, paieškos sistemoms skirtą suvestinę, turinio registrą ir svetainės būklės santrauką. Tada patikrina puslapių vientisumą, spalvų įskaitomumą, lankomumo matavimo privatumą, kontaktų formą, failų versijas ir gyvą svetainę.
 
 Atskiros komandos:
 
@@ -40,6 +40,7 @@ npm run check:contact
 npm run check:cache
 npm run check:repo-safety
 npm run check:live -- https://agnezukiene.lt
+npm run seo:sitemap
 npm run seo:inventory
 npm run content:registry
 npm run launch:readiness

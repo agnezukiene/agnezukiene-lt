@@ -20,6 +20,7 @@ const requiredFiles = [
   "docs/search-console-review-2026-07-21.md",
   "docs/seo-inventory.md",
   "scripts/generate-launch-readiness.js",
+  "scripts/generate-sitemap.js",
   "scripts/pre-go-live.js",
   "scripts/check-color-contrast.js",
   "scripts/check-content-security-policy.js",
@@ -221,9 +222,23 @@ for (const file of htmlFiles) {
 const sitemap = read("public/sitemap.xml");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const sitemapUrlSet = new Set(sitemapUrls);
+const sitemapEntries = [...sitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/url>/g)]
+  .map((match) => ({ url: match[1], lastmod: match[2] }));
 if (sitemapUrls.length !== sitemapUrlSet.size) errors.push("sitemap.xml: contains duplicate URLs");
 if (sitemapUrls.some((url) => url.endsWith(".html"))) errors.push("sitemap.xml: URLs should be extensionless");
 if (sitemapUrls.includes("https://agnezukiene.lt/404")) errors.push("sitemap.xml: should not include 404");
+if (sitemapEntries.length !== sitemapUrls.length) {
+  errors.push("sitemap.xml: every URL should have one lastmod date");
+}
+const today = new Date().toISOString().slice(0, 10);
+for (const entry of sitemapEntries) {
+  const parsedDate = new Date(`${entry.lastmod}T00:00:00Z`);
+  const isValidDate = /^\d{4}-\d{2}-\d{2}$/.test(entry.lastmod)
+    && !Number.isNaN(parsedDate.getTime())
+    && parsedDate.toISOString().slice(0, 10) === entry.lastmod;
+  if (!isValidDate) errors.push(`sitemap.xml: invalid lastmod date for ${entry.url}: ${entry.lastmod}`);
+  if (isValidDate && entry.lastmod > today) errors.push(`sitemap.xml: future lastmod date for ${entry.url}: ${entry.lastmod}`);
+}
 for (const file of htmlFiles.filter((file) => file !== "404.html")) {
   const expected = `https://agnezukiene.lt${routeFor(file)}`;
   if (!sitemapUrlSet.has(expected)) {
