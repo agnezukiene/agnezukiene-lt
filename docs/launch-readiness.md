@@ -39,6 +39,7 @@ Atnaujinta: 2026-09-11
 - `[x]` Gyva svetainė atmeta neleistiną svetimą kodą
 - `[x]` Naršyklės kortelės ženkliukas tikrinamas lokaliai ir gyvoje svetainėje
 - `[x]` Nuorodų dalijimosi peržiūros tikrinamos lokaliai ir gyvoje svetainėje
+- `[x]` Paieškos sistemoms leidžiama rodyti didesnę Agnės nuotraukos peržiūrą
 - `[x]` Dažnų klausimų paieškos aprašas tiksliai sutampa su visais lankytojui matomais klausimais ir atsakymais
 - `[x]` Kiekvienas pagrindinis informacinis puslapis po turinio pateikia tiesioginį kelią į kontaktų formą
 - `[x]` Pagrindinė nuotrauka pritaikyta skirtingiems ekranams ir failų dydžiai saugomi automatiškai

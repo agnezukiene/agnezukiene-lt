@@ -364,6 +364,7 @@ Po Cloudflare deploy:
 
 ## 9. Vėlesnis augimas po MVP
 
+- `[x]` 2026-09-11 visuose aštuoniuose viešuose puslapiuose pagal oficialią „Google“ rekomendaciją leista naudoti didesnę Agnės nuotraukos peržiūrą paieškos rezultatuose. Vietinė ir gyvos svetainės patikra saugo, kad šis nustatymas vėliau netyčia nedingtų.
 - `[x]` 2026-09-10 visa vietinė ir gyvos svetainės techninė patikra praėjo be klaidų. Patikrinti pagrindiniai puslapiai, saugus ryšys, nukreipimai, klaidos puslapis, saugumo nustatymai, paieškos sistemoms skirti failai, pagrindinė nuotrauka, kontaktų formos klaidų keliai, viešos techninės kopijos išjungimas ir projekto saugumas. Bandomasis laiškas nesiųstas.
 - `[~]` 2026-09-10 naujų „Google Search Console“ ir lankomumo skaičių perskaityti nepavyko, nes Codex neturi leidimo valdyti atidarytą „Chrome“ naršyklę. Jokių skaičių neišgalvojame; gavus leidimą peržiūrą reikia užbaigti pagal tikrus paskyros duomenis.
 - `[~]` Parengtas preliminarus pirmų edukacinių tekstų sąrašas pagal patvirtintą svetainės auditoriją, paslaugas ir oficialias „Google“ rekomendacijas. Tikslinti pagal naujas tikras paieškas ir neviešinti be Agnės patvirtinimo. Planas: `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md`.

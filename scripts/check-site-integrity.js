@@ -79,6 +79,12 @@ for (const file of htmlFiles) {
   if (technicalPages.has(file) && !/<meta name="robots" content="noindex"/.test(html)) {
     errors.push(`${file}: technical page should be noindex`);
   }
+  if (!technicalPages.has(file) && !html.includes('<meta name="robots" content="max-image-preview:large">')) {
+    errors.push(`${file}: public page should allow large image previews in search results`);
+  }
+  if (!technicalPages.has(file) && /<meta name="robots" content="[^"]*noindex/i.test(html)) {
+    errors.push(`${file}: public page should not be hidden from search results`);
+  }
   if (file !== "404.html" && !/<nav[^>]+aria-label="Pagrindinė navigacija"/.test(html)) {
     errors.push(`${file}: missing labelled primary navigation`);
   }

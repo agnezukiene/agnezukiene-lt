@@ -81,6 +81,11 @@ async function main() {
     assert(text.includes('<meta property="og:site_name" content="Agnė Žukienė">'), `${page}: missing social site name`);
     assert(text.includes('<meta property="og:locale" content="lt_LT">'), `${page}: missing Lithuanian social locale`);
     assert(
+      text.includes('<meta name="robots" content="max-image-preview:large">'),
+      `${page}: search engines should be allowed to use large image previews`
+    );
+    assert(!/<meta name="robots" content="[^"]*noindex/i.test(text), `${page}: public page should remain visible in search results`);
+    assert(
       text.includes('<meta property="og:image:alt" content="Psichologė Agnė Žukienė šviesiame kabinete">'),
       `${page}: missing social image description`
     );
