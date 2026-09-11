@@ -399,6 +399,9 @@ if (/font-size:\s*[^;]*(?:vw|vh)/.test(siteStyles)) {
 if (!siteStyles.includes(".hero h1") || !siteStyles.includes(".page-hero h1")) {
   errors.push("styles.css: homepage and inner-page headings should use separate type scales");
 }
+if (!/h1,\s*h2,\s*h3\s*\{[\s\S]*?overflow-wrap:\s*anywhere;[\s\S]*?\}/.test(siteStyles)) {
+  errors.push("styles.css: long headings should wrap instead of widening narrow screens");
+}
 if (!/\.service-detail\s*\{[\s\S]*?scroll-margin-top:\s*6rem;[\s\S]*?\}/.test(siteStyles)) {
   errors.push("styles.css: linked service sections should stay visible below the sticky header");
 }

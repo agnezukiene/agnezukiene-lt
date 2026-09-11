@@ -364,6 +364,7 @@ Po Cloudflare deploy:
 
 ## 9. Vėlesnis augimas po MVP
 
+- `[x]` 2026-09-11 patikrinti visi devyni puslapiai 320 taškų pločio telefone, įprastu ir 25 procentais padidintu tekstu. Paslaugų puslapyje ilgas antraštės žodis išplėsdavo ekraną; pridėtas saugus žodžio perkėlimas, kuris veikia tik tada, kai žodis nebetelpa. Taip pat patikrintas slapukų pasirinkimas ir kontaktų atsarginis el. paštas išjungus papildomą naršyklės kodą.
 - `[x]` 2026-09-11 pataisyta kontaktų formos klaidų vieta telefone: patikra parodė, kad bendras paaiškinimas likdavo gerokai žemiau matomo ekrano, kai žmogus būdavo grąžinamas prie netinkamai užpildyto lauko. Dabar trumpa klaida rodoma iškart prie konkretaus lauko, o bendras pranešimas išlaikytas pagalbinėms skaitymo priemonėms.
 - `[x]` 2026-09-11 visuose aštuoniuose viešuose puslapiuose pagal oficialią „Google“ rekomendaciją leista naudoti didesnę Agnės nuotraukos peržiūrą paieškos rezultatuose. Vietinė ir gyvos svetainės patikra saugo, kad šis nustatymas vėliau netyčia nedingtų.
 - `[x]` 2026-09-10 visa vietinė ir gyvos svetainės techninė patikra praėjo be klaidų. Patikrinti pagrindiniai puslapiai, saugus ryšys, nukreipimai, klaidos puslapis, saugumo nustatymai, paieškos sistemoms skirti failai, pagrindinė nuotrauka, kontaktų formos klaidų keliai, viešos techninės kopijos išjungimas ir projekto saugumas. Bandomasis laiškas nesiųstas.

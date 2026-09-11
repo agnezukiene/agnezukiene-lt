@@ -48,6 +48,13 @@ a {
   color: inherit;
 }
 
+h1,
+h2,
+h3 {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
 button,
 input,
 select,

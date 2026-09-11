@@ -33,7 +33,7 @@ Atnaujinta: 2026-09-11
 - `[x]` Pasirinktos paslaugos antraštės neuždengia prilipęs viršutinis meniu
 - `[x]` Pagalbinė skaitymo priemonė perspėja apie naujame lange atidaromas nuorodas
 - `[x]` Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna
-- `[x]` Antraščių dydžiai stabilūs, o vidiniai puslapiai naudoja ramesnį mastelį
+- `[x]` Antraščių dydžiai stabilūs, o ilgi žodžiai neišplečia siauro ekrano
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes
 - `[x]` Naršyklė įpareigojama vienerius metus naudoti tik saugų svetainės ryšį
 - `[x]` Gyva svetainė atmeta neleistiną svetimą kodą
