@@ -540,14 +540,14 @@ for (const file of htmlFiles.filter((file) => file !== "404.html")) {
     }
   }
 }
-for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "Apsaugos kodas įkeliamas tik pradėjus pildyti kontaktų formą", "vienkartinį patvirtinimą"]) {
+for (const requiredCookieText of ["agne_cookie_choice", "agne_cookie_reset_pending", "_ga", "iki 2 metų", "Apsaugos kodas įkeliamas tik pradėjus pildyti kontaktų formą", "vienkartinį patvirtinimą"]) {
   if (!cookieHtml.includes(requiredCookieText)) {
     errors.push(`slapuku-politika.html: missing required cookie disclosure: ${requiredCookieText}`);
   }
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "showFieldError", "clearFieldError", "contactMethodError", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "submitPendingForTurnstile", "form.requestSubmit()", "Ruošiama apsauga...", "Palaukite akimirką, kol paruošiama formos apsauga.", "Užklausa bus išsiųsta automatiškai."]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "cookieResetFocusKey", "saveCookieResetFocus", "consumeCookieResetFocus", "preventScroll", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "showFieldError", "clearFieldError", "contactMethodError", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "submitPendingForTurnstile", "form.requestSubmit()", "Ruošiama apsauga...", "Palaukite akimirką, kol paruošiama formos apsauga.", "Užklausa bus išsiųsta automatiškai."]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

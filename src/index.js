@@ -4,7 +4,7 @@ const JSON_HEADERS = {
 };
 
 const MAX_CONTACT_BODY_BYTES = 10000;
-const STATIC_ASSET_VERSION = "865661d1a8e1";
+const STATIC_ASSET_VERSION = "edcf3cb9ad74";
 const CONTACT_FIELD_LIMITS = {
   name: 80,
   email: 120,

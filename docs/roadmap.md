@@ -364,6 +364,7 @@ Po Cloudflare deploy:
 
 ## 9. Vėlesnis augimas po MVP
 
+- `[x]` 2026-09-11 patikrinti pagrindiniai veiksmai naudojant tik klaviatūrą: perėjimas prie turinio, telefono meniu ir dažnų klausimų išskleidimas veikia. Slapukų pasirinkimo keitimas reikalavo šešių papildomų Tab paspaudimų, todėl žymeklis dabar iškart perkeliamas prie pasirinkimų ir po sprendimo grąžinamas į ankstesnę vietą. Trumpas techninis seanso įrašas aiškiai aprašytas atnaujintoje slapukų politikoje.
 - `[x]` 2026-09-11 patikrinti visi devyni puslapiai 320 taškų pločio telefone, įprastu ir 25 procentais padidintu tekstu. Paslaugų puslapyje ilgas antraštės žodis išplėsdavo ekraną; pridėtas saugus žodžio perkėlimas, kuris veikia tik tada, kai žodis nebetelpa. Taip pat patikrintas slapukų pasirinkimas ir kontaktų atsarginis el. paštas išjungus papildomą naršyklės kodą.
 - `[x]` 2026-09-11 pataisyta kontaktų formos klaidų vieta telefone: patikra parodė, kad bendras paaiškinimas likdavo gerokai žemiau matomo ekrano, kai žmogus būdavo grąžinamas prie netinkamai užpildyto lauko. Dabar trumpa klaida rodoma iškart prie konkretaus lauko, o bendras pranešimas išlaikytas pagalbinėms skaitymo priemonėms.
 - `[x]` 2026-09-11 visuose aštuoniuose viešuose puslapiuose pagal oficialią „Google“ rekomendaciją leista naudoti didesnę Agnės nuotraukos peržiūrą paieškos rezultatuose. Vietinė ir gyvos svetainės patikra saugo, kad šis nustatymas vėliau netyčia nedingtų.

@@ -181,6 +181,9 @@ async function main() {
         `${page}: unavailable form should provide a direct email fallback`
       );
     }
+    if (page === "/slapuku-politika") {
+      assert(text.includes("agne_cookie_reset_pending"), `${page}: missing temporary focus restoration disclosure`);
+    }
     for (const match of text.matchAll(/<a\b([^>]*)target="_blank"([^>]*)>([\s\S]*?)<\/a>/g)) {
       assert(/\brel="[^"]*\bnoopener\b[^"]*"/.test(`${match[1]} ${match[2]}`), `${page}: new-window link should use noopener`);
       assert(match[3].includes("atsidarys naujame lange"), `${page}: new-window link should announce its behavior`);

@@ -117,8 +117,8 @@ if (!/resetCookies\.addEventListener\("click", \(\) => \{[\s\S]*const analyticsW
   errors.push("public/assets/js/site.js: changing the cookie choice should stop analytics before asking again");
 }
 
-if (!/if \(analyticsWasLoaded\) \{\s*window\.location\.reload\(\);\s*return;\s*\}/.test(js)) {
-  errors.push("public/assets/js/site.js: withdrawing consent should reload a page where analytics is no longer loaded");
+if (!/if \(analyticsWasLoaded\) \{\s*saveCookieResetFocus\(\);\s*window\.location\.reload\(\);\s*return;\s*\}/.test(js)) {
+  errors.push("public/assets/js/site.js: withdrawing consent should preserve keyboard focus and reload without analytics");
 }
 
 if (!js.includes("_ga(?:_|$)") || !js.includes("Max-Age=0")) {

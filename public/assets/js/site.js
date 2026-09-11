@@ -41,6 +41,24 @@
     }
   };
 
+  const cookieResetFocusKey = "agne_cookie_reset_pending";
+  const saveCookieResetFocus = () => {
+    try {
+      sessionStorage.setItem(cookieResetFocusKey, "true");
+    } catch (error) {
+      // Focus still remains usable if temporary browser storage is unavailable.
+    }
+  };
+  const consumeCookieResetFocus = () => {
+    try {
+      const pending = sessionStorage.getItem(cookieResetFocusKey) === "true";
+      sessionStorage.removeItem(cookieResetFocusKey);
+      return pending;
+    } catch (error) {
+      return false;
+    }
+  };
+
   const loadScript = (src) => new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = src;
@@ -186,6 +204,8 @@
   const resetCookies = document.querySelector("[data-cookie-reset]");
   const choiceStatus = document.querySelector("[data-cookie-choice-status]");
   const cookieChoice = readCookieChoice();
+  const cookieResetFocusPending = consumeCookieResetFocus();
+  let cookieChoiceReturnFocus = null;
 
   const showCookieChoiceStatus = (choice) => {
     if (!choiceStatus) return;
@@ -199,6 +219,8 @@
   }
 
   const setCookieChoice = (choice) => {
+    const focusTarget = cookieChoiceReturnFocus || document.querySelector("main");
+    cookieChoiceReturnFocus = null;
     saveCookieChoice(choice);
     if (cookieBanner) cookieBanner.hidden = true;
     if (choice === "accepted") {
@@ -208,6 +230,7 @@
     }
     window.dispatchEvent(new CustomEvent("analytics-consent", { detail: choice }));
     showCookieChoiceStatus(choice);
+    if (focusTarget instanceof HTMLElement) focusTarget.focus({ preventScroll: true });
   };
 
   if (cookieChoice === "accepted") {
@@ -216,6 +239,11 @@
     deactivateAnalytics();
   }
   if (cookieChoice) showCookieChoiceStatus(cookieChoice);
+  if (cookieResetFocusPending && !cookieChoice) {
+    cookieChoiceReturnFocus = resetCookies || document.querySelector("main");
+    if (choiceStatus) choiceStatus.textContent = "Pasirinkite iš naujo žemiau pateiktame pranešime.";
+    if (declineCookies) declineCookies.focus({ preventScroll: true });
+  }
 
   if (acceptCookies) {
     acceptCookies.addEventListener("click", () => setCookieChoice("accepted"));
@@ -230,12 +258,15 @@
       const analyticsWasLoaded = typeof window.gtag === "function";
       clearCookieChoice();
       deactivateAnalytics({ notifyTag: false });
+      cookieChoiceReturnFocus = resetCookies;
       if (analyticsWasLoaded) {
+        saveCookieResetFocus();
         window.location.reload();
         return;
       }
       if (cookieBanner) cookieBanner.hidden = false;
       if (choiceStatus) choiceStatus.textContent = "Pasirinkite iš naujo žemiau pateiktame pranešime.";
+      if (declineCookies) declineCookies.focus({ preventScroll: true });
       window.dispatchEvent(new CustomEvent("analytics-consent", { detail: "reset" }));
     });
   }

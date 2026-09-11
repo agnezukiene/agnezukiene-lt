@@ -54,6 +54,7 @@ Atnaujinta: 2026-09-11
 - `[x]` Vieno siuntimo paspaudimo pakanka net tada, kai formos apsauga dar tik ruošiama
 - `[x]` Privatumo politika nurodo lankytojo teises, atsakymo terminą ir naudojamus paslaugų teikėjus
 - `[x]` Slapukų pasirinkimo mygtukai aiškiai įvardyti ir turi nuorodą į paaiškinimą
+- `[x]` Keičiant slapukų pasirinkimą klaviatūros žymeklis pereina prie pasirinkimų ir grįžta į ankstesnę vietą
 - `[x]` Pagrindinio logotipo pavadinimą pagalbinės skaitymo priemonės perskaito taip pat, kaip jis matomas
 - `[x]` Skubios pagalbos nuorodos veikia ir jų paspaudimai sąmoningai nematuojami
 - `[x]` Svetainė gerbia lankytojo mažesnio judesio pasirinkimą
