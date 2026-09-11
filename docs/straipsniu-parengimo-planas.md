@@ -4,7 +4,7 @@ Parengta: 2026-09-10
 
 Statusas: vidinis juodraštis. Temos, pavadinimai ir galutiniai tekstai dar nepatvirtinti ir viešoje svetainėje neskelbiami.
 
-2026-09-11 pirmosios temos pilnas juodraštis parengtas tik vietiniame `drafts/` aplanke. Šis aplankas sąmoningai nekeliamas į viešą „GitHub“ projektą. Prieš bet kokį viešinimą reikia Agnės temos ir galutinio teksto patvirtinimo.
+2026-09-11 visų trijų temų pilni juodraščiai parengti tik vietiniame `drafts/` aplanke. Šis aplankas sąmoningai nekeliamas į viešą „GitHub“ projektą. Prieš bet kokį viešinimą reikia Agnės temos, profesinių formuluočių ir galutinio teksto patvirtinimo.
 
 ## Bendros taisyklės
 
