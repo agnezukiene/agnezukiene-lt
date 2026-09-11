@@ -18,6 +18,7 @@ const legacyHtmlPages = [
     .map((page) => ({ oldPath: `${page}.html`, newPath: page }))
 ];
 const serviceSectionIds = ["suaugusiesiems", "paaugliams", "vaikams", "tevams"];
+const creatorCredit = '<span class="footer-credit">Sukurta <a href="https://d2.lt" target="_blank" rel="noopener noreferrer">D2.lt';
 
 const requiredHeaders = {
   "x-content-type-options": "nosniff",
@@ -90,6 +91,7 @@ async function main() {
       `${page}: missing social image description`
     );
     assert(text.includes('<meta name="twitter:card" content="summary">'), `${page}: missing compact social card`);
+    assert(text.includes(creatorCredit), `${page}: missing safe D2.lt creator credit`);
     const currentPageLinks = [...text.matchAll(/<a\b[^>]*\baria-current="page"[^>]*>/g)];
     assert.strictEqual(currentPageLinks.length, 1, `${page}: expected exactly one current-page link`);
     const currentHref = currentPageLinks[0][0].match(/\bhref="([^"]+)"/)?.[1];
@@ -312,6 +314,7 @@ async function main() {
   const notFoundText = await notFoundResponse.text();
   assert(notFoundText.includes("<html lang=\"lt\">"), "/neegzistuojantis-puslapis: missing Lithuanian html lang");
   assert(notFoundText.includes("Puslapis nerastas"), "/neegzistuojantis-puslapis: missing Lithuanian 404 content");
+  assert(notFoundText.includes(creatorCredit), "/neegzistuojantis-puslapis: missing safe D2.lt creator credit");
 
   if (parsedBaseUrl.hostname === "agnezukiene.lt") {
     const workersDevResponse = await fetch("https://agnezukienepage.petrauskaiteagne.workers.dev/", {

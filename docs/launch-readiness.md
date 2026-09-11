@@ -32,6 +32,7 @@ Atnaujinta: 2026-09-11
 - `[x]` Paslaugų kortelės nuveda į tikslią pasirinktą paslaugos vietą
 - `[x]` Pasirinktos paslaugos antraštės neuždengia prilipęs viršutinis meniu
 - `[x]` Pagalbinė skaitymo priemonė perspėja apie naujame lange atidaromas nuorodas
+- `[x]` Sprendimo autoriaus D2.lt nuoroda rodoma visuose puslapiuose, įskaitant klaidos puslapį
 - `[x]` Telefono navigacija lieka pasiekiama, jei papildomas svetainės kodas neįsikrauna
 - `[x]` Antraščių dydžiai stabilūs, o ilgi žodžiai neišplečia siauro ekrano
 - `[x]` Live ir lokali patikra tikrina saugumo antraščių reikšmes

@@ -108,7 +108,7 @@ for (const file of htmlFiles) {
   if (file !== "404.html" && !/<div class="cookie-banner"[^>]+role="region"[^>]+aria-label="Slapukų pasirinkimas"/.test(html)) {
     errors.push(`${file}: cookie choice should have a labelled page region`);
   }
-  if (file !== "404.html" && !html.includes('<span class="footer-credit">Sukurta <a href="https://d2.lt" target="_blank" rel="noopener noreferrer">D2.lt')) {
+  if (!html.includes('<span class="footer-credit">Sukurta <a href="https://d2.lt" target="_blank" rel="noopener noreferrer">D2.lt')) {
     errors.push(`${file}: footer should include the safe D2.lt creator credit`);
   }
   if (!/<title>[^<]{10,}<\/title>/.test(html)) errors.push(`${file}: missing or too short title`);

@@ -709,6 +709,21 @@ textarea {
   margin: 0 auto;
 }
 
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-found-page .not-found {
+  min-height: 0;
+  flex: 1;
+}
+
+.not-found-footer {
+  margin-top: auto;
+}
+
 @media (max-width: 920px) {
   .nav {
     min-height: 68px;
