@@ -338,7 +338,7 @@ for (const file of htmlFiles) {
 }
 
 const gitignore = read(".gitignore");
-for (const pattern of [".env", "*.local", "*-oauth-token.json", ".dev.vars", "Agnes foto/", "tmp/"]) {
+for (const pattern of [".env", "*.local", "*-oauth-token.json", ".dev.vars", "Agnes foto/", "drafts/", "tmp/"]) {
   if (!gitignore.includes(pattern)) errors.push(`.gitignore: missing ${pattern}`);
 }
 

@@ -6,6 +6,7 @@
 *-oauth-token.json
 *-service-account.json
 data/growth-review/*.csv
+drafts/
 .codex/
 node_modules/
 .wrangler/

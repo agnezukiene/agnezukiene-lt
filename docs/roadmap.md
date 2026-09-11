@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-09-10
+Atnaujinta: 2026-09-11
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -368,6 +368,7 @@ Po Cloudflare deploy:
 - `[~]` 2026-09-10 naujų „Google Search Console“ ir lankomumo skaičių perskaityti nepavyko, nes Codex neturi leidimo valdyti atidarytą „Chrome“ naršyklę. Jokių skaičių neišgalvojame; gavus leidimą peržiūrą reikia užbaigti pagal tikrus paskyros duomenis.
 - `[~]` Parengtas preliminarus pirmų edukacinių tekstų sąrašas pagal patvirtintą svetainės auditoriją, paslaugas ir oficialias „Google“ rekomendacijas. Tikslinti pagal naujas tikras paieškas ir neviešinti be Agnės patvirtinimo. Planas: `docs/svetaines-matomumo-ir-augimo-planas-2026-09-10.md`.
 - `[x]` 2026-09-10 trims pirmosioms temoms parengtos išsamios vidinės struktūros, patikimų Lietuvos ir tarptautinių šaltinių sąrašai, saugios profesinės ribos ir tikslūs Agnės patvirtinimo klausimai. Vieši straipsnių puslapiai sąmoningai nesukurti. Planas: `docs/straipsniu-parengimo-planas.md`.
+- `[~]` 2026-09-11 pirmos temos „Kada verta kreiptis į psichologą, net jei dar nėra krizės?“ pilnas juodraštis parengtas tik vietiniame `drafts/` aplanke. Aplankas apsaugotas nuo patekimo į viešą „GitHub“, o automatinė projekto saugumo patikra neleistų jo įkelti net per klaidą. Tekstui dar būtinas Agnės profesinių formuluočių ir viešinimo patvirtinimas.
 - `[ ]` Paruošti 3-5 patvirtintus tekstus prieš aktyviai rodant tinklaraščio skiltį.
 - `[x]` Pridėti Agnės portretą ir pagrindinį asmeninį vizualinį sluoksnį.
 - `[ ]` Svarstyti profesinį domeno el. paštą.

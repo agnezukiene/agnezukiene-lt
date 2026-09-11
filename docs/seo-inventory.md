@@ -1,6 +1,6 @@
 # SEO inventory
 
-Atnaujinta: 2026-09-10
+Atnaujinta: 2026-09-11
 
 | URL | Title | Description | H1 | Canonical | OG title | Nuotraukos aprašymas | Peržiūros tipas |
 | --- | --- | --- | --- | --- | --- | --- | --- |

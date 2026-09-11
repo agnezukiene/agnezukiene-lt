@@ -19,6 +19,7 @@ const requiredIgnoreRules = [
   "*-service-account.json",
   ".dev.vars",
   "Agnes foto/",
+  "drafts/",
   "tmp/"
 ];
 
@@ -75,6 +76,7 @@ function unsafePathReason(file, { historical = false } = {}) {
   const normalized = file.replace(/\\/g, "/");
   const base = path.posix.basename(normalized);
   if (normalized.startsWith("Agnes foto/")) return "asmeninių originalių nuotraukų katalogas";
+  if (normalized.startsWith("drafts/")) return "nepatvirtintų turinio juodraščių katalogas";
   if (/^\.env(?:\.|$)/.test(base) || base === ".dev.vars") return "slaptų aplinkos nustatymų failas";
   if (/(?:oauth-(?:client|token)|service-account)\.json$/i.test(base)) return "paskyros prisijungimo failas";
   if (/(?:^|\/)(?:id_rsa|id_ed25519)(?:\.pub)?$/i.test(normalized)) return "privatus prisijungimo raktas";
@@ -93,6 +95,7 @@ function runSelfCheck() {
   assert(findSecretLabels(privateKeyExample).includes("privatus šifravimo raktas"));
   assert.strictEqual(findSecretLabels("ga4MeasurementId: G-3N3MGJHS0V").length, 0);
   assert.strictEqual(unsafePathReason("Agnes foto/originalas.jpeg"), "asmeninių originalių nuotraukų katalogas");
+  assert.strictEqual(unsafePathReason("drafts/nepatvirtintas-tekstas.md"), "nepatvirtintų turinio juodraščių katalogas");
   assert.strictEqual(unsafePathReason("public/assets/images/patvirtintas-portretas.jpg"), "");
 }
 
