@@ -461,8 +461,11 @@ if (!contactHtml.includes('id="form-status" role="status" aria-live="polite" ari
   errors.push("kontaktai.html: form status should have a stable accessible identifier");
 }
 for (const field of ["name", "replyBy", "topic"]) {
-  const pattern = new RegExp(`<(?:input|select)[^>]+id="${field}"[^>]+aria-describedby="form-status"`);
-  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to the form status`);
+  const pattern = new RegExp(`<(?:input|select)[^>]+id="${field}"[^>]+aria-describedby="[^"]*${field}-error[^"]*form-status"`);
+  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to its field error and the form status`);
+  if (!contactHtml.includes(`class="field-error" id="${field}-error" hidden`)) {
+    errors.push(`kontaktai.html: ${field} should have a nearby hidden error message`);
+  }
 }
 for (const privateFormatText of ["Konsultacijos formatas", "Gyvo, nuotolinio ar mišraus", "Ar konsultuojate nuotoliniu būdu?"]) {
   for (const [file, html] of [["kontaktai.html", contactHtml], ["konsultacijos.html", consultationHtml], ["duk.html", faqHtml]]) {
@@ -472,11 +475,17 @@ for (const privateFormatText of ["Konsultacijos formatas", "Gyvo, nuotolinio ar 
   }
 }
 for (const field of ["email", "phone"]) {
-  const pattern = new RegExp(`<input[^>]+id="${field}"[^>]+aria-describedby="contact-method-help form-status"`);
-  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to contact guidance and form status`);
+  const pattern = new RegExp(`<input[^>]+id="${field}"[^>]+aria-describedby="contact-method-help contact-method-error ${field}-error form-status"`);
+  if (!pattern.test(contactHtml)) errors.push(`kontaktai.html: ${field} should refer to contact guidance, nearby errors and form status`);
+  if (!contactHtml.includes(`class="field-error" id="${field}-error" hidden`)) {
+    errors.push(`kontaktai.html: ${field} should have a nearby hidden error message`);
+  }
 }
 if (!contactHtml.includes('id="contact-method-help">Įrašykite bent vieną: el. pašto adresą arba telefono numerį.')) {
   errors.push("kontaktai.html: contact methods should explain that at least one is required");
+}
+if (!contactHtml.includes('class="field-error" id="contact-method-error" hidden')) {
+  errors.push("kontaktai.html: contact methods should have a nearby shared error message");
 }
 for (const fieldLimit of ['name="name" autocomplete="name" maxlength="80"', 'name="email" type="email" autocomplete="email" inputmode="email" maxlength="120"', 'name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40"']) {
   if (!contactHtml.includes(fieldLimit)) errors.push(`kontaktai.html: missing field limit or keyboard hint: ${fieldLimit}`);
@@ -535,7 +544,7 @@ for (const requiredCookieText of ["agne_cookie_choice", "_ga", "iki 2 metų", "A
 }
 
 const siteJs = read("public/assets/js/site.js");
-for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "submitPendingForTurnstile", "form.requestSubmit()", "Ruošiama apsauga...", "Palaukite akimirką, kol paruošiama formos apsauga.", "Užklausa bus išsiųsta automatiškai."]) {
+for (const requiredSnippet of ["AGNE_SITE_CONFIG", "ga4MeasurementId", "turnstileSiteKey", "turnstile.render", 'action: "contact"', 'language: "lt"', "render=explicit", '"error-callback"', "readResponseMessage", "resetTurnstile", "turnstile.reset", "Uždaryti meniu", "aria-busy", "aria-invalid", "data-cookie-choice-status", "missing_email", "missing_phone", "invalid_phone", "isValidPhone", "updateReplyRequirements", "data-message-count", "messageInput.maxLength", "Pasiekta komentaro riba.", "updateMessageCount", "showSendFallback", "showFieldError", "clearFieldError", "contactMethodError", "data-form-email-fallback", "parašyti el. paštu", "startTurnstile", 'form.addEventListener("focusin"', "turnstileState", "submitPendingForTurnstile", "form.requestSubmit()", "Ruošiama apsauga...", "Palaukite akimirką, kol paruošiama formos apsauga.", "Užklausa bus išsiųsta automatiškai."]) {
   if (!siteJs.includes(requiredSnippet)) errors.push(`public/assets/js/site.js: missing ${requiredSnippet}`);
 }
 

@@ -413,17 +413,42 @@
     };
 
     const validationFields = form.querySelectorAll("input:not([type='hidden']), select, textarea");
+    const contactMethodError = form.querySelector("#contact-method-error");
+    const fieldErrorFor = (field) => field && field.id
+      ? form.querySelector(`#${field.id}-error`)
+      : null;
     const markFieldInvalid = (field) => {
       if (field) field.setAttribute("aria-invalid", "true");
     };
+    const showFieldError = (field, message) => {
+      const fieldError = fieldErrorFor(field);
+      markFieldInvalid(field);
+      if (!fieldError) return;
+      fieldError.textContent = message;
+      fieldError.hidden = false;
+    };
+    const clearFieldError = (field) => {
+      field.removeAttribute("aria-invalid");
+      const fieldError = fieldErrorFor(field);
+      if (fieldError) {
+        fieldError.textContent = "";
+        fieldError.hidden = true;
+      }
+      if ((field === emailInput || field === phoneInput) && contactMethodError) {
+        contactMethodError.textContent = "";
+        contactMethodError.hidden = true;
+        if (emailInput) emailInput.removeAttribute("aria-invalid");
+        if (phoneInput) phoneInput.removeAttribute("aria-invalid");
+      }
+    };
     const clearInvalidFields = () => {
-      validationFields.forEach((field) => field.removeAttribute("aria-invalid"));
+      validationFields.forEach(clearFieldError);
     };
 
     validationFields.forEach((field) => {
-      const clearFieldError = () => field.removeAttribute("aria-invalid");
-      field.addEventListener("input", clearFieldError);
-      field.addEventListener("change", clearFieldError);
+      const clearCurrentFieldError = () => clearFieldError(field);
+      field.addEventListener("input", clearCurrentFieldError);
+      field.addEventListener("change", clearCurrentFieldError);
     });
 
     form.addEventListener("input", () => {
@@ -443,6 +468,25 @@
       const email = String(data.get("email") || "").trim();
       const phone = String(data.get("phone") || "").trim();
       const replyBy = String(data.get("replyBy") || "");
+      const validationMessages = {
+        name: "Įrašykite vardą.",
+        email: "Patikrinkite el. pašto adresą.",
+        phone: "Įrašykite telefono numerį.",
+        replyBy: "Pasirinkite, kaip patogiausia atsakyti.",
+        topic: "Pasirinkite bendrą temą."
+      };
+
+      if (!form.checkValidity()) {
+        const firstInvalidField = form.querySelector(":invalid");
+        status.classList.add("is-error");
+        status.textContent = "Patikrinkite pažymėtus laukus ir pabandykite dar kartą.";
+        track("form_error", { form_id: "contact", error_type: "invalid_fields" });
+        form.querySelectorAll(":invalid").forEach((field) => {
+          showFieldError(field, validationMessages[field.id] || "Patikrinkite šį lauką.");
+        });
+        if (firstInvalidField) firstInvalidField.focus();
+        return;
+      }
 
       if (!email && !phone) {
         status.classList.add("is-error");
@@ -450,6 +494,10 @@
         track("form_error", { form_id: "contact", error_type: "missing_contact" });
         markFieldInvalid(emailInput);
         markFieldInvalid(phoneInput);
+        if (contactMethodError) {
+          contactMethodError.textContent = "Įrašykite el. paštą arba telefono numerį.";
+          contactMethodError.hidden = false;
+        }
         if (emailInput) emailInput.focus();
         return;
       }
@@ -458,7 +506,7 @@
         status.classList.add("is-error");
         status.textContent = "Pasirinkote atsakymą el. paštu, todėl įrašykite el. pašto adresą.";
         track("form_error", { form_id: "contact", error_type: "missing_email" });
-        markFieldInvalid(emailInput);
+        showFieldError(emailInput, "Įrašykite el. pašto adresą.");
         if (emailInput) emailInput.focus();
         return;
       }
@@ -467,7 +515,7 @@
         status.classList.add("is-error");
         status.textContent = "Patikrinkite telefono numerį. Galite naudoti skaitmenis, tarpus, skliaustus, brūkšnelį ir ženklą „+“ numerio pradžioje.";
         track("form_error", { form_id: "contact", error_type: "invalid_phone" });
-        markFieldInvalid(phoneInput);
+        showFieldError(phoneInput, "Patikrinkite telefono numerį.");
         if (phoneInput) phoneInput.focus();
         return;
       }
@@ -476,18 +524,8 @@
         status.classList.add("is-error");
         status.textContent = "Pasirinkote atsakymą telefonu, todėl įrašykite telefono numerį.";
         track("form_error", { form_id: "contact", error_type: "missing_phone" });
-        markFieldInvalid(phoneInput);
+        showFieldError(phoneInput, "Įrašykite telefono numerį.");
         if (phoneInput) phoneInput.focus();
-        return;
-      }
-
-      if (!form.checkValidity()) {
-        const firstInvalidField = form.querySelector(":invalid");
-        status.classList.add("is-error");
-        status.textContent = "Patikrinkite privalomus laukus ir pabandykite dar kartą.";
-        track("form_error", { form_id: "contact", error_type: "invalid_fields" });
-        markFieldInvalid(firstInvalidField);
-        form.reportValidity();
         return;
       }
 

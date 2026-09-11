@@ -46,7 +46,7 @@ Atnaujinta: 2026-09-11
 - `[x]` Kontaktų forma sutikrina pasirinktą atsakymo būdą
 - `[x]` Kontaktų forma atmeta akivaizdžiai neteisingą telefono numerį
 - `[x]` Kontaktų forma saugiai atmeta netaisyklingą duomenų sandarą, laukų tipus ir per dideles užklausas
-- `[x]` Formos klaidos susietos su konkrečiais laukais
+- `[x]` Formos klaidos rodomos prie konkretaus lauko ir perskaitomos pagalbinėmis priemonėmis
 - `[x]` Komentaro laukas aiškiai rodo nustatytą teksto ribą
 - `[x]` Kontaktų forma aiškiai pateikia privatumo informaciją nereikalaudama nereikalingo sutikimo
 - `[x]` Neveikianti kontaktų forma pakeičiama tiesioginiu el. pašto adresu

@@ -168,9 +168,12 @@ async function main() {
       );
       assert(
         text.includes('id="phone" name="phone" type="tel"')
-          && text.includes('aria-describedby="contact-method-help form-status"'),
-        `${page}: phone field should refer to contact guidance and form status`
+          && text.includes('aria-describedby="contact-method-help contact-method-error phone-error form-status"'),
+        `${page}: phone field should refer to contact guidance, nearby errors and form status`
       );
+      for (const errorId of ["name-error", "contact-method-error", "email-error", "phone-error", "replyBy-error", "topic-error"]) {
+        assert(text.includes(`class="field-error" id="${errorId}" hidden`), `${page}: missing nearby form error ${errorId}`);
+      }
       assert(
         text.includes('<p class="form-fallback">')
           && text.includes('href="mailto:zukiene.agne@gmail.com"')

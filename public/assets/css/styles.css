@@ -599,8 +599,16 @@ textarea {
   color: var(--accent-strong);
 }
 
+.field-error {
+  margin: 0;
+  color: #9f2f23;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .form-row input[aria-invalid="true"],
-.form-row select[aria-invalid="true"] {
+.form-row select[aria-invalid="true"],
+.form-row textarea[aria-invalid="true"] {
   outline: 3px solid #9f2f23;
   outline-offset: 2px;
 }
