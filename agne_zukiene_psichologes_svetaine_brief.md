@@ -51,8 +51,8 @@ Svarbu: svetainėje nereikėtų vartoti formuluotės „psichoterapeutė“, jei
 ### Papildomas profesinis augimas
 
 - Lietuvos sveikatos mokslų universiteto Neuromokslų instituto Elgesio medicinos laboratorijos profesinės kvalifikacijos tobulinimo kursas „Įsisąmoninimu grįstos kognityvinės ir elgesio terapijos pagrindai“, 160 val., baigtas 2026 m.
+- Geštalto terapijos studijos, pradėtos 2026 m. spalį, tęsiamos šiuo metu.
 - Domėjimasis konsultavimo psichologija, emocijų reguliavimu, vaikų ir paauglių psichologija.
-- Galima tolesnio profesinio augimo kryptis - Gestalto terapijos mokymai.
 - Domėjimasis mindfulness, kūno ir emocijų ryšiu, savirefleksija, psichoedukacija.
 
 ### Ankstesnė profesinė patirtis, kuri gali būti naudinga svetainei
