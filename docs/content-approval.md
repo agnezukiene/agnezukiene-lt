@@ -1,6 +1,6 @@
 # Agnės turinio patvirtinimai
 
-Atnaujinta: 2026-08-02
+Atnaujinta: 2026-11-02
 
 Šis failas skirtas turinio sprendimams po techninio svetainės paleidimo. Kol sprendimas nepatvirtintas, veikiančioje svetainėje naudojame atsargią viešą formuluotę, aiškiai nenurodome detalės ir nerodome vidinių „dar reikia patvirtinti“ tipo pastabų.
 
@@ -15,6 +15,7 @@ Atnaujinta: 2026-08-02
 | laukia | Atsakymo į užklausas terminas | Naudojama formuluotė „atsakysiu, kai galėsiu“. | `kontaktai.html`, `konsultacijos.html` |
 | laukia | Ar minėti darbovietes pavadinimais | Darboviečių pavadinimų nerodome. | `apie.html` |
 | laukia | Galutinė kvalifikacijos formuluotė | Naudojama „psichologė, konsultavimo psichologijos magistrantė“. | Visi puslapiai, SEO metadata, schema |
+| padaryta | LSMU kvalifikacijos tobulinimo kursas | Agnė 2026-11-02 patvirtino, kad galima viešinti 160 val. kursą „Įsisąmoninimu grįstos kognityvinės ir elgesio terapijos pagrindai“, baigtą 2026 m. | `apie.html` |
 | padaryta | Privatumo politikos tekstas | Agnė pavedė parengti savo nuožiūra pagal gerąją praktiką; išsamus tekstas parengtas 2026-07-19, papildytas pagal BDAR informavimo reikalavimus ir suderintas su kontaktų formos paaiškinimu 2026-07-21. | `privatumo-politika.html`, `kontaktai.html` |
 | padaryta | Slapukų politikos tekstas | Tekstas ir lankytojo pasirinkimo valdymas parengti bei patikrinti naršyklėje 2026-07-19. | `slapuku-politika.html` |
 

@@ -1,6 +1,6 @@
 # Agnės Žukienės svetainės roadmap
 
-Atnaujinta: 2026-09-11
+Atnaujinta: 2026-11-02
 
 Šis failas yra pagrindinis darbo planas. Nuo šiol pakeitimus darome pagal šį roadmap: po kiekvieno reikšmingo darbo atnaujiname statusus, įrašome, kas patikrinta, ir pažymime, kas dar blokuoja paleidimą.
 
@@ -165,6 +165,7 @@ Darbai:
 - `[~]` `index.html`: patikrinti hero tekstą, CTA, paslaugų kryptis, krizės pranešimą.
 - `[x]` 2026-08-02 pagal Agnės sprendimą konsultacijų formatas visiškai pašalintas iš viešo turinio: jo nebeprašo kontaktų forma, apie nuotolines konsultacijas nebeklausiama DUK, o konsultacijų puslapyje neliko galimų formatų sąrašo.
 - `[~]` `apie.html`: patikrinti kvalifikacijos formuluotes ir ar tinka viešinti profesinį kelią.
+- `[x]` 2026-11-02 pagal Agnės pateiktą pažymėjimą į `apie.html` įrašytas LSMU Neuromokslų instituto Elgesio medicinos laboratorijos 160 val. profesinės kvalifikacijos tobulinimo kursas „Įsisąmoninimu grįstos kognityvinės ir elgesio terapijos pagrindai“, baigtas 2026 m.
 - `[~]` `paslaugos.html`: patvirtinti, kurios paslaugos tikrai bus rodomos MVP.
 - `[~]` `konsultacijos.html`: papildyti tik tada, kai Agnė pati nuspręs viešinti trukmę, kainą, formatą ar atsakymo laiką.
 - `[~]` `duk.html`: peržiūrėti DUK dėl tono ir tikslumo.
